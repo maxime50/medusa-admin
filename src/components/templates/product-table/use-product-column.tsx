@@ -12,13 +12,13 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
   const getProductStatus = (status) => {
     switch (status) {
       case "proposed":
-        return <StatusIndicator title={"Proposed"} variant={"warning"} />
+        return <StatusIndicator title={"Proposé"} variant={"warning"} />
       case "published":
-        return <StatusIndicator title={"Published"} variant={"success"} />
+        return <StatusIndicator title={"Publié"} variant={"success"} />
       case "rejected":
-        return <StatusIndicator title={"Rejected"} variant={"danger"} />
+        return <StatusIndicator title={"Rejeté"} variant={"danger"} />
       case "draft":
-        return <StatusIndicator title={"Draft"} variant={"default"} />
+        return <StatusIndicator title={"Brouillon"} variant={"default"} />
       default:
         return <StatusIndicator title={status} variant={"default"} />
     }
@@ -59,16 +59,16 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
   const columns = useMemo(
     () => [
       {
-        Header: "Name",
+        Header: "Nom",
         accessor: "title",
         Cell: ({ row: { original } }) => {
           return (
             <div className="flex items-center">
-              <div className="h-[40px] w-[30px] my-1.5 flex items-center mr-4">
+              <div className="my-1.5 mr-4 flex h-[40px] w-[30px] items-center">
                 {original.thumbnail ? (
                   <img
                     src={original.thumbnail}
-                    className="h-full object-cover rounded-soft"
+                    className="h-full rounded-soft object-cover"
                   />
                 ) : (
                   <ImagePlaceholder />
@@ -92,28 +92,28 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
         Cell: ({ cell: { value } }) => getProductStatus(value),
       },
       {
-        Header: "Availability",
+        Header: "Disponibilité",
         accessor: "sales_channels",
         Cell: ({ cell: { value } }) => getProductSalesChannels(value),
       },
       {
-        Header: "Inventory",
+        Header: "Inventaire",
         accessor: "variants",
         Cell: ({ cell: { value } }) => (
           <div>
             {value.reduce((acc, next) => acc + next.inventory_quantity, 0)}
-            {" in stock for "}
-            {value.length} variant(s)
+            {" en stock pour "}
+            {value.length} variante(s)
           </div>
         ),
       },
       {
         accessor: "col-3",
         Header: (
-          <div className="text-right flex justify-end">
+          <div className="flex justify-end text-right">
             <span
               onClick={setListView}
-              className={clsx("hover:bg-grey-5 cursor-pointer rounded p-0.5", {
+              className={clsx("cursor-pointer rounded p-0.5 hover:bg-grey-5", {
                 "text-grey-90": showList,
                 "text-grey-40": !showList,
               })}
@@ -122,7 +122,7 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
             </span>
             <span
               onClick={setTileView}
-              className={clsx("hover:bg-grey-5 cursor-pointer rounded p-0.5", {
+              className={clsx("cursor-pointer rounded p-0.5 hover:bg-grey-5", {
                 "text-grey-90": !showList,
                 "text-grey-40": showList,
               })}

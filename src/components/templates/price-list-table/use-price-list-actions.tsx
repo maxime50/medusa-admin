@@ -17,19 +17,19 @@ const usePriceListActions = (priceList) => {
 
   const onDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Price List",
-      text: "Are you sure you want to delete this price list?",
+      heading: "Supprimer la liste de prix",
+      text: "Êtes-vous sûr de vouloir supprimer cette liste de prix ?",
     })
     if (shouldDelete) {
       deletePrice.mutate(undefined, {
         onSuccess: () => {
           notification(
-            "Success",
-            "Successfully deleted the price list",
+            "Succès",
+            "La liste de prix a été supprimée avec succès",
             "success"
           )
         },
-        onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
       })
     }
   }
@@ -42,10 +42,10 @@ const usePriceListActions = (priceList) => {
       {
         onSuccess: () => {
           notification(
-            "Success",
-            `Successfully ${
-              isActive(priceList) ? "unpublished" : "published"
-            } price list`,
+            "Succès",
+            `Liste de prix ${
+              isActive(priceList) ? "non publié" : "publié"
+            } avec succès`,
             "success"
           )
         },
@@ -55,7 +55,7 @@ const usePriceListActions = (priceList) => {
 
   const getActions = (): ActionType[] => [
     {
-      label: isActive(priceList) ? "Unpublish" : "Publish",
+      label: isActive(priceList) ? "Dépublier" : "Publier",
       onClick: onUpdate,
       icon: isActive(priceList) ? (
         <UnpublishIcon size={20} />
@@ -64,7 +64,7 @@ const usePriceListActions = (priceList) => {
       ),
     },
     {
-      label: "Delete",
+      label: "Supprimer",
       onClick: onDelete,
       icon: <TrashIcon size={20} />,
       variant: "danger",

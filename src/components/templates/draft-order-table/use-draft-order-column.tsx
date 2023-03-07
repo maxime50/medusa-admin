@@ -9,16 +9,16 @@ const useDraftOrderTableColumns = () => {
   const decideStatus = (status) => {
     switch (status) {
       case "completed":
-        return <StatusDot variant="success" title={"Completed"} />
+        return <StatusDot variant="success" title={"Complétée"} />
       default:
-        return <StatusDot variant="primary" title={"Open"} />
+        return <StatusDot variant="primary" title={"Ouverte"} />
     }
   }
 
   const columns = useMemo(
     () => [
       {
-        Header: "Draft",
+        Header: "Brouillon",
         accessor: "display_id",
         Cell: ({ cell: { value, getCellProps } }) => (
           <Table.Cell
@@ -28,7 +28,7 @@ const useDraftOrderTableColumns = () => {
         ),
       },
       {
-        Header: "Order",
+        Header: "Commande",
         accessor: "order",
         Cell: ({ cell: { value, getCellProps } }) => {
           return (
@@ -39,7 +39,7 @@ const useDraftOrderTableColumns = () => {
         },
       },
       {
-        Header: "Date added",
+        Header: "Créée le",
         accessor: "created_at",
         Cell: ({ cell: { value, getCellProps } }) => (
           <Table.Cell {...getCellProps()}>
@@ -48,7 +48,7 @@ const useDraftOrderTableColumns = () => {
         ),
       },
       {
-        Header: "Customer",
+        Header: "Client",
         accessor: "cart",
         Cell: ({ row, cell: { value, getCellProps } }) => (
           <Table.Cell {...getCellProps()}>

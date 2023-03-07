@@ -37,7 +37,7 @@ const defaultQueryProps = {
 function CustomerGroupsPlaceholder() {
   return (
     <div className="h-full flex center justify-center items-center min-h-[756px]">
-      <span className="text-xs text-gray-400">No customer groups yet</span>
+      <span className="text-xs text-gray-400">Aucun groupe de clients pour le moment</span>
     </div>
   )
 }
@@ -96,12 +96,12 @@ function CustomerGroupsTableRow(props: CustomerGroupsTableRowProps) {
 
   const actions = [
     {
-      label: "Edit",
+      label: "Modifier",
       onClick: showModal,
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Details",
+      label: "Détails",
       onClick: () => navigate(row.original.id),
       icon: <DetailsIcon size={20} />,
     },
@@ -203,7 +203,7 @@ function CustomerGroupsTable(props: CustomerGroupsTableProps) {
         count: count,
         offset: queryObject.offset,
         pageSize: queryObject.offset + table.rows.length,
-        title: "Customer groups",
+        title: "Groupes de clients",
         currentPage: table.state.pageIndex + 1,
         pageCount: table.pageCount,
         nextPage: handleNext,

@@ -6,7 +6,7 @@ const useCollectionTableColumn = () => {
   const columns = useMemo(
     () => [
       {
-        Header: "Title",
+        Header: "Titre",
         accessor: "title",
         Cell: ({ row: { original } }) => {
           return <div className="flex items-center">{original.title}</div>
@@ -18,7 +18,7 @@ const useCollectionTableColumn = () => {
         Cell: ({ cell: { value } }) => <div>/{value}</div>,
       },
       {
-        Header: "Created At",
+        Header: "Créée le",
         accessor: "created_at",
         Cell: ({ cell: { value } }) => (
           <Tooltip content={moment(value).format("DD MMM YYYY hh:mm A")}>
@@ -27,7 +27,7 @@ const useCollectionTableColumn = () => {
         ),
       },
       {
-        Header: "Updated At",
+        Header: "Modifiée le",
         accessor: "updated_at",
         Cell: ({ cell: { value } }) => (
           <Tooltip content={moment(value).format("DD MMM YYYY hh:mm A")}>
@@ -36,7 +36,7 @@ const useCollectionTableColumn = () => {
         ),
       },
       {
-        Header: "Products",
+        Header: "Produits",
         accessor: "products",
         Cell: ({ cell: { value } }) => {
           return <div>{value?.length || "-"}</div>

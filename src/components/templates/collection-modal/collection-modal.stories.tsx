@@ -3,7 +3,7 @@ import React from "react"
 import CollectionModal from "."
 
 export default {
-  title: "Template/AddCollectionModal",
+  title: "Modèle/Collection",
   component: CollectionModal,
 } as ComponentMeta<typeof CollectionModal>
 

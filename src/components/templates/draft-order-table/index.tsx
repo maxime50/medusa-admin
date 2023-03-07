@@ -107,7 +107,7 @@ const DraftOrderTable = () => {
         count: count!,
         offset: queryObject.offset,
         pageSize: queryObject.offset + rows.length,
-        title: "Draft Orders",
+        title: "Commandes brouillons",
         currentPage: pageIndex + 1,
         pageCount: pageCount,
         nextPage: handleNext,

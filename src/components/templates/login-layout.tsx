@@ -2,8 +2,8 @@ import React from "react"
 
 const LoginLayout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="grid grid-cols-1 grid-rows-1 min-h-screen">
+    <div className="flex min-h-screen flex-col">
+      <div className="grid min-h-screen grid-cols-1 grid-rows-1">
         <div
           className="flex flex-col items-center"
           style={{
@@ -11,8 +11,8 @@ const LoginLayout = ({ children }) => {
           }}
         >
           {children}
-          <div className="text-grey-0 inter-base-regular pb-12">
-            © Medusa Commerce <span>&#183;</span>{" "}
+          <div className="inter-base-regular pb-12 text-grey-0">
+            © Bijoux Tendances <span>&#183;</span>{" "}
             <a
               style={{ color: "inherit", textDecoration: "none" }}
               href="mailto:hello@medusajs.com"

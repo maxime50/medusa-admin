@@ -11,11 +11,11 @@ import StatusIndicator from "../../fundamentals/status-indicator"
 const decidePaymentStatus = (status: string) => {
   switch (status) {
     case "captured":
-      return <StatusIndicator variant="success" title={"Paid"} />
+      return <StatusIndicator variant="success" title={"Payée"} />
     case "awaiting":
-      return <StatusIndicator variant="warning" title={"Awaiting"} />
+      return <StatusIndicator variant="warning" title={"En attente"} />
     case "requires":
-      return <StatusIndicator variant="danger" title={"Requires action"} />
+      return <StatusIndicator variant="danger" title={"Action requise"} />
     default:
       return <StatusIndicator variant="primary" title={"N/A"} />
   }
@@ -24,17 +24,17 @@ const decidePaymentStatus = (status: string) => {
 const decideFulfillmentStatus = (status: string) => {
   switch (status) {
     case "fulfilled":
-      return <StatusIndicator variant="success" title={"Fulfilled"} />
+      return <StatusIndicator variant="success" title={"traitée"} />
     case "shipped":
-      return <StatusIndicator variant="success" title={"Shipped"} />
+      return <StatusIndicator variant="success" title={"Expédiée"} />
     case "not_fulfilled":
-      return <StatusIndicator variant="default" title={"Not fulfilled"} />
+      return <StatusIndicator variant="default" title={"Non traitée"} />
     case "partially_fulfilled":
-      return <StatusIndicator variant="warning" title={"Partially fulfilled"} />
+      return <StatusIndicator variant="warning" title={"Partiellement traitée"} />
     case "partially_shipped":
-      return <StatusIndicator variant="warning" title={"Partially shipped"} />
+      return <StatusIndicator variant="warning" title={"Partiellement expédiée"} />
     case "requires":
-      return <StatusIndicator variant="danger" title={"Requires action"} />
+      return <StatusIndicator variant="danger" title={"Action requise"} />
     default:
       return <StatusIndicator variant="primary" title={"N/A"} />
   }
@@ -44,7 +44,7 @@ export const useCustomerOrdersColumns = (): Column<Order>[] => {
   const columns = useMemo(() => {
     return [
       {
-        Header: "Order",
+        Header: "Commande",
         accessor: "display_id",
         Cell: ({ value }) => {
           return <span className="text-grey-90">#{value}</span>
@@ -95,7 +95,7 @@ export const useCustomerOrdersColumns = (): Column<Order>[] => {
               </div>
               {remainder > 0 && (
                 <span className="text-grey-40 inter-small-regular">
-                  + {remainder} more
+                  + {remainder} plus
                 </span>
               )}
             </div>
@@ -110,7 +110,7 @@ export const useCustomerOrdersColumns = (): Column<Order>[] => {
         },
       },
       {
-        Header: "Fulfillment",
+        Header: "Traitement",
         accessor: "fulfillment_status",
         Cell: ({ value }) => {
           return decideFulfillmentStatus(value)

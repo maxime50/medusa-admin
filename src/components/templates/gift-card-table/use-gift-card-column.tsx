@@ -21,7 +21,7 @@ const useGiftCardTableColums = () => {
         ),
       },
       {
-        Header: "Order",
+        Header: "Commande",
         accessor: "order",
         Cell: ({ cell: { value }, index }) => (
           <Table.Cell
@@ -37,7 +37,7 @@ const useGiftCardTableColums = () => {
         ),
       },
       {
-        Header: "Original Amount",
+        Header: "Montant Original",
         accessor: "value",
         Cell: ({ row, cell: { value }, index }) => (
           <Table.Cell key={index}>
@@ -81,7 +81,7 @@ const useGiftCardTableColums = () => {
       {
         Header: () => (
           <div className="pr-2 flex rounded-rounded w-full justify-end">
-            Created
+            Date
           </div>
         ),
         accessor: "created_at",

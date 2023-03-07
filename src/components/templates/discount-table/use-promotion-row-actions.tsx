@@ -61,7 +61,7 @@ const usePromotionActions = (promotion) => {
                 )
               },
               onError: (err) =>
-                notification("Error", getErrorMessage(err), "error"),
+                notification("Erreur", getErrorMessage(err), "error"),
             }
           )
         },

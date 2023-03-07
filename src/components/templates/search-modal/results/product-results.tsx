@@ -19,7 +19,7 @@ const ProductResults = ({
   selected,
 }: ProductResultsProps) => {
   return products.length > 0 ? (
-    <SectionCollapsible title={"Products"} length={products.length || 0}>
+    <SectionCollapsible title={"Produits"} length={products.length || 0}>
       <div className="mt-large">
         <div className="flex flex-col">
           {products?.slice(0, 5).map((product, index) => (
@@ -28,7 +28,7 @@ const ProductResults = ({
                 index: offset + index,
               })}
               className={clsx(
-                "px-base py-1.5 group focus:bg-grey-5 rounded-rounded",
+                "group rounded-rounded px-base py-1.5 focus:bg-grey-5",
                 {
                   "bg-grey-5": selected === offset + index,
                 }
@@ -41,7 +41,7 @@ const ProductResults = ({
                 <div className="flex items-center gap-x-3">
                   <img
                     src={product.thumbnail}
-                    className="h-[32px] w-[24px] object-cover rounded"
+                    className="h-[32px] w-[24px] rounded object-cover"
                   />
                   <p className="inter-small-regular text-grey-90">
                     {product.title}
@@ -49,13 +49,13 @@ const ProductResults = ({
                 </div>
                 <span
                   className={clsx(
-                    "group-focus:visible text-grey-40 inter-small-regular",
+                    "inter-small-regular text-grey-40 group-focus:visible",
                     {
                       invisible: selected !== offset + index,
                     }
                   )}
                 >
-                  Jump to...
+                  Aller à...
                 </span>
               </Link>
             </li>

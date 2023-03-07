@@ -163,10 +163,10 @@ const useCopyProduct = () => {
     mutate(base as AdminPostProductsReq, {
       onSuccess: ({ product: copiedProduct }) => {
         navigate(`/a/products/${copiedProduct.id}`)
-        notification("Success", "Created a new product", "success")
+        notification("Succès", "Nouveau produit créé", "success")
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   }

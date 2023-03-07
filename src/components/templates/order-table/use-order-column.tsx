@@ -12,13 +12,13 @@ const useOrderTableColums = () => {
   const decideStatus = (status) => {
     switch (status) {
       case "captured":
-        return <StatusDot variant="success" title={"Paid"} />
+        return <StatusDot variant="success" title={"Payée"} />
       case "awaiting":
-        return <StatusDot variant="default" title={"Awaiting"} />
+        return <StatusDot variant="default" title={"En attente"} />
       case "requires_action":
-        return <StatusDot variant="danger" title={"Requires action"} />
+        return <StatusDot variant="danger" title={"Action requise"} />
       case "canceled":
-        return <StatusDot variant="warning" title={"Canceled"} />
+        return <StatusDot variant="warning" title={"Annulée"} />
       default:
         return <StatusDot variant="primary" title={"N/A"} />
     }
@@ -27,14 +27,14 @@ const useOrderTableColums = () => {
   const columns = useMemo(
     () => [
       {
-        Header: <div className="pl-2">Order</div>,
+        Header: <div className="pl-2">Commande</div>,
         accessor: "display_id",
         Cell: ({ cell: { value } }) => (
           <p className="text-grey-90 group-hover:text-violet-60 min-w-[100px] pl-2">{`#${value}`}</p>
         ),
       },
       {
-        Header: "Date added",
+        Header: "Date de création",
         accessor: "created_at",
         Cell: ({ cell: { value } }) => (
           <div>
@@ -45,7 +45,7 @@ const useOrderTableColums = () => {
         ),
       },
       {
-        Header: "Customer",
+        Header: "Client",
         accessor: "customer",
         Cell: ({ row, cell: { value } }) => (
           <div>
@@ -64,17 +64,17 @@ const useOrderTableColums = () => {
         ),
       },
       {
-        Header: "Fulfillment",
+        Header: "Status du traitement",
         accessor: "fulfillment_status",
         Cell: ({ cell: { value } }) => value,
       },
       {
-        Header: "Payment status",
+        Header: "Status du paiement",
         accessor: "payment_status",
         Cell: ({ cell: { value } }) => decideStatus(value),
       },
       {
-        Header: "Sales Channel",
+        Header: "Canal de vente",
         accessor: "sales_channel",
         Cell: ({ cell: { value } }) => value?.name ?? "N/A",
       },

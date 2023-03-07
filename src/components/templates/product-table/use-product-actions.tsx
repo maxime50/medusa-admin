@@ -23,8 +23,8 @@ const useProductActions = (product: Product) => {
 
   const handleDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Product",
-      text: "Are you sure you want to delete this product?",
+      heading: "Supprimer le produit",
+      text: "Êtes-vous sûr de vouloir supprimer ce produit ?",
     })
 
     if (shouldDelete) {
@@ -34,14 +34,14 @@ const useProductActions = (product: Product) => {
 
   const getActions = (): ActionType[] => [
     {
-      label: "Edit",
+      label: "Modifier",
       onClick: () => navigate(`/a/products/${product.id}`),
       icon: <EditIcon size={20} />,
     },
     {
-      label: product.status === "published" ? "Unpublish" : "Publish",
+      label: product.status === "published" ? "Dépublier" : "Publier",
       onClick: () => {
-        const newStatus = product.status === "published" ? "draft" : "published"
+        const newStatus = product.status === "published" ? "brouillon" : "publié"
         updateProduct.mutate(
           {
             status: newStatus,
@@ -49,14 +49,14 @@ const useProductActions = (product: Product) => {
           {
             onSuccess: () => {
               notification(
-                "Success",
-                `Successfully ${product.status === "published" ? "unpublished" : "published"
-                } product`,
+                "Succès",
+                `Produit ${product.status === "published" ? "non publié" : "publié"
+                } avec succès`,
                 "success"
               )
             },
             onError: (err) =>
-              notification("Error", getErrorMessage(err), "error"),
+              notification("Erreur", getErrorMessage(err), "error"),
           }
         )
       },
@@ -68,12 +68,12 @@ const useProductActions = (product: Product) => {
         ),
     },
     {
-      label: "Duplicate",
+      label: "Dupliquer",
       onClick: () => copyProduct(product),
       icon: <DuplicateIcon size={20} />,
     },
     {
-      label: "Delete",
+      label: "Supprimer",
       variant: "danger",
       onClick: handleDelete,
       icon: <TrashIcon size={20} />,

@@ -61,7 +61,7 @@ const AddProductsModal = ({
     <Modal open handleClose={close}>
       <Modal.Body>
         <Modal.Header handleClose={close}>
-          <h2 className="inter-xlarge-semibold">Add Products</h2>
+          <h2 className="inter-xlarge-semibold">Ajouter des produits</h2>
         </Modal.Header>
         <Modal.Content>
           <div className="w-full flex flex-col justify-between min-h-[300px] h-full ">
@@ -77,7 +77,7 @@ const AddProductsModal = ({
               totalCount={count}
               options={{
                 enableSearch: true,
-                searchPlaceholder: "Search by name or description...",
+                searchPlaceholder: "Recherche par nom ou par description...",
               }}
               {...params}
             />
@@ -90,14 +90,14 @@ const AddProductsModal = ({
               className="rounded-rounded h-8 w-[128px]"
               onClick={close}
             >
-              Cancel
+              Annuler
             </Button>
             <Button
               variant="primary"
               className="rounded-rounded h-8 w-[128px]"
               onClick={handleSave}
             >
-              Save
+              Sauvegarder
             </Button>
           </div>
         </Modal.Footer>

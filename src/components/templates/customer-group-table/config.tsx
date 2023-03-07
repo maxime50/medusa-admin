@@ -13,7 +13,7 @@ export const CUSTOMER_GROUPS_TABLE_COLUMNS: Column<CustomerGroup>[] = [
   {
     Header: () => (
       <div className="flex items-center gap-1">
-        Title <SortingIcon size={16} />
+        Titre <SortingIcon size={16} />
       </div>
     ),
     accessor: "name",
@@ -21,7 +21,7 @@ export const CUSTOMER_GROUPS_TABLE_COLUMNS: Column<CustomerGroup>[] = [
   {
     Header: () => (
       <div className="flex items-center gap-1">
-        Members <SortingIcon size={16} />
+        Membres <SortingIcon size={16} />
       </div>
     ),
     id: "members",
@@ -46,7 +46,7 @@ export const CUSTOMER_GROUPS_CUSTOMERS_TABLE_COLUMNS: Column<Customer>[] = [
   {
     Header: () => (
       <div className="flex items-center gap-1">
-        Name <SortingIcon size={16} />
+        Nom <SortingIcon size={16} />
       </div>
     ),
     id: "avatar",
@@ -57,7 +57,7 @@ export const CUSTOMER_GROUPS_CUSTOMERS_TABLE_COLUMNS: Column<Customer>[] = [
   {
     Header: () => (
       <div className="flex items-center gap-1">
-        Email <SortingIcon size={16} />
+        Courriel <SortingIcon size={16} />
       </div>
     ),
     accessor: "email",
@@ -75,7 +75,7 @@ export const CUSTOMER_GROUPS_CUSTOMERS_LIST_TABLE_COLUMNS: Column<
   {
     Header: () => (
       <div className="flex items-center gap-1">
-        Name <SortingIcon size={16} />
+        Nom <SortingIcon size={16} />
       </div>
     ),
     id: "avatar",
@@ -86,7 +86,7 @@ export const CUSTOMER_GROUPS_CUSTOMERS_LIST_TABLE_COLUMNS: Column<
   {
     Header: () => (
       <div className="flex items-center gap-1">
-        Email <SortingIcon size={16} />
+        Courriel <SortingIcon size={16} />
       </div>
     ),
     accessor: "email",
@@ -94,7 +94,7 @@ export const CUSTOMER_GROUPS_CUSTOMERS_LIST_TABLE_COLUMNS: Column<
   {
     accessor: "groups",
     disableSortBy: true,
-    Header: "Groups",
+    Header: "Groupes",
     Cell: ({ cell: { value } }) => <CustomersGroupsSummary groups={value} />,
   },
   {

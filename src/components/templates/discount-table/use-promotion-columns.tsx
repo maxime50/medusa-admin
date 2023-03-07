@@ -38,15 +38,15 @@ const getPromotionStatusDot = (promotion) => {
   const status = getPromotionStatus(promotion)
   switch (status) {
     case PromotionStatus.SCHEDULED:
-      return <StatusDot title="Scheduled" variant="warning" />
+      return <StatusDot title="Planifiée" variant="warning" />
     case PromotionStatus.EXPIRED:
-      return <StatusDot title="Expired" variant="danger" />
+      return <StatusDot title="Expirée" variant="danger" />
     case PromotionStatus.ACTIVE:
       return <StatusDot title="Active" variant="success" />
     case PromotionStatus.DISABLED:
-      return <StatusDot title="Disabled" variant="default" />
+      return <StatusDot title="Désactivée" variant="default" />
     default:
-      return <StatusDot title="Disabled" variant="default" />
+      return <StatusDot title="Désactivée" variant="default" />
   }
 }
 
@@ -73,7 +73,7 @@ const getPromotionAmount = (promotion) => {
     case "percentage":
       return `${promotion.rule.value}%`
     case "free_shipping":
-      return "Free Shipping"
+      return "Livraison gratuite"
     default:
       return ""
   }
@@ -99,7 +99,7 @@ export const usePromotionTableColumns = () => {
         Cell: ({ cell: { value } }) => value,
       },
       {
-        Header: <div className="text-right">Amount</div>,
+        Header: <div className="text-right">Montant</div>,
         id: "amount",
         Cell: ({ row: { original } }) => {
           return (
@@ -122,7 +122,7 @@ export const usePromotionTableColumns = () => {
         ),
       },
       {
-        Header: () => <div className="text-right">Redemptions</div>,
+        Header: () => <div className="text-right">Utilisations</div>,
         accessor: "usage_count",
         Cell: ({ row: { original } }) => {
           return (

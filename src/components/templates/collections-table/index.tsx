@@ -92,10 +92,10 @@ const CollectionsTable: React.FC = () => {
   useEffect(() => {
     setFilteringOptions([
       {
-        title: "Sort",
+        title: "Trier",
         options: [
           {
-            title: "All",
+            title: "Tout",
             count: collections?.length || 0,
             onClick: () => console.log("Not implemented yet"),
           },
@@ -126,7 +126,7 @@ const CollectionsTable: React.FC = () => {
         enableSearch
         handleSearch={handleSearch}
         searchValue={query}
-        searchPlaceholder="Search Collections"
+        searchPlaceholder="Rechercher des collections"
         filteringOptions={filteringOptions}
         {...getTableProps()}
       >

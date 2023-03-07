@@ -46,7 +46,7 @@ const ImageTable = ({ data, form, onDelete }: ImageTableProps) => {
         },
       },
       {
-        Header: () => <span>File name</span>,
+        Header: () => <span>Nom du fichier</span>,
         accessor: "nativeFile",
         Cell: ({ cell }) => {
           return (
@@ -72,8 +72,8 @@ const ImageTable = ({ data, form, onDelete }: ImageTableProps) => {
       {
         Header: () => (
           <div className="flex gap-x-[6px] items-center justify-center">
-            <span>Thumbnail</span>
-            <IconTooltip content="Select which image you want to use as the thumbnail for this product" />
+            <span>Vignette</span>
+            <IconTooltip content="Sélectionnez l'image que vous souhaitez utiliser comme vignette pour ce produit." />
           </div>
         ),
         id: "thumbnail",

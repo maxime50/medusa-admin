@@ -55,7 +55,11 @@ const TransferOrdersModal: React.FC<TransferOrdersModalProps> = ({
     }
 
     if (customer.id === order.customer_id) {
-      notification("Info", "Customer is already the owner of the order", "info")
+      notification(
+        "Info",
+        "Le client est déjà le propriétaire de la commande",
+        "info"
+      )
       onDismiss()
       return
     }
@@ -65,16 +69,16 @@ const TransferOrdersModal: React.FC<TransferOrdersModalProps> = ({
       {
         onSuccess: () => {
           notification(
-            "Success",
-            "Successfully transferred order to different customer",
+            "Succès",
+            "Transférer avec succès la commande à un autre client",
             "success"
           )
           onDismiss()
         },
         onError: () => {
           notification(
-            "Error",
-            "Could not transfer order to different customer",
+            "Erreur",
+            "Impossible de transférer la commande à un autre client",
             "error"
           )
         },
@@ -124,13 +128,13 @@ const TransferOrdersModal: React.FC<TransferOrdersModalProps> = ({
     <Modal handleClose={onDismiss}>
       <Modal.Body>
         <Modal.Header handleClose={onDismiss}>
-          <h2 className="inter-xlarge-semibold">Transfer order</h2>
+          <h2 className="inter-xlarge-semibold">Tranférer la commande</h2>
         </Modal.Header>
         <Modal.Content>
           <div className="flex flex-col space-y-xlarge">
             <div className="space-y-xsmall">
-              <h3 className="inter-base-semibold">Order</h3>
-              <div className="flex items-center justify-between border-grey-20 border rounded-rounded py-xsmall px-2.5">
+              <h3 className="inter-base-semibold">Commande</h3>
+              <div className="flex items-center justify-between rounded-rounded border border-grey-20 py-xsmall px-2.5">
                 <Badge variant="default">
                   <span className="text-grey-60">{`#${order.display_id}`}</span>
                 </Badge>
@@ -145,11 +149,11 @@ const TransferOrdersModal: React.FC<TransferOrdersModalProps> = ({
                 />
               </div>
             </div>
-            <div className="w-full grid grid-cols-2">
+            <div className="grid w-full grid-cols-2">
               <div className="flex flex-col">
-                <span className="inter-base-semibold">Current Owner</span>
+                <span className="inter-base-semibold">Propriétaire actuel</span>
                 <span className="inter-base-regular">
-                  The customer currently related to this order
+                  Le client actuellement lié à cette commande
                 </span>
               </div>
               <div className="flex items-center">
@@ -172,11 +176,13 @@ const TransferOrdersModal: React.FC<TransferOrdersModalProps> = ({
                 />
               </div>
             </div>
-            <div className="w-full grid grid-cols-2">
+            <div className="grid w-full grid-cols-2">
               <div className="flex flex-col">
-                <span className="inter-base-semibold">New Owner</span>
+                <span className="inter-base-semibold">
+                  Nouveau propriétaire
+                </span>
                 <span className="inter-base-regular">
-                  The customer to transfer this order to
+                  Le client à qui transférer cette commande
                 </span>
               </div>
               <div className="flex items-center">
@@ -206,7 +212,7 @@ const TransferOrdersModal: React.FC<TransferOrdersModalProps> = ({
                 className="border border-grey-20"
                 variant="ghost"
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 type="submit"
@@ -221,7 +227,7 @@ const TransferOrdersModal: React.FC<TransferOrdersModalProps> = ({
                 }
                 onClick={onSubmit}
               >
-                Confirm
+                Confirmer
               </Button>
             </div>
           </div>

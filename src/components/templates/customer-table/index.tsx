@@ -139,7 +139,7 @@ const CustomerTable = () => {
         count: count!,
         offset: queryObject.offset,
         pageSize: queryObject.offset + rows.length,
-        title: "Customers",
+        title: "Clients",
         currentPage: pageIndex + 1,
         pageCount: pageCount,
         nextPage: handleNext,
@@ -174,12 +174,12 @@ const CustomerTable = () => {
                 color={"inherit"}
                 actions={[
                   {
-                    label: "Edit",
+                    label: "Modifier",
                     onClick: () => navigate(row.original.id),
                     icon: <EditIcon size={20} />,
                   },
                   {
-                    label: "Details",
+                    label: "Détails",
                     onClick: () => navigate(row.original.id),
                     icon: <DetailsIcon size={20} />,
                   },

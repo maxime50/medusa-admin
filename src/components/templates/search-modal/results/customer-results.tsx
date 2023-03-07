@@ -20,7 +20,7 @@ const CustomerResults = ({
   selected,
 }: CustomerResultsProps) => {
   return customers.length > 0 ? (
-    <SectionCollapsible title={"Customers"} length={customers?.length || 0}>
+    <SectionCollapsible title={"Clients"} length={customers?.length || 0}>
       <div className="mt-large">
         <div className="flex flex-col">
           {customers?.map((customer, index) => (
@@ -29,16 +29,16 @@ const CustomerResults = ({
                 index: offset + index,
               })}
               className={clsx(
-                "px-base group py-1.5 focus:bg-grey-5 rounded-rounded",
+                "group rounded-rounded px-base py-1.5 focus:bg-grey-5",
                 { "bg-grey-5": selected === offset + index }
               )}
             >
               <Link
                 to={`/a/customers/${customer.id}`}
-                className="py-1.5 flex items-center rounded-rounded justify-between"
+                className="flex items-center justify-between rounded-rounded py-1.5"
               >
                 <div className="flex items-center gap-x-3">
-                  <div className="w-[20px] h-[20px] shrink-0">
+                  <div className="h-[20px] w-[20px] shrink-0">
                     <Avatar user={customer} />
                   </div>
                   <p className="inter-small-regular text-grey-90">
@@ -49,13 +49,13 @@ const CustomerResults = ({
                 </div>
                 <span
                   className={clsx(
-                    "group-focus:visible text-grey-40 inter-small-regular",
+                    "inter-small-regular text-grey-40 group-focus:visible",
                     {
                       invisible: selected !== offset + index,
                     }
                   )}
                 >
-                  Jump to...
+                  Aller à...
                 </span>
               </Link>
             </li>

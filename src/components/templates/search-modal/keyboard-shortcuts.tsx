@@ -10,18 +10,18 @@ const KeyboardShortcuts = ({ ...props }) => {
       <span className="rounded p-1 bg-grey-10">
         <PointerIcon color="#9CA3AF" size="16px" />
       </span>
-      or
+      ou
       <span className="rounded p-1 bg-grey-10">
         <ArrowUpIcon color="#9CA3AF" size="16px" />
       </span>
       <span className="rounded -ml-1 p-1 bg-grey-10">
         <ArrowDownIcon color="#9CA3AF" size="16px" />
       </span>
-      to navigate,
+      pour naviguer,
       <span className="rounded p-1 bg-grey-10">
         <DownLeftIcon color="#9CA3AF" size="16px" />
       </span>
-      to select, and
+      pour sélectionner, et
       <span className="rounded px-1.5 py-0.5 bg-grey-10 font-semibold leading-small font-small">
         <OSCommandIcon />
       </span>
@@ -29,7 +29,7 @@ const KeyboardShortcuts = ({ ...props }) => {
       <span className="rounded px-1.5 py-0.5 bg-grey-10 font-semibold leading-small font-small">
         K
       </span>
-      to search anytime
+      pour rechercher en tout temps
     </p>
   )
 }

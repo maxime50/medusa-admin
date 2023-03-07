@@ -172,7 +172,7 @@ const OrderTable = ({ setContextFilters }: OrderTableProps) => {
           count: count!,
           offset: queryObject.offset,
           pageSize: queryObject.offset + rows.length,
-          title: "Orders",
+          title: "Commandes",
           currentPage: pageIndex + 1,
           pageCount: pageCount,
           nextPage: handleNext,

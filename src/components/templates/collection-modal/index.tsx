@@ -41,7 +41,7 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
   const [metadata, setMetadata] = useState<MetadataField[]>([])
 
   if (isEdit && !collection) {
-    throw new Error("Collection is required for edit")
+    throw new Error("La collection est nécessaire")
   }
 
   useEffect(() => {
@@ -84,14 +84,14 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
         {
           onSuccess: () => {
             notification(
-              "Success",
-              "Successfully updated collection",
+              "Succès",
+              "Collection mise à jour avec succès",
               "success"
             )
             onClose()
           },
           onError: (error) => {
-            notification("Error", getErrorMessage(error), "error")
+            notification("Erreur", getErrorMessage(error), "error")
           },
         }
       )
@@ -110,14 +110,14 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
         {
           onSuccess: () => {
             notification(
-              "Success",
-              "Successfully created collection",
+              "Succès",
+              "La collection a été créée avec usccès",
               "success"
             )
             onClose()
           },
           onError: (error) => {
-            notification("Error", getErrorMessage(error), "error")
+            notification("Erreur", getErrorMessage(error), "error")
           },
         }
       )
@@ -130,31 +130,31 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
         <Modal.Header handleClose={onClose}>
           <div>
             <h1 className="inter-xlarge-semibold mb-2xsmall">
-              {isEdit ? "Edit Collection" : "Add Collection"}
+              {isEdit ? "Modifier la collection" : "Ajouter une collection"}
             </h1>
             <p className="inter-small-regular text-grey-50">
-              To create a collection, all you need is a title and a handle.
+              Pour créer une collection, vous avez besoin d'un titre et d'un handle.
             </p>
           </div>
         </Modal.Header>
         <form onSubmit={handleSubmit(submit)}>
           <Modal.Content>
             <div>
-              <h2 className="inter-base-semibold mb-base">Details</h2>
+              <h2 className="inter-base-semibold mb-base">Détails</h2>
               <div className="flex items-center gap-x-base">
                 <InputField
-                  label="Title"
+                  label="Titre"
                   required
-                  placeholder="Sunglasses"
+                  placeholder="Bracelet"
                   {...register("title", { required: true })}
                 />
                 <InputField
                   label="Handle"
-                  placeholder="sunglasses"
+                  placeholder="bracelet"
                   {...register("handle")}
                   prefix="/"
                   tooltip={
-                    <IconTooltip content="URL Slug for the collection. Will be auto generated if left blank." />
+                    <IconTooltip content="URL Slug pour la collection. S'il est laissé vide, il sera généré automatiquement." />
                   }
                 />
               </div>
@@ -171,14 +171,14 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
                 type="button"
                 onClick={onClose}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 variant="primary"
                 size="small"
                 loading={isEdit ? updating : creating}
               >
-                {`${isEdit ? "Save" : "Publish"} collection`}
+                {`${isEdit ? "Sauvegarder" : "Publier"} la collection`}
               </Button>
             </div>
           </Modal.Footer>

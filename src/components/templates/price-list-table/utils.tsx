@@ -14,16 +14,16 @@ const isPast = (date?: string) => {
 const getPriceListStatus = (priceList) => {
   if (priceList.status === "draft") {
     if (isFuture(priceList?.starts_at)) {
-      return <StatusDot title="Scheduled" variant="warning" />
+      return <StatusDot title="Planifié" variant="warning" />
     }
 
     if (isPast(priceList?.ends_at)) {
-      return <StatusDot title="Expired" variant="danger" />
+      return <StatusDot title="Expiré" variant="danger" />
     }
 
-    return <StatusDot title="Draft" variant="default" />
+    return <StatusDot title="Brouillon" variant="default" />
   } else {
-    return <StatusDot title="Active" variant="success" />
+    return <StatusDot title="Actif" variant="success" />
   }
 }
 
