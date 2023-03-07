@@ -11,10 +11,10 @@ type ItemsFulfilledProps = {
 const ItemsFulfilled: React.FC<ItemsFulfilledProps> = ({ event }) => {
   const title =
     event.sourceType === "claim"
-      ? "Replacement Items Fulfilled"
+      ? "Articles de remplacement traités"
       : event.sourceType === "exchange"
-      ? "Exchange Items Fulfilled"
-      : "Items Fulfilled"
+      ? "Articles à échanger traités"
+      : "Articles traités"
 
   const args = {
     icon: <PackageIcon size={20} />,

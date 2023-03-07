@@ -11,10 +11,10 @@ type ItemsShippedProps = {
 const ItemsShipped: React.FC<ItemsShippedProps> = ({ event }) => {
   const title =
     event.sourceType === "claim"
-      ? "Replacement Items Shipped"
+      ? "Articles de remplacement expédiés"
       : event.sourceType === "exchange"
-      ? "Exchange Items Shipped"
-      : "Items Shipped"
+      ? "Articles à échanger expédiés"
+      : "Articles expédiés"
 
   const args = {
     icon: <TruckIcon size={20} />,

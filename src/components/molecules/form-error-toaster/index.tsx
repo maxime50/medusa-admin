@@ -24,7 +24,7 @@ const FormErrorToaster: React.FC<FormErrorToasterProps> = ({
       <div>
         <XCircleIcon size={20} className="text-rose-40" />
       </div>
-      <div className="flex flex-col ml-small mr-base gap-y-2xsmall flex-grow text-grey-0">
+      <div className="ml-small mr-base flex flex-grow flex-col gap-y-2xsmall text-grey-0">
         <span className="inter-small-semibold">{title}</span>
         <span className="inter-small-regular text-grey-20">{message}</span>
       </div>
@@ -32,7 +32,7 @@ const FormErrorToaster: React.FC<FormErrorToasterProps> = ({
         <button onClick={onDismiss}>
           <CrossIcon size={20} className="text-grey-40" />
         </button>
-        <span className="sr-only">Close</span>
+        <span className="sr-only">Fermer</span>
       </div>
     </ToasterContainer>
   )

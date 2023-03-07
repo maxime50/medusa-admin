@@ -12,7 +12,7 @@ type TableSearchProps = {
 const TableSearch: React.FC<TableSearchProps> = ({
   autoFocus,
   onSearch,
-  placeholder = "Search",
+  placeholder = "Rechercher",
   searchValue,
   className,
   ...props
@@ -20,7 +20,7 @@ const TableSearch: React.FC<TableSearchProps> = ({
   return (
     <div
       className={clsx(
-        "inter-small-regular mt-1 transition-color flex text-grey-50 items-center mb-1 pl-1 py-1.5 rounded-rounded border border-grey-20 min-w-content w-60 focus-within:shadow-input focus-within:border-violet-60 bg-grey-5",
+        "inter-small-regular transition-color min-w-content mt-1 mb-1 flex w-60 items-center rounded-rounded border border-grey-20 bg-grey-5 py-1.5 pl-1 text-grey-50 focus-within:border-violet-60 focus-within:shadow-input",
         className
       )}
       {...props}
@@ -33,7 +33,7 @@ const TableSearch: React.FC<TableSearchProps> = ({
         type="text"
         value={searchValue}
         className={clsx(
-          "focus:outline-none focus:border-none inter-small-regular w-full bg-transparent focus:text-grey-90 caret-violet-60 placeholder:inter-small-regular placeholder-grey-40"
+          "inter-small-regular placeholder:inter-small-regular w-full bg-transparent placeholder-grey-40 caret-violet-60 focus:border-none focus:text-grey-90 focus:outline-none"
         )}
         placeholder={placeholder}
         onChange={(e) => {

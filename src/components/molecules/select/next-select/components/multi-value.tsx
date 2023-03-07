@@ -1,13 +1,13 @@
-import clsx from "clsx";
-import React from "react";
+import clsx from "clsx"
+import React from "react"
 import {
-    GroupBase,
-    MultiValueGenericProps,
-    MultiValueProps,
-    MultiValueRemoveProps
-} from "react-select";
-import CrossIcon from "../../../../fundamentals/icons/cross-icon";
-import { optionIsFixed } from "../utils";
+  GroupBase,
+  MultiValueGenericProps,
+  MultiValueProps,
+  MultiValueRemoveProps,
+} from "react-select"
+import CrossIcon from "../../../../fundamentals/icons/cross-icon"
+import { optionIsFixed } from "../utils"
 
 const MultiValue = <
   Option,
@@ -31,12 +31,15 @@ const MultiValue = <
     <Container
       data={data}
       innerProps={{
-        className: cx({
-          "multi-value": true,
-          "multi-value--is-disabled": isDisabled,
-        }, clsx({
-            "bg-grey-70 text-grey-0": isFocused
-        })),
+        className: cx(
+          {
+            "multi-value": true,
+            "multi-value--is-disabled": isDisabled,
+          },
+          clsx({
+            "bg-grey-70 text-grey-0": isFocused,
+          })
+        ),
         ...innerProps,
       }}
       selectProps={selectProps}
@@ -65,7 +68,7 @@ const MultiValue = <
             },
             className
           ),
-          "aria-label": `Remove ${children || "option"}`,
+          "aria-label": `Supprimer ${children || "option"}`,
           ...removeProps,
         }}
       />
@@ -83,31 +86,34 @@ export const MultiValueContainer = <
   children,
   innerProps: { className },
 }: MultiValueGenericProps<Option, IsMulti, Group>) => {
-    return (
-        <span className={clsx("flex items-center gap-x-2xsmall py-2xsmall pl-small pr-2.5 rounded-rounded transition-colors bg-grey-20 text-grey-50 inter-small-semibold", className)}>{children}</span>
-    )
+  return (
+    <span
+      className={clsx(
+        "inter-small-semibold flex items-center gap-x-2xsmall rounded-rounded bg-grey-20 py-2xsmall pl-small pr-2.5 text-grey-50 transition-colors",
+        className
+      )}
+    >
+      {children}
+    </span>
+  )
 }
 
 export const MultiValueRemove = <
   Option = unknown,
   IsMulti extends boolean = boolean,
   Group extends GroupBase<Option> = GroupBase<Option>
->( 
+>(
   props: MultiValueRemoveProps<Option, IsMulti, Group>
 ) => {
-  const { children, innerProps, data } = props;
+  const { children, innerProps, data } = props
 
   if (optionIsFixed(data) && data.isFixed) {
-    return null;
+    return null
   }
 
   return (
-    <div
-      {...innerProps}
-      role="button"
-      className="text-grey-40"
-    >
+    <div {...innerProps} role="button" className="text-grey-40">
       {children || <CrossIcon size={16} />}
     </div>
-  );
-};
+  )
+}

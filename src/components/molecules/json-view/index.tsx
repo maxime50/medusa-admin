@@ -35,7 +35,7 @@ const JSONView = ({ data }: JSONViewProps) => {
                 {expanded ? "{" : length > 0 ? "{ ... }" : "{}"}
               </p>
               <span className="text-grey-50">
-                ({length} {length === 1 ? "item" : "items"})
+                ({length} {length === 1 ? "élément" : "éléments"})
               </span>
             </div>
             <Button variant="ghost" size="small" className="text-grey-50">
@@ -70,7 +70,7 @@ const JSONView = ({ data }: JSONViewProps) => {
             {expanded && <p className="inter-base-semibold">{`}`}</p>}
             <div className="flex items-center gap-x-xsmall text-grey-50 inter-small-regular">
               {isCopied && (
-                <span className="animate-fade-in-right">Copied!</span>
+                <span className="animate-fade-in-right">Copié !</span>
               )}
               <Button
                 variant="ghost"

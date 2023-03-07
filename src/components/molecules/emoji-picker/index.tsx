@@ -16,7 +16,7 @@ const EmojiPicker: React.FC<indexProps> = ({ onEmojiClick }) => {
           variant="ghost"
           size="small"
           type="button"
-          className="focus:border-none focus:shadow-none text-grey-40 hover:text-violet-60 p-0 h-5 w-5"
+          className="h-5 w-5 p-0 text-grey-40 hover:text-violet-60 focus:border-none focus:shadow-none"
         >
           <HappyIcon size={20} />
         </Button>
@@ -24,14 +24,14 @@ const EmojiPicker: React.FC<indexProps> = ({ onEmojiClick }) => {
 
       <DropdownMenu.Content
         sideOffset={5}
-        className="border bg-grey-0 border-grey-20 rounded-rounded shadow-dropdown overflow-hidden min-w-[200px] z-30"
+        className="z-30 min-w-[200px] overflow-hidden rounded-rounded border border-grey-20 bg-grey-0 shadow-dropdown"
       >
         <Picker
           onEmojiClick={(emojiData) => onEmojiClick(emojiData.emoji)}
           defaultSkinTone={SkinTones.NEUTRAL}
           emojiStyle={EmojiStyle.NATIVE}
           skinTonesDisabled
-          searchPlaceHolder={"Search Emoji..."}
+          searchPlaceHolder={"Rechercher un Emoji..."}
         />
       </DropdownMenu.Content>
     </DropdownMenu.Root>

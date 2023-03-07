@@ -11,7 +11,7 @@ type RefundEventProps = {
 const Refund: React.FC<RefundEventProps> = ({ event }) => {
   const args = {
     icon: <RefundIcon size={20} />,
-    title: "Refund",
+    title: "Rembourser",
     time: event.time,
     midNode: (
       <span className="inter-small-regular text-grey-50">

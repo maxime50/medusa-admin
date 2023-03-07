@@ -31,7 +31,7 @@ function SalesChannelsSummary(props: P) {
   return (
     <div title={allGroups} className="text-small">
       <span>{leadName}</span>
-      {left > 0 && <span className="text-grey-50"> + {left} more</span>}
+      {left > 0 && <span className="text-grey-50"> + {left}</span>}
     </div>
   )
 }

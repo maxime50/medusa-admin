@@ -16,7 +16,7 @@ const SalesChannelsDisplay = ({ channels = [] }: Props) => {
     <div className="flex flex-col gap-y-small">
       {channels.length > 0 && (
         <div className="flex gap-x-1">
-          <div className="flex gap-x-1 max-w-[600px] overflow-clip">
+          <div className="flex max-w-[600px] gap-x-1 overflow-clip">
             {channels.slice(0, 3).map((sc) => (
               <SalesChannelBadge channel={sc} />
             ))}
@@ -32,8 +32,8 @@ const SalesChannelsDisplay = ({ channels = [] }: Props) => {
               }
             >
               <Badge variant="ghost" className="px-3 py-1.5">
-                <div className="flex items-center h-full inter-small-regular text-grey-50">
-                  + {remainder} more
+                <div className="inter-small-regular flex h-full items-center text-grey-50">
+                  + {remainder}
                 </div>
               </Badge>
             </Tooltip>
@@ -41,13 +41,13 @@ const SalesChannelsDisplay = ({ channels = [] }: Props) => {
         </div>
       )}
       <p className="inter-base-regular text-grey-50">
-        Available in{" "}
+        Disponible dans{" "}
         <span className="inter-base-semibold text-grey-90">
           {channels.length ? channels.length : 0}
         </span>{" "}
-        out of{" "}
+        de{" "}
         <span className="inter-base-semibold text-grey-90">{count || 0}</span>{" "}
-        Sales Channels
+        Canaux de vente
       </p>
     </div>
   )

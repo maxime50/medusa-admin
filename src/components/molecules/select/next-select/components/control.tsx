@@ -38,7 +38,7 @@ const Control = <
           "control--menu-is-open": menuIsOpen,
         },
         clsx(
-          "flex p-0 overflow-hidden rounded-rounded border border-gray-20 bg-grey-5 focus-within:shadow-cta transition-colors focus-within:border-violet-60 box-border pl-small",
+          "border-gray-20 box-border flex overflow-hidden rounded-rounded border bg-grey-5 p-0 pl-small transition-colors focus-within:border-violet-60 focus-within:shadow-cta",
           {
             "h-xlarge": size === "sm",
             "h-10": size === "md" || !size,
@@ -50,7 +50,7 @@ const Control = <
     >
       <div
         className={clsx(
-          "flex items-center flex-1",
+          "flex flex-1 items-center",
           customStyles?.inner_control
         )}
       >
@@ -134,7 +134,7 @@ export const ClearIndicator = <
     <div
       {...innerProps}
       role="button"
-      aria-label="Clear selected options"
+      aria-label="Éffacer les options sélectionnées"
       className={cx(
         {
           indicator: true,

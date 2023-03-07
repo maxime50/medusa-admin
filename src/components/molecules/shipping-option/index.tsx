@@ -32,20 +32,22 @@ const ShippingOption: React.FC<ShippingOptionProps> = ({
   onEdit,
 }) => {
   return (
-    <div className="flex items-baseline justify-between p-base rounded-base border border-grey-20">
+    <div className="flex items-baseline justify-between rounded-base border border-grey-20 p-base">
       <div className="truncate">
         <div className="flex items-center">
-          <p className="inter-small-semibold truncate mr-xsmall">
+          <p className="inter-small-semibold mr-xsmall truncate">
             {option.name} {option.data.name && `(${option.data.name})`}{" "}
           </p>
-          {option.admin_only && <Badge variant="primary">Not on website</Badge>}
+          {option.admin_only && (
+            <Badge variant="primary">Pas sur le site web</Badge>
+          )}
         </div>
-        <p className="inter-small-regular text-grey-50 truncate">
+        <p className="inter-small-regular truncate text-grey-50">
           {option.price_type === "flat_rate" ? "Flat Rate" : "Calculated"}:{" "}
           {option.amount !== undefined &&
             `${option.amount / 100} ${currency_code.toUpperCase()}`}
           {option.requirements.length
-            ? option.requirements.map(r => {
+            ? option.requirements.map((r) => {
                 const type =
                   r.type === "max_subtotal" ? "Max. subtotal" : "Min. subtotal"
                 return ` - ${type}: ${
@@ -60,7 +62,7 @@ const ShippingOption: React.FC<ShippingOptionProps> = ({
           onClick={onEdit}
           className="inter-small-semibold text-violet-60"
         >
-          Edit
+          Modifier
         </button>
       </div>
     </div>

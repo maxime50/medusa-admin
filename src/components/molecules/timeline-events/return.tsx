@@ -55,10 +55,10 @@ const Return: React.FC<ReturnRequestedProps> = ({ event, refetch }) => {
         <DeletePrompt
           handleClose={() => setShowCancel(false)}
           onDelete={async () => handleCancel()}
-          heading="Cancel return"
-          confirmText="Yes, cancel"
-          successText="Canceled return"
-          text="Are you sure you want to cancel this return?"
+          heading="Annuler le retour"
+          confirmText="Oui, annuler"
+          successText="Retour annulé"
+          text="Êtes-vous sûr de vouloir annuler ce retour ?"
         />
       )}
       {showReceiveReturnMenu && (
@@ -77,14 +77,14 @@ function buildReturn(
   onCancel: () => void,
   onReceive: () => void
 ) {
-  let title: string = "Return"
+  let title: string = "Retour"
   let icon: React.ReactNode
   let button: React.ReactNode
   const actions: ActionType[] = []
 
   switch (event.status) {
     case "requested":
-      title = "Return Requested"
+      title = "Retour demandé"
       icon = <AlertIcon size={20} className="text-orange-40" />
       if (event.currentStatus === "requested") {
         button = event.currentStatus && event.currentStatus === "requested" && (
@@ -94,27 +94,27 @@ function buildReturn(
             className={clsx("mt-large")}
             onClick={onReceive}
           >
-            Receive Return
+            Marquer comme reçu
           </Button>
         )
         actions.push({
           icon: <TrashIcon size={20} />,
-          label: "Cancel return",
+          label: "Annuler le retour",
           variant: "danger",
           onClick: onCancel,
         })
       }
       break
     case "received":
-      title = "Return Received"
+      title = "Retour reçu"
       icon = <CheckCircleIcon size={20} className="text-emerald-40" />
       break
     case "canceled":
-      title = "Return Canceled"
+      title = "Retour annulé"
       icon = <CancelIcon size={20} className="text-grey-50" />
       break
     case "requires_action":
-      title = "Return Requires Action"
+      title = "Action requise pour le retour"
       icon = <AlertIcon size={20} className="text-rose-50" />
       break
     default:

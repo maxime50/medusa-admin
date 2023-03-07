@@ -251,7 +251,7 @@ const NoOptionsMessage = <
       className="text-grey-50 inter-small-semibold text-center p-xsmall"
       {...innerProps}
     >
-      <p>{isLoading ? "Loading..." : "No options"}</p>
+      <p>{isLoading ? "Chargement..." : "Aucune option"}</p>
     </div>
   )
 }

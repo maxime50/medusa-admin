@@ -19,14 +19,14 @@ const BannerCard: React.FC<BannerCardProps> & {
   Footer: React.FC
 } = ({ title, thumbnail, actions, children }) => {
   return (
-    <div className="rounded-rounded border bg-grey-0 border-grey-20 w-full p-base medium:p-xlarge">
-      <div className="flex gap-large items-start">
+    <div className="w-full rounded-rounded border border-grey-20 bg-grey-0 p-base medium:p-xlarge">
+      <div className="flex items-start gap-large">
         {thumbnail && (
-          <div className="min-w-[72px] min-h-[72px] w-[72px] h-[72px] rounded-base overflow-hidden">
+          <div className="h-[72px] min-h-[72px] w-[72px] min-w-[72px] overflow-hidden rounded-base">
             <img
               src={thumbnail}
-              alt="Thumbnail"
-              className="w-full h-full object-cover"
+              alt="Vignette"
+              className="h-full w-full object-cover"
             />
           </div>
         )}
@@ -48,12 +48,12 @@ const Description: React.FC<BannerCardDescriptionProps> = ({
 }) => {
   return (
     <div>
-      <p className="inter-small-regular text-grey-50 max-w-[460px] line-clamp-2">
+      <p className="inter-small-regular max-w-[460px] text-grey-50 line-clamp-2">
         {children}
       </p>
       {cta && (
         <button
-          className="text-violet-60 inter-small-semibold mt-base"
+          className="inter-small-semibold mt-base text-violet-60"
           onClick={cta.onClick}
         >
           {cta.label}

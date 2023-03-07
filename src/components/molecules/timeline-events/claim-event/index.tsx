@@ -68,10 +68,18 @@ const Claim = ({ event }: Props) => {
   const onCancelClaim = () => {
     cancelClaim(event.claim.id, {
       onSuccess: () => {
-        notification("Claim canceled", "The claim has been canceled", "success")
+        notification(
+          "Réclamation annulée",
+          "La réclamation a été annulée",
+          "success"
+        )
       },
       onError: (err) => {
-        notification("Failed to cancel claim", getErrorMessage(err), "error")
+        notification(
+          "Impossible d'annuler la réclamation",
+          getErrorMessage(err),
+          "error"
+        )
       },
     })
   }
@@ -79,15 +87,15 @@ const Claim = ({ event }: Props) => {
   const onCancelReturn = () => {
     cancelReturn(undefined, {
       onSuccess: () => {
-        notification(
-          "Return canceled",
-          "The return has been canceled",
-          "success"
-        )
+        notification("Retour annulé", "Le retour a été annulé", "success")
         refetch()
       },
       onError: (err) => {
-        notification("Failed to cancel return", getErrorMessage(err), "error")
+        notification(
+          "Impossible d'annuler le retour",
+          getErrorMessage(err),
+          "error"
+        )
       },
     })
   }
@@ -99,7 +107,7 @@ const Claim = ({ event }: Props) => {
     iconColor: event.canceledAt
       ? EventIconColor.DEFAULT
       : EventIconColor.ORANGE,
-    title: event.canceledAt ? "Claim Canceled" : "Claim Created",
+    title: event.canceledAt ? "Réclamation annulée" : "Réclamation créée",
     time: event.canceledAt ? event.canceledAt : event.time,
     topNode: Actions,
     children: [
@@ -117,7 +125,7 @@ const Claim = ({ event }: Props) => {
                   size="small"
                   onClick={openReceiveMenu}
                 >
-                  Receive Return
+                  Recevoir le retour
                 </Button>
               )}
               {event.claim?.additional_items?.length > 0 &&
@@ -127,7 +135,7 @@ const Claim = ({ event }: Props) => {
                     size="small"
                     onClick={openFulfillMenu}
                   >
-                    Fulfill Replacement
+                    Compléter le remplacement
                   </Button>
                 )}
             </div>
@@ -180,14 +188,14 @@ const ClaimStatus = ({ event }: Props) => {
   return (
     <div className="inter-small-regular flex items-center gap-x-base">
       <div className="flex flex-col gap-y-2xsmall">
-        <span className="text-grey-50">Refund:</span>
+        <span className="text-grey-50">Remboursement:</span>
         <RefundStatus refundStatus={refundStatus} />
       </div>
       {shouldHaveReturnStatus && (
         <>
           {divider}
           <div className="flex flex-col gap-y-2xsmall">
-            <span className="text-grey-50">Return:</span>
+            <span className="text-grey-50">Retour:</span>
             <ReturnStatus returnStatus={event.returnStatus} />
           </div>
         </>
@@ -210,7 +218,9 @@ const ClaimStatus = ({ event }: Props) => {
 const renderClaimItems = (event: ClaimEvent) => {
   return (
     <div className="flex flex-col gap-y-small">
-      <span className="inter-small-regular text-grey-50">Claim Items</span>
+      <span className="inter-small-regular text-grey-50">
+        Réclamer les articles
+      </span>
       <div>
         {event.claimItems.map((i, index) => (
           <EventItemContainer key={index} item={i} />
@@ -224,7 +234,7 @@ const renderReplacementItems = (event: ClaimEvent) => {
   return (
     <div className="flex flex-col gap-y-small">
       <span className="inter-small-regular text-grey-50">
-        Replacement Items
+        Articles de remplacement
       </span>
       <div>
         {event.newItems.map((i, index) => (
@@ -249,7 +259,7 @@ const renderClaimActions = (
     ) {
       actions.push({
         icon: <TrashIcon size={20} />,
-        label: "Cancel return",
+        label: "Annuler le retour",
         variant: "danger",
         onClick: onCancelReturn,
       })
@@ -258,7 +268,7 @@ const renderClaimActions = (
     if (event.refundStatus !== "refunded" && !event.isCanceled) {
       actions.push({
         icon: <TrashIcon size={20} />,
-        label: "Cancel claim",
+        label: "Annuler la réclamation",
         variant: "danger",
         onClick: onCancelClaim,
       })

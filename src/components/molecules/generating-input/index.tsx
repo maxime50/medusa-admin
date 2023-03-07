@@ -62,7 +62,7 @@ const GeneratingInput = React.forwardRef(
               onClick={generateCode}
               className="inter-small-semibold text-violet-50"
             >
-              Generate
+              Générer
             </button>
           )}
         </div>
@@ -71,7 +71,7 @@ const GeneratingInput = React.forwardRef(
             ref={inputRef}
             value={value}
             onChange={handleChange}
-            className="bg-inherit outline-none outline-0 w-full remove-number-spinner leading-base text-grey-90 font-normal caret-violet-60 placeholder-grey-40"
+            className="remove-number-spinner w-full bg-inherit font-normal leading-base text-grey-90 placeholder-grey-40 caret-violet-60 outline-none outline-0"
             placeholder={placeholder}
             autoComplete="off"
             name={name}

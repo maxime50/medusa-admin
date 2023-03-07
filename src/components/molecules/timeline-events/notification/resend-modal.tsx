@@ -34,13 +34,13 @@ const ResendModal: React.FC<ResendModalProps> = ({
       {
         onSuccess: () => {
           notification(
-            "Success",
-            `Notification re-send to ${data.to}`,
+            "Succès",
+            `Notification renvoyée à ${data.to}`,
             "success"
           )
           handleCancel()
         },
-        onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
       }
     )
   }
@@ -50,42 +50,44 @@ const ResendModal: React.FC<ResendModalProps> = ({
       <form onSubmit={handleSubmit(handleResend)}>
         <Modal.Body>
           <Modal.Header handleClose={handleCancel}>
-            <span className="inter-xlarge-semibold">Resend notification</span>
+            <span className="inter-xlarge-semibold">
+              Renvoyer la notification
+            </span>
           </Modal.Header>
           <Modal.Content>
             <div className="flex flex-col">
               <div className="flex flex-col space-y-2">
                 <Input
-                  label={"Email"}
+                  label={"Courriel"}
                   type="text"
-                  placeholder={"Email"}
+                  placeholder={"Courriel"}
                   {...register(`to`, {
-                    required: "Must be filled",
+                    required: "Doit être rempli",
                   })}
                 />
               </div>
             </div>
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex w-full h-8 justify-end">
+            <div className="flex h-8 w-full justify-end">
               <div className="flex">
                 <Button
                   variant="ghost"
-                  className="mr-2 w-32 text-small justify-center"
+                  className="mr-2 w-32 justify-center text-small"
                   size="large"
                   onClick={handleCancel}
                 >
-                  Cancel
+                  Annuler
                 </Button>
                 <Button
                   size="large"
-                  className="w-32 text-small justify-center"
+                  className="w-32 justify-center text-small"
                   variant="primary"
                   type="submit"
                   disabled={isLoading}
                   loading={isLoading}
                 >
-                  Send
+                  Envoyer
                 </Button>
               </div>
             </div>

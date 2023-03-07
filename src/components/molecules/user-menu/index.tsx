@@ -23,7 +23,7 @@ const UserMenu: React.FC = () => {
         navigate("/login")
       },
       onError: (err) => {
-        notification("Failed to log out", getErrorMessage(err), "error")
+        notification("Échec de la déconnexion", getErrorMessage(err), "error")
       },
     })
   }
@@ -52,7 +52,7 @@ const UserMenu: React.FC = () => {
               onClick={() => navigate("/a/settings")}
             >
               <GearIcon />
-              Settings
+              Paramètres
             </Button>
           </DropdownMenu.Item>
           <DropdownMenu.Item className="outline-none">
@@ -63,7 +63,7 @@ const UserMenu: React.FC = () => {
               onClick={() => logOut()}
             >
               <SignOutIcon size={20} />
-              Sign out
+              Se déconnecter
             </Button>
           </DropdownMenu.Item>
         </DropdownMenu.Content>

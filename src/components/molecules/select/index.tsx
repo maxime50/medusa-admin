@@ -66,7 +66,7 @@ const SSelect = React.forwardRef(
       clearSelected = false,
       isCreatable,
       filterOptions,
-      placeholder = "Search...",
+      placeholder = "Rechercher...",
       options,
       onCreateOption,
     }: MultiSelectProps,
@@ -135,10 +135,10 @@ const SSelect = React.forwardRef(
         <div
           key={name}
           className={clsx(className, {
-            "bg-white rounded-t-rounded": isFocussed,
+            "rounded-t-rounded bg-white": isFocussed,
           })}
         >
-          <div className="w-full flex text-grey-50 pr-0.5 justify-between pointer-events-none cursor-pointer mb-2">
+          <div className="pointer-events-none mb-2 flex w-full cursor-pointer justify-between pr-0.5 text-grey-50">
             <InputHeader {...{ label, required, tooltip, tooltipContent }} />
           </div>
 
@@ -148,7 +148,7 @@ const SSelect = React.forwardRef(
               searchBackend={filterOptions}
               options={
                 hasSelectAll && isMultiSelect
-                  ? [{ value: "all", label: "Select All" }, ...options]
+                  ? [{ value: "all", label: "Tout sélectionner" }, ...options]
                   : options
               }
               ref={selectRef}
@@ -188,7 +188,7 @@ const SSelect = React.forwardRef(
               components={SelectComponents}
             />
           }
-          {isFocussed && enableSearch && <div className="w-full h-5" />}
+          {isFocussed && enableSearch && <div className="h-5 w-full" />}
         </div>
       </div>
     )

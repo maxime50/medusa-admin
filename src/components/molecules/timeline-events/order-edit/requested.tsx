@@ -29,7 +29,7 @@ const EditRequested: React.FC<RequestedProps> = ({ event }) => {
   return (
     <>
       <EventContainer
-        title={"Order Edit confirmation-request sent"}
+        title={"Requête de confirmation de la modification de commande envoyée"}
         icon={<MailIcon size={20} />}
         time={event.time}
         isFirst={event.first}
@@ -40,12 +40,12 @@ const EditRequested: React.FC<RequestedProps> = ({ event }) => {
         }
       >
         <Button
-          className="w-full border border-grey-20 mb-5"
+          className="mb-5 w-full border border-grey-20"
           size="small"
           variant="ghost"
           onClick={() => setShowResend(true)}
         >
-          Resend Confirmation-Request
+          Renvoyer la requête de confirmation
         </Button>
       </EventContainer>
       {showResend && (

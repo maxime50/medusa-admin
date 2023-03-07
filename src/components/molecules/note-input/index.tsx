@@ -51,7 +51,7 @@ const NoteInput: React.FC<NoteInputProps> = ({ onSubmit }) => {
           <EmojiPicker onEmojiClick={handleAddEmoji} />
           <input
             type="text"
-            placeholder="Write a note..."
+            placeholder="Écrire une note..."
             value={note}
             onChange={(e) => setNote(e.target.value)}
             className="flex-grow bg-transparent inter-base-regular placeholder:text-grey-40 focus:outline-none"

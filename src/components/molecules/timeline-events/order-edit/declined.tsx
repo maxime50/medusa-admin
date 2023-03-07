@@ -28,14 +28,14 @@ const EditDeclined: React.FC<EditDeclinedProps> = ({ event }) => {
 
   return (
     <EventContainer
-      title={"Order Edit declined"}
+      title={"Modification de la commande refusée"}
       icon={<XCircleIcon size={20} />}
       time={event.time}
       isFirst={event.first}
       midNode={<ByLine user={customer || user} />}
     >
       {note && (
-        <div className="px-base py-small mt-base rounded-large bg-grey-10 inter-base-regular text-grey-90">
+        <div className="inter-base-regular mt-base rounded-large bg-grey-10 px-base py-small text-grey-90">
           {note}
         </div>
       )}

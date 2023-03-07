@@ -39,7 +39,7 @@ const RefundRequired: React.FC<RequestedProps> = ({ event }) => {
   return (
     <>
       <EventContainer
-        title={"Refund required"}
+        title={"Remboursement requis"}
         icon={<AlertIcon size={20} />}
         iconColor={EventIconColor.RED}
         time={event.time}
@@ -49,9 +49,9 @@ const RefundRequired: React.FC<RequestedProps> = ({ event }) => {
           onClick={() => setShowRefundModal(true)}
           variant="ghost"
           size="small"
-          className="w-full border border-grey-20 mb-xsmall text-rose-50"
+          className="mb-xsmall w-full border border-grey-20 text-rose-50"
         >
-          Refund
+          Rembourser
           {formatAmountWithSymbol({
             amount: refundableAmount,
             currency: event.currency_code,
