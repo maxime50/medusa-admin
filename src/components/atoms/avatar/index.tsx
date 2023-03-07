@@ -28,24 +28,24 @@ const Avatar: React.FC<AvatarProps> = ({
   } else if (user?.email) {
     username = user.email
   } else {
-    username = "Medusa user"
+    username = "Utilisateur bijoux tendances"
   }
 
   return (
     <RadixAvatar.Root
       className={clsx(
-        "w-full h-full items-center justify-center overflow-hidden select-none rounded-circle",
+        "h-full w-full select-none items-center justify-center overflow-hidden rounded-circle",
         color
       )}
     >
       <RadixAvatar.Image
         src={user?.img}
         alt={username}
-        className="object-cover w-full h-full rounded-circle"
+        className="h-full w-full rounded-circle object-cover"
       />
       <RadixAvatar.Fallback
         className={clsx(
-          "w-full h-full flex items-center justify-center bg-inherit text-grey-0 rounded-circle",
+          "flex h-full w-full items-center justify-center rounded-circle bg-inherit text-grey-0",
           font
         )}
       >

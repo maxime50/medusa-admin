@@ -30,7 +30,7 @@ const Notification: React.FC<NotificationProps> = ({
   return (
     <ToasterContainer visible={toast.visible} className="w-[380px]">
       <div>{getIcon(type)}</div>
-      <div className="flex flex-col ml-small mr-base gap-y-2xsmall flex-grow text-white">
+      <div className="ml-small mr-base flex flex-grow flex-col gap-y-2xsmall text-white">
         <span className="inter-small-semibold">{title}</span>
         <span className="inter-small-regular text-grey-20">{message}</span>
       </div>
@@ -38,7 +38,7 @@ const Notification: React.FC<NotificationProps> = ({
         <button onClick={onDismiss}>
           <CrossIcon size={ICON_SIZE} className="text-grey-40" />
         </button>
-        <span className="sr-only">Close</span>
+        <span className="sr-only">Fermer</span>
       </div>
     </ToasterContainer>
   )

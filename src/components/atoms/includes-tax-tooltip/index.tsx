@@ -9,8 +9,8 @@ type Props = {
 
 const IncludesTaxTooltip = ({ includesTax }: Props) => {
   return (
-    <Tooltip content={includesTax ? "Tax incl. price" : "Tax excl. price"}>
-      <div className="w-large h-large rounded-rounded border border-grey-20 flex items-center justify-center">
+    <Tooltip content={includesTax ? "Taxes inclus" : "Taxes exclus"}>
+      <div className="flex h-large w-large items-center justify-center rounded-rounded border border-grey-20">
         <TaxesIcon
           size={16}
           className={clsx({

@@ -11,15 +11,15 @@ type SavingStateProps = {
 
 const SavingState: React.FC<SavingStateProps> = ({
   toast,
-  title = "Saving changes",
-  message = "Hang on, this may take a few moments.",
+  title = "Enregistrement des modifications",
+  message = "Attendez un peu, ça peut prendre un petit moment.",
 }) => {
   return (
     <ToasterContainer visible={toast.visible} className="w-[448px]">
       <div>
         <Spinner variant="secondary" size="large" />
       </div>
-      <div className="flex flex-col ml-small mr-base gap-y-2xsmall flex-grow">
+      <div className="ml-small mr-base flex flex-grow flex-col gap-y-2xsmall">
         <span className="inter-small-semibold">{title}</span>
         <span className="inter-small-regular text-grey-50">{message}</span>
       </div>

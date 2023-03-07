@@ -13,8 +13,8 @@ type SavingStateProps = {
 
 const SuccessState: React.FC<SavingStateProps> = ({
   toast,
-  title = "Success",
-  message = "Your changes have been saved.",
+  title = "Succès",
+  message = "Vos changements ont été sauvegardés",
   onDismiss,
 }) => {
   useEffect(() => {
@@ -32,7 +32,7 @@ const SuccessState: React.FC<SavingStateProps> = ({
       <div>
         <CheckCircleIcon size={20} className="text-emerald-40" />
       </div>
-      <div className="flex flex-col ml-small mr-base gap-y-2xsmall flex-grow">
+      <div className="ml-small mr-base flex flex-grow flex-col gap-y-2xsmall">
         <span className="inter-small-semibold">{title}</span>
         <span className="inter-small-regular text-grey-50">{message}</span>
       </div>
@@ -40,7 +40,7 @@ const SuccessState: React.FC<SavingStateProps> = ({
         <button onClick={onDismiss}>
           <CrossIcon size={20} className="text-grey-40" />
         </button>
-        <span className="sr-only">Close</span>
+        <span className="sr-only">Fermer</span>
       </div>
     </ToasterContainer>
   )

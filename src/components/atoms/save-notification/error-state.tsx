@@ -13,8 +13,8 @@ type SavingStateProps = {
 
 const ErrorState: React.FC<SavingStateProps> = ({
   toast,
-  title = "Error",
-  message = "An error occured while trying to save your changes. Please try again.",
+  title = "Erreur",
+  message = "Une erreur s'est produite lors de l'enregistrement de vos modifications. Veuillez réessayer.",
   onDismiss,
 }) => {
   useEffect(() => {
@@ -32,7 +32,7 @@ const ErrorState: React.FC<SavingStateProps> = ({
       <div>
         <XCircleIcon size={20} className="text-rose-40" />
       </div>
-      <div className="flex flex-col ml-small mr-base gap-y-2xsmall flex-grow">
+      <div className="ml-small mr-base flex flex-grow flex-col gap-y-2xsmall">
         <span className="inter-small-semibold">{title}</span>
         <span className="inter-small-regular text-grey-50">{message}</span>
       </div>
@@ -40,7 +40,7 @@ const ErrorState: React.FC<SavingStateProps> = ({
         <button onClick={onDismiss}>
           <CrossIcon size={20} className="text-grey-40" />
         </button>
-        <span className="sr-only">Close</span>
+        <span className="sr-only">Fermer</span>
       </div>
     </ToasterContainer>
   )
