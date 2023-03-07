@@ -36,7 +36,7 @@ const ProductVariantTree: React.FC<ProductVariantTreeProps> = ({
         <div>
           <img
             src={product.thumbnail || undefined}
-            className="w-4 h-5 rounded-base"
+            className="h-5 w-4 rounded-base"
           />
         </div>
         <span className="inter-small-semibold">{product.title}</span>
@@ -63,17 +63,15 @@ const ProductVariantLeaf = ({ sku, title, prices = [] }: LeafProps) => {
     <div className="flex flex-1">
       <div className="truncate">
         <span>{title}</span>
-        {sku && <span className="text-grey-50 ml-xsmall">(SKU: {sku})</span>}
+        {sku && <span className="ml-xsmall text-grey-50">(SKU: {sku})</span>}
       </div>
-      <div className="flex items-center text-grey-50 flex-1 justify-end">
-        <div className="text-grey-50 mr-xsmall">
+      <div className="flex flex-1 items-center justify-end text-grey-50">
+        <div className="mr-xsmall text-grey-50">
           {filteredPrices.length ? (
-            <span>{`${filteredPrices.length} price${
-              filteredPrices.length > 1 ? "s" : ""
-            }`}</span>
+            <span>{`${filteredPrices.length} prix`}</span>
           ) : (
             <span className="inter-small-semibold text-orange-40">
-              Add prices
+              Ajouter des prix
             </span>
           )}
         </div>

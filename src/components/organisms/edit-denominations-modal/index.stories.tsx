@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof EditDenominationsModal> = (args) => {
   return (
     <>
       <Button onClick={() => setOpen(true)} variant="primary" size="small">
-        Edit denominations
+        Modifier les dénominations
       </Button>
       {isOpen && (
         <EditDenominationsModal {...args} handleClose={() => setOpen(false)} />

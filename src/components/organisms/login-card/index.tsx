@@ -34,45 +34,48 @@ const LoginCard: React.FC<LoginCardProps> = ({ toResetPassword }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col items-center">
-        <span className="inter-2xlarge-semibold mt-4 text-grey-90">
-          Welcome back!
-        </span>
-        <span className="inter-base-regular text-grey-50 mt-2">
-          It's great to see you 👋🏼
-        </span>
-        <span className="inter-base-regular text-grey-50 mb-xlarge">
-          Log in to your account below
-        </span>
+        {/* <span className="inter-2xlarge-semibold mt-4 text-grey-90"> */}
+        {/*   Welcome back! */}
+        {/* </span> */}
+        {/* <span className="inter-base-regular mt-2 text-grey-50"> */}
+        {/*   It's great to see you 👋🏼 */}
+        {/* </span> */}
+        <h1 className="inter-2xlarge-semibold mb-xlarge text-grey-90">
+          Connexion
+        </h1>
+        {/* <span className="inter-base-regular mt-1 mb-xlarge text-grey-50"> */}
+        {/*   Gestion Client & Inventaire pour ID Tendances */}
+        {/* </span> */}
         <SigninInput
-          placeholder="Email..."
+          placeholder="Courriel..."
           {...register("email", { required: true })}
           autoComplete="email"
         />
         <SigninInput
-          placeholder="Password..."
+          placeholder="Mot de passe..."
           type={"password"}
           {...register("password", { required: true })}
           autoComplete="current-password"
         />
         {isInvalidLogin && (
-          <span className="text-rose-50 w-full mt-2 inter-small-regular">
-            These credentials do not match our records
+          <span className="inter-small-regular mt-2 w-full text-rose-50">
+            Identifiants incorrects
           </span>
         )}
         <Button
-          className="rounded-rounded mt-4 w-[320px] inter-base-regular"
+          className="inter-base-regular mt-4 w-[320px] rounded-rounded"
           variant="primary"
           size="large"
           type="submit"
           loading={login.isLoading}
         >
-          Continue
+          Continuer
         </Button>
         <span
-          className="inter-small-regular text-grey-50 mt-8 cursor-pointer"
+          className="inter-small-regular mt-8 cursor-pointer text-grey-50"
           onClick={toResetPassword}
         >
-          Reset password
+          Réinitialiser mon mot de passe
         </span>
       </div>
     </form>

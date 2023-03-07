@@ -60,8 +60,8 @@ const AnalyticsPreferencesModal = () => {
     mutate(config, {
       onSuccess: () => {
         notification(
-          "Success",
-          "Your preferences were successfully updated",
+          "Succès",
+          "Vos préférences ont été mises à jour avec succès",
           "success"
         )
 
@@ -72,7 +72,7 @@ const AnalyticsPreferencesModal = () => {
         setSubmittingConfig(false)
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Erreur", getErrorMessage(err), "error")
         setSubmittingConfig(false)
       },
     })
@@ -82,18 +82,19 @@ const AnalyticsPreferencesModal = () => {
     <FocusModal>
       <FocusModal.Main>
         <div className="flex flex-col items-center">
-          <div className="mt-5xlarge flex flex-col max-w-[664px] w-full">
+          <div className="mt-5xlarge flex w-full max-w-[664px] flex-col">
             <h1 className="inter-xlarge-semibold mb-large">
-              Help us get better
+              Aidez-nous à nous améliorer
             </h1>
             <p className="text-grey-50">
-              To create the most compelling e-commerce experience we would like
-              to gain insights in how you use Medusa. User insights allow us to
-              build a better, more engaging, and more usable products. We only
-              collect data for product improvements. Read what data we gather in
-              our{" "}
+              Pour créer l'expérience de commerce électronique la plus
+              convaincante, nous aimerions savoir comment vous utilisez Bijoux
+              Tendances. Les informations sur les utilisateurs nous permettent
+              de de construire des produits meilleurs, plus engageants et plus
+              utilisables. Nous ne collectons des données que pour améliorer nos
+              produits. Lisez les données que nous recueillons dans notre{" "}
               <a
-                href="https://docs.medusajs.com/usage"
+                href="#"
                 rel="noreferrer noopener"
                 target="_blank"
                 className="text-violet-60"
@@ -105,14 +106,14 @@ const AnalyticsPreferencesModal = () => {
             <div className="mt-xlarge flex flex-col gap-y-xlarge">
               <InputField
                 label="Email"
-                placeholder="you@company.com"
+                placeholder="exemple@hotmail.com"
                 disabled={watchOptOut || watchAnonymize}
                 className={clsx("transition-opacity", {
                   "opacity-50": watchOptOut || watchAnonymize,
                 })}
                 {...register("email", {
                   pattern: {
-                    message: "Please enter a valid email",
+                    message: "Veuillez entrer un courriel valide",
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   },
                 })}
@@ -120,14 +121,14 @@ const AnalyticsPreferencesModal = () => {
               />
               <AnalyticsConfigForm form={nestedForm(form, "config")} />
             </div>
-            <div className="flex items-center justify-end mt-5xlarge">
+            <div className="mt-5xlarge flex items-center justify-end">
               <Button
                 variant="primary"
                 size="small"
                 loading={isLoading}
                 onClick={onSubmit}
               >
-                Continue
+                Continuer
               </Button>
             </div>
           </div>

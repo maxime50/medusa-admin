@@ -33,20 +33,20 @@ const InviteModal: React.FC<InviteModalProps> = ({ handleClose }) => {
       },
       {
         onSuccess: () => {
-          notification("Success", `Invitation sent to ${data.user}`, "success")
+          notification("Succès", `Invitation envoyée à ${data.user}`, "success")
           handleClose()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       }
     )
   }
 
   const roleOptions: Role[] = [
-    { value: "member", label: "Member" },
-    { value: "admin", label: "Admin" },
-    { value: "developer", label: "Developer" },
+    { value: "member", label: "Membre" },
+    { value: "admin", label: "Administrateur" },
+    { value: "developer", label: "Développeur" },
   ]
 
   return (
@@ -54,24 +54,26 @@ const InviteModal: React.FC<InviteModalProps> = ({ handleClose }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
           <Modal.Header handleClose={handleClose}>
-            <span className="inter-xlarge-semibold">Invite Users</span>
+            <span className="inter-xlarge-semibold">
+              Inviter des utilisateurs
+            </span>
           </Modal.Header>
           <Modal.Content>
             <div className="flex flex-col gap-y-base">
               <InputField
-                label="Email"
-                placeholder="lebron@james.com"
+                label="Courriel"
+                placeholder="exemple@hotmail.com"
                 required
                 {...register("user", { required: true })}
               />
               <Controller
                 name="role"
                 control={control}
-                defaultValue={{ label: "Member", value: "member" }}
+                defaultValue={{ label: "Membre", value: "member" }}
                 render={({ field: { value, onChange } }) => {
                   return (
                     <Select
-                      label="Role"
+                      label="Rôle"
                       onChange={onChange}
                       options={roleOptions}
                       value={value}
@@ -82,24 +84,24 @@ const InviteModal: React.FC<InviteModalProps> = ({ handleClose }) => {
             </div>
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex w-full h-8 justify-end">
+            <div className="flex h-8 w-full justify-end">
               <Button
                 variant="ghost"
-                className="mr-2 w-32 text-small justify-center"
+                className="mr-2 w-32 justify-center text-small"
                 size="large"
                 type="button"
                 onClick={handleClose}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 loading={isLoading}
                 disabled={isLoading}
                 size="large"
-                className="w-32 text-small justify-center"
+                className="w-32 justify-center text-small"
                 variant="primary"
               >
-                Invite
+                Inviter
               </Button>
             </div>
           </Modal.Footer>

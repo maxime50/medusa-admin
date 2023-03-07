@@ -35,12 +35,14 @@ const AnalyticsConfigForm = ({ form }: Props) => {
           "opacity-50": watchOptOut,
         })}
       >
-        <div className="flex flex-col flex-1 gap-y-2xsmall">
-          <h2 className="inter-base-semibold">Anonymize my usage data</h2>
+        <div className="flex flex-1 flex-col gap-y-2xsmall">
+          <h2 className="inter-base-semibold">
+            Anonymiser mes données d'utilisation
+          </h2>
           <p className="inter-base-regular text-grey-50">
-            You can choose to anonymize your usage data. If this option is
-            selected, we will not collect your personal information, such as
-            your name and email address.
+            Vous pouvez choisir d'anonymiser vos données d'utilisation. Si cette
+            option est sélectionnée, nous ne collecterons pas vos informations
+            personnelles, telles que votre nom et votre adresse électronique.
           </p>
         </div>
         <Controller
@@ -58,12 +60,13 @@ const AnalyticsConfigForm = ({ form }: Props) => {
         />
       </div>
       <div className="flex items-start">
-        <div className="flex flex-col flex-1 gap-y-2xsmall">
+        <div className="flex flex-1 flex-col gap-y-2xsmall">
           <h2 className="inter-base-semibold">
-            Opt out of sharing my usage data
+            Refuser le partage de mes données d'utilisation
           </h2>
           <p className="inter-base-regular text-grey-50">
-            You can always opt out of sharing your usage data at any time.
+            Vous pouvez à tout moment refuser le partage de vos données
+            d'utilisation.
           </p>
         </div>
         <Controller

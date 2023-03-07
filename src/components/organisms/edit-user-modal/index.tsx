@@ -41,11 +41,11 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   const onSubmit = (data: EditUserModalFormData) => {
     mutate(data, {
       onSuccess: () => {
-        notification("Success", `User was updated`, "success")
+        notification("Succès", `Utilisateur mis à jour`, "success")
         onSuccess()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
       onSettled: () => {
         handleClose()
@@ -58,44 +58,46 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
           <Modal.Header handleClose={handleClose}>
-            <span className="inter-xlarge-semibold">Edit User</span>
+            <span className="inter-xlarge-semibold">
+              Modifier l'utilisateur
+            </span>
           </Modal.Header>
           <Modal.Content>
-            <div className="w-full grid grid-cols-2 gap-large mb-base">
+            <div className="mb-base grid w-full grid-cols-2 gap-large">
               <InputField
-                label="First Name"
-                placeholder="First name..."
+                label="Prénom"
+                placeholder="Prénom..."
                 required
                 {...register("first_name", {
-                  required: FormValidator.required("First name"),
-                  pattern: FormValidator.whiteSpaceRule("First name"),
-                  minLength: FormValidator.minOneCharRule("First name"),
+                  required: FormValidator.required("Prénom"),
+                  pattern: FormValidator.whiteSpaceRule("Prénom"),
+                  minLength: FormValidator.minOneCharRule("Prénom"),
                 })}
                 errors={errors}
               />
               <InputField
-                label="Last Name"
-                placeholder="Last name..."
+                label="Nom"
+                placeholder="Nom..."
                 required
                 {...register("last_name", {
-                  required: FormValidator.required("Last name"),
-                  pattern: FormValidator.whiteSpaceRule("Last name"),
-                  minLength: FormValidator.minOneCharRule("last name"),
+                  required: FormValidator.required("Nom"),
+                  pattern: FormValidator.whiteSpaceRule("Nom"),
+                  minLength: FormValidator.minOneCharRule("Nom"),
                 })}
                 errors={errors}
               />
             </div>
-            <InputField label="Email" disabled value={user.email} />
+            <InputField label="Courriel" disabled value={user.email} />
           </Modal.Content>
           <Modal.Footer>
-            <div className="w-full flex justify-end">
+            <div className="flex w-full justify-end">
               <Button
                 variant="ghost"
                 size="small"
                 onClick={handleClose}
                 className="mr-2"
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 loading={isLoading}
@@ -103,7 +105,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
                 variant="primary"
                 size="small"
               >
-                Save
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

@@ -1,8 +1,8 @@
 import { BatchJob } from "@medusajs/medusa/dist"
 
 export enum BatchJobOperation {
-  Import = "Import",
-  Export = "Export",
+  Import = "Importation",
+  Export = "Exportation",
 }
 
 export function batchJobDescriptionBuilder(
@@ -18,30 +18,30 @@ export function batchJobDescriptionBuilder(
 
   switch (batchJob.status) {
     case "failed":
-      description = `${operation} of ${entityName}s has failed.`
+      description = `${operation} des ${entityName}s a échoué.`
       break
     case "canceled":
-      description = `${operation} of ${entityName}s has been canceled.`
+      description = `${operation} des ${entityName}s a été annulée.`
       break
     case "completed":
       if (elapsedTime && Math.abs(elapsedTime) > twentyfourHoursInMs) {
-        description = `${operation} file is no longer available. The file will only be stored for 24 hours.`
+        description = `${operation} Le fichier n'est plus disponible. Le fichier sera stocké que pendant 24 heures.`
         break
       } else {
-        description = `${operation} of ${entityName}s is done.`
+        description = `${operation} des ${entityName}s est terminée.`
         break
       }
     case "processing":
-      description = `${operation} of ${entityName}s is being processed. You can safely close the activity tab. We will notify you once your export is ready for download.`
+      description = `${operation} des ${entityName}s est en cours de traitement. Vous pouvez fermer l'onglet d'activité en toute sécurité. Vous serez informée lorsque votre exportation sera prête à téléchargée.`
       break
     case "confirmed":
-      description = `${operation} of ${entityName}s has been confirmed and will start soon.`
+      description = `${operation} des ${entityName}s a été confirmée et commencera bientôt.`
       break
     case "pre_processed":
-      description = `${operation} of ${entityName}s is being prepared.`
+      description = `${operation} des ${entityName}s est en cours de traitement.`
       break
     default:
-      description = `${operation} of ${entityName}s has been created and will start soon.`
+      description = `${operation} des ${entityName}s a été créée et commencera bientôt.`
   }
 
   return description

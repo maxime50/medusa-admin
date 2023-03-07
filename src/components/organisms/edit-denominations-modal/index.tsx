@@ -87,15 +87,17 @@ const EditDenominationsModal = ({
     <Modal handleClose={handleClose}>
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
-          <span className="inter-xlarge-semibold">Edit Denominations</span>
+          <span className="inter-xlarge-semibold">
+            Modifier les Dénominations
+          </span>
         </Modal.Header>
         <Modal.Content>
           <div className="pt-1">
             <div className="flex items-center">
               <label className="inter-base-semibold text-grey-90 mr-1.5">
-                Prices
+                Prix
               </label>
-              <IconTooltip content={"Helpful denominations"} />
+              <IconTooltip content={"Dénominations utiles"} />
             </div>
             {denominations.map((field, index) => {
               return (
@@ -111,7 +113,7 @@ const EditDenominationsModal = ({
                       size="medium"
                     >
                       <CurrencyInput.Amount
-                        label="Amount"
+                        label="Montant"
                         onChange={onAmountChange(index)}
                         amount={field.amount}
                       />
@@ -137,7 +139,7 @@ const EditDenominationsModal = ({
               disabled={availableCurrencies.length === 0}
             >
               <PlusIcon size={20} />
-              Add a price
+              Ajouter un prix
             </Button>
           </div>
         </Modal.Content>
@@ -149,7 +151,7 @@ const EditDenominationsModal = ({
               onClick={handleClose}
               className="mr-2 min-w-[130px] justify-center"
             >
-              Cancel
+              Annuler
             </Button>
             <Button
               variant="primary"
@@ -157,7 +159,7 @@ const EditDenominationsModal = ({
               className="mr-2 min-w-[130px] justify-center"
               onClick={submitHandler}
             >
-              Save
+              Sauvegarder
             </Button>
           </div>
         </Modal.Footer>

@@ -78,17 +78,17 @@ const Timeline: React.FC<TimelineProps> = ({ orderId }) => {
   const actions: ActionType[] = [
     {
       icon: <BackIcon size={20} />,
-      label: "Request Return",
+      label: "Demander un retour",
       onClick: () => setShowRequestReturn(true),
     },
     {
       icon: <RefreshIcon size={20} />,
-      label: "Register Exchange",
+      label: "Enregistrer un échange",
       onClick: () => setshowCreateSwap(true),
     },
     {
       icon: <AlertIcon size={20} />,
-      label: "Register Claim",
+      label: "Enregistrer une réclamation",
       onClick: openRegisterClaim,
     },
   ]
@@ -104,8 +104,8 @@ const Timeline: React.FC<TimelineProps> = ({ orderId }) => {
         value: value,
       },
       {
-        onSuccess: () => notification("Success", "Added note", "success"),
-        onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        onSuccess: () => notification("Succès", "Note ajoutée", "success"),
+        onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
       }
     )
   }
@@ -115,7 +115,7 @@ const Timeline: React.FC<TimelineProps> = ({ orderId }) => {
       <div className="h-full w-5/12 rounded-rounded border border-grey-20 bg-grey-0">
         <div className="border-b border-grey-20 py-large px-xlarge">
           <div className="flex items-center justify-between">
-            <h3 className="inter-xlarge-semibold">Timeline</h3>
+            <h3 className="inter-xlarge-semibold">Historique</h3>
             <div
               className={clsx({
                 "pointer-events-none opacity-50": !events,

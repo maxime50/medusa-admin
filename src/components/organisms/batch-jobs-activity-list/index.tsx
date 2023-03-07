@@ -67,14 +67,11 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
 
   const batchJob = useBatchJob(props.batchJob)
 
-  const {
-    mutate: cancelBatchJob,
-    error: cancelBatchJobError,
-  } = useAdminCancelBatchJob(batchJob.id)
+  const { mutate: cancelBatchJob, error: cancelBatchJobError } =
+    useAdminCancelBatchJob(batchJob.id)
   const { mutateAsync: deleteFile } = useAdminDeleteFile()
-  const {
-    mutateAsync: createPresignedUrl,
-  } = useAdminCreatePresignedDownloadUrl()
+  const { mutateAsync: createPresignedUrl } =
+    useAdminCreatePresignedDownloadUrl()
 
   const fileName = batchJob.result?.file_key ?? `${batchJob.type}.csv`
   const relativeTimeElapsed = getRelativeTime({
@@ -106,7 +103,7 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
   useEffect(() => {
     if (cancelBatchJobError) {
       notification(
-        "Error canceling the batch job",
+        "Erreur dans l'annulation du batch job",
         getErrorMessage(cancelBatchJobError),
         "error"
       )
@@ -131,8 +128,8 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
       activityCardRef.current?.removeChild(link)
     } catch (e) {
       notification(
-        "Error",
-        `Something went wrong while downloading the ${operation.toLowerCase()} file`,
+        "Erreur",
+        `Un problème s'est produit lors du téléchargement du fichier ${operation.toLowerCase()}`,
         "error"
       )
     }
@@ -145,11 +142,15 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
 
     try {
       await deleteFile({ file_key: batchJob.result?.file_key })
-      notification("Success", `${operation} file has been removed`, "success")
+      notification(
+        "Succès",
+        `Le fichier ${operation} a été supprimé`,
+        "success"
+      )
     } catch (e) {
       notification(
         "Error",
-        `Something went wrong while deleting the ${operation.toLowerCase()} file`,
+        `Un problème s'est produit lors de la suppression du fichier ${operation.toLowerCase()}`,
         "error"
       )
     }
@@ -174,12 +175,12 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
     const fileSize = batchJob.result?.file_key
       ? bytesConverter(batchJob.result?.file_size ?? 0)
       : {
-          confirmed: `Preparing ${operation.toLowerCase()}...`,
-          preprocessing: `Preparing ${operation.toLowerCase()}...`,
-          processing: `Processing ${operation.toLowerCase()}...`,
-          completed: `Successful ${operation.toLowerCase()}`,
-          failed: `Failed batch ${operation.toLowerCase()} job`,
-          canceled: `Canceled batch ${operation.toLowerCase()} job`,
+          confirmed: `Préparation: ${operation.toLowerCase()}...`,
+          preprocessing: `Préparation: ${operation.toLowerCase()}...`,
+          processing: `Traitement: ${operation.toLowerCase()}...`,
+          completed: `Succès: ${operation.toLowerCase()}`,
+          failed: `Échec: batch ${operation.toLowerCase()} job`,
+          canceled: `Annulée: batch ${operation.toLowerCase()} job`,
         }[batchJob.status]
 
     return (
@@ -203,7 +204,7 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
         <Button
           onClick={onClick}
           size={"small"}
-          className={clsx("flex justify-start inter-small-regular", className)}
+          className={clsx("inter-small-regular flex justify-start", className)}
           variant={variant}
         >
           {text}
@@ -212,7 +213,7 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
     }
     return (
       (canDownload || canCancel) && (
-        <div className="flex mt-6">
+        <div className="mt-6 flex">
           {canDownload && (
             <div className="flex">
               {buildButton(onDeleteFile, "danger", "Delete")}
@@ -227,13 +228,13 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
 
   return (
     <ActivityCard
-      title={store?.name ?? "Medusa Team"}
+      title={store?.name ?? "Bijoux Tendances"}
       icon={<MedusaIcon className="mr-3" size={20} />}
       relativeTimeElapsed={relativeTimeElapsed.rtf}
       date={batchJob.created_at}
       shouldShowStatus={true}
     >
-      <div ref={activityCardRef} className="flex flex-col inter-small-regular">
+      <div ref={activityCardRef} className="inter-small-regular flex flex-col">
         <span>{batchJobActivityDescription}</span>
 
         {getBatchJobFileCard()}

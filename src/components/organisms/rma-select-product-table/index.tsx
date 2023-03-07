@@ -111,10 +111,10 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
   return (
     <Table>
       <Table.Head className="border-none">
-        <Table.HeadRow className="text-grey-50 inter-small-semibold">
-          <Table.HeadCell colSpan={2}>Product Details</Table.HeadCell>
-          <Table.HeadCell className="text-right pr-8">Quantity</Table.HeadCell>
-          <Table.HeadCell className="text-right">Refundable</Table.HeadCell>
+        <Table.HeadRow className="inter-small-semibold text-grey-50">
+          <Table.HeadCell colSpan={2}>Détails du produit</Table.HeadCell>
+          <Table.HeadCell className="pr-8 text-right">Quantité</Table.HeadCell>
+          <Table.HeadCell className="text-right">Remboursable</Table.HeadCell>
           <Table.HeadCell></Table.HeadCell>
         </Table.HeadRow>
       </Table.Head>
@@ -133,10 +133,10 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
             <Fragment key={item.id}>
               <Table.Row className={clsx("border-b-grey-0 hover:bg-grey-0")}>
                 <Table.Cell>
-                  <div className="items-center ml-1 h-full flex">
+                  <div className="ml-1 flex h-full items-center">
                     <div
                       onClick={() => handleReturnToggle(item)}
-                      className={`mr-4 w-5 h-5 flex justify-center text-grey-0 border-grey-30 border cursor-pointer rounded-base ${
+                      className={`mr-4 flex h-5 w-5 cursor-pointer justify-center rounded-base border border-grey-30 text-grey-0 ${
                         checked && "bg-violet-60"
                       }`}
                     >
@@ -155,14 +155,14 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
                   </div>
                 </Table.Cell>
                 <Table.Cell>
-                  <div className="min-w-[240px] flex py-2">
-                    <div className="w-[30px] h-[40px] ">
+                  <div className="flex min-w-[240px] py-2">
+                    <div className="h-[40px] w-[30px] ">
                       <img
-                        className="h-full w-full object-cover rounded"
+                        className="h-full w-full rounded object-cover"
                         src={item.thumbnail}
                       />
                     </div>
-                    <div className="inter-small-regular text-grey-50 flex flex-col ml-4">
+                    <div className="inter-small-regular ml-4 flex flex-col text-grey-50">
                       <span>
                         <span className="text-grey-90">{item.title}</span>
                       </span>
@@ -180,12 +180,12 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
                     </div>
                   </div>
                 </Table.Cell>
-                <Table.Cell className="text-right w-32 pr-8">
+                <Table.Cell className="w-32 pr-8 text-right">
                   {item.id in toReturn ? (
-                    <div className="flex w-full text-right justify-end text-grey-50 ">
+                    <div className="flex w-full justify-end text-right text-grey-50 ">
                       <span
                         onClick={() => handleQuantity(-1, item)}
-                        className="w-5 h-5 flex items-center justify-center rounded cursor-pointer hover:bg-grey-20 mr-2"
+                        className="mr-2 flex h-5 w-5 cursor-pointer items-center justify-center rounded hover:bg-grey-20"
                       >
                         <MinusIcon size={16} />
                       </span>
@@ -193,7 +193,7 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
                       <span
                         onClick={() => handleQuantity(1, item)}
                         className={clsx(
-                          "w-5 h-5 flex items-center justify-center rounded cursor-pointer hover:bg-grey-20 ml-2"
+                          "ml-2 flex h-5 w-5 cursor-pointer items-center justify-center rounded hover:bg-grey-20"
                         )}
                       >
                         <PlusIcon size={16} />
@@ -211,7 +211,7 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
                     amount: item.refundable || 0,
                   })}
                 </Table.Cell>
-                <Table.Cell className="text-right text-grey-40 pr-1">
+                <Table.Cell className="pr-1 text-right text-grey-40">
                   {order.currency_code.toUpperCase()}
                 </Table.Cell>
               </Table.Row>
@@ -222,7 +222,7 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
                     <div className="max-w-[470px] truncate">
                       {toReturn[item.id]?.reason && (
                         <span className="inter-small-regular text-grey-40">
-                          <span className="text-grey-80 mr-1">
+                          <span className="mr-1 text-grey-80">
                             <span className="inter-small-semibold mr-1">
                               {toReturn[item.id]?.reason.label}
                             </span>
@@ -244,7 +244,7 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
                     </div>
                   </Table.Cell>
                   <Table.Cell colSpan={2}>
-                    <div className="flex w-full justify-end mb-small">
+                    <div className="mb-small flex w-full justify-end">
                       <Button
                         onClick={() =>
                           push(
@@ -263,7 +263,7 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
                         size="small"
                         className="border border-grey-20"
                       >
-                        Select Reason
+                        Sélectionner la raison
                       </Button>
                     </div>
                   </Table.Cell>
@@ -286,7 +286,7 @@ const ReturnReasonScreen = (
   setReturnReason
 ) => {
   return {
-    title: "Return Reasons",
+    title: "Raisons du retour",
     onBack: () => pop(),
     view: (
       <RMAReturnReasonSubModal

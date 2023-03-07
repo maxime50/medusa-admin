@@ -15,11 +15,11 @@ type DeletePromptProps = {
 }
 
 const DeletePrompt: React.FC<DeletePromptProps> = ({
-  heading = "Are you sure you want to delete?",
+  heading = "Êtes-vous sûr de vouloir supprimer ?",
   text = "",
-  successText = "Delete successful",
-  cancelText = "No, cancel",
-  confirmText = "Yes, remove",
+  successText = "Suppression réussie",
+  cancelText = "Non, annuler",
+  confirmText = "Oui, supprimer",
   handleClose,
   onDelete,
 }) => {
@@ -31,8 +31,8 @@ const DeletePrompt: React.FC<DeletePromptProps> = ({
 
     setIsLoading(true)
     onDelete()
-      .then(() => notification("Success", successText, "success"))
-      .catch((err) => notification("Error", getErrorMessage(err), "error"))
+      .then(() => notification("Succès", successText, "success"))
+      .catch((err) => notification("Erreur", getErrorMessage(err), "error"))
       .finally(() => {
         setIsLoading(false)
         handleClose()
@@ -49,10 +49,10 @@ const DeletePrompt: React.FC<DeletePromptProps> = ({
           </div>
         </Modal.Content>
         <Modal.Footer>
-          <div className="flex w-full h-8 justify-end">
+          <div className="flex h-8 w-full justify-end">
             <Button
               variant="ghost"
-              className="mr-2 w-24 text-small justify-center"
+              className="mr-2 w-24 justify-center text-small"
               size="small"
               onClick={handleClose}
             >
@@ -61,7 +61,7 @@ const DeletePrompt: React.FC<DeletePromptProps> = ({
             <Button
               loading={isLoading}
               size="small"
-              className="w-24 text-small justify-center"
+              className="w-24 justify-center text-small"
               variant="nuclear"
               onClick={handleSubmit}
               disabled={isLoading}

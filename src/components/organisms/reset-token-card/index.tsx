@@ -50,66 +50,65 @@ const ResetTokenCard: React.FC<ResetTokenCardProps> = ({ goBack }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col items-center">
         <span className="inter-2xlarge-semibold mt-base text-grey-90">
-          Reset your password
+          Réinitialiser mon mot de passe
         </span>
-        <span className="inter-base-regular text-grey-50 mt-xsmall text-center">
-          Enter your email address below, and we'll send you
+        <span className="inter-base-regular mt-xsmall text-center text-grey-50">
+          Entrez votre courriel ci-dessous, et vous receverez
           <br />
-          instructions on how to reset your password.
+          des instructions pour réinitialiser votre mot de passe.
         </span>
         {!mailSent ? (
           <>
             <SigninInput
-              placeholder="lebron@james.com..."
-              {...register('email', { required: true })}
-              className="mb-0 mt-xlarge" />
+              placeholder="exemple@hotmail.com..."
+              {...register("email", { required: true })}
+              className="mb-0 mt-xlarge"
+            />
             {unrecognizedEmail && (
               <div className="mt-xsmall w-[318px]">
-                <span className="inter-small-regular text-rose-50 text-left">
-                  We can't find a user with that email address
+                <span className="inter-small-regular text-left text-rose-50">
+                  Il n'y a pas d'utilisateur avec ce courriel
                 </span>
               </div>
             )}
             {invalidEmail && (
               <div className="mt-xsmall w-[318px]">
-                <span className="inter-small-regular text-rose-50 text-left">
-                  Not a valid email address
+                <span className="inter-small-regular text-left text-rose-50">
+                  Courriel invalide
                 </span>
               </div>
             )}
             <button
-              className="text-grey-0 w-[320px] h-[48px] border rounded-rounded mt-4 bg-violet-50 inter-base-regular py-3 px-4"
+              className="inter-base-regular mt-4 h-[48px] w-[320px] rounded-rounded border bg-violet-50 py-3 px-4 text-grey-0"
               type="submit"
             >
-              Send reset instructions
+              Envoyer
             </button>
           </>
         ) : (
-          <div className="text-violet-60 rounded-rounded bg-violet-10 p-base flex gap-x-small mt-large">
+          <div className="mt-large flex gap-x-small rounded-rounded bg-violet-10 p-base text-violet-60">
             <div>
               <CheckCircleIcon size={20} />
             </div>
             <div className="flex flex-col gap-y-2xsmall">
-              <span className="inter-small-semibold">
-                Succesfully sent you an email
-              </span>
+              <span className="inter-small-semibold">Courriel envoyé</span>
               <span className="inter-small-regular">
-                We've sent you an email which you can use to reset your
-                password. Check your spam folder if you haven't received it
-                after a few minutes.
+                Nous vous avons envoyé courriel pour réinitialiser votre mot de
+                passe. Vérifiez vos courriers indésirables si vous ne l'avez pas
+                reçu après quelques minutes.
               </span>
             </div>
           </div>
         )}
         <span
-          className="inter-small-regular text-grey-50 mt-8 cursor-pointer"
+          className="inter-small-regular mt-8 cursor-pointer text-grey-50"
           onClick={goBack}
         >
-          Go back to sign in
+          Retour à la page de connexion
         </span>
       </div>
     </form>
-  );
+  )
 }
 
 export default ResetTokenCard

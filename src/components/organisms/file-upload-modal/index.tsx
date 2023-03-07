@@ -17,7 +17,9 @@ const FileUploadModal: React.FC<FileUploadModalProps> = ({
     <Modal handleClose={handleClose}>
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
-          <span className="inter-xlarge-semibold">Upload a new photo</span>
+          <span className="inter-xlarge-semibold">
+            Transmettre une nouvelle photo
+          </span>
         </Modal.Header>
         <Modal.Content>
           <div className="h-96">
