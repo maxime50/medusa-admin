@@ -49,17 +49,18 @@ const MediaModal = ({ product, open, onClose }: Props) => {
     try {
       preppedImages = await prepareImages(data.media.images)
     } catch (error) {
-      let errorMessage = "Something went wrong while trying to upload images."
+      let errorMessage =
+        "Un problème s'est produit lors du téléchargement des images."
       const response = (error as any).response as Response
 
       if (response.status === 500) {
         errorMessage =
           errorMessage +
           " " +
-          "You might not have a file service configured. Please contact your administrator"
+          "Il se peut qu'aucun service de fichiers ne soit configuré."
       }
 
-      notification("Error", errorMessage, "error")
+      notification("Erreur", errorMessage, "error")
       return
     }
     const urls = preppedImages.map((image) => image.url)
@@ -76,14 +77,14 @@ const MediaModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={onReset} isLargeModal>
       <Modal.Body>
         <Modal.Header handleClose={onReset}>
-          <h1 className="inter-xlarge-semibold m-0">Edit Media</h1>
+          <h1 className="inter-xlarge-semibold m-0">Modifier le média</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <div>
-              <h2 className="inter-large-semibold mb-2xsmall">Media</h2>
-              <p className="inter-base-regular text-grey-50 mb-large">
-                Add images to your product.
+              <h2 className="inter-large-semibold mb-2xsmall">Média</h2>
+              <p className="inter-base-regular mb-large text-grey-50">
+                Ajouter des images au produit
               </p>
               <div>
                 <MediaForm form={nestedForm(form, "media")} />
@@ -91,14 +92,14 @@ const MediaModal = ({ product, open, onClose }: Props) => {
             </div>
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex gap-x-2 justify-end w-full">
+            <div className="flex w-full justify-end gap-x-2">
               <Button
                 size="small"
                 variant="secondary"
                 type="button"
                 onClick={onReset}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 size="small"
@@ -107,7 +108,7 @@ const MediaModal = ({ product, open, onClose }: Props) => {
                 disabled={!isDirty}
                 loading={updating}
               >
-                Save and close
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

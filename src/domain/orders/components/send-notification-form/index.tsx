@@ -31,10 +31,12 @@ const SendNotificationForm = ({ form, type }: Props) => {
             <div className="mr-xsmall">
               <IndeterminateCheckbox checked={value} onChange={onChange} />
             </div>
-            <p className="inter-small-semibold mr-1.5">Send notifications</p>
+            <p className="inter-small-semibold mr-1.5">
+              Envoyer une notification
+            </p>
             <IconTooltip
               type="info"
-              content={`If unchecked the customer will not receive communication about this ${subject}.`}
+              content={`Si cette case n'est pas cochée, le client ne recevra pas de notification sur ce ${subject}.`}
             />
           </div>
         )

@@ -30,10 +30,10 @@ const CurrentCurrenciesScreen = () => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully updated currencies", "success")
+          notification("Succès", "Devises mises à jour avec succès", "success")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Erreur", getErrorMessage(err), "error")
         },
       }
     )
@@ -80,7 +80,9 @@ const CurrentCurrenciesScreen = () => {
   return (
     <>
       <Modal.Header handleClose={onClose}>
-        <h1 className="inter-xlarge-semibold">Current Store Currencies</h1>
+        <h1 className="inter-xlarge-semibold">
+          Devises actuels de la boutique
+        </h1>
       </Modal.Header>
       <Modal.Content>
         <CurrenciesTable
@@ -101,9 +103,9 @@ const CurrentCurrenciesScreen = () => {
         />
       </Modal.Content>
       <Modal.Footer>
-        <div className="w-full justify-end flex items-center">
+        <div className="flex w-full items-center justify-end">
           <Button variant="primary" size="small" onClick={onClose}>
-            Close
+            Fermer
           </Button>
         </div>
       </Modal.Footer>
@@ -132,11 +134,11 @@ const TableActions = ({
   }
 
   return (
-    <div className="flex space-x-xsmall h-[34px] overflow-hidden">
+    <div className="flex h-[34px] space-x-xsmall overflow-hidden">
       <div className={clsx("transition-all duration-200", classes)}>
-        <div className="divide-x flex items-center h-[34px] mb-2">
-          <span className="mr-3 inter-small-regular text-grey-50">
-            {numberOfSelectedRows} selected
+        <div className="mb-2 flex h-[34px] items-center divide-x">
+          <span className="inter-small-regular mr-3 text-grey-50">
+            {numberOfSelectedRows} sélectionné
           </span>
           <div className="flex space-x-xsmall pl-3">
             <Button
@@ -145,7 +147,7 @@ const TableActions = ({
               variant="ghost"
               className="border border-grey-20"
             >
-              Deselect
+              Déselectionner
             </Button>
             <Button
               onClick={onRemove}
@@ -153,18 +155,18 @@ const TableActions = ({
               variant="ghost"
               className="border border-grey-20 text-rose-50"
             >
-              Remove
+              Supprimer
             </Button>
           </div>
         </div>
-        <div className="flex justify-end h-[34px]">
+        <div className="flex h-[34px] justify-end">
           <Button
             size="small"
             variant="ghost"
             className="border border-grey-20"
             onClick={() => push(screen)}
           >
-            <PlusIcon size={20} /> Add Currencies
+            <PlusIcon size={20} /> Ajouter des devises
           </Button>
         </div>
       </div>

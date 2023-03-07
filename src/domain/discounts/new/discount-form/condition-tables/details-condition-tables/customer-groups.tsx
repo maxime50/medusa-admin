@@ -60,7 +60,7 @@ const DetailsCustomerGroupConditionSelector = ({
           options={{
             enableSearch: true,
             immediateSearchFocus: true,
-            searchPlaceholder: "Search groups...",
+            searchPlaceholder: "Rechercher des groupes...",
           }}
           resourceName="Customer groups"
           totalCount={count || 0}

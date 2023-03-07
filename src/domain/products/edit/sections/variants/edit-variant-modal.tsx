@@ -54,9 +54,9 @@ const EditVariantModal = ({
     <Modal handleClose={handleClose}>
       <Modal.Header handleClose={handleClose}>
         <h1 className="inter-xlarge-semibold">
-          Edit Variant
+          Modifier la variante
           {variant.title && (
-            <span className="text-grey-50 inter-xlarge-regular">
+            <span className="inter-xlarge-regular text-grey-50">
               {" "}
               ({variant.title})
             </span>
@@ -68,14 +68,14 @@ const EditVariantModal = ({
           <EditFlowVariantForm form={form} />
         </Modal.Content>
         <Modal.Footer>
-          <div className="w-full flex items-center gap-x-xsmall justify-end">
+          <div className="flex w-full items-center justify-end gap-x-xsmall">
             <Button
               variant="secondary"
               size="small"
               type="button"
               onClick={handleClose}
             >
-              Cancel
+              Annuler
             </Button>
             <Button
               variant="primary"
@@ -84,7 +84,7 @@ const EditVariantModal = ({
               disabled={!isDirty && !isDuplicate}
               loading={addingVariant || updatingVariant}
             >
-              Save and close
+              Sauvegarder
             </Button>
           </div>
         </Modal.Footer>

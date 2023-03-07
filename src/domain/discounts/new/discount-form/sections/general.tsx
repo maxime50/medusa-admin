@@ -59,7 +59,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
             name="regions"
             control={control}
             rules={{
-              required: "At least one region is required",
+              required: "Au moins une région est requise",
               validate: (value) =>
                 Array.isArray(value) ? value.length > 0 : !!value,
             }}
@@ -70,7 +70,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
                   onChange={(value) => {
                     onChange(type === "fixed" ? [value] : value)
                   }}
-                  label="Choose valid regions"
+                  label="Choisir une région valide"
                   isMulti={type !== "fixed"}
                   selectAll={type !== "fixed"}
                   isSearchable
@@ -80,13 +80,13 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
               )
             }}
           />
-          <div className="flex gap-x-base gap-y-base my-base">
+          <div className="my-base flex gap-x-base gap-y-base">
             <InputField
               label="Code"
               className="flex-1"
-              placeholder="SUMMERSALE10"
+              placeholder="PROMO2023"
               required
-              {...register("code", { required: "Code is required" })}
+              {...register("code", { required: "Code requis" })}
             />
 
             {type !== "free_shipping" && (
@@ -109,7 +109,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
                         render={({ field: { value, onChange } }) => {
                           return (
                             <CurrencyInput.Amount
-                              label={"Amount"}
+                              label={"Montant"}
                               required
                               amount={value}
                               onChange={onChange}
@@ -122,7 +122,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
                 ) : (
                   <div className="flex-1">
                     <InputField
-                      label="Percentage"
+                      label="Pourcentage"
                       min={0}
                       required
                       type="number"
@@ -139,17 +139,17 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
             )}
           </div>
 
-          <div className="text-grey-50 inter-small-regular flex flex-col mb-6">
+          <div className="inter-small-regular mb-6 flex flex-col text-grey-50">
             <span>
-              The code your customers will enter during checkout. This will
-              appear on your customer’s invoice.
+              Le code que vos clients saisiront lors de la validation de leur
+              commande. Ce code apparaîtra aussi sur la facture.
             </span>
-            <span>Uppercase letters and numbers only.</span>
+            <span>Lettres majuscules et chiffres seulement</span>
           </div>
           <TextArea
             label="Description"
             required
-            placeholder="Summer Sale 2022"
+            placeholder="Rabais d'été 2023"
             rows={1}
             {...register("rule.description", {
               required: true,
@@ -162,7 +162,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
               render={({ field: { onChange, value } }) => {
                 return (
                   <Checkbox
-                    label="This is a template discount"
+                    label="Il s'agit d'un modèle de rabais"
                     name="is_dynamic"
                     id="is_dynamic"
                     checked={value}
@@ -173,7 +173,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
             />
             <IconTooltip
               content={
-                "Template discounts allow you to define a set of rules that can be used across a group of discounts. This is useful in campaigns that should generate unique codes for each user, but where the rules for all unique codes should be the same."
+                "Les modèles de rabais permettent de définir un ensemble de règles pouvant être utilisées pour un groupe de rabais. Cette fonction est utile dans les campagnes qui doivent générer des codes uniques pour chaque utilisateur."
               }
             />
           </div>

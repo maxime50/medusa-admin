@@ -50,7 +50,7 @@ export const useAddAdditionalItemsColumns = (order: Order) => {
               ) : (
                 <Tooltip
                   content={
-                    "This variant does not have a price for the region/currency of this order, and cannot be selected."
+                    "Cette variante n'a pas de prix pour la région/devise de cette commande, et ne peut pas être sélectionnée."
                   }
                 >
                   <IndeterminateCheckbox
@@ -75,7 +75,7 @@ export const useAddAdditionalItemsColumns = (order: Order) => {
             className="flex cursor-pointer items-center"
             onClick={getToggleSortingHandler()}
           >
-            <p className="select-none">Title</p>
+            <p className="select-none">Titre</p>
             <div
               className="flex h-large w-large items-center justify-center"
               onClick={getToggleSortingHandler()}
@@ -124,7 +124,9 @@ export const useAddAdditionalItemsColumns = (order: Order) => {
       }),
       columnHelper.accessor("inventory_quantity", {
         maxSize: 20,
-        header: () => <p className="select-none text-right">Stock</p>,
+        header: () => (
+          <p className="select-none text-right">Quantité en inventaire</p>
+        ),
         cell: ({ cell: { getValue }, row: { getCanSelect } }) => {
           const isSelectable = getCanSelect()
 
@@ -141,7 +143,7 @@ export const useAddAdditionalItemsColumns = (order: Order) => {
       }),
       columnHelper.accessor("calculated_price_incl_tax", {
         maxSize: 80,
-        header: () => <p className="text-right">Price</p>,
+        header: () => <p className="text-right">Prix</p>,
         cell: ({
           getValue,
           row: {
@@ -154,7 +156,7 @@ export const useAddAdditionalItemsColumns = (order: Order) => {
             <div className="text-right">
               {original_price_incl_tax !== price && (
                 <Tooltip
-                  content="The price has been overridden in a price list, that is applicable to this order."
+                  content="Le prix a été modifié dans une liste de prix applicable à cette commande."
                   side="top"
                 >
                   <p className="cursor-default text-grey-40 line-through">

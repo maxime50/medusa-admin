@@ -64,18 +64,19 @@ function CustomerGroupModal(props: CustomerGroupModalProps) {
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
           <span className="inter-xlarge-semibold">
-            {props.initialData ? "Edit" : "Create a New"} Customer Group
+            {props.initialData ? "Modifier" : "Créer un nouveau"} groupe de
+            clients
           </span>
         </Modal.Header>
 
         <Modal.Content>
           <div className="space-y-4">
-            <span className="inter-base-semibold">Details</span>
+            <span className="inter-base-semibold">Détails</span>
             <div className="flex space-x-4">
               <Input
-                label="Title"
+                label="Titre"
                 {...register("name")}
-                placeholder="Customer group name"
+                placeholder="Nom du groupe de clients"
                 required
               />
             </div>
@@ -87,22 +88,22 @@ function CustomerGroupModal(props: CustomerGroupModalProps) {
         </Modal.Content>
 
         <Modal.Footer>
-          <div className="flex w-full h-8 justify-end">
+          <div className="flex h-8 w-full justify-end">
             <Button
               variant="ghost"
-              className="mr-2 w-32 text-small justify-center"
+              className="mr-2 w-32 justify-center text-small"
               size="large"
               onClick={handleClose}
             >
-              Cancel
+              Annuler
             </Button>
             <Button
               size="medium"
-              className="w-32 text-small justify-center"
+              className="w-32 justify-center text-small"
               variant="primary"
               onClick={handleFromSubmit(onSubmit)}
             >
-              <span>{props.initialData ? "Edit" : "Publish"} Group</span>
+              <span>{props.initialData ? "Modifier" : "Publier"}</span>
             </Button>
           </div>
         </Modal.Footer>

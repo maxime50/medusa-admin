@@ -92,10 +92,14 @@ const CollectionDetails = () => {
       }
 
       setShowAddProducts(false)
-      notification("Success", "Updated products in collection", "success")
+      notification(
+        "Succès",
+        "Produits mis à jour dans la collection",
+        "success"
+      )
       refetch()
     } catch (error) {
-      notification("Error", getErrorMessage(error), "error")
+      notification("Erreur", getErrorMessage(error), "error")
     }
   }
 
@@ -113,9 +117,9 @@ const CollectionDetails = () => {
           path="/a/products?view=collections"
           label="Back to Collections"
         />
-        <div className="rounded-rounded py-large px-xlarge border border-grey-20 bg-grey-0 mb-large">
+        <div className="mb-large rounded-rounded border border-grey-20 bg-grey-0 py-large px-xlarge">
           {isLoading || !collection ? (
-            <div className="flex items-center w-full h-12">
+            <div className="flex h-12 w-full items-center">
               <Spinner variant="secondary" size="large" />
             </div>
           ) : (
@@ -129,12 +133,12 @@ const CollectionDetails = () => {
                     forceDropdown
                     actions={[
                       {
-                        label: "Edit Collection",
+                        label: "Modifier la collection",
                         onClick: () => setShowEdit(true),
                         icon: <EditIcon size="20" />,
                       },
                       {
-                        label: "Delete",
+                        label: "Supprimer",
                         onClick: () => setShowDelete(!showDelete),
                         variant: "danger",
                         icon: <TrashIcon size="20" />,
@@ -148,7 +152,7 @@ const CollectionDetails = () => {
               </div>
               {collection.metadata && (
                 <div className="mt-large flex flex-col gap-y-base">
-                  <h3 className="inter-base-semibold">Metadata</h3>
+                  <h3 className="inter-base-semibold">Métadonnées</h3>
                   <div>
                     <JSONView data={collection.metadata} />
                   </div>
@@ -158,17 +162,18 @@ const CollectionDetails = () => {
           )}
         </div>
         <Section
-          title="Products"
+          title="Produits"
           actions={[
             {
-              label: "Edit Products",
+              label: "Modifier les produits",
               icon: <EditIcon size="20" />,
               onClick: () => setShowAddProducts(!showAddProducts),
             },
           ]}
         >
-          <p className="text-grey-50 inter-base-regular mt-xsmall mb-base">
-            To start selling, all you need is a name, price, and image.
+          <p className="inter-base-regular mt-xsmall mb-base text-grey-50">
+            Pour commencer à vendre, il suffit d'un nom, d'un prix et d'une
+            image.
           </p>
           {collection && (
             <ViewProductsTable
@@ -190,10 +195,10 @@ const CollectionDetails = () => {
       {showDelete && (
         <DeletePrompt
           handleClose={() => setShowDelete(!showDelete)}
-          heading="Delete collection"
-          successText="Successfully deleted collection"
+          heading="Supprimer la collection"
+          successText="Collection supprimée avec succès"
           onDelete={async () => handleDelete()}
-          confirmText="Yes, delete"
+          confirmText="Oui, supprimer"
         />
       )}
       {showAddProducts && (

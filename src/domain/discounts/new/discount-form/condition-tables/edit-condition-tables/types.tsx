@@ -43,7 +43,7 @@ const EditTypeConditionSelector = ({ onClose }) => {
           options={{
             enableSearch: true,
             immediateSearchFocus: true,
-            searchPlaceholder: "Search by type...",
+            searchPlaceholder: "Rechercher par type...",
           }}
           resourceName="Types"
           totalCount={count || 0}

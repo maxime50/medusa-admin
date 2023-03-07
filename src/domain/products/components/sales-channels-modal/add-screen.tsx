@@ -93,9 +93,9 @@ const AddScreen = () => {
         />
       </Modal.Content>
       <Modal.Footer>
-        <div className="flex justify-end w-full space-x-xsmall">
+        <div className="flex w-full justify-end space-x-xsmall">
           <Button variant="secondary" size="small" onClick={pop}>
-            Cancel
+            Annuler
           </Button>
           <Button
             variant="primary"
@@ -103,7 +103,7 @@ const AddScreen = () => {
             onClick={saveAndGoBack}
             disabled={disableSave}
           >
-            Save and go back
+            Sauvegarder et retourner en arrière
           </Button>
           <Button
             variant="primary"
@@ -111,7 +111,7 @@ const AddScreen = () => {
             onClick={saveAndClose}
             disabled={disableSave}
           >
-            Save and close
+            Sauvegarder et fermer
           </Button>
         </div>
       </Modal.Footer>
@@ -123,7 +123,7 @@ export const useAddChannelsModalScreen = () => {
   const { pop } = React.useContext(LayeredModalContext)
 
   return {
-    title: "Add Sales Channels",
+    title: "Ajouter des canaux de vente",
     onBack: pop,
     view: <AddScreen />,
   }

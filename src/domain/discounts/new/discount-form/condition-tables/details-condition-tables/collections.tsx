@@ -66,7 +66,7 @@ const DetailsCollectionConditionSelector = ({
           options={{
             enableSearch: true,
             immediateSearchFocus: true,
-            searchPlaceholder: "Search by title...",
+            searchPlaceholder: "Rechercher par titre...",
           }}
           resourceName="Collections"
           totalCount={count || 0}

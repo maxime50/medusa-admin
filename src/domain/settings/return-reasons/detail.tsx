@@ -35,9 +35,8 @@ const ReturnReasonDetail = ({ reason }: ReturnReasonDetailsProps) => {
     open: handleOpenPrompt,
     close: handleClosePrompt,
   } = useToggleState()
-  const { register, reset, handleSubmit } = useForm<
-    ReturnReasonDetailsFormData
-  >()
+  const { register, reset, handleSubmit } =
+    useForm<ReturnReasonDetailsFormData>()
   const notification = useNotification()
   const { mutate: deleteRR } = useAdminDeleteReturnReason(reason?.id)
   const { mutate: update } = useAdminUpdateReturnReason(reason?.id)
@@ -55,13 +54,13 @@ const ReturnReasonDetail = ({ reason }: ReturnReasonDetailsProps) => {
       {
         onSuccess: () => {
           notification(
-            "Success",
-            "Successfully updated return reason",
+            "Succès",
+            "Raison de retour mise à jour avec succès",
             "success"
           )
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       }
     )
@@ -88,12 +87,12 @@ const ReturnReasonDetail = ({ reason }: ReturnReasonDetailsProps) => {
       <BodyCard
         actionables={[
           {
-            label: "Duplicate reason",
+            label: "Dupliquer la raison",
             icon: <DuplicateIcon size={20} />,
             onClick: () => handleOpenDuplicateModal(),
           },
           {
-            label: "Delete reason",
+            label: "Supprimer la raison",
             variant: "danger",
             icon: <TrashIcon size={20} />,
             onClick: () => handleOpenPrompt(),
@@ -101,24 +100,24 @@ const ReturnReasonDetail = ({ reason }: ReturnReasonDetailsProps) => {
         ]}
         events={[
           {
-            label: "Save",
+            label: "Sauvegarder",
             onClick: handleSubmit(onSave),
           },
           {
-            label: "Cancel changes",
+            label: "Annuler les changements",
             onClick: handleCancel,
           },
         ]}
-        title="Details"
+        title="Détails"
         subtitle={reason?.value}
       >
         <form onSubmit={handleSubmit(onSave)}>
-          <Input {...register("label")} label="Label" />
+          <Input {...register("label")} label="Titre" />
           <Input
             {...register("description")}
             label="Description"
             className="mt-base"
-            placeholder="Customer received the wrong size"
+            placeholder="Le client a reçu la mauvaise grandeur"
           />
         </form>
       </BodyCard>
@@ -130,8 +129,8 @@ const ReturnReasonDetail = ({ reason }: ReturnReasonDetailsProps) => {
       )}
       {showDanger && (
         <DeletePrompt
-          heading="Delete Return Reason"
-          text="Are you sure you want to delete this return reason?"
+          heading="Supprimer la raison du retour"
+          text="Êtes-vous sûr de vouloir supprimer cette raison de retour ?"
           handleClose={handleClosePrompt}
           onDelete={handleDeletion}
         />

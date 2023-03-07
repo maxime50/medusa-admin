@@ -111,20 +111,20 @@ const ShippingForm = ({
     <div className="flex flex-col gap-y-base">
       <div className="flex flex-col">
         <h2 className="inter-base-semibold">
-          Shipping for {isReturn ? "return" : "replacement"} items
+          Livraison pour les articles à {isReturn ? "retourner" : "remplacer"}
         </h2>
         <ShippingFormHelpText isClaim={isClaim} isReturn={isReturn} />
       </div>
       <Controller
         control={control}
         name={path("option")}
-        rules={{ required: required ? `Shipping method is required` : false }}
+        rules={{ required: required ? `Méthode de livraison requise` : false }}
         render={({ field: { value, onChange, onBlur, ref, name } }) => {
           return (
             <NextSelect
               ref={ref}
-              placeholder="Choose shipping method"
-              label="Shipping method"
+              placeholder="Choisir la méthode de livraison"
+              label="Méthode de livraison"
               name={name}
               options={returnShippingOptions}
               value={value}
@@ -175,7 +175,7 @@ const ShippingForm = ({
               className="h-10"
               onClick={setCustomPrice}
             >
-              Add custom price
+              Ajouter un prix personnalisé
             </Button>
           )}
         </div>
@@ -190,11 +190,11 @@ const ShippingFormHelpText = ({
 }: Pick<Props, "isClaim" | "isReturn">) => {
   const text = useMemo(() => {
     if (isClaim && isReturn) {
-      return "Return shipping for items claimed by the customer is complimentary."
+      return "Les frais de retour pour les articles réclamés par le client sont gratuits."
     }
 
     if (!isReturn) {
-      return "Shipping for replacement items is complimentary."
+      return "Les frais de livraison des articles de remplacement sont gratuits."
     }
 
     return undefined

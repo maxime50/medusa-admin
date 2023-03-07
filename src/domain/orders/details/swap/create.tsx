@@ -205,11 +205,11 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
     return mutate(data, {
       onSuccess: () => {
         refetch()
-        notification("Success", "Successfully created exchange", "success")
+        notification("Succès", "L'échange a été créé avec succès", "success")
         onDismiss()
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Erreur", getErrorMessage(err), "error")
       },
     })
   }
@@ -218,11 +218,11 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
     <LayeredModal context={layeredModalContext} handleClose={onDismiss}>
       <Modal.Body>
         <Modal.Header handleClose={onDismiss}>
-          <h2 className="inter-xlarge-semibold">Register Exchange</h2>
+          <h2 className="inter-xlarge-semibold">Enregistrer l'échange</h2>
         </Modal.Header>
         <Modal.Content>
           <div className="mb-7">
-            <h3 className="inter-base-semibold">Items to return</h3>
+            <h3 className="inter-base-semibold">Articles à retourner</h3>
             <RMASelectProductTable
               order={order}
               allItems={allItems}
@@ -232,16 +232,16 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
           </div>
 
           <div>
-            <h3 className="inter-base-semibold ">Shipping</h3>
+            <h3 className="inter-base-semibold ">Livraison</h3>
             {shippingLoading ? (
               <div className="flex justify-center">
                 <Spinner size="medium" variant="secondary" />
               </div>
             ) : (
               <Select
-                label="Shipping Method"
+                label="Méthode de livraison"
                 className="mt-2"
-                placeholder="Add a shipping method"
+                placeholder="Ajouter une méthode de livraison"
                 value={shippingMethod}
                 onChange={handleShippingSelected}
                 options={
@@ -263,8 +263,8 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
               />
             )}
           </div>
-          <div className="flex justify-between mt-8 items-center">
-            <h3 className="inter-base-semibold ">Items to send</h3>
+          <div className="mt-8 flex items-center justify-between">
+            <h3 className="inter-base-semibold ">Articles à envoyer</h3>
             {itemsToAdd.length === 0 ? (
               <Button
                 variant="ghost"
@@ -280,7 +280,7 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
                   )
                 }}
               >
-                Add Product
+                Ajouter un produit
               </Button>
             ) : (
               <></>
@@ -311,13 +311,13 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
                     )
                   }}
                 >
-                  Add Product
+                  Ajouter un produit
                 </Button>
               </div>
             </>
           )}
-          <div className="flex text-grey-90 justify-between items-center inter-small-regular mt-8">
-            <span>Return Total</span>
+          <div className="inter-small-regular mt-8 flex items-center justify-between text-grey-90">
+            <span>Total du retour</span>
             <span>
               {formatAmountWithSymbol({
                 currency: order.currency_code,
@@ -325,8 +325,8 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
               })}
             </span>
           </div>
-          <div className="flex text-grey-90 justify-between items-center inter-small-regular mt-2">
-            <span>Additional Total</span>
+          <div className="inter-small-regular mt-2 flex items-center justify-between text-grey-90">
+            <span>Total supplémentaire</span>
             <span>
               {formatAmountWithSymbol({
                 currency: order.currency_code,
@@ -336,12 +336,12 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
               })}
             </span>
           </div>
-          <div className="flex text-grey-90 justify-between items-center inter-small-regular mt-2">
-            <span>Outbond Shipping</span>
-            <span>Calculated at checkout</span>
+          <div className="inter-small-regular mt-2 flex items-center justify-between text-grey-90">
+            <span>Livraison Outbond</span>
+            <span>Calculé à la caisse</span>
           </div>
-          <div className="flex justify-between items-center inter-base-semibold mt-4">
-            <span>Estimated difference</span>
+          <div className="inter-base-semibold mt-4 flex items-center justify-between">
+            <span>Différence estimée</span>
             <span className="inter-large-semibold">
               {formatAmountWithSymbol({
                 currency: order.currency_code,
@@ -355,11 +355,11 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
         <Modal.Footer>
           <div className="flex w-full justify-between">
             <div
-              className="items-center h-full flex cursor-pointer"
+              className="flex h-full cursor-pointer items-center"
               onClick={() => setNoNotification(!noNotification)}
             >
               <div
-                className={`w-5 h-5 flex justify-center text-grey-0 border-grey-30 border rounded-base ${
+                className={`flex h-5 w-5 justify-center rounded-base border border-grey-30 text-grey-0 ${
                   !noNotification && "bg-violet-60"
                 }`}
               >
@@ -374,9 +374,9 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
                 checked={!noNotification}
                 type="checkbox"
               />
-              <span className="ml-3 flex items-center text-grey-90 gap-x-xsmall">
-                Send notifications
-                <IconTooltip content="If unchecked the customer will not receive communication about this exchange" />
+              <span className="ml-3 flex items-center gap-x-xsmall text-grey-90">
+                Envoyer une notification
+                <IconTooltip content="Si cette case n'est pas cochée, le client ne recevra pas de communication concernant cet échange." />
               </span>
             </div>
 
@@ -389,7 +389,7 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
               type="submit"
               variant="primary"
             >
-              Complete
+              Compléter
             </Button>
           </div>
         </Modal.Footer>
@@ -400,7 +400,7 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
 
 const SelectProductsScreen = (pop, itemsToAdd, setSelectedItems) => {
   return {
-    title: "Add Products",
+    title: "Ajouter des produits",
     onBack: () => pop(),
     view: (
       <RMASelectProductSubModal

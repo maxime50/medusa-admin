@@ -38,13 +38,13 @@ const CustomGiftcard: React.FC<CustomGiftcardProps> = ({ onDismiss }) => {
 
   const onSubmit = (data) => {
     if (!giftCardAmount) {
-      notification("Error", "Please enter an amount", "error")
+      notification("Erreur", "Veuillez indiquer un montant", "error")
       focusByName("amount")
       return
     }
 
     if (!validateEmail(data.metadata.email)) {
-      notification("Error", "Invalid email address", "error")
+      notification("Erreur", "Adresse courriel invalide", "error")
       focusByName("metadata.email")
       return
     }
@@ -59,11 +59,15 @@ const CustomGiftcard: React.FC<CustomGiftcardProps> = ({ onDismiss }) => {
 
     mutate(update, {
       onSuccess: () => {
-        notification("Success", "Created Custom Gift Card", "success")
+        notification(
+          "Succès",
+          "Carte cadeau personnalisée créée avec succès",
+          "success"
+        )
         onDismiss()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
         onDismiss()
       },
     })
@@ -73,15 +77,15 @@ const CustomGiftcard: React.FC<CustomGiftcardProps> = ({ onDismiss }) => {
     <Modal handleClose={onDismiss}>
       <Modal.Body>
         <Modal.Header handleClose={onDismiss}>
-          <h2 className="inter-xlarge-semibold">Custom Gift Card</h2>
+          <h2 className="inter-xlarge-semibold">Carte Cadeau Personnalisée</h2>
         </Modal.Header>
         <Modal.Content>
           <div className="flex flex-col">
-            <span className="inter-base-semibold">Value</span>
-            <div className="flex gap-x-2xsmall mt-4">
+            <span className="inter-base-semibold">Valeur</span>
+            <div className="mt-4 flex gap-x-2xsmall">
               <div className="w-[267px]">
                 <Select
-                  label={"Region"}
+                  label={"Région"}
                   value={selectedRegion}
                   onChange={(value) => setSelectedRegion(value)}
                   options={
@@ -102,7 +106,7 @@ const CustomGiftcard: React.FC<CustomGiftcardProps> = ({ onDismiss }) => {
                   currentCurrency={selectedRegion?.value?.currency_code}
                 >
                   <CurrencyInput.Amount
-                    label={"Amount"}
+                    label={"Montant"}
                     amount={giftCardAmount}
                     onChange={(value) => {
                       setGiftCardAmount(value || 0)
@@ -115,19 +119,20 @@ const CustomGiftcard: React.FC<CustomGiftcardProps> = ({ onDismiss }) => {
             </div>
           </div>
           <div className="mt-8">
-            <span className="inter-base-semibold">Receiver</span>
-            <div className="grid grid-cols-1 gap-y-xsmall mt-4">
+            <span className="inter-base-semibold">Destinataire</span>
+            <div className="mt-4 grid grid-cols-1 gap-y-xsmall">
               <InputField
-                label={"Email"}
+                label={"Courriel"}
                 required
                 {...register("metadata.email", { required: true })}
-                placeholder="lebron@james.com"
+                placeholder="exemple@hotmail.com"
                 type="email"
               />
               <TextArea
-                label={"Personal Message"}
+                className="mt-3"
+                label={"Message personnel"}
                 rows={7}
-                placeholder="Something nice to someone special"
+                placeholder="Quelque chose de gentil pour quelqu'un de spécial"
                 {...register("metadata.personal_message")}
               />
             </div>
@@ -141,18 +146,17 @@ const CustomGiftcard: React.FC<CustomGiftcardProps> = ({ onDismiss }) => {
               size="small"
               className="w-[112px]"
             >
-              Cancel
+              Annuler
             </Button>
             <Button
               variant="primary"
               type="submit"
               onClick={handleSubmit(onSubmit)}
               size="small"
-              className="w-[112px]"
               disabled={isSubmitting}
               loading={isSubmitting}
             >
-              Create & Send
+              Créer & Envoyer
             </Button>
           </div>
         </Modal.Footer>

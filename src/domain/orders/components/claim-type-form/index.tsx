@@ -26,12 +26,12 @@ const ClaimTypeForm = ({ form }: Props) => {
               className="flex items-center"
             >
               <RadioGroup.SimpleItem
-                label="Refund"
+                label="Rembourser"
                 value="refund"
                 onChange={onChange}
               />
               <RadioGroup.SimpleItem
-                label="Replace"
+                label="Remplacer"
                 value="replace"
                 onChange={onChange}
               />

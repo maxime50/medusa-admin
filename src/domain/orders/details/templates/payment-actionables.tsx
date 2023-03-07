@@ -16,12 +16,12 @@ export const PaymentActionables = ({
   const { payment_status } = order!
 
   // Default label and action
-  let label = "Capture payment"
+  let label = "Accepter le paiement"
   let action = () => {
     capturePayment.mutate(void {}, {
       onSuccess: () =>
-        notification("Success", "Successfully captured payment", "success"),
-      onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        notification("Succès", "Paiement encaissé avec succès", "success"),
+      onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
     })
   }
   const loading = capturePayment.isLoading
@@ -39,7 +39,7 @@ export const PaymentActionables = ({
   switch (true) {
     case payment_status === "captured" ||
       payment_status === "partially_refunded": {
-      label = "Refund"
+      label = "Rembourser"
       action = () => showRefundMenu()
       break
     }

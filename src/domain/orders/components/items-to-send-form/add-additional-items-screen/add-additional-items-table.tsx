@@ -26,7 +26,7 @@ export const AddAdditionalItemsTable = ({
     <LoadingContainer isLoading={isLoadingData}>
       <Table
         enableSearch
-        searchPlaceholder="Search products"
+        searchPlaceholder="Rechercher des produits"
         searchValue={query}
         handleSearch={setQuery}
       >

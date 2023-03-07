@@ -56,11 +56,11 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully created tax rate.", "success")
+          notification("Succès", "Taux de taxe créé avec succès", "success")
           onDismiss()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       }
     )
@@ -98,7 +98,7 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
         <Modal.Body>
           <Modal.Header handleClose={onDismiss}>
             <div>
-              <h1 className="inter-xlarge-semibold">Add Tax Rate</h1>
+              <h1 className="inter-xlarge-semibold">Ajouter un taux de taxe</h1>
             </div>
           </Modal.Header>
           <Modal.Content>
@@ -128,8 +128,8 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                         )
                       }}
                       index={1}
-                      name="Product Rules"
-                      description={`Applies to ${products.length} product${
+                      name="Règles applicables aux produits"
+                      description={`S'applique à ${products.length} produit${
                         products.length > 1 ? "s" : ""
                       }`}
                     />
@@ -156,10 +156,10 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                         )
                       }}
                       index={2}
-                      name="Product Type Rules"
-                      description={`Applies to ${
+                      name="Règles de type de produit"
+                      description={`S'applique à ${
                         product_types.length
-                      } product type${product_types.length > 1 ? "s" : ""}`}
+                      } type de produit${product_types.length > 1 ? "s" : ""}`}
                     />
                   )}
                   {shipping_options.length > 0 && (
@@ -184,12 +184,12 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                         )
                       }}
                       index={3}
-                      name="Shipping Option Rules"
-                      description={`Applies to ${
+                      name="Règles d'option de livraison"
+                      description={`S'applique à ${
                         shipping_options.length
-                      } shipping option${
+                      } option${
                         shipping_options.length > 1 ? "s" : ""
-                      }`}
+                      } de livraison`}
                     />
                   )}
                 </div>
@@ -210,17 +210,17 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                       )
                     )
                   }}
-                  className="w-full mt-base"
+                  className="mt-base w-full"
                   size="medium"
                   variant="secondary"
                 >
-                  <PlusIcon /> Add Overrides
+                  <PlusIcon /> Ajouter Overrides
                 </Button>
               )}
             </div>
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex items-center justify-end w-full">
+            <div className="flex w-full items-center justify-end">
               <Button
                 type="button"
                 onClick={onDismiss}
@@ -228,7 +228,7 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                 size="small"
                 className="w-eventButton justify-center"
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 type="submit"
@@ -238,7 +238,7 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                 loading={isLoading}
                 disabled={isLoading}
               >
-                Create
+                Créer
               </Button>
             </div>
           </Modal.Footer>
@@ -255,7 +255,7 @@ const SelectOverridesScreen = (
   options = {}
 ) => {
   return {
-    title: "Add override",
+    title: "Ajouter l'override",
     onBack: () => pop(),
     view: (
       <TaxRuleSelector

@@ -77,8 +77,8 @@ const RegisterClaimMenu = ({ order, onClose }: Props) => {
 
     if (isDirty) {
       shouldClose = await dialog({
-        heading: "Are you sure you want to close?",
-        text: "You have unsaved changes, are you sure you want to close?",
+        heading: "Êtes-vous sûr de vouloir fermer ?",
+        text: "Vous avez des modifications en cours de changement, êtes-vous sûr de vouloir annuler ?",
       })
     }
 
@@ -126,7 +126,7 @@ const RegisterClaimMenu = ({ order, onClose }: Props) => {
           `return_items.items.${index}.return_reason_details`,
           {
             type: "manual",
-            message: "Please select a reason",
+            message: "Veuillez sélectionner une raison",
           },
           { shouldFocus: true }
         )
@@ -140,7 +140,8 @@ const RegisterClaimMenu = ({ order, onClose }: Props) => {
         `replacement_shipping.option`,
         {
           type: "manual",
-          message: "A shipping method for replacement items is required",
+          message:
+            "Une méthode de livraison pour les articles de remplacement est requise",
         },
         { shouldFocus: true }
       )
@@ -191,8 +192,8 @@ const RegisterClaimMenu = ({ order, onClose }: Props) => {
       {
         onSuccess: () => {
           notification(
-            "Successfully created claim",
-            `A claim for order #${order.display_id} was successfully created`,
+            "Réclamation créée avec succès",
+            `Une réclamation pour la commande #${order.display_id} a été créée avec succès`,
             "success"
           )
           handleClose()
@@ -223,7 +224,7 @@ const RegisterClaimMenu = ({ order, onClose }: Props) => {
     >
       <Modal.Body>
         <Modal.Header handleClose={onCancel}>
-          <h1 className="inter-xlarge-semibold">Create Claim</h1>
+          <h1 className="inter-xlarge-semibold">Créer une réclamation</h1>
         </Modal.Header>
         <form onSubmit={onSubmit} data-testid="register-claim-form">
           <Modal.Content>
@@ -273,14 +274,14 @@ const RegisterClaimMenu = ({ order, onClose }: Props) => {
                   type="button"
                   onClick={onCancel}
                 >
-                  Cancel
+                  Annuler
                 </Button>
                 <Button
                   variant="primary"
                   size="small"
                   disabled={!isDirty || isLoading || watchedItems?.length < 1}
                 >
-                  Submit and close
+                  Soumettre
                 </Button>
               </div>
             </div>

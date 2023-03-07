@@ -82,7 +82,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
     if (data.receive_items.items.filter((it) => it.receive).length === 0) {
       setError("receive_items.items", {
         type: "manual",
-        message: "Please select at least one item to receive",
+        message: "Veuillez sélectionner au moins un article à recevoir",
       })
 
       return
@@ -117,8 +117,8 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
       {
         onSuccess: () => {
           notification(
-            "Successfully received return",
-            `Received return for order #${order.display_id}`,
+            "Retour reçu avec succès",
+            `Retour reçu pour la commande #${order.display_id}`,
             "success"
           )
 
@@ -129,7 +129,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
         },
         onError: (error) => {
           notification(
-            "Failed to receive return",
+            "Échec de la réception du retour",
             getErrorMessage(error),
             "error"
           )
@@ -142,7 +142,9 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
     <Modal handleClose={onClose} open={true}>
       <Modal.Body>
         <Modal.Header handleClose={onClose}>
-          <h1 className="inter-xlarge-semibold">Receive Return</h1>
+          <h1 className="inter-xlarge-semibold">
+            Marquer le retour comme reçu
+          </h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
@@ -163,7 +165,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
           <Modal.Footer>
             <div className="flex w-full items-center justify-end gap-x-xsmall">
               <Button size="small" variant="secondary">
-                Cancel
+                Annuler
               </Button>
               <Button
                 size="small"
@@ -171,7 +173,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
                 disabled={!isDirty || isLoading}
                 loading={isLoading}
               >
-                Save and close
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

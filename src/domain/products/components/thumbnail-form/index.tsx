@@ -46,7 +46,7 @@ const ThumbnailForm = ({ form }: Props) => {
         <div className="mt-large">
           <FileUploadField
             onFileChosen={handleFilesChosen}
-            placeholder="1200 x 1600 (3:4) recommended, up to 10MB each"
+            placeholder="1200 x 1600 (3:4) recommandée, 10MB maximum"
             filetypes={["image/gif", "image/jpeg", "image/png", "image/webp"]}
             className="py-large"
           />
@@ -54,7 +54,7 @@ const ThumbnailForm = ({ form }: Props) => {
       </div>
       {fields.length > 0 && (
         <div className="mt-large">
-          <h2 className="inter-large-semibold mb-small">Upload</h2>
+          <h2 className="inter-large-semibold mb-small">Télécharger</h2>
 
           <div className="flex flex-col gap-y-2xsmall">
             {fields.map((field, index) => {
@@ -83,7 +83,7 @@ type ThumbnailProps = {
 const Image = ({ image, index, remove }: ThumbnailProps) => {
   const actions: ActionType[] = [
     {
-      label: "Delete",
+      label: "Supprimer",
       onClick: () => remove(index),
       icon: <TrashIcon size={20} />,
       variant: "danger",
@@ -91,16 +91,16 @@ const Image = ({ image, index, remove }: ThumbnailProps) => {
   ]
 
   return (
-    <div className="px-base py-xsmall group hover:bg-grey-5 rounded-rounded flex items-center justify-between">
+    <div className="group flex items-center justify-between rounded-rounded px-base py-xsmall hover:bg-grey-5">
       <div className="flex items-center gap-x-large">
-        <div className="w-16 h-16 flex items-center justify-center">
+        <div className="flex h-16 w-16 items-center justify-center">
           <img
             src={image.url}
-            alt={image.name || "Uploaded image"}
-            className="max-w-[64px] max-h-[64px] rounded-rounded"
+            alt={image.name || "Télécharger une image"}
+            className="max-h-[64px] max-w-[64px] rounded-rounded"
           />
         </div>
-        <div className="flex flex-col inter-small-regular text-left">
+        <div className="inter-small-regular flex flex-col text-left">
           <p>{image.name}</p>
           <p className="text-grey-50">
             {image.size ? `${(image.size / 1024).toFixed(2)} KB` : ""}

@@ -109,18 +109,18 @@ const ProductsFilter = ({
         triggerElement={
           <button
             className={clsx(
-              "flex rounded-rounded items-center space-x-1 focus-visible:outline-none focus-visible:shadow-input focus-visible:border-violet-60"
+              "flex items-center space-x-1 rounded-rounded focus-visible:border-violet-60 focus-visible:shadow-input focus-visible:outline-none"
             )}
           >
-            <div className="flex rounded-rounded items-center bg-grey-5 border border-grey-20 inter-small-semibold px-2 h-6">
+            <div className="inter-small-semibold flex h-6 items-center rounded-rounded border border-grey-20 bg-grey-5 px-2">
               Filters
-              <div className="text-grey-40 ml-1 flex items-center rounded">
-                <span className="text-violet-60 inter-small-semibold">
+              <div className="ml-1 flex items-center rounded text-grey-40">
+                <span className="inter-small-semibold text-violet-60">
                   {numberOfFilters ? numberOfFilters : "0"}
                 </span>
               </div>
             </div>
-            <div className="flex items-center rounded-rounded bg-grey-5 border border-grey-20 inter-small-semibold p-1">
+            <div className="inter-small-semibold flex items-center rounded-rounded border border-grey-20 bg-grey-5 p-1">
               <PlusIcon size={14} />
             </div>
           </button>
@@ -150,9 +150,9 @@ const ProductsFilter = ({
           open={tempState.collection.open}
           setFilter={(v) => setSingleFilter("collection", v)}
         />
-        <div className="flex flex-col w-full pb-2">
+        <div className="flex w-full flex-col pb-2">
           <div
-            className="flex w-full items-center px-3 mb-1 py-1.5 hover:bg-grey-5 rounded cursor-pointer"
+            className="mb-1 flex w-full cursor-pointer items-center rounded px-3 py-1.5 hover:bg-grey-5"
             onClick={() => {
               setSingleFilter("tags", {
                 open: !tempState.tags.open,
@@ -161,7 +161,7 @@ const ProductsFilter = ({
             }}
           >
             <div
-              className={`w-5 h-5 flex justify-center border-grey-30 border text-grey-0 rounded-base ${
+              className={`flex h-5 w-5 justify-center rounded-base border border-grey-30 text-grey-0 ${
                 tempState.tags.open && "bg-violet-60"
               }`}
             >
@@ -178,7 +178,7 @@ const ProductsFilter = ({
               />
             </div>
             <span
-              className={clsx("text-grey-90 ml-2", {
+              className={clsx("ml-2 text-grey-90", {
                 "inter-small-semibold": tempState.tags.open,
                 "inter-small-regular": !tempState.tags.open,
               })}
@@ -195,7 +195,7 @@ const ProductsFilter = ({
               <TagInput
                 className="pt-0 pb-1"
                 showLabel={false}
-                placeholder="Spring, summer..."
+                placeholder="Printemps, été..."
                 values={(tempState.tags.filter || [])
                   .map((t) => {
                     const found = (product_tags || []).find((pt) => pt.id === t)

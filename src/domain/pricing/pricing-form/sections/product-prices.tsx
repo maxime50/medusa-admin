@@ -38,10 +38,8 @@ const ProductPrices = ({
   onFileChosen,
 }: ProductPricesProps) => {
   const [showAdd, setShowAdd] = React.useState(false)
-  const [
-    selectedVariant,
-    setSelectedVariant,
-  ] = React.useState<ProductVariant | null>(null)
+  const [selectedVariant, setSelectedVariant] =
+    React.useState<ProductVariant | null>(null)
   const unselect = () => setSelectedVariant(null)
 
   const { prices, setPrices } = usePriceListForm()
@@ -62,14 +60,14 @@ const ProductPrices = ({
   const getVariantActions = (variant) => {
     return [
       {
-        label: "Edit prices",
+        label: "Modifier les prix",
         icon: <EditIcon />,
         onClick: () => {
           setSelectedVariant(variant)
         },
       },
       {
-        label: "Remove from list",
+        label: "Retirer de la liste",
         icon: <TrashIcon size={20} />,
         onClick: () => {
           // missing core support
@@ -103,7 +101,7 @@ const ProductPrices = ({
         {onSearch && (
           <div className="mb-2">
             <InputField
-              placeholder="Search by name or SKU..."
+              placeholder="Rechercher..."
               prefix={<SearchIcon />}
               onChange={onChange}
             />
@@ -131,7 +129,7 @@ const ProductPrices = ({
           onClick={() => setShowAdd(true)}
         >
           <PlusIcon />
-          Add Products Manually
+          Ajouter des produits manuellement
         </Button>
       </div>
 
@@ -163,7 +161,7 @@ const ProductPrices = ({
         <Modal open handleClose={unselect}>
           <Modal.Body>
             <Modal.Header handleClose={unselect}>
-              <h2 className="inter-xlarge-semibold">Edit Prices</h2>
+              <h2 className="inter-xlarge-semibold">Modifier les prix</h2>
             </Modal.Header>
 
             <PriceOverrides

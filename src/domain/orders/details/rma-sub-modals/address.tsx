@@ -36,9 +36,8 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
 }) => {
   const { pop } = useContext(LayeredModalContext)
 
-  const { register, handleSubmit, control, reset } = useForm<
-    RMAEditAddressSubModalFormData
-  >()
+  const { register, handleSubmit, control, reset } =
+    useForm<RMAEditAddressSubModalFormData>()
 
   const { region } = useAdminRegion(order.region_id)
 
@@ -77,52 +76,56 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
       <form onSubmit={handleSubmit(submit)}>
         <Modal.Content>
           <div className="h-full">
-            <h2 className="inter-base-semibold mb-4">Search for additional </h2>
+            <h2 className="inter-base-semibold mb-4">
+              Recherche d'informations supplémentaires
+            </h2>
           </div>
           <div>
             <div>
               <div>
-                <span className="inter-base-semibold">General</span>
+                <span className="inter-base-semibold">Général</span>
 
                 <div className="grid grid-cols-2 gap-x-base gap-y-base">
                   <Input
                     {...register("first_name", {
                       required: true,
                     })}
-                    placeholder="First Name"
-                    label="First Name"
+                    placeholder="Prénom"
+                    label="Prénom"
                     required
                   />
                   <Input
                     {...register("last_name", {
                       required: true,
                     })}
-                    placeholder="Last Name"
-                    label="Last Name"
+                    placeholder="Nom"
+                    label="Nom"
                     required
                   />
                   <Input
                     {...register("phone")}
-                    placeholder="Phone"
-                    label="Phone"
+                    placeholder="Téléphone"
+                    label="Téléphone"
                   />
                 </div>
               </div>
               <div className="mt-8">
-                <span className="inter-base-semibold">Shipping Address</span>
+                <span className="inter-base-semibold">
+                  Adresse de livraison
+                </span>
                 <div className="grid gap-y-base my-4">
                   <Input
                     {...register("address_1", {
                       required: true,
                     })}
-                    placeholder="Address 1"
-                    label="Address 1"
+                    placeholder="Adresse 1"
+                    label="Adresse 1"
                     required
                   />
                   <Input
                     {...register("address_2")}
-                    placeholder="Address 2"
-                    label="Address 2"
+                    placeholder="Adresse 2"
+                    label="Adresse 2"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-x-base gap-y-base">
@@ -135,13 +138,13 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
                     {...register("postal_code", {
                       required: true,
                     })}
-                    placeholder="Postal code"
-                    label="Postal code"
+                    placeholder="Code postal"
+                    label="Code postal"
                     required
                   />
                   <Input
-                    placeholder="City"
-                    label="City"
+                    placeholder="Ville"
+                    label="Ville"
                     {...register("city", {
                       required: true,
                     })}
@@ -157,7 +160,7 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
                       return (
                         <Select
                           {...field}
-                          label="Country"
+                          label="Pays"
                           options={countryOptions}
                           required
                         />
@@ -178,7 +181,7 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
               onClick={() => pop()}
               type="button"
             >
-              Back
+              Retour
             </Button>
             <Button
               variant="primary"
@@ -186,7 +189,7 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
               size="small"
               type="submit"
             >
-              Add
+              Ajouter
             </Button>
           </div>
         </Modal.Footer>

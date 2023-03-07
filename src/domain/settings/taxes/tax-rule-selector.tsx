@@ -81,20 +81,20 @@ const TaxRuleSelector: React.FC<TaxRuleSelectorProps> = ({
               >
                 <RadioGroup.Item
                   className="flex-1"
-                  label={"Products"}
-                  description={"Select individual products"}
+                  label={"Produits"}
+                  description={"Sélectionner des produits"}
                   value={TaxRuleType.PRODUCTS}
                 />
                 <RadioGroup.Item
                   className="flex-1"
-                  label={"Product Types"}
-                  description={"Select product types"}
+                  label={"Types de produits"}
+                  description={"Sélectionner les types de produits"}
                   value={TaxRuleType.PRODUCT_TYPES}
                 />
                 <RadioGroup.Item
                   className="flex-1"
-                  label={"Shipping Options"}
-                  description={"Select shipping options"}
+                  label={"Options de livraison"}
+                  description={"Sélectionner les options de livraison"}
                   value={TaxRuleType.SHIPPING_OPTIONS}
                 />
               </RadioGroup.Root>
@@ -129,7 +129,7 @@ const TaxRuleSelector: React.FC<TaxRuleSelectorProps> = ({
             className="w-[112px]"
             onClick={() => pop()}
           >
-            Back
+            Retour
           </Button>
           <Button
             variant="primary"
@@ -137,7 +137,7 @@ const TaxRuleSelector: React.FC<TaxRuleSelectorProps> = ({
             size="small"
             onClick={handleSubmit}
           >
-            Add
+            Ajouter
           </Button>
         </div>
       </Modal.Footer>

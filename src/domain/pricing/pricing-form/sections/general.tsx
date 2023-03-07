@@ -13,27 +13,27 @@ const General = () => {
     <Accordion.Item
       forceMountContent
       required
-      title="General"
-      tooltip="General information for the price list."
+      title="Général"
+      tooltip="Informations générales pour la liste de prix."
       value="general"
     >
-      <div className="flex flex-col gap-y-small group-radix-state-open:mt-5 accordion-margin-transition">
+      <div className="accordion-margin-transition flex flex-col gap-y-small group-radix-state-open:mt-5">
         <InputField
-          label="Name"
+          label="Nom"
           required
           placeholder="B2B, Black Friday..."
-          {...register("name", { required: "Name is required" })}
+          {...register("name", { required: "Nom requis" })}
         />
         <InputField
           label="Description"
           required
-          placeholder="For our business partners..."
-          {...register("description", { required: "Description is required" })}
+          placeholder="Pour nos partenaires commerciaux..."
+          {...register("description", { required: "Description requise" })}
         />
         <FeatureToggle featureFlag="tax_inclusive_pricing">
           <div className="mt-3">
             <div className="flex justify-between">
-              <h2 className="inter-base-semibold">Tax inclusive prices</h2>
+              <h2 className="inter-base-semibold">Prix taxes incluses</h2>
               <Controller
                 control={control}
                 name="includes_tax"
@@ -43,7 +43,7 @@ const General = () => {
               />
             </div>
             <p className="inter-base-regular text-grey-50">
-              Choose to make all prices in this list inclusive of tax.
+              Choisissez de rendre tous les prix taxes incluses de cette liste.
             </p>
           </div>
         </FeatureToggle>

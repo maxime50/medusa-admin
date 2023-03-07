@@ -61,9 +61,9 @@ const EditVariantScreen = ({ variant, product }: Props) => {
           <EditFlowVariantForm form={form} />
         </Modal.Content>
         <Modal.Footer>
-          <div className="flex items-center w-full justify-end gap-x-xsmall">
+          <div className="flex w-full items-center justify-end gap-x-xsmall">
             <Button variant="secondary" size="small" type="button">
-              Cancel
+              Annuler
             </Button>
             <Button
               variant="primary"
@@ -73,7 +73,7 @@ const EditVariantScreen = ({ variant, product }: Props) => {
               loading={updatingVariant}
               onClick={onSubmitAndBack}
             >
-              Save and go back
+              Sauvegarder et retourner en arrière
             </Button>
             <Button
               variant="primary"
@@ -83,7 +83,7 @@ const EditVariantScreen = ({ variant, product }: Props) => {
               loading={updatingVariant}
               onClick={onSubmitAndClose}
             >
-              Save and close
+              Sauvegarder et fermer
             </Button>
           </div>
         </Modal.Footer>
@@ -133,7 +133,7 @@ export const useEditVariantScreen = (props: Props) => {
 
   const screen = useMemo(() => {
     return {
-      title: "Edit Variant",
+      title: "Modifier la variante",
       subtitle: props.variant.title,
       onBack: pop,
       view: <EditVariantScreen {...props} />,

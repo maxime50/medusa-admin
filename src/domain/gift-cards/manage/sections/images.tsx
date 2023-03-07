@@ -36,7 +36,10 @@ const Images = () => {
   }
 
   return (
-    <BodyCard title="Images" subtitle="Add up to 10 images to your product">
+    <BodyCard
+      title="Images"
+      subtitle="Ajoutez jusqu'à 10 images à votre produit"
+    >
       <div className="mt-base">
         <Controller
           name="thumbnail"
@@ -93,7 +96,7 @@ const Images = () => {
       <div className="mt-2xlarge">
         <FileUploadField
           onFileChosen={handleFilesChosen}
-          placeholder="1200 x 1600 (3:4) recommended, up to 10MB each"
+          placeholder="1200 x 1600 (3:4) recommandée, 10MB maximum"
           filetypes={["image/gif", "image/jpeg", "image/png", "image/webp"]}
           className="py-large"
         />

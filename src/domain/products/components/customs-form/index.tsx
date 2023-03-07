@@ -38,18 +38,18 @@ const CustomsForm = ({ form }: CustomsFormProps) => {
   return (
     <div className="grid grid-cols-2 gap-large pb-2xsmall">
       <InputField
-        label="MID Code"
+        label="Code MID"
         placeholder="XDSKLAD9999..."
         {...register(path("mid_code"), {
-          pattern: FormValidator.whiteSpaceRule("MID Code"),
+          pattern: FormValidator.whiteSpaceRule("Code MID"),
         })}
         errors={errors}
       />
       <InputField
-        label="HS Code"
+        label="Code HS"
         placeholder="BDJSK39277W..."
         {...register(path("hs_code"), {
-          pattern: FormValidator.whiteSpaceRule("HS Code"),
+          pattern: FormValidator.whiteSpaceRule("Code HS"),
         })}
         errors={errors}
       />
@@ -59,8 +59,8 @@ const CustomsForm = ({ form }: CustomsFormProps) => {
         render={({ field }) => {
           return (
             <NextSelect
-              label="Country of origin"
-              placeholder="Choose a country"
+              label="Pays d'origine"
+              placeholder="Choisir un pays"
               options={countryOptions}
               isSearchable
               isClearable

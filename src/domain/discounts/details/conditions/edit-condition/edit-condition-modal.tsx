@@ -49,19 +49,20 @@ const EditConditionsModal = ({ open, condition, discount, onClose }: Props) => {
         <Modal.Body>
           <Modal.Header handleClose={onClose}>
             <h1 className="inter-xlarge-semibold">
-              Edit {capitalize(getTitle(condition?.type))} in Discount Condition
+              Modifier {capitalize(getTitle(condition?.type))} dans la condition
+              de rabais
             </h1>
           </Modal.Header>
           {renderModalContext()}
           <Modal.Footer>
-            <div className="flex items-center justify-end w-full">
+            <div className="flex w-full items-center justify-end">
               <Button
                 variant="primary"
                 size="small"
                 type="button"
                 onClick={onClose}
               >
-                Close
+                Fermer
               </Button>
             </div>
           </Modal.Footer>

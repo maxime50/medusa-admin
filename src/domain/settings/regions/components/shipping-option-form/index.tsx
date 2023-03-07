@@ -50,7 +50,9 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
       <div>
         <div className="flex flex-col gap-y-2xsmall">
           <div className="flex items-center justify-between">
-            <h3 className="inter-base-semibold mb-2xsmall">Visible in store</h3>
+            <h3 className="inter-base-semibold mb-2xsmall">
+              Visible dans la boutique
+            </h3>
             <Controller
               control={control}
               name={"store_option"}
@@ -60,21 +62,22 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
             />
           </div>
           <p className="inter-base-regular text-grey-50">
-            Enable or disable the shipping option visiblity in store.
+            Activer ou désactiver la visibilité de l'option de livraison dans la
+            boutique.
           </p>
         </div>
       </div>
-      <div className="h-px w-full bg-grey-20 my-xlarge" />
+      <div className="my-xlarge h-px w-full bg-grey-20" />
       <div>
-        <h3 className="inter-base-semibold mb-base">Details</h3>
+        <h3 className="inter-base-semibold mb-base">Détails</h3>
         <div className="grid grid-cols-2 gap-large">
           <InputField
-            label="Title"
+            label="Titre"
             required
             {...register("name", {
-              required: "Title is required",
-              pattern: FormValidator.whiteSpaceRule("Title"),
-              minLength: FormValidator.minOneCharRule("Title"),
+              required: "Titre requis",
+              pattern: FormValidator.whiteSpaceRule("Titre"),
+              minLength: FormValidator.minOneCharRule("Titre"),
             })}
             errors={errors}
           />
@@ -85,22 +88,22 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
               render={({ field: { onChange, value, onBlur } }) => {
                 return (
                   <NextSelect
-                    label="Price Type"
+                    label="Type de prix"
                     required
                     value={value}
                     onChange={onChange}
                     onBlur={onBlur}
                     options={[
                       {
-                        label: "Flat Rate",
+                        label: "Taux fixe",
                         value: "flat_rate",
                       },
                       {
-                        label: "Calculated",
+                        label: "Calculé",
                         value: "calculated",
                       },
                     ]}
-                    placeholder="Choose a price type"
+                    placeholder="Choisir un type de prix"
                     errors={errors}
                   />
                 )
@@ -111,14 +114,14 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
                 control={control}
                 name="amount"
                 rules={{
-                  min: FormValidator.nonNegativeNumberRule("Price"),
-                  max: FormValidator.maxInteger("Price", region.currency_code),
+                  min: FormValidator.nonNegativeNumberRule("Prix"),
+                  max: FormValidator.maxInteger("Prix", region.currency_code),
                 }}
                 render={({ field: { value, onChange } }) => {
                   return (
                     <div>
                       <InputHeader
-                        label="Price"
+                        label="Prix"
                         className="mb-2xsmall"
                         tooltip={
                           <IncludesTaxTooltip
@@ -148,10 +151,10 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
                 render={({ field }) => {
                   return (
                     <NextSelect
-                      label="Shipping Profile"
+                      label="Profil d'expédition"
                       required
                       options={shippingProfileOptions}
-                      placeholder="Choose a shipping profile"
+                      placeholder="Choisir un profil d'expédition"
                       {...field}
                       errors={errors}
                     />
@@ -164,9 +167,9 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
                 render={({ field }) => {
                   return (
                     <NextSelect
-                      label="Fulfillment Method"
+                      label="Service de paiement"
                       required
-                      placeholder="Choose a fulfillment method"
+                      placeholder="Choisir un service de paiement"
                       options={fulfillmentOptions}
                       {...field}
                       errors={errors}
@@ -178,17 +181,17 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
           )}
         </div>
       </div>
-      <div className="h-px w-full bg-grey-20 my-xlarge" />
+      <div className="my-xlarge h-px w-full bg-grey-20" />
       <div>
-        <h3 className="inter-base-semibold mb-base">Requirements</h3>
+        <h3 className="inter-base-semibold mb-base">Conditions</h3>
         <div className="grid grid-cols-2 gap-large">
           <Controller
             control={control}
             name="requirements.min_subtotal.amount"
             rules={{
-              min: FormValidator.nonNegativeNumberRule("Min. subtotal"),
+              min: FormValidator.nonNegativeNumberRule("Sous-total minimum"),
               max: FormValidator.maxInteger(
-                "Min. subtotal",
+                "Sous-total minimum",
                 region.currency_code
               ),
               validate: (value) => {
@@ -200,7 +203,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
                   "requirements.max_subtotal.amount"
                 )
                 if (maxSubtotal && value > maxSubtotal) {
-                  return "Min. subtotal must be less than max. subtotal"
+                  return "Le sous-total minimum doit être inférieur au sous-total maximum."
                 }
                 return true
               },
@@ -209,7 +212,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
               return (
                 <div>
                   <InputHeader
-                    label="Min. subtotal"
+                    label="Sous-total minimum"
                     className="mb-xsmall"
                     tooltip={
                       <IncludesTaxTooltip includesTax={region.includes_tax} />
@@ -230,9 +233,9 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
             control={control}
             name="requirements.max_subtotal.amount"
             rules={{
-              min: FormValidator.nonNegativeNumberRule("Max. subtotal"),
+              min: FormValidator.nonNegativeNumberRule("Sous-total maximum"),
               max: FormValidator.maxInteger(
-                "Max. subtotal",
+                "Sous-total maximum",
                 region.currency_code
               ),
               validate: (value) => {
@@ -253,7 +256,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
               return (
                 <div ref={ref}>
                   <InputHeader
-                    label="Max. subtotal"
+                    label="Sous-total maximum"
                     className="mb-xsmall"
                     tooltip={
                       <IncludesTaxTooltip includesTax={region.includes_tax} />

@@ -63,9 +63,9 @@ const CreateFulfillmentItemsTable = ({
   return (
     <Table>
       <Table.HeadRow className="text-grey-50 inter-small-semibold border-t border-t-grey-20">
-        <Table.HeadCell>Details</Table.HeadCell>
+        <Table.HeadCell>Détails</Table.HeadCell>
         <Table.HeadCell />
-        <Table.HeadCell className="text-right pr-8">Quantity</Table.HeadCell>
+        <Table.HeadCell className="text-right pr-8">Quantité</Table.HeadCell>
       </Table.HeadRow>
       <Table.Body>
         {items

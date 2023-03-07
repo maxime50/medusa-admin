@@ -19,17 +19,18 @@ const UsageInsights = ({ user }: Props) => {
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-y-2xsmall">
           <div className="flex items-center gap-x-xsmall">
-            <h2 className="inter-base-semibold">Usage insights</h2>
+            <h2 className="inter-base-semibold">Aperçu d'utilisation</h2>
             {isLoading ? (
-              <div className="badge bg-grey-10 animate-pulse w-16 h-large" />
+              <div className="badge h-large w-16 animate-pulse bg-grey-10" />
             ) : !analytics_config || analytics_config?.opt_out ? (
-              <Badge variant="disabled">Disabled</Badge>
+              <Badge variant="disabled">Désactivé</Badge>
             ) : (
-              <Badge variant="success">Active</Badge>
+              <Badge variant="success">Activé</Badge>
             )}
           </div>
           <p className="inter-base-regular text-grey-50">
-            Share usage insights and help us improve Medusa
+            Partager des informations sur l'utilisation et nous aider à
+            améliorer Bijoux Tendances
           </p>
         </div>
         <Button
@@ -38,7 +39,7 @@ const UsageInsights = ({ user }: Props) => {
           onClick={toggle}
           disabled={!analytics_config}
         >
-          Edit preferences
+          Modifier les préférences
         </Button>
       </div>
       {analytics_config && user && (

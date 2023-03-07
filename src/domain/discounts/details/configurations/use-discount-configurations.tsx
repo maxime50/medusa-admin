@@ -17,9 +17,9 @@ type displaySetting = {
 }
 
 const DisplaySettingsDateDescription = ({ date }: { date: Date }) => (
-  <div className="flex text-grey-50 inter-small-regular ">
+  <div className="inter-small-regular flex text-grey-50 ">
     {moment.utc(date).format("ddd, DD MMM YYYY")}
-    <span className="flex items-center ml-3">
+    <span className="ml-3 flex items-center">
       <ClockIcon size={16} />
       <span className="ml-2.5">{moment.utc(date).format("UTC HH:mm")}</span>
     </span>
@@ -27,7 +27,7 @@ const DisplaySettingsDateDescription = ({ date }: { date: Date }) => (
 )
 
 const CommonDescription = ({ text }) => (
-  <span className="text-grey-50 inter-small-regular">{text}</span>
+  <span className="inter-small-regular text-grey-50">{text}</span>
 )
 
 const useDiscountConfigurations = (discount: Discount) => {
@@ -37,17 +37,17 @@ const useDiscountConfigurations = (discount: Discount) => {
   const conditions: displaySetting[] = []
 
   conditions.push({
-    title: "Start date",
+    title: "Date de début",
     description: <DisplaySettingsDateDescription date={discount.starts_at} />,
   })
 
   if (discount.ends_at) {
     conditions.push({
-      title: "End date",
+      title: "Date de fin",
       description: <DisplaySettingsDateDescription date={discount.ends_at} />,
       actions: [
         {
-          label: "Delete configuration",
+          label: "Supprimer la configuration",
           icon: <TrashIcon size={20} />,
           variant: "danger",
           onClick: async () =>
@@ -56,13 +56,13 @@ const useDiscountConfigurations = (discount: Discount) => {
               {
                 onSuccess: () => {
                   notification(
-                    "Success",
-                    "Discount end date removed",
+                    "Succès",
+                    "Date de fin du rabais supprimée",
                     "success"
                   )
                 },
                 onError: (error) => {
-                  notification("Error", getErrorMessage(error), "error")
+                  notification("Erreur", getErrorMessage(error), "error")
                 },
               }
             ),
@@ -72,13 +72,13 @@ const useDiscountConfigurations = (discount: Discount) => {
   }
   if (discount.usage_limit) {
     conditions.push({
-      title: "Number of redemptions",
+      title: "Nombre d'utilisations",
       description: (
         <CommonDescription text={discount.usage_limit.toLocaleString("en")} />
       ),
       actions: [
         {
-          label: "Delete configuration",
+          label: "Supprimer la configuration",
           icon: <TrashIcon size={20} />,
           variant: "danger",
           onClick: async () =>
@@ -86,10 +86,14 @@ const useDiscountConfigurations = (discount: Discount) => {
               { usage_limit: null },
               {
                 onSuccess: () => {
-                  notification("Success", "Redemption limit removed", "success")
+                  notification(
+                    "Succès",
+                    "Limite de nombre d'utilisation supprimée",
+                    "success"
+                  )
                 },
                 onError: (error) => {
-                  notification("Error", getErrorMessage(error), "error")
+                  notification("Erreur", getErrorMessage(error), "error")
                 },
               }
             ),
@@ -109,7 +113,7 @@ const useDiscountConfigurations = (discount: Discount) => {
       ),
       actions: [
         {
-          label: "Delete setting",
+          label: "Supprimer le paramètre",
           icon: <TrashIcon size={20} />,
           variant: "danger",
           onClick: async () =>
@@ -117,14 +121,10 @@ const useDiscountConfigurations = (discount: Discount) => {
               { valid_duration: null },
               {
                 onSuccess: () => {
-                  notification(
-                    "Success",
-                    "Discount duration removed",
-                    "success"
-                  )
+                  notification("Succès", "Durée du rabais supprimée", "success")
                 },
                 onError: (error) => {
-                  notification("Error", getErrorMessage(error), "error")
+                  notification("Erreur", getErrorMessage(error), "error")
                 },
               }
             ),

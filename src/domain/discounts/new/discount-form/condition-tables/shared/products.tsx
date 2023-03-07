@@ -58,19 +58,19 @@ export const useProductColumns = () => {
     return [
       {
         Header: () => (
-          <div className="flex items-center gap-1 min-w-[443px]">
-            Title <SortingIcon size={16} />
+          <div className="flex min-w-[443px] items-center gap-1">
+            Titre <SortingIcon size={16} />
           </div>
         ),
         accessor: "title",
         Cell: ({ row: { original } }) => {
           return (
             <div className="flex items-center">
-              <div className="h-[40px] w-[30px] my-1.5 flex items-center mr-4">
+              <div className="my-1.5 mr-4 flex h-[40px] w-[30px] items-center">
                 {original.thumbnail ? (
                   <img
                     src={original.thumbnail}
-                    className="h-full object-cover rounded-soft"
+                    className="h-full rounded-soft object-cover"
                   />
                 ) : (
                   <ImagePlaceholder />
@@ -101,8 +101,8 @@ export const useProductColumns = () => {
       },
       {
         Header: () => (
-          <div className="flex justify-end items-center gap-1">
-            Variants <SortingIcon size={16} />
+          <div className="flex items-center justify-end gap-1">
+            Variantes <SortingIcon size={16} />
           </div>
         ),
         id: "variants",

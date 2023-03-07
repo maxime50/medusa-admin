@@ -65,7 +65,7 @@ function AddScreen(props: {
       })),
     })
       .then(() => {
-        notification("Success", "Sales channels added to the scope", "success")
+        notification("Succès", "Sales channels added to the scope", "success")
       })
       .catch(() => {
         notification(

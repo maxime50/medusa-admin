@@ -20,35 +20,35 @@ export const PaymentDetails = ({
         <DisplayTotal
           currency={currency}
           totalAmount={swapAmount}
-          totalTitle={"Total for Swaps"}
+          totalTitle={"Total pour les échanges"}
         />
       )}
       {!!swapRefund && (
         <DisplayTotal
           currency={currency}
           totalAmount={returnRefund}
-          totalTitle={"Refunded for Swaps"}
+          totalTitle={"Remboursé pour les échanges"}
         />
       )}
       {!!returnRefund && (
         <DisplayTotal
           currency={currency}
           totalAmount={returnRefund}
-          totalTitle={"Refunded for Returns"}
+          totalTitle={"Remboursé pour les retours"}
         />
       )}
       {!!manualRefund && (
         <DisplayTotal
           currency={currency}
           totalAmount={manualRefund}
-          totalTitle={"Manually refunded"}
+          totalTitle={"Remboursé manuellement"}
         />
       )}
       <DisplayTotal
         variant={"bold"}
         currency={currency}
         totalAmount={paidTotal - refundedTotal}
-        totalTitle={"Net Total"}
+        totalTitle={"Total Net"}
       />
     </>
   )

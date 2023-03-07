@@ -72,11 +72,11 @@ const EditTaxRate = ({
 
     mutate(toSubmit, {
       onSuccess: () => {
-        notification("Success", "Successfully updated Tax Rate.", "success")
+        notification("Succès", "Taux de taxe mis à jour avec succès", "success")
         onDismiss()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   })
@@ -144,8 +144,8 @@ const EditTaxRate = ({
                     )
                   }}
                   index={1}
-                  name="Product Rules"
-                  description={`Applies to ${products.length} product${
+                  name="Règles applicalbes aux produits"
+                  description={`S'applique à ${products.length} produit${
                     products.length > 1 ? "s" : ""
                   }`}
                 />
@@ -172,10 +172,10 @@ const EditTaxRate = ({
                     )
                   }}
                   index={2}
-                  name="Product Type Rules"
-                  description={`Applies to ${
+                  name="Type de règles de produit"
+                  description={`S'applique à ${
                     product_types.length
-                  } product type${product_types.length > 1 ? "s" : ""}`}
+                  } type de produit${product_types.length > 1 ? "s" : ""}`}
                 />
               )}
               {shipping_options.length > 0 && (
@@ -200,10 +200,10 @@ const EditTaxRate = ({
                     )
                   }}
                   index={3}
-                  name="Shipping Option Rules"
-                  description={`Applies to ${
-                    shipping_options.length
-                  } shipping option${shipping_options.length > 1 ? "s" : ""}`}
+                  name="Règles applicables aux options de livraison"
+                  description={`S'applique à ${shipping_options.length} option${
+                    shipping_options.length > 1 ? "s" : ""
+                  } de livraison`}
                 />
               )}
             </div>
@@ -224,17 +224,17 @@ const EditTaxRate = ({
                   )
                 )
               }}
-              className="w-full mt-base"
+              className="mt-base w-full"
               size="medium"
               variant="secondary"
             >
-              <PlusIcon /> Add Overrides
+              <PlusIcon /> Ajouter Overrides
             </Button>
           )}
         </div>
       </Modal.Content>
       <Modal.Footer>
-        <div className="flex items-center justify-end w-full">
+        <div className="flex w-full items-center justify-end">
           <Button
             type="button"
             onClick={onDismiss}
@@ -242,7 +242,7 @@ const EditTaxRate = ({
             size="small"
             className="w-eventButton justify-center"
           >
-            Cancel
+            Annuler
           </Button>
           <Button
             type="submit"
@@ -252,7 +252,7 @@ const EditTaxRate = ({
             loading={isLoading}
             disabled={isLoading}
           >
-            Save
+            Sauvegarder
           </Button>
         </div>
       </Modal.Footer>
@@ -267,7 +267,7 @@ const SelectOverridesScreen = (
   options = {}
 ) => {
   return {
-    title: "Add override",
+    title: "Ajouter l'override",
     onBack: () => pop(),
     view: (
       <TaxRuleSelector
@@ -310,11 +310,15 @@ export const SimpleEditForm = ({ onDismiss, taxRate }: SimpleEditFormProps) => {
     }
     mutate(toSubmit, {
       onSuccess: () => {
-        notification("Success", "Successfully updated default rate.", "success")
+        notification(
+          "Succès",
+          "Taux de taxe par défaut mis à jour avec succès",
+          "success"
+        )
         onDismiss()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   }
@@ -325,7 +329,7 @@ export const SimpleEditForm = ({ onDismiss, taxRate }: SimpleEditFormProps) => {
         <EditTaxRateDetails form={nestedForm(form, "details")} lockName />
       </Modal.Content>
       <Modal.Footer>
-        <div className="flex items-center justify-end w-full">
+        <div className="flex w-full items-center justify-end">
           <Button
             type="button"
             onClick={onDismiss}
@@ -333,7 +337,7 @@ export const SimpleEditForm = ({ onDismiss, taxRate }: SimpleEditFormProps) => {
             size="small"
             className="w-eventButton justify-center"
           >
-            Cancel
+            Annuler
           </Button>
           <Button
             type="submit"
@@ -342,7 +346,7 @@ export const SimpleEditForm = ({ onDismiss, taxRate }: SimpleEditFormProps) => {
             className="w-eventButton justify-center"
             loading={isLoading}
           >
-            Save
+            Sauvegarder
           </Button>
         </div>
       </Modal.Footer>

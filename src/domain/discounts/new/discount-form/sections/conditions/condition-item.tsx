@@ -162,20 +162,20 @@ const ConditionItem = <Type extends DiscountConditionType>({
 
   return (
     <div>
-      <div className="p-base border rounded-rounded flex gap-base justify-between items-center">
-        <div className="flex overflow-hidden gap-base w-full">
+      <div className="flex items-center justify-between gap-base rounded-rounded border p-base">
+        <div className="flex w-full gap-base overflow-hidden">
           <div>
             <Badge
-              className="inter-base-semibold flex justify-center items-center w-[40px] h-[40px]"
+              className="inter-base-semibold flex h-[40px] w-[40px] items-center justify-center"
               variant="default"
             >
               §{index + 1}
             </Badge>
           </div>
-          <div className="truncate flex flex-col justify-center flex-1 w-full">
+          <div className="flex w-full flex-1 flex-col justify-center truncate">
             <div className="inter-small-semibold">{getTitle(type)}</div>
-            <div className="w-full flex items-center inter-small-regular gap-x-xsmall flex-1">
-              <div className="gap-x-2xsmall text-grey-50 flex items-center w-full inter-small-regular flex-1">
+            <div className="inter-small-regular flex w-full flex-1 items-center gap-x-xsmall">
+              <div className="inter-small-regular flex w-full flex-1 items-center gap-x-2xsmall text-grey-50">
                 {visibleItems.map((item, i) => {
                   return (
                     <span key={i}>
@@ -186,7 +186,7 @@ const ConditionItem = <Type extends DiscountConditionType>({
                   )
                 })}
                 {remainder > 0 && (
-                  <span className="text-grey-40 ml-2">+{remainder} more</span>
+                  <span className="ml-2 text-grey-40">+{remainder}</span>
                 )}
               </div>
             </div>
@@ -197,12 +197,12 @@ const ConditionItem = <Type extends DiscountConditionType>({
             forceDropdown
             actions={[
               {
-                label: "Edit",
+                label: "Modifier",
                 onClick: () => setShowEdit(true),
                 icon: <EditIcon size={16} />,
               },
               {
-                label: "Delete condition",
+                label: "Supprimer la condition",
                 onClick: () =>
                   updateCondition({
                     type,
@@ -226,13 +226,13 @@ const ConditionItem = <Type extends DiscountConditionType>({
 const getTitle = (type: DiscountConditionType) => {
   switch (type) {
     case DiscountConditionType.PRODUCTS:
-      return "Product"
+      return "Produit"
     case DiscountConditionType.PRODUCT_COLLECTIONS:
       return "Collection"
     case DiscountConditionType.PRODUCT_TAGS:
       return "Tag"
     case DiscountConditionType.CUSTOMER_GROUPS:
-      return "Customer group"
+      return "Groupe de client"
     case DiscountConditionType.PRODUCT_TYPES:
       return "Type"
   }

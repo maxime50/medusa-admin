@@ -15,10 +15,10 @@ import { PollingContext } from "../../context/polling"
 import Details from "./details"
 import { transformFiltersAsExportContext } from "./utils"
 
-const VIEWS = ["orders", "drafts"]
+const VIEWS = ["Commandes", "Brouillons"]
 
 const OrderIndex = () => {
-  const view = "orders"
+  const view = "Commandes"
 
   const { resetInterval } = useContext(PollingContext)
   const navigate = useNavigate()
@@ -42,7 +42,7 @@ const OrderIndex = () => {
         onClick={() => openExportModal()}
       >
         <ExportIcon size={20} />
-        Export Orders
+        Exporter
       </Button>,
     ]
   }, [view])
@@ -59,10 +59,10 @@ const OrderIndex = () => {
     createBatchJob.mutate(reqObj, {
       onSuccess: () => {
         resetInterval()
-        notification("Success", "Successfully initiated export", "success")
+        notification("Succès", "Exportation établie avec succès", "success")
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Erreur", getErrorMessage(err), "error")
       },
     })
 
@@ -71,14 +71,14 @@ const OrderIndex = () => {
 
   return (
     <>
-      <div className="flex flex-col grow h-full">
-        <div className="w-full flex flex-col grow">
+      <div className="flex h-full grow flex-col">
+        <div className="flex w-full grow flex-col">
           <BodyCard
             customHeader={
               <TableViewHeader
                 views={VIEWS}
                 setActiveView={(v) => {
-                  if (v === "drafts") {
+                  if (v === "Brouillons") {
                     navigate(`/a/draft-orders`)
                   }
                 }}
@@ -94,7 +94,7 @@ const OrderIndex = () => {
       </div>
       {exportModalOpen && (
         <ExportModal
-          title="Export Orders"
+          title="Exporter les commandes"
           handleClose={() => closeExportModal()}
           onSubmit={handleCreateExport}
           loading={createBatchJob.isLoading}

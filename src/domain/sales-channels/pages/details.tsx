@@ -41,14 +41,14 @@ function ListIndicator(props: ListIndicatorProps) {
   return (
     <div
       className={clsx(
-        "flex justify-center items-center flex-shrink-0 w-[18px] h-[18px] bg-white border rounded-circle",
+        "flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-circle border bg-white",
         {
           "border-2 border-violet-60": isActive,
         }
       )}
     >
       {isActive && (
-        <div className="w-[10px] h-[10px] bg-violet-60 rounded-circle" />
+        <div className="h-[10px] w-[10px] rounded-circle bg-violet-60" />
       )}
     </div>
   )
@@ -61,13 +61,13 @@ function DisabledLabel() {
   return (
     <div
       className="
-      w-[54px] h-[28px]
-      rounded-xl
-      bg-grey-10
-      flex items-center justify-center
-      text-grey-50 text-small font-semibold"
+      flex h-[28px]
+      w-[54px]
+      items-center
+      justify-center rounded-xl bg-grey-10
+      text-small font-semibold text-grey-50"
     >
-      Draft
+      Brouillon
     </div>
   )
 }
@@ -89,7 +89,7 @@ function SalesChannelTile(props: SalesChannelTileProps) {
     <div
       onClick={onClick}
       className={clsx(
-        "mb-2 p-4 cursor-pointer rounded-lg border flex justify-between h-[83px]",
+        "mb-2 flex h-[83px] cursor-pointer justify-between rounded-lg border p-4",
         {
           "border-2 border-violet-60": isSelected,
         }
@@ -110,7 +110,7 @@ function SalesChannelTile(props: SalesChannelTileProps) {
         </div>
       </div>
       {isDisabled && (
-        <div className="flex flex-col justify-center flex-shrink-0">
+        <div className="flex flex-shrink-0 flex-col justify-center">
           <DisabledLabel />
         </div>
       )}
@@ -144,12 +144,12 @@ function SalesChannelsHeader(props: SalesChannelsHeaderProps) {
   }
 
   return (
-    <div className="h-[55px] mb-6 overflow-hidden">
+    <div className="mb-6 h-[55px] overflow-hidden">
       <div className={clsx("transition-all duration-200", classes)}>
         <div className="h-[55px]">
-          <div className="flex items-center justify-between mb-1">
-            <h2 className="font-semibold text-xlarge text-grey-90">
-              Sales channels
+          <div className="mb-1 flex items-center justify-between">
+            <h2 className="text-xlarge font-semibold text-grey-90">
+              Canaux de ventes
             </h2>
             <div className="flex items-center justify-between gap-4">
               <SearchIcon
@@ -164,19 +164,19 @@ function SalesChannelsHeader(props: SalesChannelsHeaderProps) {
               />
             </div>
           </div>
-          <div className="text-grey-50 text-small mb-6 block overflow-hidden truncate max-w-[100%]">
-            Control which products are available in which channels
+          <div className="mb-6 block max-w-[100%] overflow-hidden truncate text-small text-grey-50">
+            Contrôler quels produits sont disponibles dans quels canaux
           </div>
         </div>
 
-        <div className="h-[40px] my-[5px] w-full flex items-center justify-around gap-2 text-grey-40 bg-grey-5 px-4 rounded-xl border">
+        <div className="my-[5px] flex h-[40px] w-full items-center justify-around gap-2 rounded-xl border bg-grey-5 px-4 text-grey-40">
           <SearchIcon size={20} />
           <input
             ref={inputRef}
             value={filterText}
             onChange={(e) => setFilterText(e.target.value)}
-            placeholder="Search by title or description"
-            className="w-full font-normal outline-none bg-inherit outline-0 remove-number-spinner leading-base text-grey-90 caret-violet-60 placeholder-grey-40"
+            placeholder="Rechercher par titre ou description"
+            className="remove-number-spinner w-full bg-inherit font-normal leading-base text-grey-90 placeholder-grey-40 caret-violet-60 outline-none outline-0"
             onBlur={() => setShowFilter(!!filterText)}
             autoComplete="off"
           />
@@ -210,7 +210,7 @@ function SalesChannelsList(props: SalesChannelsListProps) {
   } = props
 
   return (
-    <div className="col-span-1 rounded-lg border bg-grey-0 border-grey-20 px-8 py-6 h-[968px]">
+    <div className="col-span-1 h-[968px] rounded-lg border border-grey-20 bg-grey-0 px-8 py-6">
       <SalesChannelsHeader
         filterText={filterText}
         setFilterText={setFilterText}
@@ -277,12 +277,12 @@ function SalesChannelDetailsHeader(props: SalesChannelDetailsHeaderProps) {
   const actions = useMemo(() => {
     const _actions: ActionType[] = [
       {
-        label: "Edit general info",
+        label: "Modifier les informations générales",
         icon: <EditIcon size="20" />,
         onClick: openUpdateModal,
       },
       {
-        label: "Add products",
+        label: "Ajouter des produits",
         icon: <PlusIcon />,
         onClick: () => showProductsAdd(),
       },
@@ -290,7 +290,7 @@ function SalesChannelDetailsHeader(props: SalesChannelDetailsHeaderProps) {
 
     if (!isDefault) {
       _actions.push({
-        label: "Delete channel",
+        label: "Supprimer le canal de vente",
         icon: <TrashIcon size={20} />,
         variant: "danger",
         onClick: onDelete,
@@ -302,7 +302,7 @@ function SalesChannelDetailsHeader(props: SalesChannelDetailsHeaderProps) {
 
   return (
     <div className="flex items-center justify-between">
-      <h2 className="mb-4 font-semibold text-xlarge text-grey-90">
+      <h2 className="mb-4 text-xlarge font-semibold text-grey-90">
         {salesChannel.name}
       </h2>
       <div className="flex items-center justify-between gap-4">
@@ -311,8 +311,8 @@ function SalesChannelDetailsHeader(props: SalesChannelDetailsHeaderProps) {
             updateSalesChannel({ is_disabled: !salesChannel.is_disabled })
           }
           isDraft={salesChannel.is_disabled}
-          draftState="Disabled"
-          activeState="Enabled"
+          draftState="Désactivé"
+          activeState="Activé"
         />
         <Actionables forceDropdown={true} actions={actions} />
       </div>
@@ -338,7 +338,7 @@ function SalesChannelDetails(props: SalesChannelDetailsProps) {
     useToggleState(false)
 
   return (
-    <div className="col-span-2 rounded-rounded border bg-grey-0 border-grey-20 px-8 py-6 h-[968px]">
+    <div className="col-span-2 h-[968px] rounded-rounded border border-grey-20 bg-grey-0 px-8 py-6">
       <SalesChannelDetailsHeader
         isDefault={isDefault}
         resetDetails={resetDetails}
@@ -450,8 +450,8 @@ function Details() {
   return (
     <div>
       <Breadcrumb
-        currentPage={"Sales channels"}
-        previousBreadcrumb={"Settings"}
+        currentPage={"Canaux de ventes"}
+        previousBreadcrumb={"Paramètres"}
         previousRoute="/a/settings"
       />
 

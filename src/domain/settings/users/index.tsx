@@ -33,7 +33,7 @@ const Users: React.FC = () => {
 
   const actionables = [
     {
-      label: "Invite Users",
+      label: "Inviter des utilisateurs",
       onClick: () => setShowInviteModal(true),
       icon: (
         <span className="text-grey-90">
@@ -44,16 +44,16 @@ const Users: React.FC = () => {
   ]
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="w-full flex flex-col grow">
+    <div className="flex h-full flex-col">
+      <div className="flex w-full grow flex-col">
         <BreadCrumb
           previousRoute="/a/settings"
-          previousBreadcrumb="Settings"
-          currentPage="The Team"
+          previousBreadcrumb="Paramètres"
+          currentPage="Notre équipe"
         />
         <BodyCard
-          title="The Team"
-          subtitle="Manage users of your Medusa Store"
+          title="Notre équipe"
+          subtitle="Gérer l'équipe technique de la boutique"
           actionables={actionables}
         >
           <div className="flex grow  flex-col pt-2">
@@ -64,7 +64,7 @@ const Users: React.FC = () => {
             />
           </div>
           <div className="inter-small-regular text-grey-50">
-            {users.length} member
+            {users.length} membre
             {users.length === 1 ? "" : "s"}
           </div>
 

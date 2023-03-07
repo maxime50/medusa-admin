@@ -24,7 +24,7 @@ const CurrencySettings = () => {
   })
 
   if (error) {
-    let message = "An unknown error occurred"
+    let message = "Une erreur inconnue s'est produite"
 
     const errorStatus = getErrorStatus(error)
 
@@ -39,7 +39,7 @@ const CurrencySettings = () => {
 
     // temp needs design
     return (
-      <Section title="Error">
+      <Section title="Erreur">
         <p className="inter-base-regular">{message}</p>
 
         <div className="mt-base px-base py-xsmall">
@@ -52,7 +52,7 @@ const CurrencySettings = () => {
   if (status === "loading" || !store) {
     // temp, perhaps use skeletons?
     return (
-      <div className="w-full h-[calc(100vh-64px)] flex items-center justify-center">
+      <div className="flex h-[calc(100vh-64px)] w-full items-center justify-center">
         <Spinner variant="secondary" />
       </div>
     )
@@ -61,15 +61,15 @@ const CurrencySettings = () => {
   return (
     <div className="pb-xlarge">
       <BackButton
-        label="Back to Settings"
+        label="Retour aux paramètres"
         path="/a/settings"
         className="mb-xsmall"
       />
       <div className="grid grid-cols-3 gap-base">
         <div className="col-span-2 flex flex-col gap-y-xsmall ">
-          <Section title="Currencies">
-            <p className="text-grey-50 inter-base-regular mt-2xsmall">
-              Manage the markets that you will operate within.
+          <Section title="Devises">
+            <p className="inter-base-regular mt-2xsmall text-grey-50">
+              Gérer les devises sur lesquelles on opère.
             </p>
           </Section>
 
@@ -79,15 +79,15 @@ const CurrencySettings = () => {
             </div>
             <FeatureToggle featureFlag="tax_inclusive_pricing">
               <div className="cursor-default">
-                <div className="inter-small-semibold text-grey-50 flex items-center justify-between mb-base">
+                <div className="inter-small-semibold mb-base flex items-center justify-between text-grey-50">
                   <p>Currency</p>
                   <Tooltip
                     side="top"
                     content={
-                      "Decide if you want to include or exclude taxes whenever you define a price in this currency"
+                      "Décidez si vous voulez inclure ou exclure les taxes lorsque vous définissez un prix dans cette devise."
                     }
                   >
-                    <p>Tax Incl. Prices</p>
+                    <p>Prix taxes incluses</p>
                   </Tooltip>
                 </div>
                 <div className="grid grid-cols-1 gap-base">

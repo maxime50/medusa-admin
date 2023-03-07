@@ -14,26 +14,26 @@ const MediaSection = ({ product }: Props) => {
 
   const actions: ActionType[] = [
     {
-      label: "Edit Media",
+      label: "Modifier les médias",
       onClick: toggle,
     },
   ]
 
   return (
     <>
-      <Section title="Media" actions={actions}>
+      <Section title="Média" actions={actions}>
         {product.images && product.images.length > 0 && (
-          <div className="grid grid-cols-3 gap-xsmall mt-base">
+          <div className="mt-base grid grid-cols-3 gap-xsmall">
             {product.images.map((image, index) => {
               return (
                 <div
                   key={image.id}
-                  className="aspect-square flex items-center justify-center"
+                  className="flex aspect-square items-center justify-center"
                 >
                   <img
                     src={image.url}
                     alt={`Image ${index + 1}`}
-                    className="object-contain rounded-rounded max-w-full max-h-full"
+                    className="max-h-full max-w-full rounded-rounded object-contain"
                   />
                 </div>
               )

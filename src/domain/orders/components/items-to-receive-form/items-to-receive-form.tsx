@@ -62,7 +62,7 @@ export const ItemsToReceiveForm = ({ form, order }: Props) => {
 
   return (
     <div className="flex flex-col gap-y-xsmall">
-      <h2 className="inter-base-semibold">Items to receive</h2>
+      <h2 className="inter-base-semibold">Articles à recevoir</h2>
 
       <ItemsToReceiveTable instance={tableInstance} />
       <InputError errors={errors} name={path("items")} />

@@ -26,47 +26,45 @@ const GeneralForm = ({ form, requireHandle = true }: Props) => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-x-large mb-small">
+      <div className="mb-small grid grid-cols-2 gap-x-large">
         <InputField
-          label="Title"
-          placeholder="Winter Jacket"
+          label="Titre"
+          placeholder="Bracelet ID Tendances"
           required
           {...register(path("title"), {
-            required: "Title is required",
+            required: "Titre requis",
             minLength: {
               value: 1,
-              message: "Title must be at least 1 character",
+              message: "Le titre doit être composé d'au moins 1 caractère",
             },
-            pattern: FormValidator.whiteSpaceRule("Title"),
+            pattern: FormValidator.whiteSpaceRule("Titre"),
           })}
           errors={errors}
         />
         <InputField
-          label="Subtitle"
-          placeholder="Warm and cozy..."
+          label="Sous-titre"
+          placeholder="merveilleux bracelet fait pierres..."
           {...register(path("subtitle"), {
-            pattern: FormValidator.whiteSpaceRule("Subtitle"),
+            pattern: FormValidator.whiteSpaceRule("Sous-titre"),
           })}
           errors={errors}
         />
       </div>
-      <p className="inter-base-regular text-grey-50 mb-large">
-        Give your product a short and clear title.
-        <br />
-        50-60 characters is the recommended length for search engines.
+      <p className="inter-base-regular mb-large text-grey-50">
+        Donnez à votre produit un titre court et clair.
       </p>
-      <div className="grid grid-cols-2 gap-x-large mb-large">
+      <div className="mb-large grid grid-cols-2 gap-x-large">
         <InputField
           label="Handle"
           tooltipContent={
             !requireHandle
-              ? "The handle is the part of the URL that identifies the product. If not specified, it will be generated from the title."
+              ? "Le handle est la partie de l'URL qui identifie le produit. S'il n'est pas spécifié, il sera généré à partir du titre."
               : undefined
           }
-          placeholder="winter-jacket"
+          placeholder="bracelet-id-tendances"
           required={requireHandle}
           {...register(path("handle"), {
-            required: requireHandle ? "Handle is required" : undefined,
+            required: requireHandle ? "Handle requis" : undefined,
             minLength: FormValidator.minOneCharRule("Handle"),
             pattern: FormValidator.whiteSpaceRule("Handle"),
           })}
@@ -74,27 +72,27 @@ const GeneralForm = ({ form, requireHandle = true }: Props) => {
           errors={errors}
         />
         <InputField
-          label="Material"
-          placeholder="100% cotton"
+          label="Matériel"
+          placeholder="100% stainless"
           {...register(path("material"), {
-            minLength: FormValidator.minOneCharRule("Material"),
-            pattern: FormValidator.whiteSpaceRule("Material"),
+            minLength: FormValidator.minOneCharRule("Matériel"),
+            pattern: FormValidator.whiteSpaceRule("Matériel"),
           })}
           errors={errors}
         />
       </div>
       <TextArea
         label="Description"
-        placeholder="A warm and cozy jacket..."
+        placeholder="Merveilleux bracelet fait vraies pierres..."
         rows={3}
         className="mb-small"
         {...register(path("description"))}
         errors={errors}
       />
       <p className="inter-base-regular text-grey-50">
-        Give your product a short and clear description.
+        Donnez à votre produit une description courte et claire.
         <br />
-        120-160 characters is the recommended length for search engines.
+        120 à 160 caractères est recommandées pour le référecement Google.
       </p>
     </div>
   )

@@ -26,7 +26,7 @@ const AddConditionFooter: React.FC<AddConditionFooterProps> = ({
   const { updateCondition } = useDiscountForm()
 
   return (
-    <div className="w-full flex justify-end gap-x-xsmall">
+    <div className="flex w-full justify-end gap-x-xsmall">
       <Button
         variant="ghost"
         size="small"
@@ -35,7 +35,7 @@ const AddConditionFooter: React.FC<AddConditionFooterProps> = ({
           reset()
         }}
       >
-        Cancel
+        Annuler
       </Button>
       <Button
         variant="primary"
@@ -49,7 +49,7 @@ const AddConditionFooter: React.FC<AddConditionFooterProps> = ({
           pop()
         }}
       >
-        Save and add more
+        Sauvegarder et ajouter plus
       </Button>
       <Button
         variant="primary"
@@ -60,7 +60,7 @@ const AddConditionFooter: React.FC<AddConditionFooterProps> = ({
           reset()
         }}
       >
-        Save and close
+        Sauvegarder et fermer
       </Button>
     </div>
   )

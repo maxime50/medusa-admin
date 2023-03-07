@@ -74,7 +74,7 @@ export const ReceiveReturnSummary = ({ form, order, returnRequest }: Props) => {
       <div className="flex flex-col gap-y-base border-y border-grey-20 py-large">
         {itemToReceive.length > 0 && (
           <div>
-            <p className="inter-base-semibold mb-small">Receiving</p>
+            <p className="inter-base-semibold mb-small">Réception</p>
             <div className="flex flex-col gap-y-xsmall">
               {itemToReceive.map((item, index) => {
                 return (
@@ -107,7 +107,7 @@ export const ReceiveReturnSummary = ({ form, order, returnRequest }: Props) => {
           className="inter-large-semibold flex items-center justify-between"
           data-testid="refund-amount-container"
         >
-          <p className="inter-base-semibold">Refund amount</p>
+          <p className="inter-base-semibold">Montant du remboursement</p>
           <RefundAmountForm
             form={nestedForm(form, "refund_amount")}
             order={order}

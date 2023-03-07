@@ -17,19 +17,19 @@ type Props = {
 
 const claimReturnReasons = [
   {
-    label: "Missing Item",
+    label: "Article manquant",
     value: "missing_item",
   },
   {
-    label: "Wrong Item",
+    label: "Mauvais article",
     value: "wrong_item",
   },
   {
-    label: "Production Failure",
+    label: "Défaut de fabrication",
     value: "production_failure",
   },
   {
-    label: "Other",
+    label: "Autre",
     value: "other",
   },
 ]
@@ -74,15 +74,15 @@ const AddReasonScreen = ({
     <>
       <Modal.Content>
         <div className="flex flex-col gap-y-base">
-          <h2 className="inter-base-semibold">Reason for Return</h2>
+          <h2 className="inter-base-semibold">Raison du retour</h2>
           <Controller
             control={control}
             name="reason"
             render={({ field }) => {
               return (
                 <NextSelect
-                  label="Reason"
-                  placeholder="Choose a return reason"
+                  label="Raison"
+                  placeholder="Choisir un motif de retour"
                   {...field}
                   options={returnReasonOptions}
                   isClearable
@@ -92,7 +92,7 @@ const AddReasonScreen = ({
           />
           <TextArea
             label="Note"
-            placeholder="Product was damaged during shipping"
+            placeholder="Le produit a été endommagé pendant l'expédition"
             {...register("note")}
           />
         </div>
@@ -109,7 +109,7 @@ const AddReasonScreen = ({
             disabled={!isDirty}
             type="button"
           >
-            Save and go back
+            Sauvegarder
           </Button>
         </div>
       </Modal.Footer>
@@ -122,7 +122,7 @@ export const useAddReasonScreen = () => {
 
   const pushScreen = (props: Props) => {
     push({
-      title: "Select Reason",
+      title: "Sélectionner le motif",
       onBack: () => pop(),
       view: <AddReasonScreen {...props} />,
     })

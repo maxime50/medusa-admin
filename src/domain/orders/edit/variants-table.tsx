@@ -50,7 +50,7 @@ const VariantsTable: React.FC<Props> = (props) => {
     return [
       {
         Header: (
-          <div className="text-gray-500 text-small font-semibold">Name</div>
+          <div className="text-gray-500 text-small font-semibold">Nom</div>
         ),
         accessor: "title",
         Cell: ({ row: { original } }) => {
@@ -99,7 +99,7 @@ const VariantsTable: React.FC<Props> = (props) => {
       {
         Header: (
           <div className="text-right text-gray-500 text-small font-semibold">
-            In Stock
+            En stock
           </div>
         ),
         accessor: "inventory_quantity",
@@ -110,7 +110,7 @@ const VariantsTable: React.FC<Props> = (props) => {
       {
         Header: (
           <div className="text-right text-gray-500 text-small font-semibold">
-            Price
+            Prix
           </div>
         ),
         accessor: "amount",
@@ -252,7 +252,7 @@ const VariantsTable: React.FC<Props> = (props) => {
         count: count!,
         offset: offset,
         pageSize: offset + table.rows.length,
-        title: "Products",
+        title: "Produits",
         currentPage: table.state.pageIndex + 1,
         pageCount: table.pageCount,
         nextPage: handleNext,
@@ -264,7 +264,7 @@ const VariantsTable: React.FC<Props> = (props) => {
       <Table
         immediateSearchFocus
         enableSearch
-        searchPlaceholder="Search Product Variants..."
+        searchPlaceholder="Rechercher des variantes de produits..."
         searchValue={query}
         handleSearch={handleSearch}
         {...table.getTableProps()}

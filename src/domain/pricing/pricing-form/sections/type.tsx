@@ -13,9 +13,9 @@ const Type = () => {
       forceMountContent
       required
       value="type"
-      title="Price list type"
-      description="Select the type of the price list"
-      tooltip="Unlike with sale prices a price override will not communicate to the customer that the price is part of a sale."
+      title="Type de liste de prix"
+      description="Sélectionner le type de liste de prix"
+      tooltip="Contrairement aux prix de vente, une annulation de prix n'indiquera pas au client que le prix fait partie d'une vente."
     >
       <Controller
         name="type"
@@ -26,19 +26,19 @@ const Type = () => {
             <RadioGroup.Root
               value={value ?? undefined}
               onValueChange={onChange}
-              className="flex items-center gap-base group-radix-state-open:mt-5 accordion-margin-transition"
+              className="accordion-margin-transition flex items-center gap-base group-radix-state-open:mt-5"
             >
               <RadioGroup.Item
                 value={PriceListType.SALE}
                 className="flex-1"
-                label="Sale"
-                description="Use this if you are creating prices for a sale."
+                label="Vente"
+                description="Utilisez cette option si vous créez des prix pour une vente."
               />
               <RadioGroup.Item
                 value={PriceListType.OVERRIDE}
                 className="flex-1"
-                label="Override"
-                description="Use this to override prices."
+                label="Remplacement"
+                description="Option pour remplacer des prix"
               />
             </RadioGroup.Root>
           )

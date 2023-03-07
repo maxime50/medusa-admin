@@ -23,27 +23,27 @@ const DiscountType = () => {
           <RadioGroup.Root
             value={value}
             onValueChange={onChange}
-            className={clsx("flex items-center gap-base mt-base px-1")}
+            className={clsx("mt-base flex items-center gap-base px-1")}
           >
             <RadioGroup.Item
               value={DiscountRuleType.PERCENTAGE}
               className="flex-1"
-              label="Percentage"
-              description={"Discount applied in %"}
+              label="Pourcentage"
+              description={"Rabais appliqué en %"}
             />
             <RadioGroup.Item
               value={DiscountRuleType.FIXED}
               className="flex-1"
-              label="Fixed amount"
-              description={"Discount in whole numbers"}
+              label="Montant fixe"
+              description={"Rabais en montant fixe"}
               disabled={Array.isArray(regions) && regions.length > 1}
-              disabledTooltip="You can only select one valid region if you want to use the fixed amount type"
+              disabledTooltip="Vous ne pouvez sélectionner qu'une seule région valide si vous souhaitez utiliser le type de montant fixe."
             />
             <RadioGroup.Item
               value={DiscountRuleType.FREE_SHIPPING}
               className="flex-1"
-              label="Free shipping"
-              description={"Override delivery amount"}
+              label="Livraison gratuite"
+              description={"Remplacer le montant de la livraison"}
             />
           </RadioGroup.Root>
         )

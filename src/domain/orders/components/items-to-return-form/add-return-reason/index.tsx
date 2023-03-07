@@ -69,7 +69,8 @@ const AddReturnReason = ({ row, form, isClaim = false }: Props) => {
                   }
                 >
                   <span>
-                    {reasonDetails?.reason ? "Edit" : "Select"} reason
+                    {reasonDetails?.reason ? "Modifier" : "Sélectionner"} le
+                    motif
                   </span>
                 </Button>
               )

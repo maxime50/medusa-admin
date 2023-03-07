@@ -66,10 +66,14 @@ const Information: React.FC<InformationProps> = ({ giftCard }) => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Gift card updated successfully", "success")
+          notification(
+            "Succès",
+            "Carte cadeau a été mise à jour avec succès",
+            "success"
+          )
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       }
     )
@@ -79,18 +83,22 @@ const Information: React.FC<InformationProps> = ({ giftCard }) => {
     deleteGiftCard.mutate(undefined, {
       onSuccess: () => {
         navigate("/a/gift-cards")
-        notification("Success", "Gift card updated successfully", "success")
+        notification(
+          "Succès",
+          "Carte cadeau a été mise à jour avec succès",
+          "success"
+        )
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   }
 
   return (
     <BodyCard
-      title="Product information"
-      subtitle="Manage the settings for your Gift Card"
+      title="Paramètres de la Carte Cadeau"
+      subtitle="Gérer les paramètres de votre carte cadeau"
       className={"h-auto w-full"}
       status={
         <GiftCardStatusSelector
@@ -102,13 +110,13 @@ const Information: React.FC<InformationProps> = ({ giftCard }) => {
         {
           label:
             giftCard?.status !== "published"
-              ? "Publish Gift Card"
-              : "Unpublish Gift Card",
+              ? "Publier la carte cadeau"
+              : "Dépublier la carte cadeau",
           onClick: onUpdate,
           icon: <UnpublishIcon size="16" />,
         },
         {
-          label: "Delete Gift Card",
+          label: "Supprimer la carte cadeau",
           onClick: onDelete,
           variant: "danger",
           icon: <TrashIcon size="16" />,
@@ -118,29 +126,29 @@ const Information: React.FC<InformationProps> = ({ giftCard }) => {
       <div className="flex flex-col space-y-6">
         <div className="grid grid-cols-2 gap-large">
           <Input
-            label="Name"
-            placeholder="Add name"
+            label="Nom"
+            placeholder="Ajouter un nom"
             required
             defaultValue={giftCard?.title}
             {...register("title", {
-              required: FormValidator.required("Name"),
-              pattern: FormValidator.whiteSpaceRule("Name"),
-              minLength: FormValidator.minOneCharRule("Name"),
+              required: FormValidator.required("Nom"),
+              pattern: FormValidator.whiteSpaceRule("Nom"),
+              minLength: FormValidator.minOneCharRule("Nom"),
             })}
             errors={errors}
           />
           <Input
-            label="Subtitle"
-            placeholder="Add a subtitle"
+            label="Sous-titre"
+            placeholder="Ajouter un sous-titre"
             {...register("subtitle", {
-              pattern: FormValidator.whiteSpaceRule("Subtitle"),
-              minLength: FormValidator.minOneCharRule("Subtitle"),
+              pattern: FormValidator.whiteSpaceRule("Sous-titre"),
+              minLength: FormValidator.minOneCharRule("Sous-titre"),
             })}
             errors={errors}
           />
           <TextArea
             label="Description"
-            placeholder="Add a description"
+            placeholder="Ajouter une description"
             {...register("description", {
               pattern: FormValidator.whiteSpaceRule("Description"),
               minLength: FormValidator.minOneCharRule("Description"),
@@ -162,7 +170,7 @@ const Information: React.FC<InformationProps> = ({ giftCard }) => {
                 pattern: FormValidator.whiteSpaceRule("Handle"),
                 minLength: FormValidator.minOneCharRule("Handle"),
               })}
-              tooltipContent="URL of the product"
+              tooltipContent="URL du produit"
               errors={errors}
             />
             <Controller
@@ -172,7 +180,7 @@ const Information: React.FC<InformationProps> = ({ giftCard }) => {
                 return (
                   <Select
                     label="Type"
-                    placeholder="Select type..."
+                    placeholder="Sélectionner le type..."
                     options={typeOptions}
                     onChange={onChange}
                     value={value}
@@ -190,9 +198,9 @@ const Information: React.FC<InformationProps> = ({ giftCard }) => {
               render={({ field: { onChange, value } }) => {
                 return (
                   <TagInput
-                    label="Tags (separated by comma)"
+                    label="Tags (séparés par une virgule)"
                     className="w-full"
-                    placeholder="Spring, Summer..."
+                    placeholder="Été, Automne..."
                     onChange={onChange}
                     values={value || []}
                   />
@@ -216,8 +224,8 @@ const GiftCardStatusSelector = ({
 }) => {
   return (
     <StatusSelector
-      activeState="Published"
-      draftState="Draft"
+      activeState="Publiée"
+      draftState="Brouillon"
       isDraft={currentStatus === "draft"}
       onChange={onUpdate}
     />

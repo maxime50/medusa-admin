@@ -16,9 +16,7 @@ type ConfigurationProps = {
   priceList?: PriceList
 }
 
-const checkForEnabledConfigs = (
-  config: ConfigurationFields
-): string[] => {
+const checkForEnabledConfigs = (config: ConfigurationFields): string[] => {
   const enabledConfigs: string[] = []
 
   if (config.customer_groups && config.customer_groups.length > 0) {
@@ -36,11 +34,8 @@ const checkForEnabledConfigs = (
 
 const Configuration: React.FC<ConfigurationProps> = () => {
   const { customer_groups, isLoading } = useAdminCustomerGroups()
-  const {
-    control,
-    handleConfigurationSwitch,
-    configFields,
-  } = usePriceListForm()
+  const { control, handleConfigurationSwitch, configFields } =
+    usePriceListForm()
   const [openItems, setOpenItems] = useState<string[]>(
     checkForEnabledConfigs(configFields)
   )
@@ -49,9 +44,9 @@ const Configuration: React.FC<ConfigurationProps> = () => {
     <Accordion.Item
       forceMountContent
       title="Configuration"
-      tooltip="Optional configuration for the price list"
+      tooltip="Configuration optionnelle pour la liste de prix"
       value="configuration"
-      description="The price overrides apply from the time you hit the publish button and forever if left untouched."
+      description="Les remplacements de prix s'appliquent à partir du moment où vous cliquez sur le bouton publier."
     >
       <Accordion
         type="multiple"
@@ -66,8 +61,8 @@ const Configuration: React.FC<ConfigurationProps> = () => {
             headingSize="medium"
             forceMountContent
             className="border-b-0"
-            title="Price overrides has a start date?"
-            subtitle="Schedule the price overrides to activate in the future."
+            title="Date de début ?"
+            subtitle="Programmer les remplacements de prix pour qu'ils soient activées ultérieurement."
             value="starts_at"
             customTrigger={
               <Switch checked={openItems.indexOf("starts_at") > -1} />
@@ -75,7 +70,7 @@ const Configuration: React.FC<ConfigurationProps> = () => {
           >
             <div
               className={clsx(
-                "flex items-center gap-xsmall accordion-margin-transition",
+                "accordion-margin-transition flex items-center gap-xsmall",
                 {
                   "mt-4": openItems.indexOf("starts_at") > -1,
                 }
@@ -90,12 +85,12 @@ const Configuration: React.FC<ConfigurationProps> = () => {
                     <>
                       <DatePicker
                         date={ensuredDate}
-                        label="Start date"
+                        label="Date de début"
                         onSubmitDate={onChange}
                       />
                       <TimePicker
                         date={ensuredDate}
-                        label="Start date"
+                        label="Date de début"
                         onSubmitDate={onChange}
                       />
                     </>
@@ -108,8 +103,8 @@ const Configuration: React.FC<ConfigurationProps> = () => {
             headingSize="medium"
             forceMountContent
             className="border-b-0"
-            title="Price overrides has an expiry date?"
-            subtitle="Schedule the price overrides to deactivate in the future."
+            title="Date d'expiration ?"
+            subtitle="Programmer les remplacements de prix pour les désactiver à l'avenir."
             value="ends_at"
             customTrigger={
               <Switch checked={openItems.indexOf("ends_at") > -1} />
@@ -117,7 +112,7 @@ const Configuration: React.FC<ConfigurationProps> = () => {
           >
             <div
               className={clsx(
-                "flex items-center gap-xsmall accordion-margin-transition",
+                "accordion-margin-transition flex items-center gap-xsmall",
                 {
                   "mt-4": openItems.indexOf("ends_at") > -1,
                 }
@@ -132,12 +127,12 @@ const Configuration: React.FC<ConfigurationProps> = () => {
                     <>
                       <DatePicker
                         date={ensuredDate}
-                        label="End date"
+                        label="Date de fin"
                         onSubmitDate={onChange}
                       />
                       <TimePicker
                         date={ensuredDate}
-                        label="End date"
+                        label="Date de fin"
                         onSubmitDate={onChange}
                       />
                     </>
@@ -150,8 +145,8 @@ const Configuration: React.FC<ConfigurationProps> = () => {
             headingSize="medium"
             forceMountContent
             className="border-b-0"
-            title="Customer availabilty"
-            subtitle="Specifiy which customer groups the price overrides should apply for."
+            title="Disponibilité des clients"
+            subtitle="Spécifiez les groupes de clients pour lesquels les remplacements de prix doivent s'appliquer."
             value="customer_groups"
             customTrigger={
               <Switch checked={openItems.indexOf("customer_groups") > -1} />
@@ -160,11 +155,11 @@ const Configuration: React.FC<ConfigurationProps> = () => {
             <Controller
               name="customer_groups"
               control={control}
-              render={({ field: { value, onChange, ref }}) => {
+              render={({ field: { value, onChange, ref } }) => {
                 return (
                   <div
                     className={clsx(
-                      "flex items-center gap-xsmall accordion-margin-transition w-full",
+                      "accordion-margin-transition flex w-full items-center gap-xsmall",
                       {
                         "mt-4": openItems.indexOf("customer_groups") > -1,
                       }
@@ -172,7 +167,7 @@ const Configuration: React.FC<ConfigurationProps> = () => {
                   >
                     <Select
                       value={value}
-                      label="Customer Groups"
+                      label="Groupes de clients"
                       onChange={onChange}
                       isMultiSelect
                       fullWidth

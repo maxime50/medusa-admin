@@ -17,7 +17,7 @@ const Edit = () => {
   const { product, status, error } = useAdminProduct(id || "")
 
   if (error) {
-    let message = "An unknown error occurred"
+    let message = "Une erreur s'est produite"
 
     const errorStatus = getErrorStatus(error)
 
@@ -38,7 +38,7 @@ const Edit = () => {
   if (status === "loading" || !product) {
     // temp, perhaps use skeletons?
     return (
-      <div className="w-full h-[calc(100vh-64px)] flex items-center justify-center">
+      <div className="flex h-[calc(100vh-64px)] w-full items-center justify-center">
         <Spinner variant="secondary" />
       </div>
     )
@@ -48,7 +48,7 @@ const Edit = () => {
     <div className="pb-5xlarge">
       <BackButton
         path="/a/products"
-        label="Back to Products"
+        label="Retour aux produits"
         className="mb-xsmall"
       />
       <div className="grid grid-cols-12 gap-x-base">
@@ -58,7 +58,7 @@ const Edit = () => {
           <AttributesSection product={product} />
           <RawSection product={product} />
         </div>
-        <div className="flex flex-col col-span-4 gap-y-xsmall">
+        <div className="col-span-4 flex flex-col gap-y-xsmall">
           <ThumbnailSection product={product} />
           <MediaSection product={product} />
         </div>

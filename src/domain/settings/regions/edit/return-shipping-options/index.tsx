@@ -21,17 +21,18 @@ const ReturnShippingOptions = ({ region }: Props) => {
   return (
     <>
       <Section
-        title="Return Shipping Options"
+        title="Options de livraison de retour"
         actions={[
           {
-            label: "Add Option",
+            label: "Ajouter une option",
             onClick: toggle,
           },
         ]}
       >
         <div className="flex flex-col gap-y-large">
           <p className="inter-base-regular text-grey-50">
-            Enter specifics about available regional return shipment methods.
+            Saisir les détails concernant les méthodes de livraison de retour
+            disponibles dans la région.
           </p>
           <div className="flex flex-col gap-y-small">
             {returnShippingOptions?.map((option) => {

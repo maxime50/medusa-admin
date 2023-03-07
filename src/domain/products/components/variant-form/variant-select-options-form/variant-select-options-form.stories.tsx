@@ -11,22 +11,22 @@ const options: VariantOptionValueType[] = [
   {
     option_id: "1",
     value: "Red",
-    label: "Red",
+    label: "Rouge",
   },
   {
     option_id: "1",
     value: "Blue",
-    label: "Blue",
+    label: "Bleu",
   },
   {
     option_id: "1",
     value: "Green",
-    label: "Green",
+    label: "Vert",
   },
   {
     option_id: "2",
     value: "Small",
-    label: "Small",
+    label: "Petit",
   },
   {
     option_id: "2",
@@ -83,17 +83,17 @@ storiesOf(
         variant_options: [
           {
             option_id: "1",
-            title: "Color",
+            title: "Couleur",
             option: null,
           },
           {
             option_id: "2",
-            title: "Size",
+            title: "Taille",
             option: null,
           },
           {
             option_id: "3",
-            title: "Material",
+            title: "Matériel",
             option: null,
           },
         ],
@@ -114,8 +114,8 @@ storiesOf(
         onCreateOption={onCreateOption}
       />
 
-      <div className="bg-grey-5 rounded-rounded px-small py-xsmall mt-xlarge mono-small-regular text-grey-50">
-        <h1 className="inter-base-semibold mb-small">Data</h1>
+      <div className="mono-small-regular mt-xlarge rounded-rounded bg-grey-5 px-small py-xsmall text-grey-50">
+        <h1 className="inter-base-semibold mb-small">Données</h1>
         <pre>{JSON.stringify(liveData, null, 4)}</pre>
       </div>
     </div>

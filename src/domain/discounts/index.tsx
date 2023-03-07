@@ -15,18 +15,18 @@ const DiscountIndex = () => {
 
   const actionables = [
     {
-      label: "Add Discount",
+      label: "Ajouter un rabais",
       onClick: () => setIsOpen(true),
       icon: <PlusIcon size={20} />,
     },
   ]
 
   return (
-    <div className="h-full flex flex-col">
-      <div className="w-full flex flex-col grow">
+    <div className="flex h-full flex-col">
+      <div className="flex w-full grow flex-col">
         <BodyCard
           actionables={actionables}
-          customHeader={<TableViewHeader views={["discounts"]} />}
+          customHeader={<TableViewHeader views={["rabais"]} />}
           className="h-fit"
         >
           <DiscountTable />

@@ -22,9 +22,9 @@ const EditUserInformation = ({ user }: Props) => {
     <>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-x-base">
-          <div className="w-18 aspect-square rounded-full border border-grey-20 flex items-center justify-center box-border">
+          <div className="box-border flex aspect-square w-18 items-center justify-center rounded-full border border-grey-20">
             {user ? (
-              <div className="w-16 aspect-square">
+              <div className="aspect-square w-16">
                 <Avatar
                   user={{ ...user }}
                   color="bg-teal-40"
@@ -32,7 +32,7 @@ const EditUserInformation = ({ user }: Props) => {
                 />
               </div>
             ) : (
-              <div className="w-16 aspect-square animate-pulse bg-teal-40 rounded-full" />
+              <div className="aspect-square w-16 animate-pulse rounded-full bg-teal-40" />
             )}
           </div>
           <div className="flex flex-col">
@@ -52,7 +52,7 @@ const EditUserInformation = ({ user }: Props) => {
           disabled={!user}
           onClick={toggle}
         >
-          Edit information
+          Modifier les informations
         </Button>
       </div>
       {user && (

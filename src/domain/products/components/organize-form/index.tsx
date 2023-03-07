@@ -38,7 +38,7 @@ const OrganizeForm = ({ form }: Props) => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-x-large mb-large">
+      <div className="mb-large grid grid-cols-2 gap-x-large">
         <Controller
           name={path("type")}
           control={control}
@@ -49,7 +49,7 @@ const OrganizeForm = ({ form }: Props) => {
                 onChange={onChange}
                 options={productTypeOptions}
                 value={value || null}
-                placeholder="Choose a type"
+                placeholder="Choisir un type"
                 onCreateOption={onCreateOption}
                 isClearable
               />
@@ -66,7 +66,7 @@ const OrganizeForm = ({ form }: Props) => {
                 onChange={onChange}
                 options={collectionOptions}
                 value={value}
-                placeholder="Choose a collection"
+                placeholder="Choisir une collection"
                 isClearable
               />
             )

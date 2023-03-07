@@ -27,19 +27,19 @@ export const EditTaxRateDetails = ({
 
   return (
     <div>
-      <p className="inter-base-semibold mb-base">Details</p>
+      <p className="inter-base-semibold mb-base">Détails</p>
       <Input
         disabled={lockName}
-        label="Name"
+        label="Nom"
         prefix={
           lockName ? <LockIcon size={16} className="text-grey-40" /> : undefined
         }
-        placeholder={lockName ? "Default" : "Rate name"}
+        placeholder={lockName ? "Par défaut" : "Nom du taux"}
         {...register(path("name"), {
           required: !lockName ? FormValidator.required("Name") : undefined,
         })}
         required={!lockName}
-        className="mb-base min-w-[335px] w-full"
+        className="mb-base w-full min-w-[335px]"
         errors={errors}
       />
       <Input
@@ -48,27 +48,27 @@ export const EditTaxRateDetails = ({
         max={100}
         step={0.01}
         formNoValidate
-        label="Tax Rate"
+        label="Taux de taxe"
         prefix="%"
         placeholder="12"
         {...register(path("rate"), {
-          min: FormValidator.min("Tax Rate", 0),
-          max: FormValidator.max("Tax Rate", 100),
-          required: FormValidator.required("Tax Rate"),
+          min: FormValidator.min("Taux de taxe", 0),
+          max: FormValidator.max("Taux de taxe", 100),
+          required: FormValidator.required("Taux de taxe"),
           valueAsNumber: true,
         })}
         required
-        className="mb-base min-w-[335px] w-full"
+        className="mb-base w-full min-w-[335px]"
         errors={errors}
       />
       <Input
         placeholder="1000"
-        label="Tax Code"
+        label="Code de taxe"
         {...register(path("code"), {
-          required: FormValidator.required("Tax Code"),
+          required: FormValidator.required("Code de taxe"),
         })}
         required
-        className="mb-base min-w-[335px] w-full"
+        className="mb-base w-full min-w-[335px]"
         errors={errors}
       />
     </div>

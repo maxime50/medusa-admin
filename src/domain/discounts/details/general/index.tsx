@@ -28,17 +28,17 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
 
   const onDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Promotion",
-      text: "Are you sure you want to delete this promotion?",
+      heading: "Supprimer la promotion",
+      text: "Êtes-vous sûr de vouloir supprimer cette promotion ?",
     })
     if (shouldDelete) {
       deletediscount.mutate(undefined, {
         onSuccess: () => {
-          notification("Success", "Promotion deleted successfully", "success")
+          notification("Succès", "Promotion supprimée avec succès", "success")
           navigate("/a/discounts/")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Erreur", getErrorMessage(err), "error")
         },
       })
     }
@@ -51,15 +51,11 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
       },
       {
         onSuccess: ({ discount: { is_disabled } }) => {
-          const pastTense = !is_disabled ? "published" : "drafted"
-          notification(
-            "Success",
-            `Discount ${pastTense} successfully`,
-            "success"
-          )
+          const pastTense = !is_disabled ? "publié" : "en brouillon"
+          notification("Succès", `Rabais ${pastTense} avec succès`, "success")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Erreur", getErrorMessage(err), "error")
         },
       }
     )
@@ -67,12 +63,12 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
 
   const actionables: ActionType[] = [
     {
-      label: "Edit general information",
+      label: "Modifier les informations générales",
       onClick: () => setShowModal(true),
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Delete discount",
+      label: "Supprimer le rabais",
       onClick: onDelete,
       variant: "danger",
       icon: <TrashIcon size={20} />,
@@ -92,16 +88,16 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
             {discount.is_dynamic && (
               <span>
                 <Badge variant="default">
-                  <span className="text-grey-90 inter-small-regular">
-                    {"Template discount"}
+                  <span className="inter-small-regular text-grey-90">
+                    {"Modèle de rabais"}
                   </span>
                 </Badge>
               </span>
             )}
             <StatusSelector
               isDraft={discount?.is_disabled}
-              activeState="Published"
-              draftState="Draft"
+              activeState="Publié"
+              draftState="Brouillon"
               onChange={onStatusChange}
             />
           </div>
@@ -111,23 +107,23 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
           <div className="border-l border-grey-20 pl-6">
             {getPromotionDescription(discount)}
             <span className="inter-small-regular text-grey-50">
-              Discount Amount
+              Montant du rabais
             </span>
           </div>
-          <div className="border-l border-grey-20 pl-6 ml-12">
+          <div className="ml-12 border-l border-grey-20 pl-6">
             <h2 className="inter-xlarge-regular text-grey-90">
               {discount.regions.length.toLocaleString("en-US")}
             </h2>
             <span className="inter-small-regular text-grey-50">
-              Valid Regions
+              Régions valides
             </span>
           </div>
-          <div className="border-l border-grey-20 pl-6 ml-12">
+          <div className="ml-12 border-l border-grey-20 pl-6">
             <h2 className="inter-xlarge-regular text-grey-90">
               {discount.usage_count.toLocaleString("en-US")}
             </h2>
             <span className="inter-small-regular text-grey-50">
-              Total Redemptions
+              Nombre total d'utilisations
             </span>
           </div>
         </div>
@@ -150,7 +146,7 @@ const getPromotionDescription = (discount: Discount) => {
               amount: discount.rule.value,
             })}
           </h2>
-          <span className="inter-base-regular text-grey-50 ml-1">
+          <span className="inter-base-regular ml-1 text-grey-50">
             {discount.regions[0].currency_code.toUpperCase()}
           </span>
         </div>
@@ -161,15 +157,15 @@ const getPromotionDescription = (discount: Discount) => {
           <h2 className="inter-xlarge-regular text-grey-90">
             {discount.rule.value}
           </h2>
-          <span className="inter-base-regular text-grey-50 ml-1">%</span>
+          <span className="inter-base-regular ml-1 text-grey-50">%</span>
         </div>
       )
     case "free_shipping":
       return (
-        <h2 className="inter-xlarge-regular text-grey-90">{`FREE SHIPPING`}</h2>
+        <h2 className="inter-xlarge-regular text-grey-90">{`LIVRAISON GRATUITE`}</h2>
       )
     default:
-      return "Unknown discount type"
+      return "Type de rabais inconnu"
   }
 }
 

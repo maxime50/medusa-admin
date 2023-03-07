@@ -11,10 +11,10 @@ const DefaultStoreCurrency = ({ store }: Props) => {
     <div className="flex flex-col gap-y-large">
       <div>
         <h3 className="inter-large-semibold mb-2xsmall">
-          Default store currency
+          Devise par défaut de la boutique
         </h3>
         <p className="inter-base-regular text-grey-50">
-          This is the currency your prices are shown in.
+          Il s'agit de la devise dans laquelle les prix sont affichés.
         </p>
       </div>
 

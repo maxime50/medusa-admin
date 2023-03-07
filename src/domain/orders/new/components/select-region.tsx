@@ -40,14 +40,14 @@ const SelectRegionScreen = () => {
 
   return (
     <div className="flex min-h-[705px] flex-col">
-      <span className="inter-base-semibold mb-4">Choose region</span>
+      <span className="inter-base-semibold mb-4">Choisir la région</span>
       <Controller
         control={control}
         name="region"
         render={({ field: { onChange, value } }) => {
           return (
             <NextSelect
-              label="Region"
+              label="Région"
               onChange={onChange}
               value={value}
               options={regionOptions}

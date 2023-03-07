@@ -68,7 +68,7 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
       | typeof createClaimFulfillment
 
     let action: actionType = createOrderFulfillment
-    let successText = "Successfully fulfilled order"
+    let successText = "Commande traitée avec succès"
     let requestObj
 
     const preparedMetadata = metadata.reduce((acc, next) => {
@@ -85,7 +85,7 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
     switch (type) {
       case "swap":
         action = createSwapFulfillment
-        successText = "Successfully fulfilled swap"
+        successText = "Échange traité avec succès"
         requestObj = {
           swap_id: orderToFulfill.id,
           metadata: preparedMetadata,
@@ -95,7 +95,7 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
 
       case "claim":
         action = createClaimFulfillment
-        successText = "Successfully fulfilled claim"
+        successText = "Réclamation traitée avec succès"
         requestObj = {
           claim_id: orderToFulfill.id,
           metadata: preparedMetadata,
@@ -116,10 +116,10 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
 
     action.mutate(requestObj, {
       onSuccess: () => {
-        notification("Success", successText, "success")
+        notification("Succès", successText, "success")
         handleCancel()
       },
-      onError: (err) => notification("Error", getErrorMessage(err), "error"),
+      onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
     })
   }
 
@@ -127,11 +127,11 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
     <Modal handleClose={handleCancel}>
       <Modal.Body>
         <Modal.Header handleClose={handleCancel}>
-          <span className="inter-xlarge-semibold">Create Fulfillment</span>
+          <span className="inter-xlarge-semibold">Traiter</span>
         </Modal.Header>
         <Modal.Content>
           <div className="flex flex-col">
-            <span className="inter-base-semibold mb-2">Items</span>
+            <span className="inter-base-semibold mb-2">Articles</span>
             <CreateFulfillmentItemsTable
               items={items}
               toFulfill={toFulfill}
@@ -145,13 +145,13 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
           </div>
         </Modal.Content>
         <Modal.Footer>
-          <div className="flex w-full h-8 justify-between">
+          <div className="flex h-8 w-full justify-between">
             <div
-              className="items-center h-full flex cursor-pointer"
+              className="flex h-full cursor-pointer items-center"
               onClick={() => setNoNotis(!noNotis)}
             >
               <div
-                className={`w-5 h-5 flex justify-center text-grey-0 border-grey-30 border rounded-base ${
+                className={`flex h-5 w-5 justify-center rounded-base border border-grey-30 text-grey-0 ${
                   !noNotis && "bg-violet-60"
                 }`}
               >
@@ -166,29 +166,29 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
                 checked={!noNotis}
                 type="checkbox"
               />
-              <span className="ml-3 flex items-center text-grey-90 gap-x-xsmall">
-                Send notifications
+              <span className="ml-3 flex items-center gap-x-xsmall text-grey-90">
+                Envoyer une notification
                 <IconTooltip content="" />
               </span>
             </div>
             <div className="flex">
               <Button
                 variant="ghost"
-                className="mr-2 w-32 text-small justify-center"
+                className="mr-2 w-32 justify-center text-small"
                 size="large"
                 onClick={handleCancel}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 size="large"
-                className="w-32 text-small justify-center"
+                className="w-32 justify-center text-small"
                 variant="primary"
                 disabled={!toFulfill?.length || isSubmitting}
                 onClick={createFulfillment}
                 loading={isSubmitting}
               >
-                Complete
+                Compléter
               </Button>
             </div>
           </div>

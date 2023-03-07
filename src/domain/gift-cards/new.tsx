@@ -76,13 +76,21 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
     const trimmedName = data.title.trim()
 
     if (!trimmedName) {
-      notification("Error", "Please enter a name for the Gift Card", "error")
+      notification(
+        "Error",
+        "Veuillez saisir un nom pour la carte cadeau",
+        "error"
+      )
       focusByName("name")
       return
     }
 
     if (!data.denominations?.length) {
-      notification("Error", "Please add at least one denomination", "error")
+      notification(
+        "Error",
+        "Veuillez ajouter au moins une dénomination",
+        "error"
+      )
       focusByName("add-denomination")
       return
     }
@@ -122,12 +130,12 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully created Gift Card", "success")
+          notification("Succès", "Carte cadeau créée avec succès", "success")
           refetch()
           navigate("/a/gift-cards/manage")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Erreur", getErrorMessage(err), "error")
         },
       }
     )
@@ -139,35 +147,37 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
         <Modal.Body>
           <Modal.Header handleClose={onClose}>
             <div>
-              <h1 className="inter-xlarge-semibold">Create Gift Card</h1>
+              <h1 className="inter-xlarge-semibold">Créer une carte cadeau</h1>
             </div>
           </Modal.Header>
           <Modal.Content>
             <div className="mb-base">
-              <h3 className="inter-base-semibold">Gift Card Details</h3>
+              <h3 className="inter-base-semibold">
+                Détails de la carte cadeau
+              </h3>
             </div>
             <div className="flex flex-col gap-y-base">
               <InputField
-                label={"Name"}
+                label={"Nom"}
                 required
-                placeholder="The best Gift Card"
+                placeholder="La meilleure carte cadeau"
                 {...register("title", { required: true })}
               />
               <TextArea
                 label="Description"
-                placeholder="The best Gift Card of all time"
+                placeholder="La meilleure carte cadeau de tout les temps"
                 {...register("description")}
               />
             </div>
             <div className="mt-xlarge">
-              <h3 className="inter-base-semibold">Thumbnail</h3>
-              <div className="h-[80px] mt-base">
+              <h3 className="inter-base-semibold">Vignette</h3>
+              <div className="mt-base h-[80px]">
                 {thumbnail ? (
                   <div className="flex items-center gap-x-6">
                     <img
                       src={thumbnail.url}
                       alt=""
-                      className="w-20 h-20 rounded-base object-cover object-center"
+                      className="h-20 w-20 rounded-base object-cover object-center"
                     />
                     <div className="flex flex-col gap-y-1">
                       <span className="inter-small-regular">
@@ -175,11 +185,11 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
                       </span>
                       <div>
                         <button
-                          className="text-rose-50 inter-small-semibold"
+                          className="inter-small-semibold text-rose-50"
                           type="button"
                           onClick={() => setValue("thumbnail", null)}
                         >
-                          Delete
+                          Supprimer
                         </button>
                       </div>
                     </div>
@@ -193,14 +203,14 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
                       "image/webp",
                     ]}
                     onFileChosen={handleFileUpload}
-                    placeholder="1200 x 1600 (3:4) recommended, up to 10MB each"
+                    placeholder="1200 x 1600 (3:4) recommandé, 10MB maximum"
                   />
                 )}
               </div>
             </div>
             <div className="mt-xlarge">
               <h3 className="inter-base-semibold mb-base">
-                Denominations<span className="text-rose-50">*</span>
+                Dénominations<span className="text-rose-50">*</span>
               </h3>
               <div className="flex flex-col gap-y-xsmall">
                 {fields.map((denomination, index) => {
@@ -224,7 +234,7 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
                           render={({ field: { value, onChange, ref } }) => {
                             return (
                               <CurrencyInput.Amount
-                                label="Amount"
+                                label="Montant"
                                 amount={value || undefined}
                                 onChange={onChange}
                                 ref={ref}
@@ -236,7 +246,7 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
                       <Button
                         variant="ghost"
                         size="large"
-                        className="w-10 h-10 text-grey-40"
+                        className="h-10 w-10 text-grey-40"
                         type="button"
                         onClick={() => remove(index)}
                       >
@@ -258,12 +268,12 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
                 type="button"
               >
                 <PlusIcon size={20} />
-                Add Denomination
+                Ajouter une dénomination
               </Button>
             </div>
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex items-center justify-end w-full">
+            <div className="flex w-full items-center justify-end">
               <Button
                 type="submit"
                 variant="ghost"
@@ -271,7 +281,7 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
                 className="w-eventButton"
                 onClick={onClose}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 type="submit"
@@ -281,7 +291,7 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
                 loading={isLoading}
                 disabled={isLoading}
               >
-                Create & Publish
+                Créer et publier
               </Button>
             </div>
           </Modal.Footer>

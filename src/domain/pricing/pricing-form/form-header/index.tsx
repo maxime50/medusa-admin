@@ -49,7 +49,7 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
         navigate(`/a/pricing/${price_list.id}`)
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   }
@@ -64,7 +64,7 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
         navigate(`/a/pricing/${price_list.id}`)
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   }
@@ -76,11 +76,15 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
     }
     updatePriceList.mutate(data, {
       onSuccess: ({ price_list }) => {
-        notification("Success", "Successfully updated price list", "success")
+        notification(
+          "Succès",
+          "Liste de prix mise à jour avec succès",
+          "success"
+        )
         closeForm()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   }
@@ -91,7 +95,7 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
         props.onClose && props.onClose()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   }
@@ -102,11 +106,11 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
   switch (props.viewType) {
     case ViewType.CREATE:
       mainAction = {
-        label: "Publish price list",
+        label: "Publier la liste de prix",
         onClick: handleSubmit(onPublish),
       }
       secondaryAction = {
-        label: "Save as draft",
+        label: "Sauvegarder comme brouillon",
         onClick: handleSubmit(onSaveAsDraft),
       }
       break
@@ -116,38 +120,38 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
         onClick: handleSubmit(onUpdateDetails),
       }
       secondaryAction = {
-        label: "Cancel",
+        label: "Annuler",
         onClick: closeForm,
       }
       break
     case ViewType.EDIT_PRICES:
       mainAction = {
-        label: "Save changes",
+        label: "Sauvegarder les changements",
         onClick: handleSubmit(onUpdatePrices),
       }
       secondaryAction = {
-        label: "Cancel",
+        label: "Annuler",
         onClick: closeForm,
       }
       break
   }
 
   return (
-    <div className="medium:w-8/12 w-full px-8 flex justify-between">
+    <div className="flex w-full justify-between px-8 medium:w-8/12">
       <Button
         size="small"
         variant="ghost"
         onClick={closeForm}
-        className="border rounded-rounded w-8 h-8"
+        className="h-8 w-8 rounded-rounded border"
       >
         <CrossIcon size={20} />
       </Button>
-      <div className="gap-x-small flex">
+      <div className="flex gap-x-small">
         <Button
           onClick={secondaryAction.onClick}
           size="small"
           variant="ghost"
-          className="border rounded-rounded"
+          className="rounded-rounded border"
         >
           {secondaryAction.label}
         </Button>

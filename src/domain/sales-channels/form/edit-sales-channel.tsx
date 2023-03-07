@@ -34,14 +34,18 @@ function EditSalesChannel(props: EditSalesChannelProps) {
       {
         onSuccess: () => {
           notification(
-            "Success",
-            "The sales channel is successfully updated",
+            "Succès",
+            "Canal de vente mis à jour avec succès",
             "success"
           )
           handleClose()
         },
         onError: () =>
-          notification("Error", "Failed to update the sales channel", "error"),
+          notification(
+            "Erreur",
+            "Échec de la mise à jour du canal de vente",
+            "error"
+          ),
       }
     )
   }
@@ -50,16 +54,18 @@ function EditSalesChannel(props: EditSalesChannelProps) {
     <Modal handleClose={handleClose}>
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
-          <span className="inter-xlarge-semibold">Sales channel details</span>
+          <span className="inter-xlarge-semibold">
+            Détails du canal de vente
+          </span>
         </Modal.Header>
         <Modal.Content>
-          <div className="inter-base-semibold text-grey-90 mb-4">
-            General info
+          <div className="inter-base-semibold mb-4 text-grey-90">
+            Info général
           </div>
 
-          <div className="w-full flex flex-col gap-3">
+          <div className="flex w-full flex-col gap-3">
             <InputField
-              label="Name"
+              label="Nom"
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -73,14 +79,14 @@ function EditSalesChannel(props: EditSalesChannelProps) {
           </div>
         </Modal.Content>
         <Modal.Footer>
-          <div className="w-full flex justify-end">
+          <div className="flex w-full justify-end">
             <Button
               variant="ghost"
               size="small"
               onClick={handleClose}
               className="mr-2"
             >
-              Close
+              Fermer
             </Button>
             <Button
               disabled={!name.length || isLoading}
@@ -90,7 +96,7 @@ function EditSalesChannel(props: EditSalesChannelProps) {
               onClick={handleSubmit}
               loading={isLoading}
             >
-              Save
+              Sauvegarder
             </Button>
           </div>
         </Modal.Footer>

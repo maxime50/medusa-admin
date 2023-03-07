@@ -20,24 +20,24 @@ const ProductVariantLeaf = ({
     <div className="flex flex-1 items-center">
       <div className="truncate">
         <span>{title}</span>
-        {sku && <span className="text-grey-50 ml-xsmall">(SKU: {sku})</span>}
+        {sku && <span className="ml-xsmall text-grey-50">(SKU: {sku})</span>}
       </div>
-      <div className="flex items-center text-grey-50 flex-1 justify-end">
-        <div className="text-grey-50 mr-xsmall">
+      <div className="flex flex-1 items-center justify-end text-grey-50">
+        <div className="mr-xsmall text-grey-50">
           {hasPrices ? (
             <span>{`${prices.length} price${
               prices.length > 1 ? "s" : ""
             }`}</span>
           ) : (
             <span className="inter-small-semibold text-orange-40">
-              Add prices
+              Ajouter des prix
             </span>
           )}
         </div>
         <Button
           variant="ghost"
           size="small"
-          className="w-[32px] h-[32px]"
+          className="h-[32px] w-[32px]"
           onClick={onClick}
         >
           <ChevronRightIcon className="text-grey-40" />

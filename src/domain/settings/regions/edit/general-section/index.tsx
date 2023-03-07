@@ -28,8 +28,8 @@ const GeneralSection = ({ region }: Props) => {
 
   const handleDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Region",
-      text: "Are you sure you want to delete this region?",
+      heading: "Supprimer la région",
+      text: "Êtes-vous sûr de vouloir supprimer cette région ?",
       extraConfirmation: true,
       entityName: region.name,
     })
@@ -40,11 +40,11 @@ const GeneralSection = ({ region }: Props) => {
           navigate("/a/settings/regions", {
             replace: true,
           })
-          notification("Success", "Region has been deleted", "success")
+          notification("Succès", "Région supprimée avec succès", "success")
           navigate(`/a/settings/regions`, { replace: true })
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       })
     }
@@ -56,22 +56,22 @@ const GeneralSection = ({ region }: Props) => {
         title={region.name}
         actions={[
           {
-            label: "Edit Region Details",
+            label: "Modifier les détails de la région",
             onClick: toggle,
             icon: <EditIcon size={20} className="text-grey-50" />,
           },
           {
-            label: "Delete Region",
+            label: "Supprimer la région",
             onClick: handleDelete,
             icon: <TrashIcon size={20} />,
             variant: "danger",
           },
         ]}
       >
-        <div className="flex flex-col gap-y-xsmall mt-large">
-          <h2 className="inter-large-semibold">Details</h2>
+        <div className="mt-large flex flex-col gap-y-xsmall">
+          <h2 className="inter-large-semibold">Détails</h2>
           <div className="flex flex-col gap-y-xsmall">
-            <RegionDetail title={"Currency"}>
+            <RegionDetail title={"Devise"}>
               <div className="flex items-center gap-x-xsmall">
                 <span className="inter-base-semibold text-grey-90">
                   {region.currency_code.toUpperCase()}
@@ -81,7 +81,7 @@ const GeneralSection = ({ region }: Props) => {
                 </span>
               </div>
             </RegionDetail>
-            <RegionDetail title={"Countries"}>
+            <RegionDetail title={"Pays"}>
               <div>
                 {region.countries && region.countries.length ? (
                   <div className="flex items-center gap-x-xsmall">
@@ -103,17 +103,17 @@ const GeneralSection = ({ region }: Props) => {
                         }
                       >
                         <span className="cursor-default">
-                          + {region.countries.length - 4} more
+                          + {region.countries.length - 4}
                         </span>
                       </Tooltip>
                     )}
                   </div>
                 ) : (
-                  <p>No countries configured</p>
+                  <p>Aucun pays configuré</p>
                 )}
               </div>
             </RegionDetail>
-            <RegionDetail title={"Payment providers"}>
+            <RegionDetail title={"Services de paiement"}>
               <div>
                 {region.payment_providers && region.payment_providers.length ? (
                   <div className="flex items-center gap-x-xsmall">
@@ -139,17 +139,17 @@ const GeneralSection = ({ region }: Props) => {
                         }
                       >
                         <span className="cursor-default">
-                          + {region.payment_providers.length - 4} more
+                          + {region.payment_providers.length - 4}
                         </span>
                       </Tooltip>
                     )}
                   </div>
                 ) : (
-                  <p>No payment providers configured</p>
+                  <p>Aucun service de paiement configuré</p>
                 )}
               </div>
             </RegionDetail>
-            <RegionDetail title={"Fulfillment providers"}>
+            <RegionDetail title={"Service de traitement"}>
               <div>
                 {region.payment_providers && region.payment_providers.length ? (
                   <div className="flex items-center gap-x-xsmall">
@@ -175,13 +175,13 @@ const GeneralSection = ({ region }: Props) => {
                         }
                       >
                         <span className="cursor-default">
-                          + {region.fulfillment_providers.length - 4} more
+                          + {region.fulfillment_providers.length - 4}
                         </span>
                       </Tooltip>
                     )}
                   </div>
                 ) : (
-                  <p>No fulfillment providers configured</p>
+                  <p>Aucun service de traitement configuré</p>
                 )}
               </div>
             </RegionDetail>
@@ -200,7 +200,7 @@ type DetailProps = {
 
 const RegionDetail = ({ title, children }: DetailProps) => {
   return (
-    <div className="flex items-center justify-between inter-base-regular text-grey-50">
+    <div className="inter-base-regular flex items-center justify-between text-grey-50">
       <p>{title}</p>
       {children}
     </div>

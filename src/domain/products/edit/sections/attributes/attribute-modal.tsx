@@ -67,34 +67,34 @@ const AttributeModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={onReset} isLargeModal>
       <Modal.Body>
         <Modal.Header handleClose={onReset}>
-          <h1 className="inter-xlarge-semibold m-0">Edit Attributes</h1>
+          <h1 className="inter-xlarge-semibold m-0">Modifier les attributs</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <div className="mb-xlarge">
               <h2 className="inter-large-semibold mb-2xsmall">Dimensions</h2>
-              <p className="inter-base-regular text-grey-50 mb-large">
-                Configure to calculate the most accurate shipping rates
+              <p className="inter-base-regular mb-large text-grey-50">
+                Configurer pour calculer les prix d'expédition
               </p>
               <DimensionsForm form={nestedForm(form, "dimensions")} />
             </div>
             <div>
               <h2 className="inter-large-semibold mb-2xsmall">Customs</h2>
-              <p className="inter-base-regular text-grey-50 mb-large">
-                Configure to calculate the most accurate shipping rates
+              <p className="inter-base-regular mb-large text-grey-50">
+                Configurer pour calculer les prix d'expédition
               </p>
               <CustomsForm form={nestedForm(form, "customs")} />
             </div>
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex gap-x-2 justify-end w-full">
+            <div className="flex w-full justify-end gap-x-2">
               <Button
                 size="small"
                 variant="secondary"
                 type="button"
                 onClick={onReset}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 size="small"
@@ -103,7 +103,7 @@ const AttributeModal = ({ product, open, onClose }: Props) => {
                 disabled={!isDirty}
                 loading={updating}
               >
-                Save
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

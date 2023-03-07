@@ -77,7 +77,7 @@ export const ClaimSummary = ({ form, order }: Props) => {
       <div className="flex flex-col gap-y-base border-y border-grey-20 py-large">
         {selectedClaimItems.length > 0 && (
           <div>
-            <p className="inter-base-semibold mb-small">Claimed items</p>
+            <p className="inter-base-semibold mb-small">Articles réclamés</p>
             <div className="flex flex-col gap-y-xsmall">
               {selectedClaimItems.map((item, index) => {
                 return (
@@ -110,11 +110,11 @@ export const ClaimSummary = ({ form, order }: Props) => {
         {claimType !== "refund" && replacementItems.length > 0 && (
           <div>
             <div className="mb-small flex items-center gap-x-2xsmall">
-              <p className="inter-base-semibold">Replacement items</p>
+              <p className="inter-base-semibold">Articles de remplacement</p>
               <IconTooltip
                 type="warning"
                 content={
-                  "The customer will receive a full refund for the claimed items, as the cost of replacement items and shipping will not be deducted. Alternatively, you can choose to set a custom refund amount when you receive the returned items or create an exchange instead."
+                  "Le client recevra un remboursement complet pour les articles réclamés, le coût des articles de remplacement et des frais d'expédition ne sera pas déduit. Vous pouvez également choisir de définir un montant de remboursement personnalisé lorsque vous recevez les articles retournés ou de créer un échange à la place."
                 }
               />
             </div>
@@ -153,13 +153,13 @@ export const ClaimSummary = ({ form, order }: Props) => {
           data-testid="refund-amount-container"
         >
           <div className="flex items-center gap-x-2xsmall">
-            <p className="inter-base-semibold">Refund amount</p>
+            <p className="inter-base-semibold">Montant du remboursement</p>
             <IconTooltip
               type="info"
               content={
                 claimType === "replace" && claimItemShipping.option
-                  ? "The customer will be refunded once the returned items are received"
-                  : "The customer will be refunded immediately"
+                  ? "Le client sera remboursé après réception des articles retournés."
+                  : "Le client sera remboursé immédiatement"
               }
             />
           </div>

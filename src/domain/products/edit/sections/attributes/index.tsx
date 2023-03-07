@@ -15,7 +15,7 @@ const AttributesSection = ({ product }: Props) => {
 
   const actions: ActionType[] = [
     {
-      label: "Edit Attributes",
+      label: "Modifier les attributs",
       onClick: toggle,
       icon: <EditIcon size={20} />,
     },
@@ -23,23 +23,23 @@ const AttributesSection = ({ product }: Props) => {
 
   return (
     <>
-      <Section title="Attributes" actions={actions} forceDropdown>
-        <div className="flex flex-col gap-y-xsmall mb-large mt-base">
+      <Section title="Attributs" actions={actions} forceDropdown>
+        <div className="mb-large mt-base flex flex-col gap-y-xsmall">
           <h2 className="inter-base-semibold">Dimensions</h2>
           <div className="flex flex-col gap-y-xsmall">
-            <Attribute attribute="Height" value={product.height} />
-            <Attribute attribute="Width" value={product.width} />
-            <Attribute attribute="Length" value={product.length} />
-            <Attribute attribute="Weight" value={product.weight} />
+            <Attribute attribute="Hauteur" value={product.height} />
+            <Attribute attribute="Largeur" value={product.width} />
+            <Attribute attribute="Longueur" value={product.length} />
+            <Attribute attribute="Poids" value={product.weight} />
           </div>
         </div>
         <div className="flex flex-col gap-y-xsmall">
           <h2 className="inter-base-semibold">Customs</h2>
           <div className="flex flex-col gap-y-xsmall">
-            <Attribute attribute="MID Code" value={product.mid_code} />
-            <Attribute attribute="HS Code" value={product.hs_code} />
+            <Attribute attribute="Code MID" value={product.mid_code} />
+            <Attribute attribute="Code HS" value={product.hs_code} />
             <Attribute
-              attribute="Country of origin"
+              attribute="Pays d'origine"
               value={product.origin_country}
             />
           </div>
@@ -58,7 +58,7 @@ type AttributeProps = {
 
 const Attribute = ({ attribute, value }: AttributeProps) => {
   return (
-    <div className="flex items-center justify-between w-full inter-base-regular text-grey-50">
+    <div className="inter-base-regular flex w-full items-center justify-between text-grey-50">
       <p>{attribute}</p>
       <p>{value || "–"}</p>
     </div>

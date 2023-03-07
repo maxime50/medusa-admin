@@ -43,7 +43,7 @@ const Billing = () => {
 
   return (
     <div className="min-h-[705px]">
-      <span className="inter-base-semibold">Billing Address</span>
+      <span className="inter-base-semibold">Adresse de facturation</span>
       {!isNullishObject(shippingAddress) || shippingAddressId ? (
         <div
           className="items-center flex mt-4 mb-6 cursor-pointer"
@@ -64,7 +64,9 @@ const Billing = () => {
             {...form.register("same_as_shipping")}
             tabIndex={-1}
           />
-          <span className="ml-3 text-grey-90">Use same as shipping</span>
+          <span className="ml-3 text-grey-90">
+            Utiliser l'adresse de livraison
+          </span>
         </div>
       ) : null}
       <div

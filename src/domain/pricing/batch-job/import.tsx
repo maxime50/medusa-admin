@@ -73,12 +73,12 @@ function ImportPrices(props: ImportPricesProps) {
     : undefined
 
   const status = hasError
-    ? "Error occurred while processing"
+    ? "Une erreur s'est produite lors du traitement"
     : isPreprocessed
     ? undefined
     : isUploaded
-    ? "Preprocessing..."
-    : "Uploading..."
+    ? "Prétraitement..."
+    : "Téléchargement..."
 
   /**
    * Confirm job on submit.
@@ -86,8 +86,8 @@ function ImportPrices(props: ImportPricesProps) {
   const onSubmit = async () => {
     await confirmBatchJob()
     notification(
-      "Success",
-      "Import confirmed for processing. Progress info is available in the activity drawer.",
+      "Succès",
+      "Importation confirmée pour traitement. Les informations sur l'état d'avancement sont disponibles dans le panel d'activité.",
       "success"
     )
     props.handleClose()
@@ -112,7 +112,7 @@ function ImportPrices(props: ImportPricesProps) {
 
       setBatchJobId(batchJob.batch_job.id)
     } catch (e) {
-      notification("Error", "Import failed.", "error")
+      notification("Erreur", "Échec de l'importation", "error")
       if (fileKey) {
         await deleteFile({ file_key: fileKey })
       }
@@ -174,10 +174,10 @@ function ImportPrices(props: ImportPricesProps) {
   return (
     <UploadModal
       type="prices"
-      fileTitle="Price List prices"
-      description1Text="Upload a CSV file with variants and prices to update your price list. Note that any existing prices will be deleted."
-      description2Title="Unsure about how to arrange your list?"
-      description2Text="Download the template file below and update your prices"
+      fileTitle="Prix Liste des prix"
+      description1Text="Téléchargez un fichier CSV contenant des variantes et des prix pour mettre à jour votre liste de prix. Notez que tous les prix existants seront supprimés."
+      description2Title="Pas certain(e) comment organiser votre liste ?"
+      description2Text="Téléchargez le fichier modèle ci-dessous et mettez à jour vos prix"
       status={status}
       progress={progress}
       canImport={isPreprocessed}

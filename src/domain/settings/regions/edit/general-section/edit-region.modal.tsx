@@ -70,7 +70,7 @@ const EditRegionModal = ({ region, onClose, open }: Props) => {
 
     mutate(payload, {
       onSuccess: () => {
-        notifcation("Success", "Region was successfully updated", "success")
+        notifcation("Succès", "Région mise à jour avec succès", "success")
         closeAndReset()
       },
       onError: (err) => {
@@ -83,29 +83,31 @@ const EditRegionModal = ({ region, onClose, open }: Props) => {
     <Modal handleClose={closeAndReset} open={open}>
       <Modal.Body>
         <Modal.Header handleClose={closeAndReset}>
-          <h1 className="inter-xlarge-semibold">Edit Region Details</h1>
+          <h1 className="inter-xlarge-semibold">
+            Modifier les détails de la région
+          </h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <div>
-              <h3 className="inter-base-semibold mb-base">Details</h3>
+              <h3 className="inter-base-semibold mb-base">Détails</h3>
               <RegionDetailsForm form={nestedForm(form, "details")} />
             </div>
-            <div className="w-full h-px bg-grey-20 my-xlarge" />
+            <div className="my-xlarge h-px w-full bg-grey-20" />
             <div>
-              <h3 className="inter-base-semibold mb-base">Providers</h3>
+              <h3 className="inter-base-semibold mb-base">Services</h3>
               <RegionProvidersForm form={nestedForm(form, "providers")} />
             </div>
           </Modal.Content>
           <Modal.Footer>
-            <div className="w-full flex items-center justify-end gap-x-xsmall">
+            <div className="flex w-full items-center justify-end gap-x-xsmall">
               <Button
                 variant="secondary"
                 size="small"
                 type="button"
                 onClick={closeAndReset}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 variant="primary"
@@ -114,7 +116,7 @@ const EditRegionModal = ({ region, onClose, open }: Props) => {
                 loading={isLoading}
                 disabled={isLoading || !isDirty}
               >
-                Save and close
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

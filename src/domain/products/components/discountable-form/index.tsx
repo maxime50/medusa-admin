@@ -15,8 +15,8 @@ const DiscountableForm = ({ form }: Props) => {
   const { control, path } = form
   return (
     <div>
-      <div className="flex items-center justify-between mb-2xsmall">
-        <h2 className="inter-base-semibold">Discountable</h2>
+      <div className="mb-2xsmall flex items-center justify-between">
+        <h2 className="inter-base-semibold">Réductible</h2>
         <Controller
           control={control}
           name={path("value")}
@@ -26,7 +26,8 @@ const DiscountableForm = ({ form }: Props) => {
         />
       </div>
       <p className="inter-base-regular text-grey-50">
-        When unchecked discounts will not be applied to this product.
+        Si la case n'est pas cochée, les rabais ne seront pas appliquées à ce
+        produit.
       </p>
     </div>
   )

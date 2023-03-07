@@ -36,7 +36,7 @@ const EditPricesOverridesModal = ({
 
   const getOnClick = (variant) => () =>
     context.push({
-      title: `Edit price overrides`,
+      title: `Modifier les prix overrides`,
       onBack: () => context.pop(),
       view: (
         <PriceOverrides
@@ -59,7 +59,7 @@ const EditPricesOverridesModal = ({
                 onSuccess: () => {
                   context.pop()
                   close()
-                  notification("Success", "Price overrides updated", "success")
+                  notification("Succès", "Prix overrides mis à jour", "success")
                 },
               }
             )
@@ -70,11 +70,11 @@ const EditPricesOverridesModal = ({
 
   return (
     <LayeredModal isLargeModal context={context} handleClose={close}>
-      <Modal.Body className="h-[calc(100vh-134px)] flex flex-col">
+      <Modal.Body className="flex h-[calc(100vh-134px)] flex-col">
         <Modal.Header handleClose={close}>
           <h1 className="inter-xlarge-semibold">
             Price overrides{" "}
-            <span className="text-grey-50 inter-xlarge-regular truncate">
+            <span className="inter-xlarge-regular truncate text-grey-50">
               ({product.title})
             </span>
           </h1>
@@ -86,7 +86,7 @@ const EditPricesOverridesModal = ({
               <div>
                 <img
                   src={product.thumbnail || undefined}
-                  className="w-4 h-5 rounded-base"
+                  className="h-5 w-4 rounded-base"
                 />
               </div>
               <span className="inter-small-semibold">{product.title}</span>
@@ -107,22 +107,22 @@ const EditPricesOverridesModal = ({
         </Modal.Content>
 
         <Modal.Footer>
-          <div className="flex w-full h-8 justify-end">
+          <div className="flex h-8 w-full justify-end">
             <Button
               variant="ghost"
-              className="mr-2 w-32 text-small justify-center rounded-rounded"
+              className="mr-2 w-32 justify-center rounded-rounded text-small"
               size="large"
               onClick={close}
             >
-              Cancel
+              Annuler
             </Button>
             <Button
               disabled
               size="large"
-              className="w-32 text-small justify-center rounded-rounded"
+              className="w-32 justify-center rounded-rounded text-small"
               variant="primary"
             >
-              Save
+              Sauvegarder
             </Button>
           </div>
         </Modal.Footer>

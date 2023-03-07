@@ -51,11 +51,11 @@ const EditModal = ({ open, onClose, option }: Props) => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Shipping option updated", "success")
+          notification("Succès", "Option de livraison mise à jour", "success")
           closeAndReset()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       }
     )
@@ -65,17 +65,19 @@ const EditModal = ({ open, onClose, option }: Props) => {
     <Modal open={open} handleClose={closeAndReset}>
       <Modal.Body>
         <Modal.Header handleClose={closeAndReset}>
-          <h1 className="inter-xlarge-semibold">Edit Shipping Option</h1>
+          <h1 className="inter-xlarge-semibold">
+            Modifier l'option de livraison
+          </h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <div>
-              <p className="inter-base-semibold">Fulfillment Method</p>
+              <p className="inter-base-semibold">Méthode de traitement</p>
               <p className="inter-base-regular text-grey-50">
                 {option.data.id} via {option.provider_id}
               </p>
             </div>
-            <div className="w-full h-px bg-grey-20 my-xlarge" />
+            <div className="my-xlarge h-px w-full bg-grey-20" />
             <ShippingOptionForm
               form={form}
               region={option.region}
@@ -83,9 +85,9 @@ const EditModal = ({ open, onClose, option }: Props) => {
             />
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex items-center gap-x-xsmall justify-end w-full">
+            <div className="flex w-full items-center justify-end gap-x-xsmall">
               <Button variant="secondary" size="small" onClick={closeAndReset}>
-                Cancel
+                Annuler
               </Button>
               <Button
                 variant="primary"
@@ -94,7 +96,7 @@ const EditModal = ({ open, onClose, option }: Props) => {
                 loading={isLoading}
                 disabled={isLoading || !isDirty}
               >
-                Save and close
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

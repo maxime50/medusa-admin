@@ -4,7 +4,7 @@ import TableViewHeader from "../../components/organisms/custom-table-header"
 import { useNavigate } from "react-router-dom"
 
 type P = {
-  activeView: "customers" | "groups"
+  activeView: "clients" | "groups"
 }
 
 /*
@@ -15,13 +15,13 @@ function CustomersPageTableHeader(props: P) {
   return (
     <TableViewHeader
       setActiveView={(v) => {
-        if (v === "customers") {
+        if (v === "clients") {
           navigate(`/a/customers`)
         } else {
           navigate(`/a/customers/groups`)
         }
       }}
-      views={["customers", "groups"]}
+      views={["clients", "groups"]}
       activeView={props.activeView}
     />
   )

@@ -43,14 +43,14 @@ const UsageInsightsModal = ({ config, open, onClose }: Props) => {
     mutate(data, {
       onSuccess: () => {
         notification(
-          "Success",
-          "Your information was successfully updated",
+          "Succès",
+          "Informations mises à jour avec succès",
           "success"
         )
         onClose()
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Erreur", getErrorMessage(err), "error")
       },
     })
   })
@@ -58,16 +58,16 @@ const UsageInsightsModal = ({ config, open, onClose }: Props) => {
   return (
     <Modal handleClose={onClose} open={open} isLargeModal={true}>
       <Modal.Header handleClose={onClose}>
-        <h1 className="inter-xlarge-semibold">Edit preferences</h1>
+        <h1 className="inter-xlarge-semibold">Modiier les préférences</h1>
       </Modal.Header>
       <Modal.Body>
         <Modal.Content>
           <AnalyticsConfigForm form={nestedForm(form)} />
         </Modal.Content>
         <Modal.Footer className="border-t border-grey-20 pt-base">
-          <div className="flex items-center justify-end gap-x-xsmall w-full">
+          <div className="flex w-full items-center justify-end gap-x-xsmall">
             <Button variant="secondary" size="small" onClick={onClose}>
-              Cancel
+              Annuler
             </Button>
             <Button
               variant="primary"
@@ -76,7 +76,7 @@ const UsageInsightsModal = ({ config, open, onClose }: Props) => {
               disabled={isSubmitting}
               onClick={onSubmit}
             >
-              Submit and close
+              Soumettre
             </Button>
           </div>
         </Modal.Footer>

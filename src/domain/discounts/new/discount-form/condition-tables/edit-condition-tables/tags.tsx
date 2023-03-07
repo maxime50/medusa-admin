@@ -46,7 +46,7 @@ const EditTagConditionSelector = ({ onClose }) => {
               options={{
                 enableSearch: true,
                 immediateSearchFocus: true,
-                searchPlaceholder: "Search by tag...",
+                searchPlaceholder: "Rechercher par tag...",
               }}
               resourceName="Tags"
               totalCount={count || 0}

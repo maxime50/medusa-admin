@@ -57,9 +57,9 @@ const RMAReturnReasonSubModal: React.FC<RMAReturnReasonSubModalProps> = ({
     <>
       <Modal.Content>
         <div className="h-full">
-          <h2 className="inter-base-semibold mb-4">Reason for Return</h2>
+          <h2 className="inter-base-semibold mb-4">Raison du retour</h2>
           <Select
-            label="Reason"
+            label="Raison"
             value={selectedReason}
             onChange={setSelectedReason}
             options={
@@ -135,7 +135,7 @@ const RMAReturnReasonSubModal: React.FC<RMAReturnReasonSubModalProps> = ({
             className="w-[112px]"
             onClick={() => pop()}
           >
-            Back
+            Retour
           </Button>
           <Button
             variant="primary"
@@ -147,7 +147,7 @@ const RMAReturnReasonSubModal: React.FC<RMAReturnReasonSubModalProps> = ({
               pop()
             }}
           >
-            Add
+            Ajouter
           </Button>
         </div>
       </Modal.Footer>

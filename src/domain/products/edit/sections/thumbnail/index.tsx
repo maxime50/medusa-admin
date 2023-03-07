@@ -28,10 +28,10 @@ const TumbnailSection = ({ product }: Props) => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully deleted thumbnail", "success")
+          notification("Succès", "Vignette supprimée avec succès", "success")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Erreur", getErrorMessage(err), "error")
         },
       }
     )
@@ -40,7 +40,7 @@ const TumbnailSection = ({ product }: Props) => {
   return (
     <>
       <Section
-        title="Thumbnail"
+        title="Vignette"
         customActions={
           <div className="flex items-center gap-x-xsmall">
             <Button
@@ -49,7 +49,7 @@ const TumbnailSection = ({ product }: Props) => {
               type="button"
               onClick={toggle}
             >
-              {product.thumbnail ? "Edit" : "Upload"}
+              {product.thumbnail ? "Modifier" : "Télécharger"}
             </Button>
             {product.thumbnail && (
               <TwoStepDelete onDelete={handleDelete} deleting={updating} />
@@ -58,16 +58,16 @@ const TumbnailSection = ({ product }: Props) => {
         }
       >
         <div
-          className={clsx("grid grid-cols-3 gap-xsmall mt-base", {
+          className={clsx("mt-base grid grid-cols-3 gap-xsmall", {
             hidden: !product.thumbnail,
           })}
         >
           {product.thumbnail && (
-            <div className="aspect-square flex items-center justify-center">
+            <div className="flex aspect-square items-center justify-center">
               <img
                 src={product.thumbnail}
-                alt={`Thumbnail for ${product.title}`}
-                className="object-contain rounded-rounded max-w-full max-h-full"
+                alt={`Vignette pour ${product.title}`}
+                className="max-h-full max-w-full rounded-rounded object-contain"
               />
             </div>
           )}

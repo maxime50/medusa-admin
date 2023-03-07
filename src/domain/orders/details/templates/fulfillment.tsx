@@ -49,8 +49,8 @@ export const FormattedFulfillment = ({
     const { resourceId, resourceType } = getData()
 
     const shouldCancel = await dialog({
-      heading: "Cancel fulfillment?",
-      text: "Are you sure you want to cancel the fulfillment?",
+      heading: "Annuler le traitement de la commande ?",
+      text: "Êtes-vous sûr de vouloir annuler le traitement de la commande ?",
     })
 
     if (!shouldCancel) {
@@ -63,9 +63,9 @@ export const FormattedFulfillment = ({
           { swap_id: resourceId, fulfillment_id: fulfillment.id },
           {
             onSuccess: () =>
-              notification("Success", "Successfully canceled swap", "success"),
+              notification("Succès", "Échange annulé avec succès", "success"),
             onError: (err) =>
-              notification("Error", getErrorMessage(err), "error"),
+              notification("Erreur", getErrorMessage(err), "error"),
           }
         )
       case "claim":
@@ -73,17 +73,21 @@ export const FormattedFulfillment = ({
           { claim_id: resourceId, fulfillment_id: fulfillment.id },
           {
             onSuccess: () =>
-              notification("Success", "Successfully canceled claim", "success"),
+              notification(
+                "Succès",
+                "Réclamation annulée avec succès",
+                "success"
+              ),
             onError: (err) =>
-              notification("Error", getErrorMessage(err), "error"),
+              notification("Erreur", getErrorMessage(err), "error"),
           }
         )
       default:
         return cancelFulfillment.mutate(fulfillment.id, {
           onSuccess: () =>
-            notification("Success", "Successfully canceled order", "success"),
+            notification("Succès", "Commande annulée avec succès", "success"),
           onError: (err) =>
-            notification("Error", getErrorMessage(err), "error"),
+            notification("Erreur", getErrorMessage(err), "error"),
         })
     }
   }
@@ -93,13 +97,13 @@ export const FormattedFulfillment = ({
       <div className="flex flex-col space-y-1 py-2">
         <div className="text-grey-90">
           {fulfillment.canceled_at
-            ? "Fulfillment has been canceled"
-            : `${fulfillmentObj.title} Fulfilled by ${capitalize(
+            ? "Le traitement de la commande a été annulé"
+            : `${fulfillmentObj.title} traité par ${capitalize(
                 fulfillment.provider_id
               )}`}
         </div>
         <div className="flex text-grey-50">
-          {!fulfillment.shipped_at ? "Not shipped" : "Tracking"}
+          {!fulfillment.shipped_at ? "Non livré" : "Numéro de suivi"}
           {hasLinks &&
             fulfillment.tracking_links.map((tl, j) => (
               <TrackingLink key={j} trackingLink={tl} />
@@ -111,12 +115,12 @@ export const FormattedFulfillment = ({
           <Actionables
             actions={[
               {
-                label: "Mark Shipped",
+                label: "Marquer comme expédiée",
                 icon: <PackageIcon size={"20"} />,
                 onClick: () => setFullfilmentToShip(fulfillment),
               },
               {
-                label: "Cancel Fulfillment",
+                label: "Annuler le traitement de la commande",
                 icon: <CancelIcon size={"20"} />,
                 onClick: () => handleCancelFulfillment(),
               },

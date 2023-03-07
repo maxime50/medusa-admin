@@ -12,7 +12,7 @@ const OrderPlaced: React.FC<OrderPlacedProps> = ({ event }) => {
   const args = {
     icon: <CheckCircleIcon size={20} />,
     time: event.time,
-    title: "Commande placé",
+    title: "Commande placée",
     midNode: (
       <div className="inter-small-regular text-grey-50">
         {formatAmountWithSymbol({

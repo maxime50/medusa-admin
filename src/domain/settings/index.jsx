@@ -25,76 +25,78 @@ const SettingsIndex = () => {
   return (
     <SettingsOverview>
       <SettingsCard
-        heading={"Regions"}
-        description={"Manage the markets you will operate within"}
+        heading={"Régions"}
+        description={"Gérer les régions sur lesquels on opère"}
         icon={<MapPinIcon />}
         to={`/a/settings/regions`}
       />
       <SettingsCard
-        heading={"Currencies"}
-        description={"Manage the markets you will operate within"}
+        heading={"Devises"}
+        description={"Gérer les devises sur lesquels on opère"}
         icon={<CoinsIcon />}
         to={`/a/settings/currencies`}
       />
       <SettingsCard
-        heading={"Store Details"}
-        description={"Manage your business details"}
+        heading={"Détails de la boutique"}
+        description={"Gérer les détails de la boutique"}
         icon={<CrosshairIcon />}
         to={`/a/settings/details`}
       />
       <SettingsCard
-        heading={"Shipping"}
-        description={"Manage shipping profiles"}
+        heading={"Livraison"}
+        description={"Gérer les options de livraison"}
         icon={<TruckIcon />}
         to={`/a/settings/shipping-profiles`}
         disabled={true}
       />
       <SettingsCard
-        heading={"Return Reasons"}
-        description={"Manage Order settings"}
+        heading={"Raisons de retour"}
+        description={"Gérer les raisons de retour des articles"}
         icon={<DollarSignIcon />}
         to={`/a/settings/return-reasons`}
       />
       <SettingsCard
-        heading={"The Team"}
-        description={"Manage users of your Medusa Store"}
+        heading={"Notre équipe"}
+        description={"Gérer les membres de l'équipe technique"}
         icon={<UsersIcon />}
         to={`/a/settings/team`}
       />
       <SettingsCard
-        heading={"Personal Information"}
-        description={"Manage your Medusa profile"}
+        heading={"Informations personnelles"}
+        description={"Gérer votre profil"}
         icon={<HappyIcon />}
         to={`/a/settings/personal-information`}
       />
+      {/* <SettingsCard */}
+      {/*   heading={"hello@medusajs.com"} */}
+      {/*   description={"Can’t find the answers you’re looking for?"} */}
+      {/*   icon={<MailIcon />} */}
+      {/*   externalLink={"mailto: hello@medusajs.com"} */}
+      {/* /> */}
       <SettingsCard
-        heading={"hello@medusajs.com"}
-        description={"Can’t find the answers you’re looking for?"}
-        icon={<MailIcon />}
-        externalLink={"mailto: hello@medusajs.com"}
-      />
-      <SettingsCard
-        heading={"Tax Settings"}
-        description={"Manage taxes across regions and products"}
+        heading={"Taxes"}
+        description={"Gérer les taxes en fonction des régions et des produits"}
         icon={<TaxesIcon />}
         to={`/a/settings/taxes`}
       />
-      <FeatureToggle featureFlag="sales_channels">
-        <SettingsCard
-          heading={"Sales channels"}
-          description={"Control which products are available in which channels"}
-          icon={<ChannelsIcon />}
-          to={`/a/sales-channels`}
-        />
-      </FeatureToggle>
-      <FeatureToggle featureFlag="publishable_api_keys">
-        <SettingsCard
-          heading={"API key management"}
-          description={"Create and manage API keys"}
-          icon={<KeyIcon />}
-          to={`/a/publishable-api-keys`}
-        />
-      </FeatureToggle>
+      {/* <FeatureToggle featureFlag="sales_channels"> */}
+      {/*   <SettingsCard */}
+      {/*     heading={"Canaux de vente"} */}
+      {/*     description={ */}
+      {/*       "Contrôler quels produits sont disponibles dans quels canaux de vente" */}
+      {/*     } */}
+      {/*     icon={<ChannelsIcon />} */}
+      {/*     to={`/a/sales-channels`} */}
+      {/*   /> */}
+      {/* </FeatureToggle> */}
+      {/* <FeatureToggle featureFlag="publishable_api_keys"> */}
+      {/*   <SettingsCard */}
+      {/*     heading={"API key management"} */}
+      {/*     description={"Create and manage API keys"} */}
+      {/*     icon={<KeyIcon />} */}
+      {/*     to={`/a/publishable-api-keys`} */}
+      {/*   /> */}
+      {/* </FeatureToggle> */}
     </SettingsOverview>
   )
 }

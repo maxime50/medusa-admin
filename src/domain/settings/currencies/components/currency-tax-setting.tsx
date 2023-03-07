@@ -37,13 +37,13 @@ const CurrencyTaxSetting = ({ currency, isDefault }: Props) => {
   const onSubmit = handleSubmit((data: CurrencyTaxSettingFormType) => {
     mutate(data, {
       onSuccess: () => {
-        notification("Success", "Successfully updated currency", "success")
+        notification("Succès", "Devise mise à jour avec succès", "success")
 
         // When we update a currency, we need to invalidate the store in order for this change to be reflected across admin
         queryClient.invalidateQueries(adminStoreKeys.all)
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
         reset({
           includes_tax: currency.includes_tax,
         })
@@ -53,20 +53,20 @@ const CurrencyTaxSetting = ({ currency, isDefault }: Props) => {
 
   return (
     <form>
-      <div className="flex items-center justify-between inter-base-regular">
+      <div className="inter-base-regular flex items-center justify-between">
         <div className="flex items-center gap-x-base">
-          <div className="flex items-center justify-center bg-grey-10 rounded-rounded w-xlarge h-xlarge">
+          <div className="flex h-xlarge w-xlarge items-center justify-center rounded-rounded bg-grey-10">
             <CoinsIcon size={20} className="text-grey-50" />
           </div>
           <div className="flex items-center gap-x-xsmall">
             <p className="inter-base-semibold text-grey-90">
               {currency.code.toUpperCase()}
             </p>
-            <p className="text-grey-50 inter-small-regular">{currency.name}</p>
+            <p className="inter-small-regular text-grey-50">{currency.name}</p>
           </div>
           {isDefault && (
-            <div className="bg-grey-10 rounded-rounded py-[2px] px-xsmall">
-              <p className="inter-small-semibold text-grey-50">Default</p>
+            <div className="rounded-rounded bg-grey-10 py-[2px] px-xsmall">
+              <p className="inter-small-semibold text-grey-50">Par défaut</p>
             </div>
           )}
         </div>

@@ -58,15 +58,15 @@ type Props = {
 const CreateFlowVariantForm = ({ form, options, onCreateOption }: Props) => {
   return (
     <Accordion type="multiple" defaultValue={["general"]}>
-      <Accordion.Item title="General" value="general" required>
+      <Accordion.Item title="Général" value="general" required>
         <div>
           <VariantGeneralForm form={nestedForm(form, "general")} />
           <div className="mt-xlarge">
-            <div className="flex items-center gap-x-2xsmall mb-base">
+            <div className="mb-base flex items-center gap-x-2xsmall">
               <h3 className="inter-base-semibold">Options</h3>
               <IconTooltip
                 type="info"
-                content="Options are used to define the color, size, etc. of the variant."
+                content="Les options sont utilisées pour définir la couleur, la taille, etc. de la variante."
               />
             </div>
             <VariantSelectOptionsForm
@@ -78,28 +78,29 @@ const CreateFlowVariantForm = ({ form, options, onCreateOption }: Props) => {
           </div>
         </div>
       </Accordion.Item>
-      <Accordion.Item title="Pricing" value="pricing">
+      <Accordion.Item title="Prix" value="pricing">
         <VariantPricesForm form={nestedForm(form, "prices")} />
       </Accordion.Item>
-      <Accordion.Item title="Stock & Inventory" value="stock">
+      <Accordion.Item title="Stock & Inventaire" value="stock">
         <VariantStockForm form={nestedForm(form, "stock")} />
       </Accordion.Item>
-      <Accordion.Item title="Shipping" value="shipping">
+      <Accordion.Item title="Livraison" value="shipping">
         <p className="inter-base-regular text-grey-50">
-          Shipping information can be required depending on your shipping
-          provider, and whether or not you are shipping internationally.
+          Les informations d'expédition peuvent être requises en fonction de
+          votre fournisseur de services d'expédition et si vous expédiez à
+          l'étranger ou non.
         </p>
         <div className="mt-large">
           <h3 className="inter-base-semibold mb-2xsmall">Dimensions</h3>
-          <p className="inter-base-regular text-grey-50 mb-large">
-            Configure to calculate the most accurate shipping rates.
+          <p className="inter-base-regular mb-large text-grey-50">
+            Configurer pour calculer les prix d'expédition.
           </p>
           <DimensionsForm form={nestedForm(form, "dimensions")} />
         </div>
         <div className="mt-xlarge">
           <h3 className="inter-base-semibold mb-2xsmall">Customs</h3>
-          <p className="inter-base-regular text-grey-50 mb-large">
-            Configure if you are shipping internationally.
+          <p className="inter-base-regular mb-large text-grey-50">
+            Configurer si vous expédiez au niveau international.
           </p>
           <CustomsForm form={nestedForm(form, "customs")} />
         </div>

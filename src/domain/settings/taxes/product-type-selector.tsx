@@ -27,8 +27,8 @@ export const ProductTypeSelector = ({ items, onChange }) => {
   return (
     <SelectableTable
       showSearch={false}
-      label="Select Product Types"
-      objectName="Product Types"
+      label="Sélectionner les types de produit"
+      objectName="Types de produit"
       totalCount={count}
       pagination={pagination}
       onPaginationChange={setPagination}

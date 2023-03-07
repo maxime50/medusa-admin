@@ -162,7 +162,7 @@ const AddAdditionalItemsScreen = ({
       <Modal.Footer>
         <div className="flex w-full items-center justify-end gap-x-xsmall">
           <Button variant="secondary" size="small" onClick={pop}>
-            Go back
+            Retourner en arrière
           </Button>
           <Button
             variant="primary"
@@ -170,7 +170,7 @@ const AddAdditionalItemsScreen = ({
             type="button"
             onClick={onSubmit}
           >
-            Add products
+            Ajouter des produits
           </Button>
         </div>
       </Modal.Footer>
@@ -183,7 +183,7 @@ export const useAddAdditionalItemsScreen = () => {
 
   const pushScreen = (props: Props) => {
     push({
-      title: "Add Product Variants",
+      title: "Ajouter des variantes de produit",
       onBack: () => pop(),
       view: <AddAdditionalItemsScreen {...props} />,
     })

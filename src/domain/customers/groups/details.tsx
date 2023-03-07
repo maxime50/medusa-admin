@@ -37,9 +37,9 @@ const defaultQueryProps = {
  */
 function CustomersListPlaceholder() {
   return (
-    <div className="h-full flex center justify-center items-center min-h-[756px]">
+    <div className="center flex h-full min-h-[756px] items-center justify-center">
       <span className="text-xs text-gray-400">
-        No customers in this group yet
+        Aucun client dans ce groupe pour l'instant
       </span>
     </div>
   )
@@ -86,7 +86,7 @@ function CustomerGroupCustomersList(props: CustomerGroupCustomersListProps) {
 
   const actions = [
     {
-      label: "Edit customers",
+      label: "Modifier les clients",
       onClick: () => setShowCustomersModal(true),
       icon: (
         <span className="text-grey-90">
@@ -125,9 +125,9 @@ function CustomerGroupCustomersList(props: CustomerGroupCustomersListProps) {
 
   return (
     <BodyCard
-      title="Customers"
+      title="Clients"
       actionables={actions}
-      className="w-full my-4 min-h-[756px]"
+      className="my-4 min-h-[756px] w-full"
     >
       {showCustomersModal && (
         <EditCustomersTable
@@ -175,12 +175,12 @@ function CustomerGroupDetailsHeader(props: CustomerGroupDetailsHeaderProps) {
 
   const actions = [
     {
-      label: "Edit",
+      label: "Modifer",
       onClick: showModal,
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Delete",
+      label: "Supprimer",
       onClick: () => {
         setShowDeleteConfirmation(true)
       },
@@ -208,10 +208,10 @@ function CustomerGroupDetailsHeader(props: CustomerGroupDetailsHeaderProps) {
         <DeletePrompt
           onDelete={onDeleteConfirmed}
           handleClose={handleConfirmDialogClose}
-          confirmText="Yes, delete"
-          heading="Delete the group"
-          successText="Group deleted"
-          text="Are you sure you want to delete this customer group?"
+          confirmText="Oui, supprimer"
+          heading="Supprimer le groupe"
+          successText="Groupe supprimé"
+          text="Êtes-vous sûr de vouloir supprimer ce groupe de clients ?"
         />
       )}
     </>
@@ -235,7 +235,7 @@ function CustomerGroupDetails() {
       <div className="-mt-4 pb-4">
         <BackButton
           path="/a/customers/groups"
-          label="Back to customer groups"
+          label="Retour aux groupes de clients"
           className="mb-4"
         />
         <CustomerGroupDetailsHeader customerGroup={customer_group} />

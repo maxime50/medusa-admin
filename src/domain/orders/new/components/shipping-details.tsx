@@ -147,7 +147,7 @@ const ShippingDetails = () => {
     <div className="min-h-[705px] flex flex-col gap-y-8">
       <div>
         <span className="inter-base-semibold">
-          Customer and shipping details
+          Client et détails de livraison
         </span>
         <Controller
           control={form.control}
@@ -156,7 +156,7 @@ const ShippingDetails = () => {
             return (
               <Select
                 className="mt-4"
-                label="Find existing customer"
+                label="Trouver un client existant"
                 options={[]}
                 enableSearch
                 value={value || null}
@@ -173,11 +173,11 @@ const ShippingDetails = () => {
       </div>
 
       <div className="flex flex-col gap-y-4">
-        <span className="inter-base-semibold">Email</span>
+        <span className="inter-base-semibold">Courriel</span>
         <InputField
           {...form.register("email")}
-          label="Email"
-          placeholder="lebron@james.com"
+          label="Courriel"
+          placeholder="exemple@hotmail.com"
           disabled={!!customerId}
           required
           // @ts-ignore
@@ -196,7 +196,9 @@ const ShippingDetails = () => {
         </div>
       ) : validAddresses.length && !addNew ? (
         <div>
-          <span className="inter-base-semibold">Choose existing addresses</span>
+          <span className="inter-base-semibold">
+            Choisir un courriel existant
+          </span>
           <Controller
             control={form.control}
             name="shipping_address_id"
@@ -232,7 +234,7 @@ const ShippingDetails = () => {
               className="border border-grey-20 w-[112px]"
               onClick={onCreateNew}
             >
-              Create new
+              Créer un nouveau
             </Button>
           </div>
         </div>

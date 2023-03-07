@@ -53,7 +53,7 @@ const EditGiftCardModal = ({
         <Modal.Body isLargeModal={true}>
           <Modal.Header handleClose={handleClose}>
             <span className="inter-xlarge-semibold">
-              Edit Gift Card Details
+              Modifier les détails de la carte cadeau
             </span>
           </Modal.Header>
           <Modal.Content>
@@ -81,7 +81,7 @@ const EditGiftCardModal = ({
             />
           </Modal.Content>
           <Modal.Footer>
-            <div className="w-full flex justify-end">
+            <div className="flex w-full justify-end">
               <Button
                 variant="ghost"
                 size="small"
@@ -89,7 +89,7 @@ const EditGiftCardModal = ({
                 className="mr-2"
                 type="button"
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 loading={updating}
@@ -99,7 +99,7 @@ const EditGiftCardModal = ({
                 size="small"
                 type="submit"
               >
-                Save
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

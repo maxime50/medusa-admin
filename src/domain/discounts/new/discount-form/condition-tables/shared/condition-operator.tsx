@@ -15,19 +15,19 @@ const ConditionOperator: React.FC<ConditionOperatorProps> = ({
     <RadioGroup.Root
       value={value}
       onValueChange={onChange}
-      className="grid grid-cols-2 gap-base mb-4"
+      className="mb-4 grid grid-cols-2 gap-base"
     >
       <RadioGroup.Item
         className="w-full"
-        label="In"
+        label="Inclus"
         value={DiscountConditionOperator.IN}
-        description="Applies to the selected items."
+        description="S'applique aux articles sélectionnés"
       />
       <RadioGroup.Item
         className="w-full"
-        label="Not in"
+        label="N'inclus pas"
         value={DiscountConditionOperator.NOT_IN}
-        description="Applies to all items except the selected items."
+        description="S'applique à tous les articles excepté ceux qui sont sélectionnés"
       />
     </RadioGroup.Root>
   )

@@ -35,7 +35,7 @@ export const useSalesChannelsTableColumns = () => {
         width: 30,
         id: "selection",
         Header: ({ getToggleAllPageRowsSelectedProps }) => (
-          <span className="flex justify-center w-[30px]">
+          <span className="flex w-[30px] justify-center">
             <IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} />
           </span>
         ),
@@ -43,7 +43,7 @@ export const useSalesChannelsTableColumns = () => {
           return (
             <span
               onClick={(e) => e.stopPropagation()}
-              className="flex justify-center w-[30px]"
+              className="flex w-[30px] justify-center"
             >
               <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
             </span>
@@ -51,7 +51,7 @@ export const useSalesChannelsTableColumns = () => {
         },
       },
       {
-        Header: "Title",
+        Header: "Titre",
         accessor: "name",
       },
       {
@@ -118,7 +118,7 @@ const SalesChannelTable = ({
         count: count,
         offset: offset,
         pageSize: offset + rows.length,
-        title: "Sales Channels",
+        title: "Canaux de vente",
         currentPage: pageIndex + 1,
         pageCount: pageCount,
         nextPage: handleNext,
@@ -184,11 +184,11 @@ export const SalesChannelTableActions = ({
   const { push } = React.useContext(LayeredModalContext)
 
   return (
-    <div className="flex space-x-xsmall h-[34px] overflow-hidden">
+    <div className="flex h-[34px] space-x-xsmall overflow-hidden">
       <div className={clsx("transition-all duration-200", classes)}>
-        <div className="divide-x flex items-center h-[34px] mb-2">
-          <span className="mr-3 inter-small-regular text-grey-50">
-            {numberOfSelectedRows} selected
+        <div className="mb-2 flex h-[34px] items-center divide-x">
+          <span className="inter-small-regular mr-3 text-grey-50">
+            {numberOfSelectedRows} sélectionné
           </span>
           <div className="flex space-x-xsmall pl-3">
             <Button
@@ -197,7 +197,7 @@ export const SalesChannelTableActions = ({
               variant="ghost"
               className="border border-grey-20"
             >
-              Deselect
+              Déselectionner
             </Button>
             <Button
               onClick={onRemove}
@@ -205,18 +205,18 @@ export const SalesChannelTableActions = ({
               variant="ghost"
               className="border border-grey-20 text-rose-50"
             >
-              Remove
+              Supprimer
             </Button>
           </div>
         </div>
-        <div className="flex justify-end h-[34px]">
+        <div className="flex h-[34px] justify-end">
           <Button
             size="small"
             variant="ghost"
             className="border border-grey-20"
             onClick={() => push(addChannelModalScreen)}
           >
-            <PlusIcon size={20} /> Add Channels
+            <PlusIcon size={20} /> Ajouter des canaux de vente
           </Button>
         </div>
       </div>

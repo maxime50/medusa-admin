@@ -22,23 +22,23 @@ const VariantGeneralForm = ({ form }: Props) => {
   return (
     <div>
       <p className="inter-base-regular text-grey-50">
-        Configure the general information for this variant.
+        Configurer les informations générales pour cette variante.
       </p>
       <div className="pt-large">
         <div className="grid grid-cols-2 gap-x-large">
           <InputField
-            label="Custom title"
-            placeholder="Green / XL..."
+            label="Titre personnalisé"
+            placeholder="Rouge / XL..."
             {...register(path("title"), {
-              pattern: FormValidator.whiteSpaceRule("Title"),
+              pattern: FormValidator.whiteSpaceRule("Titre"),
             })}
             errors={errors}
           />
           <InputField
-            label="Material"
-            placeholder="80% wool, 20% cotton..."
+            label="Matériel"
+            placeholder="100% stainless..."
             {...form.register(path("material"), {
-              pattern: FormValidator.whiteSpaceRule("Material"),
+              pattern: FormValidator.whiteSpaceRule("Matériel"),
             })}
             errors={errors}
           />

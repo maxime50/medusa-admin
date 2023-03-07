@@ -42,8 +42,8 @@ export const useCollectionColumns = () => {
     return [
       {
         Header: () => (
-          <div className="flex items-center gap-1 min-w-[546px]">
-            Title <SortingIcon size={16} />
+          <div className="flex min-w-[546px] items-center gap-1">
+            Titre <SortingIcon size={16} />
           </div>
         ),
         accessor: "title",
@@ -53,8 +53,8 @@ export const useCollectionColumns = () => {
       },
       {
         Header: () => (
-          <div className="flex justify-end items-center gap-1">
-            Products <SortingIcon size={16} />
+          <div className="flex items-center justify-end gap-1">
+            Produits <SortingIcon size={16} />
           </div>
         ),
         id: "products",

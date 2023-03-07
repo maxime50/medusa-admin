@@ -51,11 +51,11 @@ const EditCustomerModal = ({
       {
         onSuccess: () => {
           handleClose()
-          notification("Success", "Successfully updated customer", "success")
+          notification("Succès", "Client mis à jour avec succès", "success")
         },
         onError: (err) => {
           handleClose()
-          notification("Error", getErrorMessage(err), "error")
+          notification("Erreur", getErrorMessage(err), "error")
         },
       }
     )
@@ -69,26 +69,26 @@ const EditCustomerModal = ({
     <Modal handleClose={handleClose}>
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
-          <span className="inter-xlarge-semibold">Customer Details</span>
+          <span className="inter-xlarge-semibold">Détails du client</span>
         </Modal.Header>
         <Modal.Content>
-          <div className="inter-base-semibold text-grey-90 mb-4">General</div>
-          <div className="w-full flex mb-4 space-x-2">
+          <div className="inter-base-semibold mb-4 text-grey-90">Général</div>
+          <div className="mb-4 flex w-full space-x-2">
             <InputField
-              label="First Name"
+              label="Prénom"
               {...register("first_name")}
-              placeholder="Lebron"
+              placeholder="John"
             />
             <InputField
-              label="Last Name"
+              label="Nom"
               {...register("last_name")}
-              placeholder="James"
+              placeholder="Doe"
             />
           </div>
-          <div className="inter-base-semibold text-grey-90 mb-4">Contact</div>
+          <div className="inter-base-semibold mb-4 text-grey-90">Contact</div>
           <div className="flex space-x-2">
             <InputField
-              label="Email"
+              label="Courriel"
               {...register("email", {
                 validate: (value) => !!validateEmail(value),
                 disabled: customer.has_account,
@@ -101,21 +101,21 @@ const EditCustomerModal = ({
               disabled={customer.has_account}
             />
             <InputField
-              label="Phone number"
+              label="Téléphone"
               {...register("phone")}
               placeholder="+45 42 42 42 42"
             />
           </div>
         </Modal.Content>
         <Modal.Footer>
-          <div className="w-full flex justify-end">
+          <div className="flex w-full justify-end">
             <Button
               variant="ghost"
               size="small"
               onClick={handleClose}
               className="mr-2"
             >
-              Cancel
+              Annuler
             </Button>
             <Button
               loading={updateCustomer.isLoading}
@@ -125,7 +125,7 @@ const EditCustomerModal = ({
               size="small"
               onClick={onSubmit}
             >
-              Save
+              Sauvegarder
             </Button>
           </div>
         </Modal.Footer>

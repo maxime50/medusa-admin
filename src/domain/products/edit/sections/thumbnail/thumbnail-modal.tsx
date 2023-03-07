@@ -52,17 +52,17 @@ const ThumbnailModal = ({ product, open, onClose }: Props) => {
       preppedImages = await prepareImages(data.thumbnail.images)
     } catch (error) {
       let errorMessage =
-        "Something went wrong while trying to upload the thumbnail."
+        "Un problème s'est produit lors du téléchargement de la vignette."
       const response = (error as any).response as Response
 
       if (response.status === 500) {
         errorMessage =
           errorMessage +
           " " +
-          "You might not have a file service configured. Please contact your administrator"
+          "Il se peut qu'aucun service de fichiers ne soit configuré."
       }
 
-      notification("Error", errorMessage, "error")
+      notification("Erreur", errorMessage, "error")
       return
     }
     const url = preppedImages?.[0]?.url
@@ -80,26 +80,28 @@ const ThumbnailModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={onReset} isLargeModal>
       <Modal.Body>
         <Modal.Header handleClose={onReset}>
-          <h1 className="inter-xlarge-semibold m-0">Upload Thumbnail</h1>
+          <h1 className="inter-xlarge-semibold m-0">
+            Télécharger une vignette
+          </h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
-            <h2 className="inter-large-semibold mb-2xsmall">Thumbnail</h2>
-            <p className="inter-base-regular text-grey-50 mb-large">
-              Used to represent your product during checkout, social sharing and
-              more.
+            <h2 className="inter-large-semibold mb-2xsmall">Vignette</h2>
+            <p className="inter-base-regular mb-large text-grey-50">
+              Utilisé pour représenter le produit lors du paiement, du partage
+              sur les réseaux sociaux, etc.
             </p>
             <ThumbnailForm form={nestedForm(form, "thumbnail")} />
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex gap-x-2 justify-end w-full">
+            <div className="flex w-full justify-end gap-x-2">
               <Button
                 size="small"
                 variant="secondary"
                 type="button"
                 onClick={onReset}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 size="small"
@@ -108,7 +110,7 @@ const ThumbnailModal = ({ product, open, onClose }: Props) => {
                 disabled={!isDirty}
                 loading={updating}
               >
-                Save and close
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

@@ -17,12 +17,14 @@ export const SummaryShippingLine = ({
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-x-base">
-        <div className=" w-[30px] h-10 rounded-rounded flex items-center justify-center text-grey-50">
+        <div className=" flex h-10 w-[30px] items-center justify-center rounded-rounded text-grey-50">
           <CornerDownRightIcon size={16} />
         </div>
         <div className="inter-small-regular">
           <p>
-            {type === "return" ? "Return shipping" : "Replacement shipping"}
+            {type === "return"
+              ? "Expédition du retour"
+              : "Expédition du remplacement"}
           </p>
           <p className="text-grey-50">{title}</p>
         </div>
@@ -34,7 +36,7 @@ export const SummaryShippingLine = ({
               amount: price,
               currency: currencyCode,
             })
-          : "Free"}
+          : "Gratuit"}
       </p>
     </div>
   )

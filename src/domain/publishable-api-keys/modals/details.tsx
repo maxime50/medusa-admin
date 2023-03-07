@@ -37,9 +37,9 @@ function DetailsModal(props: DetailsModalProps) {
     try {
       await updateKey({ title: name })
       close()
-      notification("Success", "Updated the API key", "success")
+      notification("Succès", "Updated the API key", "success")
     } catch (e) {
-      notification("Error", "Failed to update the API key", "error")
+      notification("Erreur", "Failed to update the API key", "error")
     }
   }
 

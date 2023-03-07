@@ -119,9 +119,9 @@ function CreatePublishableKey(props: CreatePublishableKeyProps) {
     try {
       const res = await createPublishableApiKey({ title: name })
       setKeyId(res.publishable_api_key.id)
-      notification("Success", "Created a new API key", "success")
+      notification("Succès", "Created a new API key", "success")
     } catch (e) {
-      notification("Error", "Failed to create a new API key", "error")
+      notification("Erreur", "Failed to create a new API key", "error")
     }
   }
 

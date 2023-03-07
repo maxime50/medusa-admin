@@ -88,10 +88,10 @@ const TaxDetails = ({ id }) => {
   return (
     <>
       <BodyCard
-        title="Details"
+        title="Détails"
         actionables={[
           {
-            label: "New Tax Rate",
+            label: "Nouveau taux de taxe",
             onClick: () => setShowNew(true),
             icon: <PlusIcon />,
           },
@@ -113,7 +113,7 @@ const TaxDetails = ({ id }) => {
             ))}
           </Table.Head>
           {regionIsLoading || taxRatesLoading ? (
-            <div className="flex w-full h-full absolute items-center justify-center mt-10">
+            <div className="absolute mt-10 flex h-full w-full items-center justify-center">
               <div className="">
                 <Spinner size={"large"} variant={"secondary"} />
               </div>
@@ -134,7 +134,7 @@ const TaxDetails = ({ id }) => {
           )}
         </Table>
         <h3 className="inter-large-semibold mt-2xlarge mb-base">
-          Tax Calculation Settings
+          Paramètres de calcul de taxe
         </h3>
         <div className="flex flex-1">
           {!regionIsLoading && region && <RegionTaxForm region={region} />}

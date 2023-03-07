@@ -44,8 +44,8 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
       {
         onSuccess: () => {
           notification(
-            "Success",
-            "Your information was successfully updated",
+            "Succès",
+            "Vos informations ont été mises à jour avec succès",
             "success"
           )
           refetch()
@@ -59,7 +59,7 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
   return (
     <Modal handleClose={onClose} open={open} isLargeModal={false}>
       <Modal.Header handleClose={onClose}>
-        <h1 className="inter-xlarge-semibold">Edit information</h1>
+        <h1 className="inter-xlarge-semibold">Modifier les informations</h1>
       </Modal.Header>
       <Modal.Body>
         <Modal.Content>
@@ -68,20 +68,20 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
               <InputField
                 {...register("first_name")}
                 errors={errors}
-                label="First name"
+                label="Prénom"
               />
               <InputField
                 {...register("last_name")}
                 errors={errors}
-                label="Last name"
+                label="Nom"
               />
             </div>
           </div>
         </Modal.Content>
         <Modal.Footer className="border-t border-grey-20 pt-base">
-          <div className="flex items-center justify-end gap-x-xsmall w-full">
+          <div className="flex w-full items-center justify-end gap-x-xsmall">
             <Button variant="secondary" size="small" onClick={onClose}>
-              Cancel
+              Annuler
             </Button>
             <Button
               variant="primary"
@@ -90,7 +90,7 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
               disabled={isSubmitting}
               onClick={onSubmit}
             >
-              Submit and close
+              Soumettre
             </Button>
           </div>
         </Modal.Footer>

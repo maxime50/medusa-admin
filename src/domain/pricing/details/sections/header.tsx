@@ -24,7 +24,7 @@ const Header = ({ priceList }) => {
         {priceList.customer_groups.length ? (
           <div className="border-l border-grey-20 pl-6">
             <span className="inter-base-regular text-grey-50">
-              Customer groups
+              Groupes de clients
             </span>
             <p className="inter-base-regular text-grey-90">
               <PriceListCustomerGroupsFormatter
@@ -34,14 +34,14 @@ const Header = ({ priceList }) => {
           </div>
         ) : null}
         <div className="border-l border-grey-20 pl-6">
-          <span className="inter-base-regular text-grey-50">Last edited</span>
+          <span className="inter-base-regular text-grey-50">Modifié le</span>
           <p className="inter-base-regular text-grey-90">
             {moment(priceList.updated_at).format("ddd, D MMM YYYY")}
           </p>
         </div>
         <div className="border-l border-grey-20 pl-6">
           <span className="inter-base-regular text-grey-50">
-            Price overrides
+            Prix overrides
           </span>
           <p className="inter-base-regular text-grey-90">
             {priceList.prices?.length}
@@ -66,7 +66,7 @@ const PriceListCustomerGroupsFormatter = ({ groups }) => {
   return (
     <>
       {group}
-      {other && <span className="text-grey-40"> + {other} more</span>}
+      {other && <span className="text-grey-40"> + {other}</span>}
     </>
   )
 }
@@ -79,13 +79,17 @@ const HeadingBodyCard = ({ priceList, setIsOpen, ...props }) => {
 
   const onDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Price list",
-      text: "Are you sure you want to delete this price list?",
+      heading: "Supprimer la liste de prix",
+      text: "Êtes-vous sûr de vouloir supprimer cette liste de prix ?",
     })
     if (shouldDelete) {
       deletePriceList.mutate(undefined, {
         onSuccess: () => {
-          notification("Success", "Price list deleted successfully", "success")
+          notification(
+            "Succès",
+            "Liste de prix supprimée avec succès",
+            "success"
+          )
           navigate("/a/pricing/")
         },
         onError: (err) => {
@@ -97,12 +101,12 @@ const HeadingBodyCard = ({ priceList, setIsOpen, ...props }) => {
 
   const actionables = [
     {
-      label: "Edit price list details",
+      label: "Modifier les détails de la liste de prix",
       onClick: () => setIsOpen(true),
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Delete price list",
+      label: "Supprimer la liste de prix",
       onClick: onDelete,
       variant: "danger" as const,
       icon: <TrashIcon size={20} />,

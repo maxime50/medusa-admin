@@ -20,7 +20,7 @@ export const useVariantsTableColumns = () => {
   const columns = useMemo<Column<ProductVariant>[]>(
     () => [
       {
-        Header: "Title",
+        Header: "Titre",
         id: "title",
         accessor: "title",
       },
@@ -54,7 +54,7 @@ export const useVariantsTableColumns = () => {
         Header: () => {
           return (
             <div className="text-right">
-              <span>Inventory</span>
+              <span>Inventaire</span>
             </div>
           )
         },
@@ -121,22 +121,22 @@ const VariantsTable = ({ variants, actions }: Props) => {
                     forceDropdown
                     actions={[
                       {
-                        label: "Edit Variant",
+                        label: "Modifier la variante",
                         icon: <EditIcon size="20" />,
                         onClick: () => updateVariant(row.original),
                       },
                       {
-                        label: "Duplicate Variant",
+                        label: "Dupliquer la variante",
                         onClick: () =>
                           // @ts-ignore
                           duplicateVariant({
                             ...row.original,
-                            title: row.original.title + " Copy",
+                            title: row.original.title + " Copié",
                           }),
                         icon: <DuplicateIcon size="20" />,
                       },
                       {
-                        label: "Delete Variant",
+                        label: "Supprimer la variante",
                         onClick: () => deleteVariant(row.original.id),
                         icon: <TrashIcon size="20" />,
                         variant: "danger",

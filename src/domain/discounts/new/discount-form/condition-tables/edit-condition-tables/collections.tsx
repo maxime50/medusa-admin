@@ -56,8 +56,8 @@ const EditCollectionConditionSelector = ({ onClose }) => {
           options={{
             enableSearch: true,
             immediateSearchFocus: true,
-            searchPlaceholder: "Search by title...",
-            filters: [{ title: "Title", name: "title" }],
+            searchPlaceholder: "Rechercher par titre...",
+            filters: [{ title: "Titre", name: "title" }],
           }}
           resourceName="Collections"
           totalCount={count || 0}

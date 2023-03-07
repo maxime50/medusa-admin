@@ -81,9 +81,9 @@ const DraftOrderDetails = () => {
   const OrderStatusComponent = () => {
     switch (draft_order?.status) {
       case "completed":
-        return <StatusDot title="Completed" variant="success" />
+        return <StatusDot title="Complétée" variant="success" />
       case "open":
-        return <StatusDot title="Open" variant="default" />
+        return <StatusDot title="Ouvert" variant="default" />
       default:
         return null
     }
@@ -91,7 +91,7 @@ const DraftOrderDetails = () => {
 
   const PaymentActionables = () => {
     // Default label and action
-    const label = "Mark as paid"
+    const label = "Marquer comme payée"
     const action = () => setShowAsPaidConfirmation(true)
 
     return (
@@ -104,9 +104,13 @@ const DraftOrderDetails = () => {
   const onMarkAsPaidConfirm = async () => {
     try {
       await markPaid.mutateAsync()
-      notification("Success", "Successfully mark as paid", "success")
+      notification(
+        "Succès",
+        "Commande marqué comme payée avec succès",
+        "success"
+      )
     } catch (err) {
-      notification("Error", getErrorMessage(err), "error")
+      notification("Erreur", getErrorMessage(err), "error")
     } finally {
       setShowAsPaidConfirmation(false)
     }
@@ -115,8 +119,8 @@ const DraftOrderDetails = () => {
   const handleDeleteOrder = async () => {
     return cancelOrder.mutate(void {}, {
       onSuccess: () =>
-        notification("Success", "Successfully canceled order", "success"),
-      onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        notification("Succès", "Commande annulée avec succès", "success"),
+      onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
     })
   }
 
@@ -126,20 +130,20 @@ const DraftOrderDetails = () => {
   return (
     <div>
       <Breadcrumb
-        currentPage={"Draft Order Details"}
-        previousBreadcrumb={"Draft Orders"}
+        currentPage={"Détails de la commande brouillon"}
+        previousBreadcrumb={"Commandes brouillons"}
         previousRoute="/a/draft-orders"
       />
       {isLoading || !draft_order ? (
-        <BodyCard className="w-full pt-2xlarge flex items-center justify-center">
+        <BodyCard className="flex w-full items-center justify-center pt-2xlarge">
           <Spinner size={"large"} variant={"secondary"} />
         </BodyCard>
       ) : (
         <div className="flex space-x-4">
-          <div className="flex flex-col w-full h-full">
+          <div className="flex h-full w-full flex-col">
             <BodyCard
-              className={"w-full mb-4 min-h-[200px]"}
-              title={`Order #${draft_order.display_id}`}
+              className={"mb-4 min-h-[200px] w-full"}
+              title={`Commande #${draft_order.display_id}`}
               subtitle={moment(draft_order.created_at).format(
                 "D MMMM YYYY hh:mm a"
               )}
@@ -153,7 +157,7 @@ const DraftOrderDetails = () => {
                       navigate(`/a/orders/${draft_order.order_id}`)
                     }
                   >
-                    Go to Order
+                    Voir la commande
                   </Button>
                 )
               }
@@ -162,14 +166,14 @@ const DraftOrderDetails = () => {
                 draft_order?.status === "completed"
                   ? [
                       {
-                        label: "Go to Order",
+                        label: "Voir la commande",
                         icon: null,
                         onClick: () => console.log("Should not be here"),
                       },
                     ]
                   : [
                       {
-                        label: "Cancel Draft Order",
+                        label: "Annuler la commande brouillon",
                         icon: null,
                         // icon: <CancelIcon size={"20"} />,
                         variant: "danger",
@@ -183,22 +187,22 @@ const DraftOrderDetails = () => {
                     ]
               }
             >
-              <div className="flex mt-6 space-x-6 divide-x">
+              <div className="mt-6 flex space-x-6 divide-x">
                 <div className="flex flex-col">
-                  <div className="inter-smaller-regular text-grey-50 mb-1">
-                    Email
+                  <div className="inter-smaller-regular mb-1 text-grey-50">
+                    Courriel
                   </div>
                   <div>{cart?.email}</div>
                 </div>
                 <div className="flex flex-col pl-6">
-                  <div className="inter-smaller-regular text-grey-50 mb-1">
-                    Phone
+                  <div className="inter-smaller-regular mb-1 text-grey-50">
+                    Téléphone
                   </div>
                   <div>{cart?.shipping_address?.phone || "N/A"}</div>
                 </div>
                 <div className="flex flex-col pl-6">
-                  <div className="inter-smaller-regular text-grey-50 mb-1">
-                    Amount ({region?.currency_code.toUpperCase()})
+                  <div className="inter-smaller-regular mb-1 text-grey-50">
+                    Montant ({region?.currency_code.toUpperCase()})
                   </div>
                   <div>
                     {cart?.total && region?.currency_code
@@ -211,15 +215,15 @@ const DraftOrderDetails = () => {
                 </div>
               </div>
             </BodyCard>
-            <BodyCard className={"w-full mb-4 min-h-0 h-auto"} title="Summary">
+            <BodyCard className={"mb-4 h-auto min-h-0 w-full"} title="Commande">
               <div className="mt-6">
                 {cart?.items?.map((item, i) => (
                   <div
                     key={i}
-                    className="flex justify-between mb-1 h-[64px] py-2 mx-[-5px] px-[5px] hover:bg-grey-5 rounded-rounded"
+                    className="mx-[-5px] mb-1 flex h-[64px] justify-between rounded-rounded py-2 px-[5px] hover:bg-grey-5"
                   >
-                    <div className="flex space-x-4 justify-center">
-                      <div className="flex h-[48px] w-[36px] rounded-rounded items-center justify-center">
+                    <div className="flex justify-center space-x-4">
+                      <div className="flex h-[48px] w-[36px] items-center justify-center rounded-rounded">
                         {item?.thumbnail ? (
                           <img
                             src={item.thumbnail}
@@ -230,7 +234,7 @@ const DraftOrderDetails = () => {
                         )}
                       </div>
                       <div className="flex flex-col justify-center">
-                        <span className="inter-small-regular text-grey-90 max-w-[225px] truncate">
+                        <span className="inter-small-regular max-w-[225px] truncate text-grey-90">
                           {item.title}
                         </span>
                         {item?.variant && (
@@ -241,7 +245,7 @@ const DraftOrderDetails = () => {
                       </div>
                     </div>
                     <div className="flex  items-center">
-                      <div className="flex small:space-x-2 medium:space-x-4 large:space-x-6 mr-3">
+                      <div className="mr-3 flex small:space-x-2 medium:space-x-4 large:space-x-6">
                         <div className="inter-small-regular text-grey-50">
                           {formatAmountWithSymbol({
                             amount: (item?.total ?? 0) / item.quantity,
@@ -271,15 +275,15 @@ const DraftOrderDetails = () => {
                 <DisplayTotal
                   currency={region?.currency_code}
                   totalAmount={draft_order?.cart?.subtotal}
-                  totalTitle={"Subtotal"}
+                  totalTitle={"Sous-total"}
                 />
                 {cart?.discounts?.map((discount, index) => (
                   <div
                     key={index}
-                    className="flex justify-between mt-4 items-center"
+                    className="mt-4 flex items-center justify-between"
                   >
-                    <div className="flex inter-small-regular text-grey-90 items-center">
-                      Discount:{" "}
+                    <div className="inter-small-regular flex items-center text-grey-90">
+                      Rabais:{" "}
                       <Badge className="ml-3" variant="default">
                         {discount.code}
                       </Badge>
@@ -298,12 +302,12 @@ const DraftOrderDetails = () => {
                 <DisplayTotal
                   currency={region?.currency_code}
                   totalAmount={cart?.shipping_total}
-                  totalTitle={"Shipping"}
+                  totalTitle={"Livraison"}
                 />
                 <DisplayTotal
                   currency={region?.currency_code}
                   totalAmount={cart?.tax_total}
-                  totalTitle={`Tax`}
+                  totalTitle={`Taxes`}
                 />
                 <DisplayTotal
                   currency={region?.currency_code}
@@ -314,8 +318,8 @@ const DraftOrderDetails = () => {
               </div>
             </BodyCard>
             <BodyCard
-              className={"w-full mb-4 min-h-0 h-auto"}
-              title="Payment"
+              className={"mb-4 h-auto min-h-0 w-full"}
+              title="Paiement"
               customActionable={
                 draft_order?.status !== "completed" && <PaymentActionables />
               }
@@ -324,27 +328,27 @@ const DraftOrderDetails = () => {
                 <DisplayTotal
                   currency={region?.currency_code}
                   totalAmount={cart?.subtotal}
-                  totalTitle={"Subtotal"}
+                  totalTitle={"Sous-total"}
                 />
                 <DisplayTotal
                   currency={region?.currency_code}
                   totalAmount={cart?.shipping_total}
-                  totalTitle={"Shipping"}
+                  totalTitle={"Livraison"}
                 />
                 <DisplayTotal
                   currency={region?.currency_code}
                   totalAmount={cart?.tax_total}
-                  totalTitle={"Tax"}
+                  totalTitle={"Taxes"}
                 />
                 <DisplayTotal
                   variant="bold"
                   currency={region?.currency_code}
                   totalAmount={cart?.total}
-                  totalTitle={"Total to pay"}
+                  totalTitle={"Total à payer"}
                 />
                 {draft_order?.status !== "completed" && (
-                  <div className="text-grey-50 inter-small-regular w-full flex items-center mt-5">
-                    <span className="mr-2.5">Payment link:</span>
+                  <div className="inter-small-regular mt-5 flex w-full items-center text-grey-50">
+                    <span className="mr-2.5">Lien du paiement:</span>
                     {store?.payment_link_template ? (
                       <CopyToClipboard
                         value={paymentLink}
@@ -352,30 +356,33 @@ const DraftOrderDetails = () => {
                         successDuration={1000}
                       />
                     ) : (
-                      "Configure payment link in store settings"
+                      "Configurez le lien de paiement dans les paramètres de la boutique pour y accéder."
                     )}
                   </div>
                 )}
               </div>
             </BodyCard>
-            <BodyCard className={"w-full mb-4 min-h-0 h-auto"} title="Shipping">
+            <BodyCard
+              className={"mb-4 h-auto min-h-0 w-full"}
+              title="Livraison"
+            >
               <div className="mt-6">
                 {cart?.shipping_methods.map((method) => (
                   <div className="flex flex-col" key={method.id}>
                     <span className="inter-small-regular text-grey-50">
-                      Shipping Method
+                      Méthode de livraison
                     </span>
-                    <span className="inter-small-regular text-grey-90 mt-2">
+                    <span className="inter-small-regular mt-2 text-grey-90">
                       {method?.shipping_option.name || ""}
                     </span>
-                    <div className="flex flex-col min-h-[100px] mt-8 bg-grey-5 px-3 py-2 h-full">
+                    <div className="mt-8 flex h-full min-h-[100px] flex-col bg-grey-5 px-3 py-2">
                       <span className="inter-base-semibold">
-                        Data{" "}
-                        <span className="text-grey-50 inter-base-regular">
-                          (1 item)
+                        Données{" "}
+                        <span className="inter-base-regular text-grey-50">
+                          (1 élément)
                         </span>
                       </span>
-                      <div className="flex flex-grow items-center mt-4">
+                      <div className="mt-4 flex flex-grow items-center">
                         <JSONView data={method?.data} />
                       </div>
                     </div>
@@ -384,11 +391,11 @@ const DraftOrderDetails = () => {
               </div>
             </BodyCard>
             <BodyCard
-              className={"w-full mb-4 min-h-0 h-auto"}
-              title="Customer"
+              className={"mb-4 h-auto min-h-0 w-full"}
+              title="Client"
               actionables={[
                 {
-                  label: "Edit Shipping Address",
+                  label: "Modifier l'adresse de livraison",
                   icon: <TruckIcon size={"20"} />,
                   onClick: () =>
                     setAddressModal({
@@ -397,7 +404,7 @@ const DraftOrderDetails = () => {
                     }),
                 },
                 {
-                  label: "Edit Billing Address",
+                  label: "Modifier l'adresse de facturation",
                   icon: <DollarSignIcon size={"20"} />,
                   onClick: () => {
                     if (cart?.billing_address) {
@@ -409,15 +416,15 @@ const DraftOrderDetails = () => {
                   },
                 },
                 {
-                  label: "Go to Customer",
+                  label: "Accéder au client",
                   icon: <DetailsIcon size={"20"} />, // TODO: Change to Contact icon
                   onClick: () => navigate(`/a/customers/${cart?.customer.id}`),
                 },
               ]}
             >
               <div className="mt-6">
-                <div className="flex w-full space-x-4 items-center">
-                  <div className="flex w-[40px] h-[40px] ">
+                <div className="flex w-full items-center space-x-4">
+                  <div className="flex h-[40px] w-[40px] ">
                     <Avatar
                       user={cart?.customer}
                       font="inter-large-semibold"
@@ -440,30 +447,30 @@ const DraftOrderDetails = () => {
                     )}
                   </div>
                 </div>
-                <div className="flex mt-6 space-x-6 divide-x">
+                <div className="mt-6 flex space-x-6 divide-x">
                   <div className="flex flex-col">
-                    <div className="inter-small-regular text-grey-50 mb-1">
+                    <div className="inter-small-regular mb-1 text-grey-50">
                       Contact
                     </div>
-                    <div className="flex flex-col inter-small-regular">
+                    <div className="inter-small-regular flex flex-col">
                       <span>{cart?.email}</span>
                       <span>{cart?.shipping_address?.phone || ""}</span>
                     </div>
                   </div>
                   <FormattedAddress
-                    title={"Shipping"}
+                    title={"Addresse de livraison"}
                     addr={cart?.shipping_address || undefined}
                   />
                   <FormattedAddress
-                    title={"Billing"}
+                    title={"Addresse de facturation"}
                     addr={cart?.billing_address || undefined}
                   />
                 </div>
               </div>
             </BodyCard>
             <BodyCard
-              className={"w-full mb-4 min-h-0 h-auto pt-[15px]"}
-              title="Raw Draft Order"
+              className={"mb-4 h-auto min-h-0 w-full pt-[15px]"}
+              title="Données"
             >
               <JSONView data={draft_order!} />
             </BodyCard>
@@ -483,11 +490,11 @@ const DraftOrderDetails = () => {
       state variables for showing different prompts */}
       {deletePromptData.show && (
         <DeletePrompt
-          text={"Are you sure?"}
-          heading={`Remove ${deletePromptData?.resource}`}
+          text={"Êtes-vous sûr?"}
+          heading={`Supprimer ${deletePromptData?.resource}`}
           successText={`${
-            deletePromptData?.resource || "Resource"
-          } has been removed`}
+            deletePromptData?.resource || "Ressource"
+          } a été supprimée`}
           onDelete={() => deletePromptData.onDelete()}
           handleClose={() => setDeletePromptData(initDeleteState)}
         />
@@ -495,10 +502,10 @@ const DraftOrderDetails = () => {
 
       {showMarkAsPaidConfirmation && (
         <ConfirmationPrompt
-          heading="Mark as paid"
-          text="This will create an order. Mark this as paid if you received the payment."
-          confirmText="Mark paid"
-          cancelText="Cancel"
+          heading="Marquer comme payée"
+          text="Cela créera une commande. Continuez si vous avez bien reçu le paiement."
+          confirmText="Continuer"
+          cancelText="Annuler"
           handleClose={() => setShowAsPaidConfirmation(false)}
           onConfirm={onMarkAsPaidConfirm}
         />

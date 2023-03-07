@@ -37,12 +37,12 @@ const GeneralSection = ({ product }: Props) => {
 
   const actions: ActionType[] = [
     {
-      label: "Edit General Information",
+      label: "Modifier les informations générales",
       onClick: toggleInfo,
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Delete",
+      label: "Supprimer",
       onClick: onDelete,
       variant: "danger",
       icon: <TrashIcon size={20} />,
@@ -51,7 +51,7 @@ const GeneralSection = ({ product }: Props) => {
 
   if (isFeatureEnabled("sales_channels")) {
     actions.splice(1, 0, {
-      label: "Edit Sales Channels",
+      label: "Modifier les canaux de vente",
       onClick: toggleChannels,
       icon: <ChannelsIcon size={20} />,
     })
@@ -66,13 +66,13 @@ const GeneralSection = ({ product }: Props) => {
         status={
           <StatusSelector
             isDraft={product?.status === "draft"}
-            activeState="Published"
-            draftState="Draft"
+            activeState="Publié"
+            draftState="Brouillon"
             onChange={() => onStatusChange(product.status)}
           />
         }
       >
-        <p className="mt-2 whitespace-pre-wrap inter-base-regular text-grey-50">
+        <p className="inter-base-regular mt-2 whitespace-pre-wrap text-grey-50">
           {product.description}
         </p>
         <ProductTags product={product} />
@@ -100,7 +100,7 @@ type DetailProps = {
 
 const Detail = ({ title, value }: DetailProps) => {
   return (
-    <div className="flex items-center justify-between inter-base-regular text-grey-50">
+    <div className="inter-base-regular flex items-center justify-between text-grey-50">
       <p>{title}</p>
       <p>{value ? value : "–"}</p>
     </div>
@@ -109,16 +109,13 @@ const Detail = ({ title, value }: DetailProps) => {
 
 const ProductDetails = ({ product }: Props) => {
   return (
-    <div className="flex flex-col mt-8 gap-y-3">
-      <h2 className="inter-base-semibold">Details</h2>
-      <Detail title="Subtitle" value={product.subtitle} />
+    <div className="mt-8 flex flex-col gap-y-3">
+      <h2 className="inter-base-semibold">Détails</h2>
+      <Detail title="Sous-titre" value={product.subtitle} />
       <Detail title="Handle" value={product.handle} />
       <Detail title="Type" value={product.type?.value} />
       <Detail title="Collection" value={product.collection?.title} />
-      <Detail
-        title="Discountable"
-        value={product.discountable ? "True" : "False"}
-      />
+      <Detail title="Réductible" value={product.discountable ? "Oui" : "Non"} />
     </div>
   )
 }
@@ -129,10 +126,10 @@ const ProductTags = ({ product }: Props) => {
   }
 
   return (
-    <ul className="flex flex-wrap items-center gap-1 mt-4">
+    <ul className="mt-4 flex flex-wrap items-center gap-1">
       {product.tags.map((t) => (
         <li key={t.id}>
-          <div className="text-grey-50 bg-grey-10 inter-small-semibold px-3 py-[6px] rounded-rounded">
+          <div className="inter-small-semibold rounded-rounded bg-grey-10 px-3 py-[6px] text-grey-50">
             {t.value}
           </div>
         </li>
@@ -159,7 +156,7 @@ const ProductSalesChannels = ({ product }: Props) => {
   return (
     <FeatureToggle featureFlag="sales_channels">
       <div className="mt-xlarge">
-        <h2 className="inter-base-semibold mb-xsmall">Sales channels</h2>
+        <h2 className="inter-base-semibold mb-xsmall">Canaux de vente</h2>
         <SalesChannelsDisplay channels={product.sales_channels} />
       </div>
     </FeatureToggle>

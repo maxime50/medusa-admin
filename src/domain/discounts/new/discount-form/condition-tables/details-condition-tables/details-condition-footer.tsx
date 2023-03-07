@@ -26,9 +26,9 @@ const DetailsConditionFooter: React.FC<AddConditionFooterProps> = ({
   const { updateCondition, updateAndSave } = useConditions()
 
   return (
-    <div className="w-full flex justify-end gap-x-xsmall">
+    <div className="flex w-full justify-end gap-x-xsmall">
       <Button variant="ghost" size="small" onClick={onClose}>
-        Cancel
+        Annuler
       </Button>
       <Button
         variant="primary"
@@ -42,7 +42,7 @@ const DetailsConditionFooter: React.FC<AddConditionFooterProps> = ({
           pop()
         }}
       >
-        Save and add more
+        Sauvegarder et ajouter plus
       </Button>
       <Button
         variant="primary"
@@ -53,7 +53,7 @@ const DetailsConditionFooter: React.FC<AddConditionFooterProps> = ({
           reset()
         }}
       >
-        Save and close
+        Sauvegarder et fermer
       </Button>
     </div>
   )

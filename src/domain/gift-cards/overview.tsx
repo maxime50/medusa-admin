@@ -47,8 +47,12 @@ const Overview = () => {
       { status },
       {
         onSuccess: () =>
-          notification("Success", "Successfully updated Gift Card", "success"),
-        onError: (err) => notification("Error", getErrorMessage(err), "error"),
+          notification(
+            "Succès",
+            "Carte cadeau mise à jour avec succès",
+            "success"
+          ),
+        onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
       }
     )
   }
@@ -63,7 +67,7 @@ const Overview = () => {
 
   const actionables = [
     {
-      label: "Custom Gift Card",
+      label: "Carte cadeau personnalisée",
       onClick: () => setShowCreateCustom(true),
       icon: <PlusIcon size={20} />,
     },
@@ -79,10 +83,10 @@ const Overview = () => {
 
   return (
     <>
-      <div className="flex flex-col grow h-full pb-xlarge">
+      <div className="flex h-full grow flex-col pb-xlarge">
         <PageDescription
-          title="Gift Cards"
-          subtitle="Manage the Gift Cards of your Medusa store"
+          title="Cartes Cadeaux"
+          subtitle="Gérez les cartes cadeaux de la boutique"
         />
         {!isLoading ? (
           <>
@@ -95,22 +99,20 @@ const Overview = () => {
                   onUnpublish={onUpdate}
                 />
               ) : (
-                <BannerCard title="Are you ready to sell your first Gift Card?">
+                <BannerCard title="Aucune carte cadeau existante">
                   <BannerCard.Description
                     cta={{
-                      label: "Create Gift Card",
+                      label: "Créer une carte cadeau",
                       onClick: () => setShowCreate(true),
                     }}
-                  >
-                    No Gift Card has been added yet.
-                  </BannerCard.Description>
+                  ></BannerCard.Description>
                 </BannerCard>
               )}
             </div>
-            <div className="w-full flex flex-col grow">
+            <div className="flex w-full grow flex-col">
               <BodyCard
-                title="History"
-                subtitle="See the history of purchased Gift Cards"
+                title="Historique"
+                subtitle="L'historique des cartes-cadeaux achetées"
                 actionables={actionables}
                 className="h-fit"
               >
@@ -119,7 +121,7 @@ const Overview = () => {
             </div>
           </>
         ) : (
-          <div className="w-full flex items-center justify-center h-44 rounded-rounded border border-grey-20">
+          <div className="flex h-44 w-full items-center justify-center rounded-rounded border border-grey-20">
             <Spinner variant="secondary" size="large" />
           </div>
         )}
@@ -132,9 +134,9 @@ const Overview = () => {
         <DeletePrompt
           handleClose={() => setShowDelete(!showDelete)}
           onDelete={async () => onDelete()}
-          successText="Successfully deleted Gift Card"
-          confirmText="Yes, delete"
-          heading="Delete Gift Card"
+          successText="Carte cadeau supprimée avec succès"
+          confirmText="Oui, supprimer"
+          heading="Supprimer la carte cadeau"
         />
       )}
     </>

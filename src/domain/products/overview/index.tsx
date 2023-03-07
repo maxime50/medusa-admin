@@ -19,12 +19,12 @@ import ImportProducts from "../batch-job/import"
 import NewProduct from "../new"
 import { PollingContext } from "../../../context/polling"
 
-const VIEWS = ["products", "collections"]
+const VIEWS = ["produits", "collections"]
 
 const Overview = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const [view, setView] = useState("products")
+  const [view, setView] = useState("produits")
   const {
     state: createProductState,
     close: closeProductCreate,
@@ -50,7 +50,7 @@ const Overview = () => {
 
   const CurrentView = () => {
     switch (view) {
-      case "products":
+      case "produits":
         return <ProductTable />
       default:
         return <CollectionsTable />
@@ -59,7 +59,7 @@ const Overview = () => {
 
   const CurrentAction = () => {
     switch (view) {
-      case "products":
+      case "produits":
         return (
           <div className="flex space-x-2">
             <Button
@@ -68,7 +68,7 @@ const Overview = () => {
               onClick={() => openImportModal()}
             >
               <UploadIcon size={20} />
-              Import Products
+              Importer des produits
             </Button>
             <Button
               variant="secondary"
@@ -76,7 +76,7 @@ const Overview = () => {
               onClick={() => openExportModal()}
             >
               <ExportIcon size={20} />
-              Export Products
+              Exporter les produits
             </Button>
             <Button
               variant="secondary"
@@ -84,7 +84,7 @@ const Overview = () => {
               onClick={openProductCreate}
             >
               <PlusIcon size={20} />
-              New Product
+              Nouveau produit
             </Button>
           </div>
         )
@@ -97,7 +97,7 @@ const Overview = () => {
               onClick={() => setShowNewCollection(!showNewCollection)}
             >
               <PlusIcon size={20} />
-              New Collection
+              Nouvelle collection
             </Button>
           </div>
         )
@@ -131,11 +131,11 @@ const Overview = () => {
       { ...data, metadata },
       {
         onSuccess: ({ collection }) => {
-          notification("Success", "Successfully created collection", "success")
+          notification("Succès", "Collection créée avec succès", "success")
           navigate(`/a/collections/${collection.id}`)
           setShowNewCollection(false)
         },
-        onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
       }
     )
   }
@@ -150,10 +150,10 @@ const Overview = () => {
     createBatchJob.mutate(reqObj, {
       onSuccess: () => {
         resetInterval()
-        notification("Success", "Successfully initiated export", "success")
+        notification("Succès", "Exportation établie avec succès", "success")
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Erreur", getErrorMessage(err), "error")
       },
     })
 
@@ -162,8 +162,8 @@ const Overview = () => {
 
   return (
     <>
-      <div className="flex flex-col grow h-full">
-        <div className="w-full flex flex-col grow">
+      <div className="flex h-full grow flex-col">
+        <div className="flex w-full grow flex-col">
           <BodyCard
             forceDropdown={false}
             customActionable={CurrentAction()}
@@ -188,7 +188,7 @@ const Overview = () => {
       )}
       {exportModalOpen && (
         <ExportModal
-          title="Export Products"
+          title="Exporter les produits"
           handleClose={() => closeExportModal()}
           onSubmit={handleCreateExport}
           loading={createBatchJob.isLoading}

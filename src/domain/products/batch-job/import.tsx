@@ -71,12 +71,12 @@ function ImportProducts(props: ImportProductsProps) {
     : undefined
 
   const status = hasError
-    ? "Error occurred while processing"
+    ? "Une erreur s'est produite lors du traitement"
     : isPreprocessed
     ? undefined
     : isUploaded
-    ? "Preprocessing..."
-    : "Uploading..."
+    ? "Prétraitement..."
+    : "Téléchargement..."
 
   /**
    * Confirm job on submit.
@@ -84,8 +84,8 @@ function ImportProducts(props: ImportProductsProps) {
   const onSubmit = async () => {
     await confirmBatchJob()
     notification(
-      "Success",
-      "Import confirmed for processing. Progress info is available in the activity drawer.",
+      "Succès",
+      "Traitement de l'importation en cours. Les informations sur l'état d'avancement sont disponibles dans le panel d'activité.",
       "success"
     )
     props.handleClose()
@@ -110,7 +110,7 @@ function ImportProducts(props: ImportProductsProps) {
 
       setBatchJobId(batchJob.batch_job.id)
     } catch (e) {
-      notification("Error", "Import failed.", "error")
+      notification("Erreur", "L'importation a échoué.", "error")
       if (fileKey) {
         await deleteFile({ file_key: fileKey })
       }
@@ -145,14 +145,22 @@ function ImportProducts(props: ImportProductsProps) {
       try {
         deleteFile({ file_key: fileKey })
       } catch (e) {
-        notification("Error", "Failed to delete the CSV file", "error")
+        notification(
+          "Erreur",
+          "Échec de la suppression du fichier CSV",
+          "error"
+        )
       }
     }
 
     try {
       cancelBathJob()
     } catch (e) {
-      notification("Error", "Failed to cancel the batch job", "error")
+      notification(
+        "Erreur",
+        "Échec de l'annulation du travail par lots",
+        "error"
+      )
     }
 
     setBatchJobId(undefined)
@@ -188,11 +196,11 @@ function ImportProducts(props: ImportProductsProps) {
       summary={getSummary()}
       onFileRemove={onFileRemove}
       processUpload={processUpload}
-      fileTitle={"products list"}
+      fileTitle={"Liste de produits"}
       templateLink="/temp/product-import-template.csv"
-      description2Title="Unsure about how to arrange your list?"
-      description2Text="Download the template below to ensure you are following the correct format."
-      description1Text="Through imports you can add or update products. To update existing products/variants you must set an existing id in the Product/Variant id columns. If the value is unset a new record will be created. You will be asked for confirmation before we import products."
+      description2Title="Vous ne savez pas comment organiser votre liste ?"
+      description2Text="Téléchargez le modèle ci-dessous pour vous assurer que vous suivez le bon format."
+      description1Text="Les importations permettent d'ajouter ou de mettre à jour des produits. Pour mettre à jour des produits/variantes existants, vous devez définir un identifiant existant dans les colonnes Identifiant du produit/variante. Si la valeur n'est pas définie, un nouvel enregistrement sera créé. Une confirmation vous sera demandée avant l'importation des produits."
     />
   )
 }

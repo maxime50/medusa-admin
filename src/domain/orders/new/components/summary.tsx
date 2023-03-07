@@ -102,7 +102,9 @@ const Summary = () => {
     }
 
     if (!discount.regions.find((d) => d.id === regionObj.id)) {
-      setDiscError("The discount is not applicable to the selected region")
+      setDiscError(
+        "Le code de réduction n'est pas applicable à la région sélectionnée"
+      )
       setCode(undefined)
       form.setValue("discount_code", undefined)
       setShowAddDiscount(true)
@@ -111,7 +113,7 @@ const Summary = () => {
 
   useEffect(() => {
     if (status === "error") {
-      setDiscError("The discount code is invalid")
+      setDiscError("Le code de réduction n'est pas valide")
       setCode(undefined)
       form.setValue("discount_code", undefined)
       setShowAddDiscount(true)
@@ -130,10 +132,10 @@ const Summary = () => {
         <Table>
           <Table.Head>
             <Table.HeadRow className="inter-small-semibold border-t text-grey-50">
-              <Table.HeadCell>Details</Table.HeadCell>
-              <Table.HeadCell className="text-right">Quantity</Table.HeadCell>
+              <Table.HeadCell>Détails</Table.HeadCell>
+              <Table.HeadCell className="text-right">Quantité</Table.HeadCell>
               <Table.HeadCell className="text-right">
-                Price (excl. Taxes)
+                Prix (Taxes exclus)
               </Table.HeadCell>
               <Table.HeadCell></Table.HeadCell>
             </Table.HeadRow>
@@ -189,7 +191,7 @@ const Summary = () => {
               onClick={() => setShowAddDiscount(true)}
             >
               <PlusIcon size={20} />
-              Add Discount
+              Ajouter un rabais
             </Button>
           </div>
         )}
@@ -199,7 +201,7 @@ const Summary = () => {
               <div className="flex w-full items-center gap-x-base">
                 <Input
                   type="text"
-                  placeholder="SUMMER10"
+                  placeholder="PROMO10"
                   onFocus={() => setDiscError(undefined)}
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
@@ -228,7 +230,7 @@ const Summary = () => {
                 onClick={() => handleAddDiscount()}
               >
                 <PlusIcon size={20} />
-                Add Discount
+                Ajouter un rabais
               </Button>
             </div>
           </>
@@ -237,7 +239,7 @@ const Summary = () => {
           <div className="inter-small-regular mt-4 flex w-full flex-col border-b border-t border-grey-20 pt-4 last:border-b-0 ">
             <div className="inter-base-semibold mb-4 flex w-full justify-between">
               <span>
-                Discount
+                Rabais
                 <span className="inter-base-regular ml-0.5 text-grey-50">
                   (Code: {discount.code})
                 </span>
@@ -261,12 +263,12 @@ const Summary = () => {
                     ? `${discount.rule.type
                         .charAt(0)
                         .toUpperCase()}${discount.rule.type.slice(1)}`
-                    : "Free Shipping"}
+                    : "Livraison gratuite"}
                 </span>
               </div>
               {discount.rule.type !== "free_shipping" && (
                 <div className="flex flex-col pl-6">
-                  <span className="text-grey-50">Value</span>
+                  <span className="text-grey-50">Valeur</span>
                   <span>
                     {discount.rule.type === "fixed"
                       ? `${displayAmount(
@@ -281,7 +283,7 @@ const Summary = () => {
           </div>
         )}
       </SummarySection>
-      <SummarySection title={"Customer"} editIndex={3}>
+      <SummarySection title={"Client"} editIndex={3}>
         <div className="flex items-center">
           <div className="mr-3 h-5 w-5">
             <Avatar
@@ -299,11 +301,11 @@ const Summary = () => {
       </SummarySection>
 
       {selectedShippingOption && (
-        <SummarySection title={"Shipping details"} editIndex={2}>
+        <SummarySection title={"Détails de livraison"} editIndex={2}>
           <div className="grid w-full grid-cols-2 gap-x-6">
             {!isNullishObject(shipping) && shipping && (
               <div className="flex flex-col border-r border-grey-20 pr-6">
-                <span className="text-grey-50">Address</span>
+                <span className="text-grey-50">Adresse</span>
                 <span>
                   {shipping.address_1}, {shipping.address_2}
                 </span>
@@ -315,7 +317,7 @@ const Summary = () => {
             )}
             {regionObj && (
               <div className="flex flex-col">
-                <span className="text-grey-50">Shipping method</span>
+                <span className="text-grey-50">Méthode de livraison</span>
                 <span>
                   {selectedShippingOption.name} -{" "}
                   {customShippingPrice && regionObj ? (
@@ -340,8 +342,8 @@ const Summary = () => {
       )}
 
       {!isNullishObject(billing) && billing && (
-        <SummarySection title={"Billing details"} editIndex={3}>
-          <span className="text-grey-50">Address</span>
+        <SummarySection title={"Détails de facturation"} editIndex={3}>
+          <span className="text-grey-50">Adresse</span>
           <span>
             {billing.address_1}, {billing.address_2}
           </span>
@@ -365,7 +367,7 @@ const SummarySection = ({ title, editIndex, children }) => {
           onClick={() => setPage(editIndex)}
           className="inter-small-semibold cursor-pointer text-violet-60"
         >
-          Edit
+          Modifier
         </span>
       </div>
       {children}

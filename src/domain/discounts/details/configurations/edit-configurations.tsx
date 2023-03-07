@@ -46,12 +46,12 @@ const EditConfigurations: React.FC<EditConfigurationsProps> = ({
       },
       {
         onSuccess: ({ discount }) => {
-          notification("Success", "Discount updated successfully", "success")
+          notification("Succès", "Rabais mis à jour avec succès", "success")
           reset(mapConfigurations(discount))
           onClose()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       }
     )
@@ -65,7 +65,7 @@ const EditConfigurations: React.FC<EditConfigurationsProps> = ({
     <Modal handleClose={onClose} isLargeModal>
       <Modal.Body>
         <Modal.Header handleClose={onClose}>
-          <h1 className="inter-xlarge-semibold">Edit configurations</h1>
+          <h1 className="inter-xlarge-semibold">Modifier les configurations</h1>
         </Modal.Header>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Modal.Content>
@@ -85,17 +85,17 @@ const EditConfigurations: React.FC<EditConfigurationsProps> = ({
                           onChange(new Date(discount.starts_at))
                         }
                       }}
-                      title="Discount has a start date?"
-                      description="Schedule the discount to activate in the future."
+                      title="Le rabais a une date de début ?"
+                      description="Programmer la date d'activation pour ce rabais."
                     >
-                      <div className="flex gap-x-xsmall items-center">
+                      <div className="flex items-center gap-x-xsmall">
                         <DatePicker
                           date={value!}
-                          label="Start date"
+                          label="Date de début"
                           onSubmitDate={onChange}
                         />
                         <TimePicker
-                          label="Start time"
+                          label="Heure de départ"
                           date={value!}
                           onSubmitDate={onChange}
                         />
@@ -122,17 +122,17 @@ const EditConfigurations: React.FC<EditConfigurationsProps> = ({
                           )
                         }
                       }}
-                      title="Discount has an expiry date?"
-                      description="Schedule the discount to deactivate in the future."
+                      title="Le rabais a une date d'expiration ?"
+                      description="Programmer la date d'expiration pour ce rabais."
                     >
-                      <div className="flex gap-x-xsmall items-center">
+                      <div className="flex items-center gap-x-xsmall">
                         <DatePicker
                           date={value!}
-                          label="Expiry date"
+                          label="Date d'expiration"
                           onSubmitDate={onChange}
                         />
                         <TimePicker
-                          label="Expiry time"
+                          label="Heure d'expiration"
                           date={value!}
                           onSubmitDate={onChange}
                         />
@@ -155,11 +155,11 @@ const EditConfigurations: React.FC<EditConfigurationsProps> = ({
                           onChange(10)
                         }
                       }}
-                      title="Limit the number of redemtions?"
-                      description="Limit applies across all customers, not per customer."
+                      title="Limiter le nombre d'utilisation ?"
+                      description="La limite s'applique à tous les clients."
                     >
                       <InputField
-                        label="Number of redemptions"
+                        label="Nombre d'utilisation maximal"
                         type="number"
                         placeholder="5"
                         min={1}
@@ -187,8 +187,8 @@ const EditConfigurations: React.FC<EditConfigurationsProps> = ({
                             onChange("P0Y0M0DT00H00M")
                           }
                         }}
-                        title="Availability duration?"
-                        description="Set the duration of the discount."
+                        title="Durée de disponibilité ?"
+                        description="Définir la durée du rabais"
                       >
                         <AvailabilityDuration
                           value={value ?? undefined}
@@ -202,7 +202,7 @@ const EditConfigurations: React.FC<EditConfigurationsProps> = ({
             </div>
           </Modal.Content>
           <Modal.Footer>
-            <div className="gap-x-xsmall flex items-center justify-end w-full">
+            <div className="flex w-full items-center justify-end gap-x-xsmall">
               <Button
                 variant="ghost"
                 size="small"
@@ -210,7 +210,7 @@ const EditConfigurations: React.FC<EditConfigurationsProps> = ({
                 type="button"
                 onClick={onClose}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 variant="primary"
@@ -220,7 +220,7 @@ const EditConfigurations: React.FC<EditConfigurationsProps> = ({
                 loading={isLoading}
                 disabled={isLoading}
               >
-                Save
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

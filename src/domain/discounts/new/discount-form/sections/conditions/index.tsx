@@ -65,10 +65,10 @@ const DiscountNewConditions: React.FC<DiscountNewConditionsProps> = ({
           size="small"
           variant="ghost"
           onClick={() => setShowConditionsModal(true)}
-          className="mt-4 p-2 w-full rounded-rounded border"
+          className="mt-4 w-full rounded-rounded border p-2"
         >
           <PlusIcon size={18} />
-          <span>Add Condition</span>
+          <span>Ajouter une condition</span>
         </Button>
       )}
       {showConditionsModal && (

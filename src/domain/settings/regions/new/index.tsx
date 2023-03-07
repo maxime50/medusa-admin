@@ -71,12 +71,12 @@ const NewRegion = ({ onClose }: Props) => {
 
       mutate(payload, {
         onSuccess: ({ region }) => {
-          notification("Success", "Region created", "success")
+          notification("Succès", "Région créée", "success")
           navigate(`/a/settings/regions/${region.id}`)
           closeAndReset()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       })
     },
@@ -108,7 +108,7 @@ const NewRegion = ({ onClose }: Props) => {
                 disabled={!isDirty || isLoading}
                 type="submit"
               >
-                Create region
+                Créer une région
               </Button>
             </div>
           </div>
@@ -121,13 +121,13 @@ const NewRegion = ({ onClose }: Props) => {
               type="multiple"
             >
               <Accordion.Item
-                title="Details"
+                title="Détails"
                 value="details"
                 forceMountContent
                 required
               >
                 <p className="inter-base-regular mb-xlarge text-grey-50">
-                  Add the region details.
+                  Ajouter les détails de la région.
                 </p>
                 <RegionDetailsForm
                   form={nestedForm(form, "details")}
@@ -135,14 +135,14 @@ const NewRegion = ({ onClose }: Props) => {
                 />
               </Accordion.Item>
               <Accordion.Item
-                title="Providers"
+                title="Services"
                 value="providers"
                 forceMountContent
                 required
               >
                 <p className="inter-base-regular mb-xlarge text-grey-50">
-                  Add which fulfillment and payment providers shoulb be
-                  available in this region.
+                  Ajouter les services de traitement et de paiement qui
+                  devraient être disponibles dans cette région.
                 </p>
                 <RegionProvidersForm form={nestedForm(form, "providers")} />
               </Accordion.Item>

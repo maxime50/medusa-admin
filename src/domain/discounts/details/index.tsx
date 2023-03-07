@@ -29,10 +29,10 @@ const Edit = () => {
   const handleDelete = () => {
     deleteDiscount.mutate(undefined, {
       onSuccess: () => {
-        notification("Success", "Discount deleted", "success")
+        notification("Succès", "Rabais supprimé", "success")
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   }
@@ -43,20 +43,20 @@ const Edit = () => {
         <DeletePrompt
           handleClose={() => setShowDelete(!showDelete)}
           onDelete={async () => handleDelete()}
-          successText="Discount deleted"
-          confirmText="Yes, delete"
-          text="Are you sure you want to delete this discount?"
-          heading="Delete discount"
+          successText="Rabais supprimé"
+          confirmText="Oui, supprimer"
+          text="Êtes-vous sûr de vouloir supprimer ce rabais ?"
+          heading="Supprimer le rabais"
         />
       )}
 
       <Breadcrumb
-        currentPage="Add Discount"
-        previousBreadcrumb="Discount"
+        currentPage="Ajouter un rabais"
+        previousBreadcrumb="Rabais"
         previousRoute="/a/discounts"
       />
       {isLoading || !discount ? (
-        <div className="h-full flex items-center justify-center">
+        <div className="flex h-full items-center justify-center">
           <Spinner variant="secondary" />
         </div>
       ) : (
@@ -65,7 +65,7 @@ const Edit = () => {
             <General discount={discount} />
             <Configurations discount={discount} />
             <DiscountDetailsConditions discount={discount} />
-            <RawJSON data={discount} title="Raw discount" rootName="discount" />
+            <RawJSON data={discount} title="Données" rootName="discount" />
           </DiscountFormProvider>
         </div>
       )}

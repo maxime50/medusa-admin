@@ -118,9 +118,9 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
       .mutateAsync(data)
       .then(() => onDismiss())
       .then(() =>
-        notification("Success", "Successfully returned order", "success")
+        notification("Succès", "Commande retournée avec succès", "success")
       )
-      .catch((error) => notification("Error", getErrorMessage(error), "error"))
+      .catch((error) => notification("Erreur", getErrorMessage(error), "error"))
       .finally(() => setSubmitting(false))
   }
 
@@ -159,11 +159,11 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
     <LayeredModal context={layoutmodalcontext} handleClose={onDismiss}>
       <Modal.Body>
         <Modal.Header handleClose={onDismiss}>
-          <h2 className="inter-xlarge-semibold">Request Return</h2>
+          <h2 className="inter-xlarge-semibold">Demander un retour</h2>
         </Modal.Header>
         <Modal.Content>
           <div className="mb-7">
-            <h3 className="inter-base-semibold">Items to return</h3>
+            <h3 className="inter-base-semibold">Articles à retourner</h3>
             <RMASelectProductTable
               order={order}
               allItems={allItems}
@@ -173,16 +173,16 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
           </div>
 
           <div>
-            <h3 className="inter-base-semibold ">Shipping</h3>
+            <h3 className="inter-base-semibold ">Livraison</h3>
             {shippingLoading ? (
               <div className="flex justify-center">
                 <Spinner size="medium" variant="secondary" />
               </div>
             ) : (
               <Select
-                label="Shipping Method"
+                label="Méthode de livraison"
                 className="mt-2"
-                placeholder="Add a shipping method"
+                placeholder="Ajouter une méthode de livraison"
                 value={shippingMethod}
                 onChange={handleShippingSelected}
                 options={
@@ -210,7 +210,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
             <div className="mt-10">
               {!useCustomShippingPrice && shippingMethod && (
                 <div className="inter-small-regular mb-4 flex justify-between">
-                  <span>Shipping</span>
+                  <span>Livraison</span>
                   <div>
                     {displayAmount(order.currency_code, shippingPrice || 0)}{" "}
                     <span className="ml-3 text-grey-40">
@@ -220,7 +220,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                 </div>
               )}
               <div className="inter-base-semibold flex w-full justify-between">
-                <span>Total Refund</span>
+                <span>Remboursement total</span>
                 <div className="flex items-center">
                   {!refundEdited && (
                     <>
@@ -246,7 +246,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                   readOnly
                 >
                   <CurrencyInput.Amount
-                    label={"Amount"}
+                    label={"Montant"}
                     amount={refundAmount}
                     onChange={handleRefundUpdated}
                   />
@@ -279,8 +279,8 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                 type="checkbox"
               />
               <span className="ml-3 flex items-center gap-x-xsmall text-grey-90">
-                Send notifications
-                <IconTooltip content="Notify customer of created return" />
+                Envoyer une notification
+                <IconTooltip content="Notifier au client le retour" />
               </span>
             </div>
             <div className="flex gap-x-xsmall">
@@ -291,7 +291,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                 size="small"
                 variant="ghost"
               >
-                Back
+                Retour
               </Button>
               <Button
                 onClick={onSubmit}
@@ -302,7 +302,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                 variant="primary"
                 disabled={Object.keys(toReturn).length === 0}
               >
-                Submit
+                Soumettre
               </Button>
             </div>
           </div>

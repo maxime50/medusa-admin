@@ -9,18 +9,18 @@ import NewOrderFormProvider from "../new/form"
 import NewOrder from "../new/new-order"
 import DraftOrderDetails from "./details"
 
-const VIEWS = ["orders", "drafts"]
+const VIEWS = ["commandes", "brouillons"]
 
 const DraftOrderIndex = () => {
   const navigate = useNavigate()
 
-  const view = "drafts"
+  const view = "brouillons"
   const [showNewOrder, setShowNewOrder] = useState(false)
 
   const actions = useMemo(() => {
     return [
       {
-        label: "Create draft order",
+        label: "Créer une commande brouillon",
         onClick: () => setShowNewOrder(true),
         icon: <PlusIcon size={20} />,
       },
@@ -28,14 +28,14 @@ const DraftOrderIndex = () => {
   }, [view])
 
   return (
-    <div className="flex flex-col grow h-full">
-      <div className="w-full flex flex-col grow">
+    <div className="flex h-full grow flex-col">
+      <div className="flex w-full grow flex-col">
         <BodyCard
           customHeader={
             <TableViewHeader
               views={VIEWS}
               setActiveView={(v) => {
-                if (v === "orders") {
+                if (v === "commandes") {
                   navigate(`/a/orders`)
                 }
               }}

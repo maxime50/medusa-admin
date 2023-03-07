@@ -200,12 +200,12 @@ export const ProductTable = forwardRef(
 
     const getActions = (id: string) => [
       {
-        label: "Details",
+        label: "Détails",
         onClick: () => navigate(`/a/products/${id}`),
         icon: <DetailsIcon size={20} />,
       },
       {
-        label: "Remove from the channel",
+        label: "Retirer du canal de vente",
         variant: "danger",
         onClick: () => removeProductFromSalesChannel(id),
         icon: <TrashIcon size={20} />,
@@ -221,7 +221,7 @@ export const ProductTable = forwardRef(
           count: count!,
           offset: offs,
           pageSize: offs + rows.length,
-          title: "Products",
+          title: "Produits",
           currentPage: pageIndex + 1,
           pageCount: pageCount,
           nextPage: handleNext,
@@ -297,7 +297,7 @@ const ProductRow = ({ row, actions, onClick, disabled }) => {
       color={"inherit"}
       className={clsx("cursor-pointer", {
         "bg-grey-5": row.isSelected,
-        "opacity-40 cursor-not-allowed pointer-events-none": disabled,
+        "pointer-events-none cursor-not-allowed opacity-40": disabled,
       })}
       actions={actions}
       {...row.getRowProps()}
@@ -335,17 +335,17 @@ function RemoveProductsPopup({
   return (
     <div
       className={clsx(
-        "absolute w-full bottom-1 flex justify-center transition-all duration-200 pointer-events-none",
+        "pointer-events-none absolute bottom-1 flex w-full justify-center transition-all duration-200",
         classes
       )}
     >
-      <div className="h-[48px] min-w-[224px] rounded-lg border shadow-toaster flex items-center justify-around gap-3 px-4 py-3 pointer-events-auto">
+      <div className="pointer-events-auto flex h-[48px] min-w-[224px] items-center justify-around gap-3 rounded-lg border px-4 py-3 shadow-toaster">
         <span className="text-small text-grey-50">{total} selected</span>
-        <div className="w-[1px] h-[20px] bg-grey-20" />
+        <div className="h-[20px] w-[1px] bg-grey-20" />
         <Button variant="danger" size="small" onClick={onRemove}>
-          Remove
+          Supprimer
         </Button>
-        <button onClick={onClose} className="text-grey-50 cursor-pointer">
+        <button onClick={onClose} className="cursor-pointer text-grey-50">
           <CrossIcon size={20} />
         </button>
       </div>
@@ -396,7 +396,7 @@ function SalesChannelProductsTable(props: SalesChannelProductsTableProps) {
   const removeProductFromSalesChannel = (id: string) => {
     deleteProductsFromSalesChannel({ product_ids: [{ id }] })
 
-    notification("Success", "Product successfully removed", "success")
+    notification("Succès", "Produit supprimé avec succès", "success")
   }
 
   const removeSelectedProducts = async () => {
@@ -405,8 +405,8 @@ function SalesChannelProductsTable(props: SalesChannelProductsTableProps) {
     })
 
     notification(
-      "Success",
-      "Products successfully removed from the sales channel",
+      "Succès",
+      "Produits retirés du canal de vente avec succès",
       "success"
     )
     resetSelection()
@@ -476,8 +476,8 @@ function SalesChannelProductsSelectModal(
     addProductsBatch({ product_ids: selectedRowIds.map((i) => ({ id: i })) })
     handleClose()
     notification(
-      "Success",
-      "Products successfully added to the sales channel",
+      "Succès",
+      "Produits ajoutés au canal de vente avec succès",
       "success"
     )
   }
@@ -486,7 +486,7 @@ function SalesChannelProductsSelectModal(
     <Modal handleClose={handleClose}>
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
-          <span className="inter-xlarge-semibold">Add products</span>
+          <span className="inter-xlarge-semibold">Ajouter des produits</span>
         </Modal.Header>
         <Modal.Content>
           <ProductTable
@@ -501,14 +501,14 @@ function SalesChannelProductsSelectModal(
           />
         </Modal.Content>
         <Modal.Footer>
-          <div className="w-full flex justify-end">
+          <div className="flex w-full justify-end">
             <Button
               variant="ghost"
               size="small"
               onClick={handleClose}
               className="mr-2"
             >
-              Close
+              Fermer
             </Button>
             <Button
               variant="primary"
@@ -518,7 +518,7 @@ function SalesChannelProductsSelectModal(
               loading={isMutating}
               disabled={isMutating}
             >
-              Save
+              Sauvegarder
             </Button>
           </div>
         </Modal.Footer>

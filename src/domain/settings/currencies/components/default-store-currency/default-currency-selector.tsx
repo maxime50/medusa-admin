@@ -16,11 +16,10 @@ type DefaultStoreCurrencyFormType = {
 }
 
 const DefaultCurrencySelector = ({ store }: Props) => {
-  const { reset, control, handleSubmit } = useForm<
-    DefaultStoreCurrencyFormType
-  >({
-    defaultValues: getDefaultValue(store),
-  })
+  const { reset, control, handleSubmit } =
+    useForm<DefaultStoreCurrencyFormType>({
+      defaultValues: getDefaultValue(store),
+    })
 
   const { mutate } = useAdminUpdateStore()
   const notification = useNotification()
@@ -37,13 +36,13 @@ const DefaultCurrencySelector = ({ store }: Props) => {
       {
         onSuccess: () => {
           notification(
-            "Success",
-            "Successfully updated default currency",
+            "Succès",
+            "Devise par défaut mise à jour avec succès",
             "success"
           )
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       }
     )
@@ -67,7 +66,7 @@ const DefaultCurrencySelector = ({ store }: Props) => {
         render={({ field: { value, onChange, onBlur } }) => {
           return (
             <NextSelect
-              placeholder="Choose default currency"
+              placeholder="Choisir la devise par défaut"
               options={currencyOptions}
               value={value}
               onChange={(e) => {

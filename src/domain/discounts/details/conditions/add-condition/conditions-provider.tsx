@@ -130,13 +130,13 @@ export const ConditionsProvider = ({
       {
         onSuccess: () => {
           notification(
-            "Condtions were succesfully added",
-            "Discount conditions updated",
+            "Les conditions ont été ajoutées avec succès",
+            "Conditions de rabais mises à jour",
             "success"
           )
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Erreur", getErrorMessage(err), "error")
         },
       }
     )

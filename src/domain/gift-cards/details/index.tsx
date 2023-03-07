@@ -40,12 +40,12 @@ const GiftCardDetails = () => {
 
   const actions = [
     {
-      label: "Edit",
+      label: "Modifier",
       onClick: () => setShowEdit(true),
       icon: <EditIcon size={20} />,
     },
     {
-      label: `${giftCard?.is_disabled ? "Activate" : "Disable"}`,
+      label: `${giftCard?.is_disabled ? "Activer" : "Désactiver"}`,
       onClick: () => handleUpdate({ is_disabled: !giftCard?.is_disabled }),
       icon: giftCard?.is_disabled ? (
         <PublishIcon size={20} />
@@ -54,7 +54,7 @@ const GiftCardDetails = () => {
       ),
     },
     {
-      label: "Update balance",
+      label: "Mettre à jour la balance",
       onClick: () => setShowUpdateBalance(true),
       icon: <DollarSignIcon size={20} />,
     },
@@ -65,11 +65,15 @@ const GiftCardDetails = () => {
       { ...data },
       {
         onSuccess: () => {
-          notification("Success", "Succesfully updated Gift Card", "success")
+          notification(
+            "Succès",
+            "Carte cadeau mise à jour avec succès",
+            "success"
+          )
           setShowEdit(false)
           setShowUpdateBalance(false)
         },
-        onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
       }
     )
   }
@@ -77,12 +81,12 @@ const GiftCardDetails = () => {
   return (
     <div>
       <Breadcrumb
-        currentPage={"Gift Card Details"}
-        previousBreadcrumb={"Gift Cards"}
+        currentPage={"Détails de la carte cadeau"}
+        previousBreadcrumb={"Cartes cadeaux"}
         previousRoute="/a/gift-cards"
       />
       {isLoading || !giftCard ? (
-        <div className="w-full bg-grey-0 border border-grey-20 rounded-rounded py-xlarge flex items-center justify-center">
+        <div className="flex w-full items-center justify-center rounded-rounded border border-grey-20 bg-grey-0 py-xlarge">
           <Spinner size={"large"} variant={"secondary"} />
         </div>
       ) : (
@@ -90,12 +94,12 @@ const GiftCardDetails = () => {
           <BodyCard
             className={"h-auto min-h-0 w-full"}
             title={`${giftCard?.code}`}
-            subtitle={`Gift Card id: ${giftCard?.id}`}
+            subtitle={`# de la carte cadeau: ${giftCard?.id}`}
             status={
               <StatusSelector
                 isDraft={!!giftCard?.is_disabled}
                 activeState={"Active"}
-                draftState={"Disable"}
+                draftState={"Désactivé"}
                 onChange={() =>
                   handleUpdate({ is_disabled: !giftCard?.is_disabled })
                 }
@@ -104,10 +108,10 @@ const GiftCardDetails = () => {
             actionables={actions}
           >
             <div className="flex justify-between">
-              <div className="flex mt-6 space-x-6 divide-x">
+              <div className="mt-6 flex space-x-6 divide-x">
                 <div className="flex flex-col">
-                  <div className="inter-smaller-regular text-grey-50 mb-1">
-                    Original amount
+                  <div className="inter-smaller-regular mb-1 text-grey-50">
+                    Montant original
                   </div>
                   <div>
                     {formatAmountWithSymbol({
@@ -117,7 +121,7 @@ const GiftCardDetails = () => {
                   </div>
                 </div>
                 <div className="flex flex-col pl-6">
-                  <div className="inter-smaller-regular text-grey-50 mb-1">
+                  <div className="inter-smaller-regular mb-1 text-grey-50">
                     Balance
                   </div>
                   <div>
@@ -128,8 +132,8 @@ const GiftCardDetails = () => {
                   </div>
                 </div>
                 <div className="flex flex-col pl-6">
-                  <div className="inter-smaller-regular text-grey-50 mb-1">
-                    Created
+                  <div className="inter-smaller-regular mb-1 text-grey-50">
+                    Créée
                   </div>
                   <div>
                     {moment(giftCard?.created_at).format("DD MMM YYYY")}
@@ -142,7 +146,7 @@ const GiftCardDetails = () => {
             </div>
           </BodyCard>
           <div className="mt-large">
-            <RawJSON data={giftCard} title="Raw gift card" rootName="product" />
+            <RawJSON data={giftCard} title="Données" rootName="product" />
           </div>
         </>
       )}

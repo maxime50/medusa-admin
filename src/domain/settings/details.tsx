@@ -37,26 +37,26 @@ const AccountDetails = () => {
     const validateInviteLinkTemplate = validateUrl(data.invite_link_template)
 
     if (!validateSwapLinkTemplate) {
-      notification("Error", "Malformed swap url", "error")
+      notification("Erreur", "Url d'échange malformée", "error")
       return
     }
 
     if (!validatePaymentLinkTemplate) {
-      notification("Error", "Malformed payment url", "error")
+      notification("Erreur", "Url de paiement malformée", "error")
       return
     }
 
     if (!validateInviteLinkTemplate) {
-      notification("Error", "Malformed invite url", "error")
+      notification("Erreur", "Url d'invitation malformée", "error")
       return
     }
 
     mutate(data, {
       onSuccess: () => {
-        notification("Success", "Successfully updated store", "success")
+        notification("Succès", "Boutique mise à jour avec succès", "success")
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Erreur", getErrorMessage(error), "error")
       },
     })
   }
@@ -66,47 +66,51 @@ const AccountDetails = () => {
       <div className="max-w-[632px]">
         <BreadCrumb
           previousRoute="/a/settings/"
-          previousBreadcrumb="Settings"
-          currentPage="Store Details"
+          previousBreadcrumb="Paramètres"
+          currentPage="Détails de la boutique"
         />
         <BodyCard
           events={[
             {
-              label: "Save",
+              label: "Sauvegarder",
               type: "button",
               onClick: handleSubmit(onSubmit),
             },
-            { label: "Cancel changes", type: "button", onClick: handleCancel },
+            {
+              label: "Annuler les changements",
+              type: "button",
+              onClick: handleCancel,
+            },
           ]}
-          title="Store Details"
-          subtitle="Manage your business details"
+          title="Détails de la boutique"
+          subtitle="Gérer les détails de la boutique"
         >
-          <h6 className="mt-large inter-base-semibold">General</h6>
+          <h6 className="inter-base-semibold mt-large">Général</h6>
           <Input
             className="mt-base"
-            label="Store name"
+            label="Nom de la boutique"
             {...register("name")}
-            placeholder="Medusa Store"
+            placeholder="Bijoux Tendances"
           />
-          <h6 className="mt-2xlarge inter-base-semibold">Advanced settings</h6>
-          <Input
-            className="mt-base"
-            label="Swap link template"
-            {...register("swap_link_template")}
-            placeholder="https://acme.inc/swap={swap_id}"
-          />
-          <Input
-            className="mt-base"
-            label="Draft order link template"
-            {...register("payment_link_template")}
-            placeholder="https://acme.inc/payment={payment_id}"
-          />
-          <Input
-            className="mt-base"
-            label="Invite link template"
-            {...register("invite_link_template")}
-            placeholder="https://acme-admin.inc/invite?token={invite_token}"
-          />
+          {/* <h6 className="inter-base-semibold mt-2xlarge">Paramètres avancés</h6> */}
+          {/* <Input */}
+          {/*   className="mt-base" */}
+          {/*   label="Swap link template" */}
+          {/*   {...register("swap_link_template")} */}
+          {/*   placeholder="https://acme.inc/swap={swap_id}" */}
+          {/* /> */}
+          {/* <Input */}
+          {/*   className="mt-base" */}
+          {/*   label="Draft order link template" */}
+          {/*   {...register("payment_link_template")} */}
+          {/*   placeholder="https://acme.inc/payment={payment_id}" */}
+          {/* /> */}
+          {/* <Input */}
+          {/*   className="mt-base" */}
+          {/*   label="Invite link template" */}
+          {/*   {...register("invite_link_template")} */}
+          {/*   placeholder="https://acme-admin.inc/invite?token={invite_token}" */}
+          {/* /> */}
         </BodyCard>
       </div>
     </form>

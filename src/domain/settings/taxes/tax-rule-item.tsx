@@ -7,10 +7,10 @@ import Badge from "../../../components/fundamentals/badge"
 
 export const TaxRuleItem = ({ onEdit, onDelete, index, name, description }) => {
   return (
-    <div className="p-base border rounded-rounded flex gap-base items-center">
+    <div className="flex items-center gap-base rounded-rounded border p-base">
       <div>
         <Badge
-          className="inter-base-semibold flex justify-center items-center w-[40px] h-[40px]"
+          className="inter-base-semibold flex h-[40px] w-[40px] items-center justify-center"
           variant="default"
         >
           §{index}
@@ -25,12 +25,12 @@ export const TaxRuleItem = ({ onEdit, onDelete, index, name, description }) => {
           forceDropdown
           actions={[
             {
-              label: "Edit",
+              label: "Modifier",
               onClick: () => onEdit(),
               icon: <EditIcon size={20} />,
             },
             {
-              label: "Delete rule",
+              label: "Supprimer la règle",
               variant: "danger",
               onClick: () => onDelete(),
               icon: <TrashIcon size={20} />,
@@ -41,4 +41,3 @@ export const TaxRuleItem = ({ onEdit, onDelete, index, name, description }) => {
     </div>
   )
 }
-

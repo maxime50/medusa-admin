@@ -43,11 +43,11 @@ const AddCurrenciesScreen = () => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully updated currencies", "success")
+          notification("Succès", "Devises mises à jour avec succès", "success")
           next()
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Erreur", getErrorMessage(err), "error")
         },
       }
     )
@@ -95,9 +95,9 @@ const AddCurrenciesScreen = () => {
         />
       </Modal.Content>
       <Modal.Footer>
-        <div className="w-full gap-x-xsmall flex items-center justify-end">
+        <div className="flex w-full items-center justify-end gap-x-xsmall">
           <Button variant="secondary" size="small" onClick={pop}>
-            Cancel
+            Annuler
           </Button>
           <Button
             variant="primary"
@@ -108,21 +108,7 @@ const AddCurrenciesScreen = () => {
               })
             }
           >
-            Save and go back
-          </Button>
-          <Button
-            variant="primary"
-            size="small"
-            loading={isMutating}
-            disabled={isMutating}
-            onClick={() =>
-              onSubmit(() => {
-                reset()
-                onClose()
-              })
-            }
-          >
-            Save and close
+            Sauvegarder
           </Button>
         </div>
       </Modal.Footer>
@@ -135,7 +121,7 @@ export const useAddCurrenciesModalScreen = () => {
 
   return {
     screen: {
-      title: "Add Store Currencies",
+      title: "Ajouter les devises de la boutique",
       onBack: pop,
       view: <AddCurrenciesScreen />,
     },

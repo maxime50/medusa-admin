@@ -74,19 +74,19 @@ export type AddressPayload =
 
 const reasonOptions = [
   {
-    label: "Missing Item",
+    label: "Article manquant",
     value: "missing_item",
   },
   {
-    label: "Wrong Item",
+    label: "Mauvais article",
     value: "wrong_item",
   },
   {
-    label: "Production Failure",
+    label: "Défaut de fabrication",
     value: "production_failure",
   },
   {
-    label: "Other",
+    label: "Autre",
     value: "other",
   },
 ]
@@ -239,7 +239,7 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
     mutate(data, {
       onSuccess: () => {
         refetch()
-        notification("Succès", "Claim créé avec succès", "success")
+        notification("Succès", "Réclamation créée avec succès", "success")
         onDismiss()
       },
       onError: (error) => {
@@ -306,11 +306,11 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
     <LayeredModal context={layeredModalContext} handleClose={onDismiss}>
       <Modal.Body>
         <Modal.Header handleClose={onDismiss}>
-          <h2 className="inter-xlarge-semibold">Créer un Claim</h2>
+          <h2 className="inter-xlarge-semibold">Créer une réclamation</h2>
         </Modal.Header>
         <Modal.Content>
           <div>
-            <h3 className="inter-base-semibold">Articles à claim</h3>
+            <h3 className="inter-base-semibold">Articles à réclamer</h3>
             <RMASelectProductTable
               order={order}
               allItems={allItems}
@@ -324,16 +324,16 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
             <h3 className="inter-base-semibold">
               Retour
               {returnShippingMethod && (
-                <span className="text-grey-40 inter-base-regular">
+                <span className="inter-base-regular text-grey-40">
                   ({returnShippingMethod.region.name})
                 </span>
               )}
             </h3>
             <Select
               clearSelected
-              label="Shipping Method"
+              label="Méthode de livraison"
               className="mt-2"
-              placeholder="Add a shipping method"
+              placeholder="Ajouter une méthode de livraison"
               value={
                 returnShippingMethod
                   ? {
@@ -375,45 +375,45 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
               />
             )}
           </div>
-          <div className="flex w-full mt-4 items-center inter-base-regular gap-x-xlarge">
+          <div className="inter-base-regular mt-4 flex w-full items-center gap-x-xlarge">
             <div
-              className="cursor-pointer items-center flex"
+              className="flex cursor-pointer items-center"
               onClick={() => {
                 toggleReplace(true)
               }}
             >
               <div
                 className={clsx(
-                  "rounded-full w-5 h-5 flex mr-3 items-center justify-center",
+                  "mr-3 flex h-5 w-5 items-center justify-center rounded-full",
                   {
-                    "border-violet-60 border-2": isReplace,
-                    "border-grey-40 border": !isReplace,
+                    "border-2 border-violet-60": isReplace,
+                    "border border-grey-40": !isReplace,
                   }
                 )}
               >
                 {isReplace && (
-                  <div className="w-3 h-3 bg-violet-60 rounded-full"></div>
+                  <div className="h-3 w-3 rounded-full bg-violet-60"></div>
                 )}
               </div>
               Remplacer
             </div>
             <div
-              className="cursor-pointer items-center flex"
+              className="flex cursor-pointer items-center"
               onClick={() => {
                 toggleReplace(false)
               }}
             >
               <div
                 className={clsx(
-                  "rounded-full w-5 h-5 flex mr-3 items-center justify-center",
+                  "mr-3 flex h-5 w-5 items-center justify-center rounded-full",
                   {
-                    "border-violet-60 border-2": !isReplace,
-                    "border-grey-40 border": isReplace,
+                    "border-2 border-violet-60": !isReplace,
+                    "border border-grey-40": isReplace,
                   }
                 )}
               >
                 {!isReplace && (
-                  <div className="w-3 h-3 bg-violet-60 rounded-full"></div>
+                  <div className="h-3 w-3 rounded-full bg-violet-60"></div>
                 )}
               </div>
               Rembourser
@@ -421,7 +421,7 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
           </div>
           {isReplace && (
             <div className="mt-8">
-              <div className="flex justify-between items-center">
+              <div className="flex items-center justify-between">
                 <h3 className="inter-base-semibold ">Articles à envoyer</h3>
                 {itemsToAdd.length === 0 ? (
                   <Button
@@ -479,7 +479,7 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
                 </span>
                 {shippingAddress ? (
                   <>
-                    <div className="flex w-full inter-small-regular text-grey-50">
+                    <div className="inter-small-regular flex w-full text-grey-50">
                       {formatAddress(shippingAddress)}
                     </div>
                     <div className="flex w-full justify-end">
@@ -504,7 +504,7 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
                   </>
                 ) : (
                   <div>
-                    <span className="flex w-full inter-small-regular text-grey-50">
+                    <span className="inter-small-regular flex w-full text-grey-50">
                       {formatAddress(order.shipping_address)}
                     </span>
                     <div className="flex w-full justify-end">
@@ -558,12 +558,12 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
                 <div>
                   {shippingMethod ? (
                     <>
-                      <div className="flex justify-end w-full">
+                      <div className="flex w-full justify-end">
                         {!showCustomPrice.standard && (
                           <Button
                             variant="ghost"
                             size="small"
-                            className="border border-grey-20 mt-4 "
+                            className="mt-4 border border-grey-20 "
                             disabled={!shippingMethod}
                             onClick={() =>
                               setShowCustomPrice({
@@ -603,7 +603,7 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
                                   standard: false,
                                 })
                               }
-                              className="w-8 h-8 ml-8 text-grey-40"
+                              className="ml-8 h-8 w-8 text-grey-40"
                               variant="ghost"
                               size="small"
                             >
@@ -622,11 +622,11 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
         <Modal.Footer>
           <div className="flex w-full justify-between">
             <div
-              className="items-center h-full flex cursor-pointer"
+              className="flex h-full cursor-pointer items-center"
               onClick={() => setNoNotification(!noNotification)}
             >
               <div
-                className={`w-5 h-5 flex justify-center text-grey-0 border-grey-30 border rounded-base ${
+                className={`flex h-5 w-5 justify-center rounded-base border border-grey-30 text-grey-0 ${
                   !noNotification && "bg-violet-60"
                 }`}
               >
@@ -642,7 +642,7 @@ const ClaimMenu: React.FC<ClaimMenuProps> = ({ order, onDismiss }) => {
                 onChange={() => setNoNotification(!noNotification)}
                 type="checkbox"
               />
-              <span className="ml-3 flex items-center text-grey-90 gap-x-xsmall">
+              <span className="ml-3 flex items-center gap-x-xsmall text-grey-90">
                 Envoyer une notification
                 <IconTooltip content="Notify customer of created return" />
               </span>

@@ -80,7 +80,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
       | typeof markClaimShipped
 
     let action: actionType = markOrderShipped
-    let successText = "Successfully marked order as shipped"
+    let successText = "La commande a bien été marquée comme expédiée"
     let requestObj
 
     switch (type) {
@@ -92,7 +92,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
           tracking_numbers,
           no_notification: noNotis,
         }
-        successText = "Successfully marked swap as shipped"
+        successText = "La commande a bien été marquée comme expédiée"
         break
 
       case "claim":
@@ -102,7 +102,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
           claim_id: resourceId,
           tracking_numbers,
         }
-        successText = "Successfully marked claim as shipped"
+        successText = "Réclamation marquée comme expédiée"
         break
 
       default:
@@ -116,10 +116,10 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
 
     action.mutate(requestObj, {
       onSuccess: () => {
-        notification("Success", successText, "success")
+        notification("Succès", successText, "success")
         handleCancel()
       },
-      onError: (err) => notification("Error", getErrorMessage(err), "error"),
+      onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
     })
   }
 
@@ -133,12 +133,12 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
         <Modal.Body>
           <Modal.Header handleClose={handleCancel}>
             <span className="inter-xlarge-semibold">
-              Mark Fulfillment Shipped
+              Marquer le traitement comme expédiée
             </span>
           </Modal.Header>
           <Modal.Content>
             <div className="flex flex-col">
-              <span className="inter-base-semibold mb-2">Tracking</span>
+              <span className="inter-base-semibold mb-2">Numéro de suivi</span>
               <div className="flex flex-col space-y-2">
                 {trackingNumbers.map((tn, index) => (
                   <Controller
@@ -152,9 +152,9 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
                       return (
                         <Input
                           deletable={index !== 0}
-                          label={index === 0 ? "Tracking number" : ""}
+                          label={index === 0 ? "Numéro de suivi" : ""}
                           type="text"
-                          placeholder={"Tracking number..."}
+                          placeholder={"Numéro de suivi..."}
                           {...field}
                           onDelete={() => removeTracking(index)}
                         />
@@ -164,25 +164,25 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
                 ))}
               </div>
             </div>
-            <div className="flex w-full justify-end mt-4">
+            <div className="mt-4 flex w-full justify-end">
               <Button
                 size="small"
                 onClick={() => appendTracking({ value: undefined })}
                 variant="secondary"
                 disabled={trackingNumbers.some((tn) => !tn.value)}
               >
-                + Add Additional Tracking Number
+                + Ajouter un numéro de suivi supplémentaire
               </Button>
             </div>
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex w-full h-8 justify-between">
+            <div className="flex h-8 w-full justify-between">
               <div
-                className="items-center h-full flex cursor-pointer"
+                className="flex h-full cursor-pointer items-center"
                 onClick={() => setNoNotis(!noNotis)}
               >
                 <div
-                  className={`w-5 h-5 flex justify-center text-grey-0 border-grey-30 border rounded-base ${
+                  className={`flex h-5 w-5 justify-center rounded-base border border-grey-30 text-grey-0 ${
                     !noNotis && "bg-violet-60"
                   }`}
                 >
@@ -197,30 +197,30 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
                   checked={!noNotis}
                   type="checkbox"
                 />
-                <span className="ml-3 flex items-center text-grey-90 gap-x-xsmall">
-                  Send notifications
+                <span className="ml-3 flex items-center gap-x-xsmall text-grey-90">
+                  Envoyer une notification
                   <IconTooltip content="" />
                 </span>
               </div>
               <div className="flex">
                 <Button
                   variant="ghost"
-                  className="mr-2 w-32 text-small justify-center"
+                  className="mr-2 w-32 justify-center text-small"
                   size="large"
                   onClick={handleCancel}
                   type="button"
                 >
-                  Cancel
+                  Annuler
                 </Button>
                 <Button
                   size="large"
-                  className="w-32 text-small justify-center"
+                  className="w-32 justify-center text-small"
                   variant="primary"
                   type="submit"
                   loading={isSubmitting}
                   disabled={isSubmitting}
                 >
-                  Complete
+                  Compléter
                 </Button>
               </div>
             </div>

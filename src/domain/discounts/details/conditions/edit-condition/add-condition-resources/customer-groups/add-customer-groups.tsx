@@ -38,9 +38,9 @@ const AddCustomerGroupsConditionsScreen = () => {
           options={{
             enableSearch: true,
             immediateSearchFocus: true,
-            searchPlaceholder: "Search...",
+            searchPlaceholder: "Rechercher...",
           }}
-          resourceName="Groups"
+          resourceName="Groupes"
           totalCount={count ?? 0}
           selectedIds={selectedResources}
           data={customer_groups || []}
@@ -53,23 +53,23 @@ const AddCustomerGroupsConditionsScreen = () => {
         />
       </Modal.Content>
       <Modal.Footer>
-        <div className="flex justify-end w-full space-x-xsmall">
+        <div className="flex w-full justify-end space-x-xsmall">
           <Button variant="secondary" size="small" onClick={pop}>
-            Cancel
+            Annuler
           </Button>
           <Button
             variant="primary"
             size="small"
             onClick={() => saveAndGoBack(selectedResources, () => refetch())}
           >
-            Save and go back
+            Sauvegarder et revenir en arrière
           </Button>
           <Button
             variant="primary"
             size="small"
             onClick={() => saveAndClose(selectedResources)}
           >
-            Save and close
+            Sauvegarder et fermer
           </Button>
         </div>
       </Modal.Footer>

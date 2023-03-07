@@ -27,14 +27,15 @@ type PricesTableProps = {
 
 const PricesTable = ({ id, selectProduct }: PricesTableProps) => {
   const params = useQueryFilters(defaultQueryProps)
-  const { products, isLoading, count = 0 } = useAdminPriceListProducts(
-    id,
-    params.queryObject
-  )
+  const {
+    products,
+    isLoading,
+    count = 0,
+  } = useAdminPriceListProducts(id, params.queryObject)
   const columns = usePricesColumns()
 
   return (
-    <div className="w-full overflow-y-auto flex flex-col justify-between h-full">
+    <div className="flex h-full w-full flex-col justify-between overflow-y-auto">
       <SelectableTable
         columns={columns}
         data={products || []}
@@ -49,7 +50,7 @@ const PricesTable = ({ id, selectProduct }: PricesTableProps) => {
               product={row.original}
               priceListId={id}
               onClick={handleSelect}
-              className="hover:bg-grey-5 hover:cursor-pointer"
+              className="hover:cursor-pointer hover:bg-grey-5"
             >
               {row.cells.map((cell) => {
                 return (
@@ -66,7 +67,7 @@ const PricesTable = ({ id, selectProduct }: PricesTableProps) => {
         totalCount={count}
         options={{
           enableSearch: false,
-          searchPlaceholder: "Search by name or SKU...",
+          searchPlaceholder: "Rechercher par nom ou SKU...",
         }}
         {...params}
       />
@@ -105,25 +106,25 @@ const PricesTableRow = ({
 
   const actions = [
     {
-      label: "Edit prices",
+      label: "Modifier les prix",
       icon: <EditIcon size={20} />,
       onClick: onClick,
     },
     {
-      label: "Remove product",
+      label: "Retirer le produit",
       icon: <CancelIcon size={20} />,
       variant: "danger" as const,
       onClick: () => {
         deleteProductPrices.mutate(undefined, {
           onSuccess: () => {
             notification(
-              "Success",
-              `Deleted prices of product: ${product.title}`,
+              "Succès",
+              `Prix du produit: ${product.title} supprimés`,
               "success"
             )
           },
           onError: (err) =>
-            notification("Error", getErrorMessage(err), "error"),
+            notification("Erreur", getErrorMessage(err), "error"),
         })
       },
     },

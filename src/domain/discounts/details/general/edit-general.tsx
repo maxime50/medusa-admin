@@ -46,12 +46,12 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
       },
       {
         onSuccess: ({ discount }) => {
-          notification("Success", "Discount updated successfully", "success")
+          notification("Succès", "Rabais mis à jour avec succès", "success")
           reset(mapGeneral(discount))
           onClose()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Erreur", getErrorMessage(error), "error")
         },
       }
     )
@@ -91,14 +91,16 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
           <Modal.Header handleClose={onClose}>
-            <h1 className="inter-xlarge-semibold">Edit general information</h1>
+            <h1 className="inter-xlarge-semibold">
+              Modifier les informations générales
+            </h1>
           </Modal.Header>
           <Modal.Content>
             <Controller
               name="regions"
               control={control}
               rules={{
-                required: "Atleast one region is required",
+                required: "Au moins une région est requise",
                 validate: (value) =>
                   Array.isArray(value) ? value.length > 0 : !!value,
               }}
@@ -109,7 +111,7 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
                     onChange={(value) => {
                       onChange(type === "fixed" ? [value] : value)
                     }}
-                    label="Choose valid regions"
+                    label="Choisir des régions valides"
                     isMulti={type !== "fixed"}
                     selectAll={type !== "fixed"}
                     isSearchable
@@ -119,13 +121,13 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
                 )
               }}
             />
-            <div className="flex gap-x-base gap-y-base my-base">
+            <div className="my-base flex gap-x-base gap-y-base">
               <InputField
                 label="Code"
                 className="flex-1"
-                placeholder="SUMMERSALE10"
+                placeholder="PROMO2023"
                 required
-                {...register("code", { required: "Code is required" })}
+                {...register("code", { required: "Code requis" })}
               />
 
               {type !== "free_shipping" && (
@@ -142,13 +144,13 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
                           name="value"
                           control={control}
                           rules={{
-                            required: "Amount is required",
+                            required: "Montant requis",
                             min: 1,
                           }}
                           render={({ field: { value, onChange } }) => {
                             return (
                               <CurrencyInput.Amount
-                                label={"Amount"}
+                                label={"Montant"}
                                 required
                                 amount={value}
                                 onChange={onChange}
@@ -161,14 +163,14 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
                   ) : (
                     <div className="flex-1">
                       <InputField
-                        label="Percentage"
+                        label="Pourcentage"
                         min={0}
                         required
                         type="number"
                         placeholder="10"
                         prefix={"%"}
                         {...register("value", {
-                          required: "Percentage is required",
+                          required: "Pourcentage requis",
                           valueAsNumber: true,
                         })}
                       />
@@ -178,25 +180,25 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
               )}
             </div>
 
-            <div className="text-grey-50 inter-small-regular flex flex-col mb-6">
+            <div className="inter-small-regular mb-6 flex flex-col text-grey-50">
               <span>
-                The code your customers will enter during checkout. This will
-                appear on your customer’s invoice.
+                Le code que vos clients entreront lors du paiement. Ce code
+                apparaîtra sur la facture du client.
               </span>
-              <span>Uppercase letters and numbers only.</span>
+              <span>Lettres majuscules et chiffres uniquement.</span>
             </div>
             <TextArea
               label="Description"
               required
-              placeholder="Summer Sale 2022"
+              placeholder="Promo d'été 2023"
               rows={1}
               {...register("description", {
-                required: "Description is required",
+                required: "Description requise",
               })}
             />
           </Modal.Content>
           <Modal.Footer>
-            <div className="gap-x-xsmall flex items-center justify-end w-full">
+            <div className="flex w-full items-center justify-end gap-x-xsmall">
               <Button
                 variant="ghost"
                 size="small"
@@ -204,7 +206,7 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
                 type="button"
                 onClick={onClose}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 variant="primary"
@@ -214,7 +216,7 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
                 disabled={isLoading}
                 loading={isLoading}
               >
-                Save
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

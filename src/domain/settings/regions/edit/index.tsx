@@ -16,7 +16,7 @@ const EditRegion = ({ id }: Props) => {
 
   if (isLoading) {
     return (
-      <div className="h-full w-full flex items-center justify-center">
+      <div className="flex h-full w-full items-center justify-center">
         <Spinner variant="secondary" />
       </div>
     )
@@ -24,11 +24,11 @@ const EditRegion = ({ id }: Props) => {
 
   if (isError) {
     return (
-      <div className="bg-grey-0 rounded-rounded border border-grey-20 flex flex-col gap-y-xsmall items-center justify-center w-full h-full text-center ">
-        <h1 className="inter-large-semibold">Something went wrong...</h1>
+      <div className="flex h-full w-full flex-col items-center justify-center gap-y-xsmall rounded-rounded border border-grey-20 bg-grey-0 text-center ">
+        <h1 className="inter-large-semibold">Une erreur s'est produite...</h1>
         <p className="inter-base-regular text-grey-50">
-          We can't find a region with that ID, use the menu to the left to
-          select a region.
+          Nous ne trouvons pas de région avec cet ID, utilisez le menu à gauche
+          pour sélectionner une région.
         </p>
       </div>
     )

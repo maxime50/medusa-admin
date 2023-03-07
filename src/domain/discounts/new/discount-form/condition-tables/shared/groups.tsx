@@ -42,16 +42,16 @@ export const useGroupColumns = () => {
     return [
       {
         Header: () => (
-          <div className="flex items-center gap-1 min-w-[540px]">
-            Title <SortingIcon size={16} />
+          <div className="flex min-w-[540px] items-center gap-1">
+            Titre <SortingIcon size={16} />
           </div>
         ),
         accessor: "name",
       },
       {
         Header: () => (
-          <div className="flex justify-end items-center gap-1">
-            Members <SortingIcon size={16} />
+          <div className="flex items-center justify-end gap-1">
+            Membres <SortingIcon size={16} />
           </div>
         ),
         id: "members",

@@ -49,7 +49,7 @@ const RefundAmountForm = ({ form, initialValue = 0, order }: Props) => {
             size="small"
             type="button"
             className="h-10 w-10"
-            aria-label="Cancel editing refund amount"
+            aria-label="Annuler la modification du montant du remboursement"
             onClick={disableEdit}
           >
             <CrossIcon size={16} className="text-grey-40" />
@@ -60,7 +60,7 @@ const RefundAmountForm = ({ form, initialValue = 0, order }: Props) => {
             size="small"
             type="button"
             onClick={enableEdit}
-            aria-label="Edit refund amount"
+            aria-label="Modifier le montant du remboursement"
             className="h-10 w-10"
           >
             <EditIcon size={16} className="text-grey-40" />
@@ -75,12 +75,12 @@ const RefundAmountForm = ({ form, initialValue = 0, order }: Props) => {
             rules={{
               min: {
                 value: 0,
-                message: "Refund amount cannot be negative",
+                message: "Le montant du remboursement ne peut pas être négatif",
               },
               required: true,
               validate: (value) => {
                 if (value === undefined || !(value >= 0)) {
-                  return "The refund amount must be at least 0"
+                  return "Le montant du remboursement doit être au moins égal à 0"
                 }
               },
             }}

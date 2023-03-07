@@ -53,9 +53,9 @@ const SelectShippingMethod = () => {
   return (
     <div className="min-h-[705px]">
       <span className="inter-base-semibold">
-        Shipping method{" "}
+        Méthode de livraison{" "}
         <span className="inter-base-regular text-grey-50">
-          (To {region!.name})
+          (À {region!.name})
         </span>
       </span>
 
@@ -66,10 +66,9 @@ const SelectShippingMethod = () => {
               <AlertIcon size={20} />
             </div>
             <div className="flex flex-col">
-              <span className="inter-small-semibold">Attention!</span>
-              You don't have any options for orders without shipping. Please add
-              one (e.g. "In-store fulfillment") with "Show on website" unchecked
-              in region settings and continue.
+              <span className="inter-small-semibold">Attention !</span>
+              Vous n'avez pas d'options pour les commandes sans livraison.
+              Veuillez ajouter une option dans les paramètres régionaux.
             </div>
           </div>
         ) : (
@@ -80,7 +79,7 @@ const SelectShippingMethod = () => {
               render={({ field: { value, onChange } }) => {
                 return (
                   <Select
-                    label="Choose a shipping method"
+                    label="Choisissez une méthode de livraison"
                     onChange={onChange}
                     value={value}
                     options={
@@ -106,7 +105,7 @@ const SelectShippingMethod = () => {
                     disabled={!selectedShippingOption}
                     onClick={() => setShowCustomPrice(true)}
                   >
-                    Set custom price
+                    Définir un prix personnalisé
                   </Button>
                 </div>
               )}
@@ -124,7 +123,7 @@ const SelectShippingMethod = () => {
                             currentCurrency={region.currency_code}
                           >
                             <CurrencyInput.Amount
-                              label="Custom Price"
+                              label="Prix personnalisé"
                               amount={value}
                               onChange={onChange}
                             />

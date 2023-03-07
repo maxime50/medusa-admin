@@ -78,7 +78,7 @@ const gatherAllFulfillments = (order) => {
 
   order.fulfillments.forEach((f, index) => {
     all.push({
-      title: `Fulfillment #${index + 1}`,
+      title: `Traitement #${index + 1}`,
       type: "default",
       fulfillment: f,
     })
@@ -89,7 +89,7 @@ const gatherAllFulfillments = (order) => {
       if (claim.fulfillment_status !== "not_fulfilled") {
         claim.fulfillments.forEach((fulfillment, index) => {
           all.push({
-            title: `Claim fulfillment #${index + 1}`,
+            title: `Traitement de réclamation #${index + 1}`,
             type: "claim",
             fulfillment,
             claim,
@@ -104,7 +104,7 @@ const gatherAllFulfillments = (order) => {
       if (swap.fulfillment_status !== "not_fulfilled") {
         swap.fulfillments.forEach((fulfillment, index) => {
           all.push({
-            title: `Swap fulfillment #${index + 1}`,
+            title: `Traitement de l'échange #${index + 1}`,
             type: "swap",
             fulfillment,
             swap,
@@ -155,12 +155,13 @@ const OrderDetails = () => {
 
   const [, handleCopy] = useClipboard(`${order?.display_id!}`, {
     successDuration: 5500,
-    onCopied: () => notification("Success", "Order ID copied", "success"),
+    onCopied: () =>
+      notification("Succès", "Numéro de commande copié", "success"),
   })
 
   const [, handleCopyEmail] = useClipboard(order?.email!, {
     successDuration: 5500,
-    onCopied: () => notification("Success", "Email copied", "success"),
+    onCopied: () => notification("Succès", "Courriel copié", "success"),
   })
 
   // @ts-ignore
@@ -200,10 +201,10 @@ const OrderDetails = () => {
 
   const handleDeleteOrder = async () => {
     const shouldDelete = await dialog({
-      heading: "Cancel order",
-      text: "Are you sure you want to cancel the order?",
+      heading: "Annuler la commande",
+      text: "Voulez-vous vraiment annuler la commande ?",
       extraConfirmation: true,
-      entityName: `order #${order?.display_id}`,
+      entityName: `commande #${order?.display_id}`,
     })
 
     if (!shouldDelete) {
@@ -212,8 +213,8 @@ const OrderDetails = () => {
 
     return cancelOrder.mutate(undefined, {
       onSuccess: () =>
-        notification("Success", "Successfully canceled order", "success"),
-      onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        notification("Succès", "Commande annulée avec succès", "success"),
+      onError: (err) => notification("Erreur", getErrorMessage(err), "error"),
     })
   }
 
@@ -221,19 +222,19 @@ const OrderDetails = () => {
 
   const customerActionables: ActionType[] = [
     {
-      label: "Go to Customer",
+      label: "Accéder au client",
       icon: <DetailsIcon size={"20"} />,
       onClick: () => navigate(`/a/customers/${order?.customer.id}`),
     },
     {
-      label: "Transfer ownership",
+      label: "Autre client",
       icon: <RefreshIcon size={"20"} />,
       onClick: () => toggleTransferOrderModal(),
     },
   ]
 
   customerActionables.push({
-    label: "Edit Shipping Address",
+    label: "Modifier l'adresse de livraison",
     icon: <TruckIcon size={"20"} />,
     onClick: () =>
       setAddressModal({
@@ -243,7 +244,7 @@ const OrderDetails = () => {
   })
 
   customerActionables.push({
-    label: "Edit Billing Address",
+    label: "Modifier l'adresse de facturation",
     icon: <DollarSignIcon size={"20"} />,
     onClick: () => {
       setAddressModal({
@@ -255,7 +256,7 @@ const OrderDetails = () => {
 
   if (order?.email) {
     customerActionables.push({
-      label: "Edit Email Address",
+      label: "Modifier l'adresse courriel",
       icon: <MailIcon size={"20"} />,
       onClick: () => {
         setEmailModal({
@@ -281,8 +282,8 @@ const OrderDetails = () => {
     <div>
       <OrderEditProvider orderId={id!}>
         <Breadcrumb
-          currentPage={"Order Details"}
-          previousBreadcrumb={"Orders"}
+          currentPage={"Détails de la commande"}
+          previousBreadcrumb={"Commandes"}
           previousRoute="/a/orders"
         />
         {isLoading || !order ? (
@@ -296,7 +297,10 @@ const OrderDetails = () => {
                 <BodyCard
                   className={"mb-4 min-h-[200px] w-full"}
                   customHeader={
-                    <Tooltip side="top" content={"Copy ID"}>
+                    <Tooltip
+                      side="top"
+                      content={"Copier le numéro de commande"}
+                    >
                       <button
                         className="inter-xlarge-semibold flex cursor-pointer items-center gap-x-2 text-grey-90 active:text-violet-90"
                         onClick={handleCopy}
@@ -312,7 +316,7 @@ const OrderDetails = () => {
                   forceDropdown={true}
                   actionables={[
                     {
-                      label: "Cancel Order",
+                      label: "Annuler la commande",
                       icon: <CancelIcon size={"20"} />,
                       variant: "danger",
                       onClick: () => handleDeleteOrder(),
@@ -322,7 +326,7 @@ const OrderDetails = () => {
                   <div className="mt-6 flex space-x-6 divide-x">
                     <div className="flex flex-col">
                       <div className="inter-smaller-regular mb-1 text-grey-50">
-                        Email
+                        Courriel
                       </div>
                       <button
                         className="flex cursor-pointer items-center gap-x-1 text-grey-90 active:text-violet-90"
@@ -334,13 +338,13 @@ const OrderDetails = () => {
                     </div>
                     <div className="flex flex-col pl-6">
                       <div className="inter-smaller-regular mb-1 text-grey-50">
-                        Phone
+                        Téléphone
                       </div>
                       <div>{order.shipping_address?.phone || "N/A"}</div>
                     </div>
                     <div className="flex flex-col pl-6">
                       <div className="inter-smaller-regular mb-1 text-grey-50">
-                        Payment
+                        Paiement
                       </div>
                       <div>
                         {order.payments
@@ -354,12 +358,12 @@ const OrderDetails = () => {
                   {({ showModal }) => (
                     <BodyCard
                       className={"mb-4 h-auto min-h-0 w-full"}
-                      title="Summary"
+                      title="Commande"
                       actionables={
                         isFeatureEnabled("order_editing")
                           ? [
                               {
-                                label: "Edit Order",
+                                label: "Modifier la commande",
                                 onClick: showModal,
                               },
                             ]
@@ -377,7 +381,7 @@ const OrderDetails = () => {
                         <DisplayTotal
                           currency={order.currency_code}
                           totalAmount={order.subtotal}
-                          totalTitle={"Subtotal"}
+                          totalTitle={"Sous-total"}
                         />
                         {order?.discounts?.map((discount, index) => (
                           <DisplayTotal
@@ -386,7 +390,7 @@ const OrderDetails = () => {
                             totalAmount={-1 * order.discount_total}
                             totalTitle={
                               <div className="inter-small-regular flex items-center text-grey-90">
-                                Discount:{" "}
+                                Rabais:{" "}
                                 <Badge className="ml-3" variant="default">
                                   {discount.code}
                                 </Badge>
@@ -401,7 +405,7 @@ const OrderDetails = () => {
                             totalAmount={-1 * order.gift_card_total}
                             totalTitle={
                               <div className="inter-small-regular flex items-center text-grey-90">
-                                Gift card:
+                                Carte cadeau:
                                 <Badge className="ml-3" variant="default">
                                   {giftCard.code}
                                 </Badge>
@@ -419,18 +423,20 @@ const OrderDetails = () => {
                         <DisplayTotal
                           currency={order.currency_code}
                           totalAmount={order.shipping_total}
-                          totalTitle={"Shipping"}
+                          totalTitle={"Livraison"}
                         />
                         <DisplayTotal
                           currency={order.currency_code}
                           totalAmount={order.tax_total}
-                          totalTitle={`Tax`}
+                          totalTitle={`Taxes`}
                         />
                         <DisplayTotal
                           variant={"large"}
                           currency={order.currency_code}
                           totalAmount={order.total}
-                          totalTitle={hasMovements ? "Original Total" : "Total"}
+                          totalTitle={
+                            hasMovements ? "Total précédent" : "Total"
+                          }
                         />
                         <PaymentDetails
                           manualRefund={manualRefund}
@@ -448,7 +454,7 @@ const OrderDetails = () => {
 
                 <BodyCard
                   className={"mb-4 h-auto min-h-0 w-full"}
-                  title="Payment"
+                  title="Paiement"
                   status={
                     <PaymentStatusComponent status={order.payment_status} />
                   }
@@ -478,7 +484,7 @@ const OrderDetails = () => {
                                 <CornerDownRightIcon />
                               </div>
                               <div className="inter-small-regular text-grey-90">
-                                Refunded
+                                Remboursé
                               </div>
                             </div>
                             <div className="flex">
@@ -499,7 +505,7 @@ const OrderDetails = () => {
                     ))}
                     <div className="mt-4 flex justify-between">
                       <div className="inter-small-semibold text-grey-90">
-                        Total Paid
+                        Total payé
                       </div>
                       <div className="flex">
                         <div className="inter-small-semibold mr-3 text-grey-90">
@@ -517,7 +523,7 @@ const OrderDetails = () => {
                 </BodyCard>
                 <BodyCard
                   className={"mb-4 h-auto min-h-0 w-full"}
-                  title="Fulfillment"
+                  title="Livraison"
                   status={
                     <FulfillmentStatusComponent
                       status={order.fulfillment_status}
@@ -532,7 +538,7 @@ const OrderDetails = () => {
                         size="small"
                         onClick={() => setShowFulfillment(true)}
                       >
-                        Create Fulfillment
+                        Traiter
                       </Button>
                     )
                   }
@@ -541,7 +547,7 @@ const OrderDetails = () => {
                     {order.shipping_methods.map((method) => (
                       <div className="flex flex-col" key={method.id}>
                         <span className="inter-small-regular text-grey-50">
-                          Shipping Method
+                          Méthode de livraison
                         </span>
                         <span className="inter-small-regular mt-2 text-grey-90">
                           {method?.shipping_option?.name || ""}
@@ -565,7 +571,7 @@ const OrderDetails = () => {
                 </BodyCard>
                 <BodyCard
                   className={"mb-4 h-auto min-h-0 w-full"}
-                  title="Customer"
+                  title="Client"
                   actionables={customerActionables}
                 >
                   <div className="mt-6">
@@ -604,18 +610,18 @@ const OrderDetails = () => {
                         </div>
                       </div>
                       <FormattedAddress
-                        title={"Shipping"}
+                        title={"Livraison"}
                         addr={order.shipping_address}
                       />
                       <FormattedAddress
-                        title={"Billing"}
+                        title={"Facturation"}
                         addr={order.billing_address}
                       />
                     </div>
                   </div>
                 </BodyCard>
                 <div className="mt-large">
-                  <RawJSON data={order} title="Raw order" />
+                  <RawJSON data={order} title="Données" />
                 </div>
               </div>
               <Timeline orderId={order.id} />

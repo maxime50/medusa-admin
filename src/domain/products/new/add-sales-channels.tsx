@@ -77,12 +77,12 @@ const AddSalesChannelsForm = ({ form }: Props) => {
       <div>
         <div>
           <div className="flex items-center justify-between">
-            <h2 className="inter-base-semibold">Sales channels</h2>
+            <h2 className="inter-base-semibold">Canaux de vente</h2>
             <Switch checked={isEnabled} onCheckedChange={toggleEnabled} />
           </div>
-          <p className="inter-base-regular text-grey-50 mt-2xsmall">
-            This product will only be available in the default sales channel if
-            left untouched.
+          <p className="inter-base-regular mt-2xsmall text-grey-50">
+            Ce produit ne sera disponible que dans le canal de vente par défaut
+            s'il n'est pas modifié.
           </p>
         </div>
         <div
@@ -95,12 +95,12 @@ const AddSalesChannelsForm = ({ form }: Props) => {
           </div>
           <Button
             variant="secondary"
-            className="w-full h-[40px] mt-large"
+            className="mt-large h-[40px] w-full"
             type="button"
             onClick={toggleModal}
           >
             <ChannelsIcon size={20} />
-            <span>Change availablity</span>
+            <span>Modifier la disponibilité</span>
           </Button>
         </div>
       </div>

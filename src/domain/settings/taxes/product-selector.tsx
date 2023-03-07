@@ -33,16 +33,16 @@ export const ProductSelector = ({ items, onChange }) => {
   const columns = useMemo(() => {
     return [
       {
-        Header: "Name",
+        Header: "Nom",
         accessor: "title",
         Cell: ({ row: { original } }) => {
           return (
             <div className="flex items-center">
-              <div className="h-[40px] w-[30px] my-1.5 flex items-center mr-4 rounded-sm overflow-hidden">
+              <div className="my-1.5 mr-4 flex h-[40px] w-[30px] items-center overflow-hidden rounded-sm">
                 {original.thumbnail ? (
                   <img
                     src={original.thumbnail}
-                    className="h-full object-cover rounded-soft"
+                    className="h-full rounded-soft object-cover"
                   />
                 ) : (
                   <ImagePlaceholder />
@@ -60,8 +60,8 @@ export const ProductSelector = ({ items, onChange }) => {
 
   return (
     <SelectableTable
-      label="Select Products"
-      objectName="Product"
+      label="Sélectionner les produits"
+      objectName="Produit"
       totalCount={count}
       pagination={pagination}
       onPaginationChange={setPagination}

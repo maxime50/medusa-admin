@@ -140,20 +140,28 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
     })
 
     if (errors.length === toCreate.length + toUpdate.length + toDelete.length) {
-      notification("Error", "Failed to update product options", "error")
+      notification(
+        "Erreur",
+        "Échec de la mise à jour des options du produit",
+        "error"
+      )
       return
     }
 
     if (errors.length > 0) {
       notification(
         "Warning",
-        "Failed to; " + errors.join(", ") + ".",
+        "Impossible de; " + errors.join(", ") + ".",
         "warning"
       )
     }
 
     refetch()
-    notification("Success", "Successfully updated product options", "success")
+    notification(
+      "Succès",
+      "Options de produits mises à jour avec succès",
+      "success"
+    )
     handleClose()
   })
 
@@ -161,13 +169,15 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={handleClose}>
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
-          <h1 className="inter-xlarge-semibold">Edit Options</h1>
+          <h1 className="inter-xlarge-semibold">Modifier les options</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
-            <h2 className="inter-large-semibold mb-base">Product options</h2>
+            <h2 className="inter-large-semibold mb-base">Options de produit</h2>
             <div className="flex flex-col gap-y-small">
-              <p className="inter-small-semibold text-grey-50">Option title</p>
+              <p className="inter-small-semibold text-grey-50">
+                Titre de l'option
+              </p>
               <div className="flex flex-col gap-y-xsmall">
                 {fields.map((field, index) => {
                   return (
@@ -177,19 +187,19 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
                     >
                       <InputField
                         key={field.id}
-                        placeholder="Color"
+                        placeholder="Couleur"
                         {...register(`options.${index}.title`, {
-                          required: "Option title is required",
-                          minLength: FormValidator.minOneCharRule(
-                            "Option title"
-                          ),
-                          pattern: FormValidator.whiteSpaceRule("Option title"),
+                          required: "Titre de l'option requis",
+                          minLength:
+                            FormValidator.minOneCharRule("Titre de l'option"),
+                          pattern:
+                            FormValidator.whiteSpaceRule("Titre de l'option"),
                         })}
                         errors={errors}
                       />
                       <Button
                         variant="secondary"
-                        className="px-2.5 py-2.5 max-h-[40px]"
+                        className="max-h-[40px] px-2.5 py-2.5"
                         type="button"
                         onClick={() => remove(index)}
                       >
@@ -202,17 +212,22 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
             </div>
             <Button
               variant="secondary"
-              className="w-full h-10 mt-base"
+              className="mt-base h-10 w-full"
               type="button"
               onClick={handleAddAnOption}
             >
-              <PlusIcon size="20" /> Add an option
+              <PlusIcon size="20" /> Ajouter une option
             </Button>
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex items-center justify-end gap-xsmall w-full">
-              <Button variant="secondary" size="small" type="button" onClick={handleClose}>
-                Cancel
+            <div className="flex w-full items-center justify-end gap-xsmall">
+              <Button
+                variant="secondary"
+                size="small"
+                type="button"
+                onClick={handleClose}
+              >
+                Annuler
               </Button>
               <Button
                 variant="primary"
@@ -221,7 +236,7 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
                 disabled={!isDirty}
                 loading={isSubmitting}
               >
-                Save and close
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

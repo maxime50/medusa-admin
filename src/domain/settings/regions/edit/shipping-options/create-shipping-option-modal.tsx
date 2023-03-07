@@ -55,7 +55,11 @@ const CreateShippingOptionModal = ({ open, onClose, region }: Props) => {
       },
       {
         onSuccess: () => {
-          notifcation("Success", "Shipping option created", "success")
+          notifcation(
+            "Succès",
+            "Option de livraison créée avec succès",
+            "success"
+          )
           closeAndReset()
         },
         onError: (error) => {
@@ -69,21 +73,23 @@ const CreateShippingOptionModal = ({ open, onClose, region }: Props) => {
     <Modal open={open} handleClose={closeAndReset}>
       <Modal.Body>
         <Modal.Header handleClose={closeAndReset}>
-          <h1 className="inter-xlarge-semibold">Add Shipping Option</h1>
+          <h1 className="inter-xlarge-semibold">
+            Ajouter une option de livraison
+          </h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <ShippingOptionForm form={form} region={region} />
           </Modal.Content>
           <Modal.Footer>
-            <div className="w-full flex items-center gap-x-xsmall justify-end">
+            <div className="flex w-full items-center justify-end gap-x-xsmall">
               <Button
                 variant="secondary"
                 size="small"
                 type="button"
                 onClick={closeAndReset}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 variant="primary"
@@ -92,7 +98,7 @@ const CreateShippingOptionModal = ({ open, onClose, region }: Props) => {
                 loading={isLoading}
                 disabled={isLoading || !isDirty}
               >
-                Save and close
+                Sauvegarder
               </Button>
             </div>
           </Modal.Footer>

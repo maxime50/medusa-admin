@@ -30,7 +30,7 @@ export const useCurrencyColumns = (): Column<Currency>[] => {
       {
         Header: ({ column: { isSorted, isSortedDesc } }) => (
           <div className="flex items-center gap-x-2xsmall">
-            <span>Name</span>
+            <span>Nom</span>
             <SortingIcon
               className="text-grey-40"
               ascendingColor={isSorted && !isSortedDesc ? "#111827" : undefined}
@@ -42,7 +42,7 @@ export const useCurrencyColumns = (): Column<Currency>[] => {
         accessor: "name",
         Cell: ({ row, value }) => {
           return (
-            <div className="flex items-center gap-x-xsmall inter-small-regular">
+            <div className="inter-small-regular flex items-center gap-x-xsmall">
               <span className="inter-small-semibold">
                 {row.original.code.toUpperCase()}
               </span>

@@ -21,7 +21,7 @@ const Configurations: React.FC<ConfigurationsProps> = ({ discount }) => {
         className="min-h-[200px]"
         actionables={[
           {
-            label: "Edit configurations",
+            label: "Modifier les configurations",
             onClick: () => setShowModal(true),
             icon: <EditIcon size={20} />,
           },
@@ -34,7 +34,7 @@ const Configurations: React.FC<ConfigurationsProps> = ({ discount }) => {
               configurations.length / 2
             )}, minmax(0, 1fr))`,
           }}
-          className="grid grid-cols-2 grid-flow-col gap-y-base gap-x-xlarge"
+          className="grid grid-flow-col grid-cols-2 gap-y-base gap-x-xlarge"
         >
           {configurations.map((setting, i) => (
             <NumberedItem

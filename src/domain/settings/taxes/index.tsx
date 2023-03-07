@@ -28,24 +28,24 @@ const Taxes = () => {
       <div>
         <BreadCrumb
           previousRoute="/a/settings"
-          previousBreadcrumb="Settings"
+          previousBreadcrumb="Paramètres"
           currentPage="Taxes"
         />
         <TwoSplitPane threeCols>
           <BodyCard
             forceDropdown
-            title="Regions"
-            subtitle="Select the region you wish to manage taxes for"
+            title="Régions"
+            subtitle="Sélectionnez la région pour laquelle vous souhaitez gérer les taxes"
             actionables={[
               {
                 icon: <GearIcon />,
-                label: "Go to Region settings",
+                label: "Aller aux paramètres de la région",
                 onClick: () => navigate("/a/settings/regions"),
               },
             ]}
           >
             {isLoading || !regions ? (
-              <div className="flex-grow h-full flex items-center justify-center">
+              <div className="flex h-full flex-grow items-center justify-center">
                 <Spinner size="large" variant="secondary" />
               </div>
             ) : (

@@ -68,7 +68,7 @@ const ItemsToSendForm = ({ form, order }: Props) => {
       })}
     >
       <div className="flex w-full items-center">
-        <h2 className="inter-base-semibold">Items to send</h2>
+        <h2 className="inter-base-semibold">Articles à envoyer</h2>
       </div>
       {fields.length > 0 && <AdditionalItemsTable instance={tableInstance} />}
 
@@ -86,7 +86,7 @@ const ItemsToSendForm = ({ form, order }: Props) => {
             })
           }
         >
-          Add products
+          Ajouter des produits
         </Button>
       </div>
     </div>

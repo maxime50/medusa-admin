@@ -42,17 +42,19 @@ const UpdateBalanceModal = ({
       <Modal.Body>
         <form onSubmit={handleSubmit(handleSave)}>
           <Modal.Header handleClose={handleClose}>
-            <span className="inter-xlarge-semibold">Update Balance</span>
+            <span className="inter-xlarge-semibold">
+              Mettre à jour la balance
+            </span>
             <span
               className={clsx(
-                "inter-small-regular text-rose-50 mt-2xsmall transition-display delay-75",
+                "inter-small-regular mt-2xsmall text-rose-50 transition-display delay-75",
                 {
                   hidden: !(balance > giftCard.value),
                 }
               )}
             >
-              Balance can't be updated to a value that is greater than the
-              original amount
+              Le solde ne peut pas être mis à jour à une valeur supérieure au
+              montant initial.
             </span>
           </Modal.Header>
           <Modal.Content>
@@ -71,7 +73,7 @@ const UpdateBalanceModal = ({
                   return (
                     <CurrencyInput.Amount
                       amount={value}
-                      label="Price"
+                      label="Prix"
                       onChange={onChange}
                     />
                   )
@@ -80,7 +82,7 @@ const UpdateBalanceModal = ({
             </CurrencyInput.Root>
           </Modal.Content>
           <Modal.Footer>
-            <div className="w-full flex justify-end">
+            <div className="flex w-full justify-end">
               <Button
                 variant="ghost"
                 size="small"
@@ -88,7 +90,7 @@ const UpdateBalanceModal = ({
                 className="mr-2"
                 type="button"
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 loading={updating}
@@ -99,11 +101,11 @@ const UpdateBalanceModal = ({
                 disabled={balance > giftCard.value || updating}
               >
                 {balance > giftCard.value ? (
-                  <Tooltip content="Balance is above original value">
-                    Save
+                  <Tooltip content="Le solde est supérieur à la valeur initiale">
+                    Sauvegarder
                   </Tooltip>
                 ) : (
-                  "Save"
+                  "Sauvegarder"
                 )}
               </Button>
             </div>

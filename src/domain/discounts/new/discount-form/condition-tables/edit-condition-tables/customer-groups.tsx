@@ -53,9 +53,9 @@ const EditCustomerGroupConditionSelector = ({ onClose }) => {
           options={{
             enableSearch: true,
             immediateSearchFocus: true,
-            searchPlaceholder: "Search groups...",
+            searchPlaceholder: "Rechercher des groupes...",
           }}
-          resourceName="Customer groups"
+          resourceName="Groupes de clients"
           totalCount={count || 0}
           selectedIds={items.map((i) => i.id)}
           data={customer_groups}

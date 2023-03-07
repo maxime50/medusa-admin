@@ -47,12 +47,16 @@ const CreateReturnReasonModal = ({
       },
       {
         onSuccess: () => {
-          notification("Success", "Created a new return reason", "success")
+          notification(
+            "Succès",
+            "Raison de retour créée avec succès",
+            "success"
+          )
         },
         onError: () => {
           notification(
             "Error",
-            "Cant create a Return reason with an existing code",
+            "Impossible de créer un motif de retour avec un code existant",
             "error"
           )
         },
@@ -65,31 +69,31 @@ const CreateReturnReasonModal = ({
     <Modal handleClose={handleClose}>
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
-          <span className="inter-xlarge-semibold">Add Reason</span>
+          <span className="inter-xlarge-semibold">Ajouter une raison</span>
         </Modal.Header>
         <form onSubmit={handleSubmit(onCreate)}>
           <Modal.Content>
-            <div className="grid grid-cols-2 gap-large mb-large">
+            <div className="mb-large grid grid-cols-2 gap-large">
               <Input
                 {...register("value", {
-                  required: "Value is required",
-                  pattern: FormValidator.whiteSpaceRule("Value"),
-                  minLength: FormValidator.minOneCharRule("Value"),
+                  required: "Valeur requise",
+                  pattern: FormValidator.whiteSpaceRule("Valeur"),
+                  minLength: FormValidator.minOneCharRule("Valeur"),
                 })}
-                label="Value"
+                label="Valeur"
                 required
-                placeholder="wrong_size"
+                placeholder="mauvaise_grandeur"
                 errors={errors}
               />
               <Input
                 {...register("label", {
-                  required: "Label is required",
-                  pattern: FormValidator.whiteSpaceRule("Label"),
-                  minLength: FormValidator.minOneCharRule("Label"),
+                  required: "Titre requis",
+                  pattern: FormValidator.whiteSpaceRule("Titre"),
+                  minLength: FormValidator.minOneCharRule("Titre"),
                 })}
-                label="Label"
+                label="Titre"
                 required
-                placeholder="Wrong size"
+                placeholder="Mauvaise grandeur"
                 errors={errors}
               />
             </div>
@@ -98,29 +102,29 @@ const CreateReturnReasonModal = ({
               rows={3}
               {...register("description")}
               label="Description"
-              placeholder="Customer received the wrong size"
+              placeholder="Le client a reçu la mauvaise grandeur"
               errors={errors}
             />
           </Modal.Content>
           <Modal.Footer>
-            <div className="flex w-full h-8 justify-end">
+            <div className="flex h-8 w-full justify-end">
               <Button
                 variant="ghost"
-                className="mr-2 w-32 text-small justify-center"
+                className="mr-2 w-32 justify-center text-small"
                 size="large"
                 onClick={handleClose}
                 type="button"
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 loading={isLoading}
                 disabled={isLoading}
                 size="large"
-                className="w-32 text-small justify-center"
+                className="w-32 justify-center text-small"
                 variant="primary"
               >
-                Create
+                Créer
               </Button>
             </div>
           </Modal.Footer>

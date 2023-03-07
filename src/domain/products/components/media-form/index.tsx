@@ -82,7 +82,7 @@ const MediaForm = ({ form }: Props) => {
         <div>
           <FileUploadField
             onFileChosen={handleFilesChosen}
-            placeholder="1200 x 1600 (3:4) recommended, up to 10MB each"
+            placeholder="1200 x 1600 (3:4) recommandée, 10MB maximum"
             multiple
             filetypes={["image/gif", "image/jpeg", "image/png", "image/webp"]}
             className="py-large"
@@ -92,7 +92,7 @@ const MediaForm = ({ form }: Props) => {
       {fields.length > 0 && (
         <div className="mt-large">
           <div className="mb-small flex items-center justify-between">
-            <h2 className="inter-large-semibold">Uploads</h2>
+            <h2 className="inter-large-semibold">Téléchargements</h2>
             <ModalActions
               number={selected.length}
               onDeselect={handleDeselect}
@@ -130,7 +130,7 @@ const Image = ({ image, index, form, remove }: ImageProps) => {
 
   const actions: ActionType[] = [
     {
-      label: "Delete",
+      label: "Supprimer",
       onClick: () => remove(index),
       icon: <TrashIcon size={20} />,
       variant: "danger",
@@ -146,7 +146,7 @@ const Image = ({ image, index, form, remove }: ImageProps) => {
           <div className="relative">
             <button
               className={clsx(
-                "px-base py-xsmall group hover:bg-grey-5 rounded-rounded flex items-center justify-between",
+                "group flex items-center justify-between rounded-rounded px-base py-xsmall hover:bg-grey-5",
                 {
                   "bg-grey-5": value,
                 }
@@ -155,14 +155,14 @@ const Image = ({ image, index, form, remove }: ImageProps) => {
               onClick={() => onChange(!value)}
             >
               <div className="flex items-center gap-x-large">
-                <div className="w-16 h-16 flex items-center justify-center">
+                <div className="flex h-16 w-16 items-center justify-center">
                   <img
                     src={image.url}
                     alt={image.name || "Uploaded image"}
-                    className="max-w-[64px] max-h-[64px] rounded-rounded"
+                    className="max-h-[64px] max-w-[64px] rounded-rounded"
                   />
                 </div>
-                <div className="flex flex-col inter-small-regular text-left">
+                <div className="inter-small-regular flex flex-col text-left">
                   <p>{image.name}</p>
                   <p className="text-grey-50">
                     {image.size ? `${(image.size / 1024).toFixed(2)} KB` : ""}
@@ -197,7 +197,7 @@ type ModalActionsProps = {
 
 const ModalActions = ({ number, onRemove, onDeselect }: ModalActionsProps) => {
   return (
-    <div className="h-10 overflow-y-hidden flex items-center pr-1">
+    <div className="flex h-10 items-center overflow-y-hidden pr-1">
       <div
         className={clsx(
           "flex items-center gap-x-small transition-all duration-200",
@@ -207,8 +207,8 @@ const ModalActions = ({ number, onRemove, onDeselect }: ModalActionsProps) => {
           }
         )}
       >
-        <span>{number} selected</span>
-        <div className="w-px h-5 bg-grey-20" />
+        <span>{number} sélectionné</span>
+        <div className="h-5 w-px bg-grey-20" />
         <div className="flex items-center gap-x-xsmall">
           <Button
             variant="secondary"
@@ -216,7 +216,7 @@ const ModalActions = ({ number, onRemove, onDeselect }: ModalActionsProps) => {
             type="button"
             onClick={onDeselect}
           >
-            Deselect
+            Déselectionner
           </Button>
           <Button
             variant="danger"
@@ -224,7 +224,7 @@ const ModalActions = ({ number, onRemove, onDeselect }: ModalActionsProps) => {
             type="button"
             onClick={onRemove}
           >
-            Delete
+            Supprimer
           </Button>
         </div>
       </div>

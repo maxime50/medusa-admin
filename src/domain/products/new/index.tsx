@@ -97,17 +97,17 @@ const NewProduct = ({ onClose }: Props) => {
           preppedImages = await prepareImages(data.media.images)
         } catch (error) {
           let errorMessage =
-            "Something went wrong while trying to upload images."
+            "Un problème s'est produit lors du téléchargement des images."
           const response = (error as any).response as Response
 
           if (response.status === 500) {
             errorMessage =
               errorMessage +
               " " +
-              "You might not have a file service configured. Please contact your administrator"
+              "Il se peut qu'aucun service de fichiers ne soit configuré."
           }
 
-          notification("Error", errorMessage, "error")
+          notification("Erreur", errorMessage, "error")
           return
         }
         const urls = preppedImages.map((image) => image.url)
@@ -122,17 +122,17 @@ const NewProduct = ({ onClose }: Props) => {
           preppedImages = await prepareImages(data.thumbnail.images)
         } catch (error) {
           let errorMessage =
-            "Something went wrong while trying to upload the thumbnail."
+            "Un problème s'est produit lors du téléchargement de la vignette."
           const response = (error as any).response as Response
 
           if (response.status === 500) {
             errorMessage =
               errorMessage +
               " " +
-              "You might not have a file service configured. Please contact your administrator"
+              "Il se peut qu'aucun service de fichiers ne soit configuré."
           }
 
-          notification("Error", errorMessage, "error")
+          notification("Erreur", errorMessage, "error")
           return
         }
         const urls = preppedImages.map((image) => image.url)
@@ -146,7 +146,7 @@ const NewProduct = ({ onClose }: Props) => {
           navigate(`/a/products/${product.id}`)
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Erreur", getErrorMessage(err), "error")
         },
       })
     })
@@ -155,7 +155,7 @@ const NewProduct = ({ onClose }: Props) => {
     <form className="w-full">
       <FocusModal>
         <FocusModal.Header>
-          <div className="medium:w-8/12 w-full px-8 flex justify-between">
+          <div className="flex w-full justify-between px-8 medium:w-8/12">
             <Button
               size="small"
               variant="ghost"
@@ -164,7 +164,7 @@ const NewProduct = ({ onClose }: Props) => {
             >
               <CrossIcon size={20} />
             </Button>
-            <div className="gap-x-small flex">
+            <div className="flex gap-x-small">
               <Button
                 size="small"
                 variant="secondary"
@@ -172,7 +172,7 @@ const NewProduct = ({ onClose }: Props) => {
                 disabled={!isDirty}
                 onClick={onSubmit(false)}
               >
-                Save as draft
+                Sauvegarder comme brouillon
               </Button>
               <Button
                 size="small"
@@ -181,21 +181,21 @@ const NewProduct = ({ onClose }: Props) => {
                 disabled={!isDirty}
                 onClick={onSubmit(true)}
               >
-                Publish product
+                Publier le produit
               </Button>
             </div>
           </div>
         </FocusModal.Header>
-        <FocusModal.Main className="w-full no-scrollbar flex justify-center">
-          <div className="medium:w-7/12 large:w-6/12 small:w-4/5 max-w-[700px] my-16">
+        <FocusModal.Main className="no-scrollbar flex w-full justify-center">
+          <div className="my-16 max-w-[700px] small:w-4/5 medium:w-7/12 large:w-6/12">
             <Accordion defaultValue={["general"]} type="multiple">
               <Accordion.Item
                 value={"general"}
-                title="General information"
+                title="Information général"
                 required
               >
                 <p className="inter-base-regular text-grey-50">
-                  To start selling, all you need is a name and a price.
+                  Pour commencer à vendre, il suffit d'un titre et d'un prix.
                 </p>
                 <div className="mt-xlarge flex flex-col gap-y-xlarge">
                   <GeneralForm
@@ -205,15 +205,12 @@ const NewProduct = ({ onClose }: Props) => {
                   <DiscountableForm form={nestedForm(form, "discounted")} />
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Organize" value="organize">
+              <Accordion.Item title="Organiser le produit" value="organize">
                 <p className="inter-base-regular text-grey-50">
-                  To start selling, all you need is a name and a price.
+                  Utile pour grouper les produits par catégorie
                 </p>
                 <div className="mt-xlarge flex flex-col gap-y-xlarge pb-xsmall">
                   <div>
-                    <h3 className="inter-base-semibold mb-base">
-                      Organize Product
-                    </h3>
                     <OrganizeForm form={nestedForm(form, "organize")} />
                     <FeatureToggle featureFlag="sales_channels">
                       <div className="mt-xlarge">
@@ -225,12 +222,12 @@ const NewProduct = ({ onClose }: Props) => {
                   </div>
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Variants" value="variants">
-                <p className="text-grey-50 inter-base-regular">
-                  Add variations of this product.
+              <Accordion.Item title="Variantes" value="variants">
+                <p className="inter-base-regular text-grey-50">
+                  Ajouter des variantes de ce produit.
                   <br />
-                  Offer your customers different options for color, format,
-                  size, shape, etc.
+                  Utile pour offrir aux clients différentes options de couleur,
+                  de format, taille, forme, etc.
                 </p>
                 <div className="mt-large">
                   <AddVariantsForm
@@ -240,9 +237,9 @@ const NewProduct = ({ onClose }: Props) => {
                   />
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Attributes" value="attributes">
+              <Accordion.Item title="Attributs" value="attributes">
                 <p className="inter-base-regular text-grey-50">
-                  Used for shipping and customs purposes.
+                  Utilisé à des fins d'expédition et de douane.
                 </p>
                 <div className="my-xlarge">
                   <h3 className="inter-base-semibold mb-base">Dimensions</h3>
@@ -253,16 +250,16 @@ const NewProduct = ({ onClose }: Props) => {
                   <CustomsForm form={nestedForm(form, "customs")} />
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Thumbnail" value="thumbnail">
-                <p className="inter-base-regular text-grey-50 mb-large">
-                  Used to represent your product during checkout, social sharing
-                  and more.
+              <Accordion.Item title="Vignette" value="thumbnail">
+                <p className="inter-base-regular mb-large text-grey-50">
+                  Utilisée comme image principale pour représenter le produit
+                  lors du paiement, du partage sur les réseaux sociaux, etc.
                 </p>
                 <ThumbnailForm form={nestedForm(form, "thumbnail")} />
               </Accordion.Item>
-              <Accordion.Item title="Media" value="media">
-                <p className="inter-base-regular text-grey-50 mb-large">
-                  Add images to your product.
+              <Accordion.Item title="Images" value="media">
+                <p className="inter-base-regular mb-large text-grey-50">
+                  Ajouter des images au produit.
                 </p>
                 <MediaForm form={nestedForm(form, "media")} />
               </Accordion.Item>
