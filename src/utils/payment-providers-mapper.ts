@@ -58,7 +58,7 @@ const providerDescriptors: { [providerKey: string]: Option } = {
     value: "ideal-adyen",
   },
   manual: {
-    label: "Manual",
+    label: "Manuel",
     value: "manual",
   },
 }

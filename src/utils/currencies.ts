@@ -15,7 +15,7 @@ type CurrenciesType = {
 export const currencies: CurrenciesType = {
   USD: {
     symbol: "$",
-    name: "US Dollar",
+    name: "Dollar US",
     symbol_native: "$",
     decimal_digits: 2,
     rounding: 0,
@@ -24,7 +24,7 @@ export const currencies: CurrenciesType = {
   },
   CAD: {
     symbol: "CA$",
-    name: "Canadian Dollar",
+    name: "Dollar Canadien",
     symbol_native: "$",
     decimal_digits: 2,
     rounding: 0,

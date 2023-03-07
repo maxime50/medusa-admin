@@ -37,7 +37,7 @@ const DashboardRoutes = () => {
     <AnalyticsProvider writeKey={WRITE_KEY}>
       <DndProvider backend={HTML5Backend}>
         <Layout>
-          <SEO title="Medusa" />
+          <SEO title="Bijoux Tendances" />
           <Routes className="h-full">
             <Route path="oauth/:app_name" element={<Oauth />} />
             <Route path="products/*" element={<ProductsRoute />} />

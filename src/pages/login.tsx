@@ -11,17 +11,17 @@ const LoginPage = () => {
 
   return (
     <LoginLayout>
-      <SEO title="Login" />
+      <SEO title="Se connecter" />
       <div className="flex h-full w-full items-center justify-center">
         <div
           className={clsx(
-            "flex min-h-[600px] w-[640px] bg-grey-0 rounded-rounded justify-center transition-['min-height'] duration-300",
+            "flex min-h-[600px] w-[640px] justify-center rounded-rounded bg-grey-0 transition-['min-height'] duration-300",
             {
               "min-h-[480px]": resetPassword,
             }
           )}
         >
-          <div className="flex flex-col pt-12 w-full px-[120px] items-center">
+          <div className="flex w-full flex-col items-center px-[120px] pt-12">
             <MedusaIcon />
             {resetPassword ? (
               <ResetTokenCard goBack={() => setResetPassword(false)} />

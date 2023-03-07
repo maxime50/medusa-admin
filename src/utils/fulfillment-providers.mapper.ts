@@ -9,7 +9,7 @@ export default function (provider: string): Option {
       }
     case "manual":
       return {
-        label: "Manual",
+        label: "Manuel",
         value: "manual",
       }
     case "webshipper":

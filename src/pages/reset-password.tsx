@@ -84,67 +84,67 @@ const ResetPasswordPage = () => {
     <LoginLayout>
       <SEO title="Reset Password" />
       <div className="flex h-full w-full items-center justify-center">
-        <div className="flex min-h-[540px] bg-grey-0 rounded-rounded justify-center">
+        <div className="flex min-h-[540px] justify-center rounded-rounded bg-grey-0">
           <form
-            className="flex flex-col py-12 w-full px-[120px] items-center"
+            className="flex w-full flex-col items-center py-12 px-[120px]"
             onSubmit={handleSubmit(handleAcceptInvite)}
           >
             <MedusaIcon />
             {!token ? (
-              <div className="h-full flex flex-col gap-y-2 text-center items-center justify-center">
+              <div className="flex h-full flex-col items-center justify-center gap-y-2 text-center">
                 <span className="inter-large-semibold text-grey-90">
-                  You reset link is invalid
+                  Le lien de réinitialisation n'est pas valide
                 </span>
-                <span className="inter-base-regular text-grey-50 mt-2">
-                  Please try resetting your password again
+                <span className="inter-base-regular mt-2 text-grey-50">
+                  Essayez à nouveau de réinitialiser votre mot de passe
                 </span>
               </div>
             ) : (
               <>
                 <span className="inter-2xlarge-semibold mt-4 text-grey-90">
-                  Reset your password
+                  Réinitialiser votre mot de passe
                 </span>
-                <span className="inter-base-regular text-grey-50 mt-2 mb-xlarge">
-                  Choose a new password below 👇🏼
+                <span className="inter-base-regular mt-2 mb-xlarge text-grey-50">
+                  Choisissez un nouveau mot de passe 👇🏼
                 </span>
                 <SigninInput
-                  placeholder="Email"
+                  placeholder="Courriel"
                   name="first_name"
                   value={email}
                   readOnly
                 />
                 <SigninInput
-                  placeholder="Password"
+                  placeholder="Mot de passe"
                   type={"password"}
                   {...register("password", { required: true })}
                   autoComplete="new-password"
                 />
                 <SigninInput
-                  placeholder="Confirm password"
+                  placeholder="Confirmation"
                   type={"password"}
                   {...register("repeat_password", { required: true })}
                   autoComplete="new-password"
                   className="mb-0"
                 />
                 {error && (
-                  <span className="text-rose-50 w-full mt-xsmall inter-small-regular">
-                    The two passwords are not the same
+                  <span className="inter-small-regular mt-xsmall w-full text-rose-50">
+                    Les deux mots de passes ne sont pas les mêmes
                   </span>
                 )}
                 {passwordMismatch && (
-                  <span className="text-rose-50 w-full mt-xsmall inter-small-regular">
-                    The two passwords are not the same
+                  <span className="inter-small-regular mt-xsmall w-full text-rose-50">
+                    Les deux mots de passes ne sont pas les mêmes
                   </span>
                 )}
                 <Button
                   variant="primary"
                   size="large"
                   type="submit"
-                  className="w-full mt-base rounded-rounded"
+                  className="mt-base w-full rounded-rounded"
                   loading={formState.isSubmitting}
                   disabled={!ready}
                 >
-                  Reset Password
+                  Réinitialiser le mot de passe
                 </Button>
               </>
             )}
