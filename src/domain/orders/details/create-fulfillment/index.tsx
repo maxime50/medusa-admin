@@ -139,9 +139,9 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
               quantities={quantities}
               setQuantities={setQuantities}
             />
-            <div className="mt-4">
-              <Metadata metadata={metadata} setMetadata={setMetadata} />
-            </div>
+            {/* <div className="mt-4"> */}
+            {/*   <Metadata metadata={metadata} setMetadata={setMetadata} /> */}
+            {/* </div> */}
           </div>
         </Modal.Content>
         <Modal.Footer>
@@ -188,7 +188,7 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
                 onClick={createFulfillment}
                 loading={isSubmitting}
               >
-                Compléter
+                Traiter
               </Button>
             </div>
           </div>

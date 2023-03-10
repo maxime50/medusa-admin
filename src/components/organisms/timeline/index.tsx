@@ -115,7 +115,7 @@ const Timeline: React.FC<TimelineProps> = ({ orderId }) => {
       <div className="h-full w-5/12 rounded-rounded border border-grey-20 bg-grey-0">
         <div className="border-b border-grey-20 py-large px-xlarge">
           <div className="flex items-center justify-between">
-            <h3 className="inter-xlarge-semibold">Historique</h3>
+            <h3 className="inter-xlarge-semibold">Traitement</h3>
             <div
               className={clsx({
                 "pointer-events-none opacity-50": !events,

@@ -67,11 +67,11 @@ const VariantStockForm = ({ form }: Props) => {
           </p>
         </div>
         <div className="grid grid-cols-2 gap-large">
-          <InputField
-            label="SKU"
-            placeholder="SUN-G, JK1234..."
-            {...register(path("sku"))}
-          />
+          {/* <InputField */}
+          {/*   label="SKU" */}
+          {/*   placeholder="SUN-G, JK1234..." */}
+          {/*   {...register(path("sku"))} */}
+          {/* /> */}
           <InputField
             label="Quantité en stock"
             type="number"
@@ -81,21 +81,21 @@ const VariantStockForm = ({ form }: Props) => {
               valueAsNumber: true,
             })}
           />
-          <InputField
-            label="EAN (Code barre)"
-            placeholder="123456789102..."
-            {...register(path("ean"))}
-          />
-          <InputField
-            label="UPC (Code barre)"
-            placeholder="023456789104..."
-            {...register(path("upc"))}
-          />
-          <InputField
-            label="Code barre"
-            placeholder="123456789104..."
-            {...register(path("barcode"))}
-          />
+          {/* <InputField */}
+          {/*   label="EAN (Code barre)" */}
+          {/*   placeholder="123456789102..." */}
+          {/*   {...register(path("ean"))} */}
+          {/* /> */}
+          {/* <InputField */}
+          {/*   label="UPC (Code barre)" */}
+          {/*   placeholder="023456789104..." */}
+          {/*   {...register(path("upc"))} */}
+          {/* /> */}
+          {/* <InputField */}
+          {/*   label="Code barre" */}
+          {/*   placeholder="123456789104..." */}
+          {/*   {...register(path("barcode"))} */}
+          {/* /> */}
         </div>
       </div>
     </div>

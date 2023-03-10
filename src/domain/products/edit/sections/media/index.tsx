@@ -14,14 +14,14 @@ const MediaSection = ({ product }: Props) => {
 
   const actions: ActionType[] = [
     {
-      label: "Modifier les médias",
+      label: "Modifier les images",
       onClick: toggle,
     },
   ]
 
   return (
     <>
-      <Section title="Média" actions={actions}>
+      <Section title="Images" actions={actions}>
         {product.images && product.images.length > 0 && (
           <div className="mt-base grid grid-cols-3 gap-xsmall">
             {product.images.map((image, index) => {

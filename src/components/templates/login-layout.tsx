@@ -12,13 +12,13 @@ const LoginLayout = ({ children }) => {
         >
           {children}
           <div className="inter-base-regular pb-12 text-grey-0">
-            © Bijoux Tendances <span>&#183;</span>{" "}
-            <a
-              style={{ color: "inherit", textDecoration: "none" }}
-              href="mailto:hello@medusajs.com"
-            >
-              Contact
-            </a>
+            2023 © Bijoux Tendances
+            {/* <a */}
+            {/*   style={{ color: "inherit", textDecoration: "none" }} */}
+            {/*   href="mailto:contact@bijouxtendances.com" */}
+            {/* > */}
+            {/*   Contact */}
+            {/* </a> */}
           </div>
         </div>
       </div>

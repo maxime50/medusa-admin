@@ -41,58 +41,55 @@ const GeneralForm = ({ form, requireHandle = true }: Props) => {
           })}
           errors={errors}
         />
-        <InputField
-          label="Sous-titre"
-          placeholder="merveilleux bracelet fait pierres..."
-          {...register(path("subtitle"), {
-            pattern: FormValidator.whiteSpaceRule("Sous-titre"),
-          })}
-          errors={errors}
-        />
+        {/* <InputField */}
+        {/*   label="Sous-titre" */}
+        {/*   placeholder="merveilleux bracelet..." */}
+        {/*   {...register(path("subtitle"), { */}
+        {/*     pattern: FormValidator.whiteSpaceRule("Sous-titre"), */}
+        {/*   })} */}
+        {/*   errors={errors} */}
+        {/* /> */}
       </div>
-      <p className="inter-base-regular mb-large text-grey-50">
-        Donnez à votre produit un titre court et clair.
-      </p>
       <div className="mb-large grid grid-cols-2 gap-x-large">
-        <InputField
-          label="Handle"
-          tooltipContent={
-            !requireHandle
-              ? "Le handle est la partie de l'URL qui identifie le produit. S'il n'est pas spécifié, il sera généré à partir du titre."
-              : undefined
-          }
-          placeholder="bracelet-id-tendances"
-          required={requireHandle}
-          {...register(path("handle"), {
-            required: requireHandle ? "Handle requis" : undefined,
-            minLength: FormValidator.minOneCharRule("Handle"),
-            pattern: FormValidator.whiteSpaceRule("Handle"),
-          })}
-          prefix="/"
-          errors={errors}
-        />
-        <InputField
-          label="Matériel"
-          placeholder="100% stainless"
-          {...register(path("material"), {
-            minLength: FormValidator.minOneCharRule("Matériel"),
-            pattern: FormValidator.whiteSpaceRule("Matériel"),
-          })}
-          errors={errors}
-        />
+        {/* <InputField */}
+        {/*   label="Handle" */}
+        {/*   tooltipContent={ */}
+        {/*     !requireHandle */}
+        {/*       ? "Le handle est la partie de l'URL qui identifie le produit. S'il n'est pas spécifié, il sera généré à partir du titre." */}
+        {/*       : undefined */}
+        {/*   } */}
+        {/*   placeholder="bracelet-id-tendances" */}
+        {/*   required={requireHandle} */}
+        {/*   {...register(path("handle"), { */}
+        {/*     required: requireHandle ? "Handle requis" : undefined, */}
+        {/*     minLength: FormValidator.minOneCharRule("Handle"), */}
+        {/*     pattern: FormValidator.whiteSpaceRule("Handle"), */}
+        {/*   })} */}
+        {/*   prefix="/" */}
+        {/*   errors={errors} */}
+        {/* /> */}
+        {/* <InputField */}
+        {/*   label="Matériel" */}
+        {/*   placeholder="100% stainless" */}
+        {/*   {...register(path("material"), { */}
+        {/*     minLength: FormValidator.minOneCharRule("Matériel"), */}
+        {/*     pattern: FormValidator.whiteSpaceRule("Matériel"), */}
+        {/*   })} */}
+        {/*   errors={errors} */}
+        {/* /> */}
       </div>
       <TextArea
         label="Description"
-        placeholder="Merveilleux bracelet fait vraies pierres..."
+        placeholder="Merveilleux bracelet fait vraies pierres et de Stainless..."
         rows={3}
         className="mb-small"
         {...register(path("description"))}
         errors={errors}
       />
       <p className="inter-base-regular text-grey-50">
-        Donnez à votre produit une description courte et claire.
+        Description du produit.
         <br />
-        120 à 160 caractères est recommandées pour le référecement Google.
+        120 à 160 caractères est recommandées pour un bon référencement Google.
       </p>
     </div>
   )

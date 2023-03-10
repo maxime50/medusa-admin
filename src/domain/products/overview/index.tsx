@@ -62,22 +62,22 @@ const Overview = () => {
       case "produits":
         return (
           <div className="flex space-x-2">
-            <Button
-              variant="secondary"
-              size="small"
-              onClick={() => openImportModal()}
-            >
-              <UploadIcon size={20} />
-              Importer des produits
-            </Button>
-            <Button
-              variant="secondary"
-              size="small"
-              onClick={() => openExportModal()}
-            >
-              <ExportIcon size={20} />
-              Exporter les produits
-            </Button>
+            {/* <Button */}
+            {/*   variant="secondary" */}
+            {/*   size="small" */}
+            {/*   onClick={() => openImportModal()} */}
+            {/* > */}
+            {/*   <UploadIcon size={20} /> */}
+            {/*   Importer des produits */}
+            {/* </Button> */}
+            {/* <Button */}
+            {/*   variant="secondary" */}
+            {/*   size="small" */}
+            {/*   onClick={() => openExportModal()} */}
+            {/* > */}
+            {/*   <ExportIcon size={20} /> */}
+            {/*   Exporter les produits */}
+            {/* </Button> */}
             <Button
               variant="secondary"
               size="small"

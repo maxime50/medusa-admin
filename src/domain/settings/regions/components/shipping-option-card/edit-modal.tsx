@@ -71,12 +71,12 @@ const EditModal = ({ open, onClose, option }: Props) => {
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
-            <div>
-              <p className="inter-base-semibold">Méthode de traitement</p>
-              <p className="inter-base-regular text-grey-50">
-                {option.data.id} via {option.provider_id}
-              </p>
-            </div>
+            {/* <div> */}
+            {/*   <p className="inter-base-semibold">Méthode de traitement</p> */}
+            {/*   <p className="inter-base-regular text-grey-50"> */}
+            {/*     {option.data.id} via {option.provider_id} */}
+            {/*   </p> */}
+            {/* </div> */}
             <div className="my-xlarge h-px w-full bg-grey-20" />
             <ShippingOptionForm
               form={form}

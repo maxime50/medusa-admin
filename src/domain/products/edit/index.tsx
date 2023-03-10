@@ -55,7 +55,7 @@ const Edit = () => {
         <div className="col-span-8 flex flex-col gap-y-xsmall">
           <GeneralSection product={product} />
           <VariantsSection product={product} />
-          <AttributesSection product={product} />
+          {/* <AttributesSection product={product} /> */}
           <RawSection product={product} />
         </div>
         <div className="col-span-4 flex flex-col gap-y-xsmall">

@@ -26,8 +26,8 @@ const DiscountableForm = ({ form }: Props) => {
         />
       </div>
       <p className="inter-base-regular text-grey-50">
-        Si la case n'est pas cochée, les rabais ne seront pas appliquées à ce
-        produit.
+        Si cette case n'est pas cochée, les rabais ne seront pas appliquables à
+        ce produit.
       </p>
     </div>
   )

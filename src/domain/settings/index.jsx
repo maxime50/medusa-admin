@@ -79,24 +79,24 @@ const SettingsIndex = () => {
         icon={<TaxesIcon />}
         to={`/a/settings/taxes`}
       />
-      {/* <FeatureToggle featureFlag="sales_channels"> */}
-      {/*   <SettingsCard */}
-      {/*     heading={"Canaux de vente"} */}
-      {/*     description={ */}
-      {/*       "Contrôler quels produits sont disponibles dans quels canaux de vente" */}
-      {/*     } */}
-      {/*     icon={<ChannelsIcon />} */}
-      {/*     to={`/a/sales-channels`} */}
-      {/*   /> */}
-      {/* </FeatureToggle> */}
-      {/* <FeatureToggle featureFlag="publishable_api_keys"> */}
-      {/*   <SettingsCard */}
-      {/*     heading={"API key management"} */}
-      {/*     description={"Create and manage API keys"} */}
-      {/*     icon={<KeyIcon />} */}
-      {/*     to={`/a/publishable-api-keys`} */}
-      {/*   /> */}
-      {/* </FeatureToggle> */}
+      <FeatureToggle featureFlag="sales_channels">
+        <SettingsCard
+          heading={"Canaux de vente"}
+          description={
+            "Contrôler quels produits sont disponibles dans quels canaux de vente"
+          }
+          icon={<ChannelsIcon />}
+          to={`/a/sales-channels`}
+        />
+      </FeatureToggle>
+      <FeatureToggle featureFlag="publishable_api_keys">
+        <SettingsCard
+          heading={"API key management"}
+          description={"Create and manage API keys"}
+          icon={<KeyIcon />}
+          to={`/a/publishable-api-keys`}
+        />
+      </FeatureToggle>
     </SettingsOverview>
   )
 }

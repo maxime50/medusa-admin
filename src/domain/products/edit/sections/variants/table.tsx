@@ -24,32 +24,32 @@ export const useVariantsTableColumns = () => {
         id: "title",
         accessor: "title",
       },
-      {
-        Header: "SKU",
-        id: "sku",
-        accessor: "sku",
-        maxWidth: 264,
-        Cell: ({ cell }) => {
-          return cell.value ? (
-            cell.value
-          ) : (
-            <span className="text-grey-50">-</span>
-          )
-        },
-      },
-      {
-        Header: "EAN",
-        id: "ean",
-        accessor: "ean",
-        maxWidth: 264,
-        Cell: ({ cell }) => {
-          return cell.value ? (
-            cell.value
-          ) : (
-            <span className="text-grey-50">-</span>
-          )
-        },
-      },
+      // {
+      //   Header: "SKU",
+      //   id: "sku",
+      //   accessor: "sku",
+      //   maxWidth: 264,
+      //   Cell: ({ cell }) => {
+      //     return cell.value ? (
+      //       cell.value
+      //     ) : (
+      //       <span className="text-grey-50">-</span>
+      //     )
+      //   },
+      // },
+      // {
+      //   Header: "EAN",
+      //   id: "ean",
+      //   accessor: "ean",
+      //   maxWidth: 264,
+      //   Cell: ({ cell }) => {
+      //     return cell.value ? (
+      //       cell.value
+      //     ) : (
+      //       <span className="text-grey-50">-</span>
+      //     )
+      //   },
+      // },
       {
         Header: () => {
           return (

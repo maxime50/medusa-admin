@@ -245,6 +245,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
           handleClose={() => setShowCancel(!showCancel)}
           onDelete={handleCancelExchange}
           confirmText="Oui, annuler"
+          cancelText="Non"
           heading="Annuler l'échange"
           text="Êtes-vous sûr de vouloir annuler cet échange ?"
           successText="Échange annulée"
@@ -255,6 +256,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
           handleClose={() => setShowCancelReturn(!showCancelReturn)}
           onDelete={handleCancelReturn}
           confirmText="Oui, annuler"
+          cancelText="Non"
           heading="Annuler le retour"
           text="Vous êtes sûr de vouloir annuler ce retour ?"
           successText="Retour annulé"

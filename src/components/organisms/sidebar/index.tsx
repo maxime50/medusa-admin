@@ -67,18 +67,18 @@ const Sidebar: React.FC = () => {
             triggerHandler={triggerHandler}
             text={"Rabais"}
           />
-          <SidebarMenuItem
-            pageLink={"/a/gift-cards"}
-            icon={<GiftIcon size={ICON_SIZE} />}
-            triggerHandler={triggerHandler}
-            text={"Cartes Cadeaux"}
-          />
-          <SidebarMenuItem
-            pageLink={"/a/pricing"}
-            icon={<CashIcon size={ICON_SIZE} />}
-            triggerHandler={triggerHandler}
-            text={"Prix"}
-          />
+          {/* <SidebarMenuItem */}
+          {/*   pageLink={"/a/gift-cards"} */}
+          {/*   icon={<GiftIcon size={ICON_SIZE} />} */}
+          {/*   triggerHandler={triggerHandler} */}
+          {/*   text={"Cartes Cadeaux"} */}
+          {/* /> */}
+          {/* <SidebarMenuItem */}
+          {/*   pageLink={"/a/pricing"} */}
+          {/*   icon={<CashIcon size={ICON_SIZE} />} */}
+          {/*   triggerHandler={triggerHandler} */}
+          {/*   text={"Prix"} */}
+          {/* /> */}
           <SidebarMenuItem
             pageLink={"/a/settings"}
             icon={<GearIcon size={ICON_SIZE} />}

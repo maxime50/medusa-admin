@@ -158,7 +158,7 @@ const TagInput: React.FC<TagInputProps> = ({
     <div className={className}>
       {showLabel && (
         <InputHeader
-          label={label || "Tags (séparées par virgule)"}
+          label={label || "Mots clés (séparées par virgule)"}
           {...{ required, tooltipContent, tooltip }}
           className="mb-2"
         />

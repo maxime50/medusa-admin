@@ -49,7 +49,7 @@ const TumbnailSection = ({ product }: Props) => {
               type="button"
               onClick={toggle}
             >
-              {product.thumbnail ? "Modifier" : "Télécharger"}
+              {product.thumbnail ? "Modifier" : "Importer"}
             </Button>
             {product.thumbnail && (
               <TwoStepDelete onDelete={handleDelete} deleting={updating} />

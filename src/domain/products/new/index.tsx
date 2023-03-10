@@ -237,19 +237,19 @@ const NewProduct = ({ onClose }: Props) => {
                   />
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Attributs" value="attributes">
-                <p className="inter-base-regular text-grey-50">
-                  Utilisé à des fins d'expédition et de douane.
-                </p>
-                <div className="my-xlarge">
-                  <h3 className="inter-base-semibold mb-base">Dimensions</h3>
-                  <DimensionsForm form={nestedForm(form, "dimensions")} />
-                </div>
-                <div>
-                  <h3 className="inter-base-semibold mb-base">Customs</h3>
-                  <CustomsForm form={nestedForm(form, "customs")} />
-                </div>
-              </Accordion.Item>
+              {/* <Accordion.Item title="Attributs" value="attributes"> */}
+              {/*   <p className="inter-base-regular text-grey-50"> */}
+              {/*     Utilisé à des fins d'expédition et de douane. */}
+              {/*   </p> */}
+              {/*   <div className="my-xlarge"> */}
+              {/*     <h3 className="inter-base-semibold mb-base">Dimensions</h3> */}
+              {/*     <DimensionsForm form={nestedForm(form, "dimensions")} /> */}
+              {/*   </div> */}
+              {/*   <div> */}
+              {/*     <h3 className="inter-base-semibold mb-base">Customs</h3> */}
+              {/*     <CustomsForm form={nestedForm(form, "customs")} /> */}
+              {/*   </div> */}
+              {/* </Accordion.Item> */}
               <Accordion.Item title="Vignette" value="thumbnail">
                 <p className="inter-base-regular mb-large text-grey-50">
                   Utilisée comme image principale pour représenter le produit
