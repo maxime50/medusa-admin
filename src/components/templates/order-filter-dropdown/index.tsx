@@ -132,82 +132,82 @@ const OrderFilters = ({
 
   return (
     <div className="flex space-x-1">
-      <FilterDropdownContainer
-        submitFilters={onSubmit}
-        clearFilters={onClear}
-        triggerElement={
-          <button
-            className={clsx(
-              "flex rounded-rounded items-center space-x-1 focus-visible:outline-none focus-visible:shadow-input focus-visible:border-violet-60"
-            )}
-          >
-            <div className="flex rounded-rounded items-center bg-grey-5 border border-grey-20 inter-small-semibold px-2 h-6">
-              Filtres
-              <div className="text-grey-40 ml-1 flex items-center rounded">
-                <span className="text-violet-60 inter-small-semibold">
-                  {numberOfFilters ? numberOfFilters : "0"}
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center rounded-rounded bg-grey-5 border border-grey-20 inter-small-semibold p-1">
-              <PlusIcon size={14} />
-            </div>
-          </button>
-        }
-      >
-        <FilterDropdownItem
-          filterTitle="Status"
-          options={statusFilters}
-          filters={tempState.status.filter}
-          open={tempState.status.open}
-          setFilter={(val) => setSingleFilter("status", val)}
-        />
-        <FilterDropdownItem
-          filterTitle="Status du paiement"
-          options={paymentFilters}
-          filters={tempState.payment.filter}
-          open={tempState.payment.open}
-          setFilter={(val) => setSingleFilter("payment", val)}
-        />
-        <FilterDropdownItem
-          filterTitle="Status du traitement"
-          options={fulfillmentFilters}
-          filters={tempState.fulfillment.filter}
-          open={tempState.fulfillment.open}
-          setFilter={(val) => setSingleFilter("fulfillment", val)}
-        />
-        <FilterDropdownItem
-          filterTitle="Régions"
-          options={
-            regions?.map((region) => ({
-              value: region.id,
-              label: region.name,
-            })) || []
-          }
-          isLoading={isLoadingRegions}
-          hasPrev={regionsPagination.offset > 0}
-          hasMore={
-            regionsPagination.offset + regionsPagination.limit < (count ?? 0)
-          }
-          onShowPrev={() => handlePaginateRegions(-1)}
-          onShowNext={() => handlePaginateRegions(1)}
-          filters={tempState.region.filter}
-          open={tempState.region.open}
-          setFilter={(v) => setSingleFilter("region", v)}
-        />
-        <FilterDropdownItem
-          filterTitle="Date"
-          options={dateFilters}
-          filters={tempState.date.filter}
-          open={tempState.date.open}
-          setFilter={(val) => setSingleFilter("date", val)}
-        />
-        <SaveFilterItem
-          saveFilter={handleSaveTab}
-          name={name}
-          setName={setName}
-        />
-      </FilterDropdownContainer>
+      {/* <FilterDropdownContainer */}
+      {/*   submitFilters={onSubmit} */}
+      {/*   clearFilters={onClear} */}
+      {/*   triggerElement={ */}
+      {/*     <button */}
+      {/*       className={clsx( */}
+      {/*         "flex rounded-rounded items-center space-x-1 focus-visible:outline-none focus-visible:shadow-input focus-visible:border-violet-60" */}
+      {/*       )} */}
+      {/*     > */}
+      {/*       <div className="flex rounded-rounded items-center bg-grey-5 border border-grey-20 inter-small-semibold px-2 h-6"> */}
+      {/*         Filtres */}
+      {/*         <div className="text-grey-40 ml-1 flex items-center rounded"> */}
+      {/*           <span className="text-violet-60 inter-small-semibold"> */}
+      {/*             {numberOfFilters ? numberOfFilters : "0"} */}
+      {/*           </span> */}
+      {/*         </div> */}
+      {/*       </div> */}
+      {/*       <div className="flex items-center rounded-rounded bg-grey-5 border border-grey-20 inter-small-semibold p-1"> */}
+      {/*         <PlusIcon size={14} /> */}
+      {/*       </div> */}
+      {/*     </button> */}
+      {/*   } */}
+      {/* > */}
+      {/*   <FilterDropdownItem */}
+      {/*     filterTitle="Status" */}
+      {/*     options={statusFilters} */}
+      {/*     filters={tempState.status.filter} */}
+      {/*     open={tempState.status.open} */}
+      {/*     setFilter={(val) => setSingleFilter("status", val)} */}
+      {/*   /> */}
+      {/*   <FilterDropdownItem */}
+      {/*     filterTitle="Status du paiement" */}
+      {/*     options={paymentFilters} */}
+      {/*     filters={tempState.payment.filter} */}
+      {/*     open={tempState.payment.open} */}
+      {/*     setFilter={(val) => setSingleFilter("payment", val)} */}
+      {/*   /> */}
+      {/*   <FilterDropdownItem */}
+      {/*     filterTitle="Status du traitement" */}
+      {/*     options={fulfillmentFilters} */}
+      {/*     filters={tempState.fulfillment.filter} */}
+      {/*     open={tempState.fulfillment.open} */}
+      {/*     setFilter={(val) => setSingleFilter("fulfillment", val)} */}
+      {/*   /> */}
+      {/*   <FilterDropdownItem */}
+      {/*     filterTitle="Régions" */}
+      {/*     options={ */}
+      {/*       regions?.map((region) => ({ */}
+      {/*         value: region.id, */}
+      {/*         label: region.name, */}
+      {/*       })) || [] */}
+      {/*     } */}
+      {/*     isLoading={isLoadingRegions} */}
+      {/*     hasPrev={regionsPagination.offset > 0} */}
+      {/*     hasMore={ */}
+      {/*       regionsPagination.offset + regionsPagination.limit < (count ?? 0) */}
+      {/*     } */}
+      {/*     onShowPrev={() => handlePaginateRegions(-1)} */}
+      {/*     onShowNext={() => handlePaginateRegions(1)} */}
+      {/*     filters={tempState.region.filter} */}
+      {/*     open={tempState.region.open} */}
+      {/*     setFilter={(v) => setSingleFilter("region", v)} */}
+      {/*   /> */}
+      {/*   <FilterDropdownItem */}
+      {/*     filterTitle="Date" */}
+      {/*     options={dateFilters} */}
+      {/*     filters={tempState.date.filter} */}
+      {/*     open={tempState.date.open} */}
+      {/*     setFilter={(val) => setSingleFilter("date", val)} */}
+      {/*   /> */}
+      {/*   <SaveFilterItem */}
+      {/*     saveFilter={handleSaveTab} */}
+      {/*     name={name} */}
+      {/*     setName={setName} */}
+      {/*   /> */}
+      {/* </FilterDropdownContainer> */}
       {tabs &&
         tabs.map((t) => (
           <TabFilter
