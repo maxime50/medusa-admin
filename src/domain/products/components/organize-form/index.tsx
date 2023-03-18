@@ -45,7 +45,7 @@ const OrganizeForm = ({ form }: Props) => {
           render={({ field: { value, onChange } }) => {
             return (
               <NextCreateableSelect
-                label="Type"
+                label="Catégorie"
                 onChange={onChange}
                 options={productTypeOptions}
                 value={value || null}

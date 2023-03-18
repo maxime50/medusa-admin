@@ -48,6 +48,8 @@ const Select = forwardRef(
       >
         <ReactSelect
           aria-labelledby={`${name}_label`}
+          placeholder="Choisir..."
+          noOptionsMessage={() => "Aucune option"}
           ref={ref}
           name={name}
           {...selectProps}

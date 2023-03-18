@@ -82,9 +82,9 @@ function CustomerGroupModal(props: CustomerGroupModalProps) {
             </div>
           </div>
 
-          <div className="mt-8">
-            <Metadata metadata={metadata} setMetadata={setMetadata} />
-          </div>
+          {/* <div className="mt-8"> */}
+          {/*   <Metadata metadata={metadata} setMetadata={setMetadata} /> */}
+          {/* </div> */}
         </Modal.Content>
 
         <Modal.Footer>

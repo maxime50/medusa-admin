@@ -87,7 +87,7 @@ const RegionDetailsForm = ({ form, isCreate = false }: Props) => {
             />
             <InputField
               label="Code de taxe par défaut"
-              placeholder="1000"
+              placeholder="QC"
               {...register(path("tax_code"))}
               errors={errors}
             />

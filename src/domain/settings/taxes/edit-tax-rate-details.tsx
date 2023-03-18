@@ -62,7 +62,7 @@ export const EditTaxRateDetails = ({
         errors={errors}
       />
       <Input
-        placeholder="1000"
+        placeholder="QC"
         label="Code de taxe"
         {...register(path("code"), {
           required: FormValidator.required("Code de taxe"),

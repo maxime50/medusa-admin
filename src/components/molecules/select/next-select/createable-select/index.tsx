@@ -31,7 +31,12 @@ const CreatableSelect = forwardRef(
         helperText={helperText}
         required={required}
       >
-        <CreatableReactSelect ref={ref} {...rest} />
+        <CreatableReactSelect
+          ref={ref}
+          noOptionsMessage={() => "Aucune option"}
+          loadingMessage={() => "Chargement..."}
+          {...rest}
+        />
       </AdjacentContainer>
     )
   }

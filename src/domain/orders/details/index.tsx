@@ -227,7 +227,7 @@ const OrderDetails = () => {
       onClick: () => navigate(`/a/customers/${order?.customer.id}`),
     },
     {
-      label: "Autre client",
+      label: "Changer le client",
       icon: <RefreshIcon size={"20"} />,
       onClick: () => toggleTransferOrderModal(),
     },

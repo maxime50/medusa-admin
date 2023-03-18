@@ -56,6 +56,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
             <Controller
               control={control}
               name={"store_option"}
+              defaultValue={true}
               render={({ field: { value, onChange } }) => {
                 return <Switch checked={value} onCheckedChange={onChange} />
               }}
@@ -85,82 +86,78 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
             <Controller
               control={control}
               name="price_type"
-              render={({ field: { onChange, value, onBlur } }) => {
+              defaultValue={{ label: "Taux fixe", value: "flat_rate" }}
+              render={() => {
+                return null
+                // <NextSelect
+                //   label="Type de prix"
+                //   required
+                //   value={value}
+                //   onChange={onChange}
+                //   onBlur={onBlur}
+                //   options={[
+                //     {
+                //       label: "Taux fixe",
+                //       value: "flat_rate",
+                //     },
+                //     {
+                //       label: "Calculé",
+                //       value: "calculated",
+                //     },
+                //   ]}
+                //   placeholder="Choisir un type de prix"
+                //   errors={errors}
+                // />
+              }}
+            />
+            <Controller
+              control={control}
+              name="amount"
+              rules={{
+                min: FormValidator.nonNegativeNumberRule("Prix"),
+                max: FormValidator.maxInteger("Prix", region.currency_code),
+              }}
+              render={({ field: { value, onChange } }) => {
                 return (
-                  <NextSelect
-                    label="Type de prix"
-                    required
-                    value={value}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    options={[
-                      {
-                        label: "Taux fixe",
-                        value: "flat_rate",
-                      },
-                      {
-                        label: "Calculé",
-                        value: "calculated",
-                      },
-                    ]}
-                    placeholder="Choisir un type de prix"
-                    errors={errors}
-                  />
+                  <div>
+                    <InputHeader
+                      label="Prix"
+                      className="mb-2xsmall"
+                      tooltip={
+                        <IncludesTaxTooltip includesTax={region.includes_tax} />
+                      }
+                    />
+                    <PriceFormInput
+                      amount={value || undefined}
+                      onChange={onChange}
+                      name="amount"
+                      currencyCode={region.currency_code}
+                      errors={errors}
+                    />
+                  </div>
                 )
               }}
             />
-            {watch("price_type")?.value === "flat_rate" && (
-              <Controller
-                control={control}
-                name="amount"
-                rules={{
-                  min: FormValidator.nonNegativeNumberRule("Prix"),
-                  max: FormValidator.maxInteger("Prix", region.currency_code),
-                }}
-                render={({ field: { value, onChange } }) => {
-                  return (
-                    <div>
-                      <InputHeader
-                        label="Prix"
-                        className="mb-2xsmall"
-                        tooltip={
-                          <IncludesTaxTooltip
-                            includesTax={region.includes_tax}
-                          />
-                        }
-                      />
-                      <PriceFormInput
-                        amount={value || undefined}
-                        onChange={onChange}
-                        name="amount"
-                        currencyCode={region.currency_code}
-                        errors={errors}
-                      />
-                    </div>
-                  )
-                }}
-              />
-            )}
           </div>
 
           {!isEdit && (
             <>
-              <Controller
-                control={control}
-                name="shipping_profile"
-                render={({ field }) => {
-                  return (
-                    <NextSelect
-                      label="Profil d'expédition"
-                      required
-                      options={shippingProfileOptions}
-                      placeholder="Choisir un profil d'expédition"
-                      {...field}
-                      errors={errors}
-                    />
-                  )
-                }}
-              />
+              {/* <Controller */}
+              {/*   control={control} */}
+              {/*   name="shipping_profile" */}
+              {/*   render={({ field }) => { */}
+              {/*     return ( */}
+              {/*       <NextSelect */}
+              {/*         label="Profil d'expédition" */}
+              {/*         required */}
+              {/*         options={shippingProfileOptions} */}
+              {/*         placeholder="Choisir un profil d'expédition" */}
+              {/*         {...field} */}
+              {/*         errors={errors} */}
+              {/*       /> */}
+              {/*     ) */}
+              {/*   }} */}
+              {/* /> */}
               <Controller
                 control={control}
                 name="fulfillment_provider"

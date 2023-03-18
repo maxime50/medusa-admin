@@ -43,7 +43,7 @@ const DiscountType = () => {
               value={DiscountRuleType.FREE_SHIPPING}
               className="flex-1"
               label="Livraison gratuite"
-              description={"Remplacer le montant de la livraison"}
+              description={"Offrir le montant de livraison"}
             />
           </RadioGroup.Root>
         )

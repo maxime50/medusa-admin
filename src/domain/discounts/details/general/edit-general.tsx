@@ -182,8 +182,8 @@ const EditGeneral: React.FC<EditGeneralProps> = ({ discount, onClose }) => {
 
             <div className="inter-small-regular mb-6 flex flex-col text-grey-50">
               <span>
-                Le code que vos clients entreront lors du paiement. Ce code
-                apparaîtra sur la facture du client.
+                Le code que nos clients entreront au moment du paiement. Ce code
+                apparaîtra aussi sur la facture du client.
               </span>
               <span>Lettres majuscules et chiffres uniquement.</span>
             </div>

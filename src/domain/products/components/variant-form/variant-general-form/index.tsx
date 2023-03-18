@@ -25,7 +25,7 @@ const VariantGeneralForm = ({ form }: Props) => {
         Configurer les informations générales pour cette variante.
       </p>
       <div className="pt-large">
-        <div className="grid grid-cols-2 gap-x-large">
+        <div className="grid grid-cols-1 gap-x-large">
           <InputField
             label="Titre personnalisé"
             placeholder="Rouge / XL..."
@@ -34,14 +34,14 @@ const VariantGeneralForm = ({ form }: Props) => {
             })}
             errors={errors}
           />
-          <InputField
-            label="Matériel"
-            placeholder="100% stainless..."
-            {...form.register(path("material"), {
-              pattern: FormValidator.whiteSpaceRule("Matériel"),
-            })}
-            errors={errors}
-          />
+          {/* <InputField */}
+          {/*   label="Matériel" */}
+          {/*   placeholder="100% stainless..." */}
+          {/*   {...form.register(path("material"), { */}
+          {/*     pattern: FormValidator.whiteSpaceRule("Matériel"), */}
+          {/*   })} */}
+          {/*   errors={errors} */}
+          {/* /> */}
         </div>
       </div>
     </div>

@@ -91,7 +91,7 @@ const GeneralModal = ({ product, open, onClose }: Props) => {
             <GeneralForm form={nestedForm(form, "general")} />
             <div className="my-xlarge">
               <h2 className="inter-base-semibold mb-base">
-                Organiser le produit
+                Organisation du produit
               </h2>
               <OrganizeForm form={nestedForm(form, "organize")} />
             </div>

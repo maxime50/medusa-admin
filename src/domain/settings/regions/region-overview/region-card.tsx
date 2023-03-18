@@ -21,7 +21,7 @@ const RegionCard = ({ region }: Props) => {
     >
       <div className="inter-small-regular flex flex-col gap-y-2xsmall text-grey-50">
         <p>
-          Payment providers:{" "}
+          Services de paiement:{" "}
           <span className="truncate">
             {region.payment_providers?.length
               ? region.payment_providers
@@ -31,7 +31,7 @@ const RegionCard = ({ region }: Props) => {
           </span>
         </p>
         <p>
-          Fulfillment providers:{" "}
+          Services de traitement:{" "}
           <span className="truncate">
             {region.fulfillment_providers?.length
               ? region.fulfillment_providers

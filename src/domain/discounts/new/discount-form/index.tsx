@@ -133,14 +133,14 @@ const DiscountForm = ({ closeForm }: DiscountFormProps) => {
                 forceMountContent
                 title="Configuration"
                 value="configuration"
-                description="Discount code applies from you hit the publish button and forever if left untouched."
+                // description="Le code de réduction sera disponible à partir du moment où vous publier ce rabais."
               >
                 <Configuration />
               </Accordion.Item>
               <Accordion.Item
                 forceMountContent
                 title="Conditions"
-                description="Le code de réduction s'applique à partir du moment où vous appuyez sur le bouton de publication s'il n'est pas modifié."
+                // description="Le code de réduction sera disponible à partir du moment où vous publier ce rabais."
                 value="conditions"
                 tooltip="Ajouter des conditions au rabais"
               >

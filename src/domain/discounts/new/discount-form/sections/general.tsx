@@ -70,7 +70,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
                   onChange={(value) => {
                     onChange(type === "fixed" ? [value] : value)
                   }}
-                  label="Choisir une région valide"
+                  label="Régions pouvant utiliser ce rabais"
                   isMulti={type !== "fixed"}
                   selectAll={type !== "fixed"}
                   isSearchable
@@ -141,8 +141,8 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
 
           <div className="inter-small-regular mb-6 flex flex-col text-grey-50">
             <span>
-              Le code que vos clients saisiront lors de la validation de leur
-              commande. Ce code apparaîtra aussi sur la facture.
+              Le code que nos clients entreront au moment du paiement. Ce code
+              apparaîtra aussi sur la facture du client.
             </span>
             <span>Lettres majuscules et chiffres seulement</span>
           </div>
@@ -155,28 +155,28 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
               required: true,
             })}
           />
-          <div className="mt-xlarge flex items-center">
-            <Controller
-              name="is_dynamic"
-              control={control}
-              render={({ field: { onChange, value } }) => {
-                return (
-                  <Checkbox
-                    label="Il s'agit d'un modèle de rabais"
-                    name="is_dynamic"
-                    id="is_dynamic"
-                    checked={value}
-                    onChange={(e) => onChange(e.target.checked)}
-                  />
-                )
-              }}
-            />
-            <IconTooltip
-              content={
-                "Les modèles de rabais permettent de définir un ensemble de règles pouvant être utilisées pour un groupe de rabais. Cette fonction est utile dans les campagnes qui doivent générer des codes uniques pour chaque utilisateur."
-              }
-            />
-          </div>
+          {/* <div className="mt-xlarge flex items-center"> */}
+          {/*   <Controller */}
+          {/*     name="is_dynamic" */}
+          {/*     control={control} */}
+          {/*     render={({ field: { onChange, value } }) => { */}
+          {/*       return ( */}
+          {/*         <Checkbox */}
+          {/*           label="Il s'agit d'un modèle de rabais" */}
+          {/*           name="is_dynamic" */}
+          {/*           id="is_dynamic" */}
+          {/*           checked={value} */}
+          {/*           onChange={(e) => onChange(e.target.checked)} */}
+          {/*         /> */}
+          {/*       ) */}
+          {/*     }} */}
+          {/*   /> */}
+          {/*   <IconTooltip */}
+          {/*     content={ */}
+          {/*       "Les modèles de rabais permettent de définir un ensemble de règles pouvant être utilisées pour un groupe de rabais. Cette fonction est utile dans les campagnes qui doivent générer des codes uniques pour chaque utilisateur." */}
+          {/*     } */}
+          {/*   /> */}
+          {/* </div> */}
         </>
       )}
     </div>

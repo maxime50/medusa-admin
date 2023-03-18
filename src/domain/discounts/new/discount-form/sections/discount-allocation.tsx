@@ -29,8 +29,8 @@ const DiscountAllocation = () => {
             <RadioGroup.Item
               value={AllocationType.ITEM}
               className="flex-1"
-              label="Spécificité de l'article"
-              description="S'applique à tous les articles autorisés"
+              label="Article spécifique"
+              description="Appliquer aux articles autorisés"
             />
           </RadioGroup.Root>
         )

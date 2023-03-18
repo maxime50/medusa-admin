@@ -205,9 +205,9 @@ const NewProduct = ({ onClose }: Props) => {
                   <DiscountableForm form={nestedForm(form, "discounted")} />
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Organiser le produit" value="organize">
+              <Accordion.Item title="Organisation du produit" value="organize">
                 <p className="inter-base-regular text-grey-50">
-                  Utile pour grouper les produits par catégorie
+                  Nous aide à mieux organiser le produit
                 </p>
                 <div className="mt-xlarge flex flex-col gap-y-xlarge pb-xsmall">
                   <div>

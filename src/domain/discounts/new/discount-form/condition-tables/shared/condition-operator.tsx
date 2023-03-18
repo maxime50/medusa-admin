@@ -19,13 +19,13 @@ const ConditionOperator: React.FC<ConditionOperatorProps> = ({
     >
       <RadioGroup.Item
         className="w-full"
-        label="Inclus"
+        label="Doit être"
         value={DiscountConditionOperator.IN}
         description="S'applique aux articles sélectionnés"
       />
       <RadioGroup.Item
         className="w-full"
-        label="N'inclus pas"
+        label="Ne doit pas être"
         value={DiscountConditionOperator.NOT_IN}
         description="S'applique à tous les articles excepté ceux qui sont sélectionnés"
       />

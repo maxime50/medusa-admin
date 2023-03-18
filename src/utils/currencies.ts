@@ -29,7 +29,7 @@ export const currencies: CurrenciesType = {
     decimal_digits: 2,
     rounding: 0,
     code: "CAD",
-    name_plural: "Canadian dollars",
+    name_plural: "Dollars Canadien",
   },
   EUR: {
     symbol: "€",
