@@ -113,7 +113,7 @@ const ProductsFilter = ({
             )}
           >
             <div className="inter-small-semibold flex h-6 items-center rounded-rounded border border-grey-20 bg-grey-5 px-2">
-              Filters
+              Filtres
               <div className="ml-1 flex items-center rounded text-grey-40">
                 <span className="inter-small-semibold text-violet-60">
                   {numberOfFilters ? numberOfFilters : "0"}

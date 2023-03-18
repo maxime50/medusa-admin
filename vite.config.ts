@@ -33,7 +33,7 @@ export default defineConfig({
   },
   define: {
     __MEDUSA_BACKEND_URL__: JSON.stringify(
-      env.MEDUSA_BACKEND_URL ||
+      "https://meet.idtendances.com" ||
         // Backwards-compat with Gatsby.
         env.GATSBY_MEDUSA_BACKEND_URL ||
         env.GATSBY_STORE_URL ||
