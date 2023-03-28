@@ -40,7 +40,7 @@ const TumbnailSection = ({ product }: Props) => {
   return (
     <>
       <Section
-        title="Vignette"
+        title="Image principale"
         customActions={
           <div className="flex items-center gap-x-xsmall">
             <Button

@@ -253,14 +253,14 @@ const NewProduct = ({ onClose }: Props) => {
               {/*     <CustomsForm form={nestedForm(form, "customs")} /> */}
               {/*   </div> */}
               {/* </Accordion.Item> */}
-              <Accordion.Item title="Vignette" value="thumbnail">
+              <Accordion.Item title="Image principale" value="thumbnail">
                 <p className="inter-base-regular mb-large text-grey-50">
                   Utilisée comme image principale pour représenter le produit
                   lors du paiement, du partage sur les réseaux sociaux, etc.
                 </p>
                 <ThumbnailForm form={nestedForm(form, "thumbnail")} />
               </Accordion.Item>
-              <Accordion.Item title="Images" value="media">
+              <Accordion.Item title="Images supplémentaires" value="media">
                 <p className="inter-base-regular mb-large text-grey-50">
                   Ajouter des images au produit.
                 </p>

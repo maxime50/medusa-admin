@@ -80,14 +80,18 @@ const ThumbnailModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={onReset} isLargeModal>
       <Modal.Body>
         <Modal.Header handleClose={onReset}>
-          <h1 className="inter-xlarge-semibold m-0">Importer une vignette</h1>
+          <h1 className="inter-xlarge-semibold m-0">
+            Téléverser une image principale
+          </h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
-            <h2 className="inter-large-semibold mb-2xsmall">Vignette</h2>
+            <h2 className="inter-large-semibold mb-2xsmall">
+              Image principale
+            </h2>
             <p className="inter-base-regular mb-large text-grey-50">
-              Utilisée comme image principale pour représenter le produit lors
-              du paiement, du partage sur les réseaux sociaux, etc.
+              Utilisée pour représenter le produit lors du paiement, du partage
+              sur les réseaux sociaux, etc.
             </p>
             <ThumbnailForm form={nestedForm(form, "thumbnail")} />
           </Modal.Content>
@@ -123,10 +127,10 @@ const getDefaultValues = (product: Product): ThumbnailFormWrapper => {
     thumbnail: {
       images: product.thumbnail
         ? [
-            {
-              url: product.thumbnail,
-            },
-          ]
+          {
+            url: product.thumbnail,
+          },
+        ]
         : [],
     },
   }

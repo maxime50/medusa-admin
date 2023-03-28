@@ -77,14 +77,14 @@ const MediaModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={onReset} isLargeModal>
       <Modal.Body>
         <Modal.Header handleClose={onReset}>
-          <h1 className="inter-xlarge-semibold m-0">Modifier le média</h1>
+          <h1 className="inter-xlarge-semibold m-0">Téléverser des images</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <div>
-              <h2 className="inter-large-semibold mb-2xsmall">Média</h2>
+              <h2 className="inter-large-semibold mb-2xsmall">Images</h2>
               <p className="inter-base-regular mb-large text-grey-50">
-                Ajouter des images au produit
+                Ajouter des images supplémentaires au produit
               </p>
               <div>
                 <MediaForm form={nestedForm(form, "media")} />
