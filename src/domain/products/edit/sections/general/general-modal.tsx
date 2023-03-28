@@ -60,9 +60,9 @@ const GeneralModal = ({ product, open, onClose }: Props) => {
         // @ts-ignore
         type: data.organize.type
           ? {
-              id: data.organize.type.value,
-              value: data.organize.type.label,
-            }
+            id: data.organize.type.value,
+            value: data.organize.type.label,
+          }
           : null,
         // @ts-ignore
         collection_id: data.organize.collection
@@ -89,12 +89,12 @@ const GeneralModal = ({ product, open, onClose }: Props) => {
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <GeneralForm form={nestedForm(form, "general")} />
-            <div className="my-xlarge">
-              <h2 className="inter-base-semibold mb-base">
-                Organisation du produit
-              </h2>
-              <OrganizeForm form={nestedForm(form, "organize")} />
-            </div>
+            {/* <div className="my-xlarge"> */}
+            {/*   <h2 className="inter-base-semibold mb-base"> */}
+            {/*     Organisation du produit */}
+            {/*   </h2> */}
+            {/*   <OrganizeForm form={nestedForm(form, "organize")} /> */}
+            {/* </div> */}
             <DiscountableForm form={nestedForm(form, "discountable")} />
           </Modal.Content>
           <Modal.Footer>

@@ -205,23 +205,23 @@ const NewProduct = ({ onClose }: Props) => {
                   <DiscountableForm form={nestedForm(form, "discounted")} />
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Organisation du produit" value="organize">
-                <p className="inter-base-regular text-grey-50">
-                  Nous aide à mieux organiser le produit
-                </p>
-                <div className="mt-xlarge flex flex-col gap-y-xlarge pb-xsmall">
-                  <div>
-                    <OrganizeForm form={nestedForm(form, "organize")} />
-                    <FeatureToggle featureFlag="sales_channels">
-                      <div className="mt-xlarge">
-                        <AddSalesChannelsForm
-                          form={nestedForm(form, "salesChannels")}
-                        />
-                      </div>
-                    </FeatureToggle>
-                  </div>
-                </div>
-              </Accordion.Item>
+              {/* <Accordion.Item title="Organisation du produit" value="organize"> */}
+              {/*   <p className="inter-base-regular text-grey-50"> */}
+              {/*     Nous aide à mieux organiser le produit */}
+              {/*   </p> */}
+              {/*   <div className="mt-xlarge flex flex-col gap-y-xlarge pb-xsmall"> */}
+              {/*     <div> */}
+              {/*       <OrganizeForm form={nestedForm(form, "organize")} /> */}
+              {/*       <FeatureToggle featureFlag="sales_channels"> */}
+              {/*         <div className="mt-xlarge"> */}
+              {/*           <AddSalesChannelsForm */}
+              {/*             form={nestedForm(form, "salesChannels")} */}
+              {/*           /> */}
+              {/*         </div> */}
+              {/*       </FeatureToggle> */}
+              {/*     </div> */}
+              {/*   </div> */}
+              {/* </Accordion.Item> */}
               <Accordion.Item title="Variantes" value="variants">
                 <p className="inter-base-regular text-grey-50">
                   Ajouter des variantes de ce produit.
@@ -293,14 +293,14 @@ const createPayload = (
     mid_code: data.customs.mid_code || undefined,
     type: data.organize.type
       ? {
-          value: data.organize.type.label,
-          id: data.organize.type.value,
-        }
+        value: data.organize.type.label,
+        id: data.organize.type.value,
+      }
       : undefined,
     tags: data.organize.tags
       ? data.organize.tags.map((t) => ({
-          value: t,
-        }))
+        value: t,
+      }))
       : undefined,
     origin_country: data.customs.origin_country?.value || undefined,
     options: data.variants.options.map((o) => ({
