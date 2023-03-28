@@ -188,7 +188,10 @@ const NewProduct = ({ onClose }: Props) => {
         </FocusModal.Header>
         <FocusModal.Main className="no-scrollbar flex w-full justify-center">
           <div className="my-16 max-w-[700px] small:w-4/5 medium:w-7/12 large:w-6/12">
-            <Accordion defaultValue={["general"]} type="multiple">
+            <Accordion
+              defaultValue={["general", "variants", "thumbnail", "media"]}
+              type="multiple"
+            >
               <Accordion.Item
                 value={"general"}
                 title="Information général"
