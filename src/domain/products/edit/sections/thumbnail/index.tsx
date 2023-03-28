@@ -1,6 +1,6 @@
 import { Product } from "@medusajs/medusa"
 import clsx from "clsx"
-import React from "react"
+import React, { MouseEventHandler } from "react"
 import TwoStepDelete from "../../../../../components/atoms/two-step-delete"
 import Button from "../../../../../components/fundamentals/button"
 import Section from "../../../../../components/organisms/section"
@@ -37,6 +37,11 @@ const TumbnailSection = ({ product }: Props) => {
     )
   }
 
+  const handleImageFullscreen: MouseEventHandler<HTMLImageElement> = (e) => {
+    const element = e.target as HTMLImageElement
+    element?.requestFullscreen()
+  }
+
   return (
     <>
       <Section
@@ -65,6 +70,7 @@ const TumbnailSection = ({ product }: Props) => {
           {product.thumbnail && (
             <div className="flex aspect-square items-center justify-center">
               <img
+                onClick={handleImageFullscreen}
                 src={product.thumbnail}
                 alt={`Vignette pour ${product.title}`}
                 className="max-h-full max-w-full rounded-rounded object-contain"

@@ -1,5 +1,5 @@
 import { Product } from "@medusajs/medusa"
-import React from "react"
+import React, { MouseEventHandler } from "react"
 import { ActionType } from "../../../../../components/molecules/actionables"
 import Section from "../../../../../components/organisms/section"
 import useToggleState from "../../../../../hooks/use-toggle-state"
@@ -18,6 +18,10 @@ const MediaSection = ({ product }: Props) => {
       onClick: toggle,
     },
   ]
+  const handleImageFullscreen: MouseEventHandler<HTMLImageElement> = (e) => {
+    const element = e.target as HTMLImageElement
+    element?.requestFullscreen()
+  }
 
   return (
     <>
@@ -33,6 +37,7 @@ const MediaSection = ({ product }: Props) => {
                   <img
                     src={image.url}
                     alt={`Image ${index + 1}`}
+                    onClick={handleImageFullscreen}
                     className="max-h-full max-w-full rounded-rounded object-contain"
                   />
                 </div>
