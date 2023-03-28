@@ -111,9 +111,9 @@ const ProductDetails = ({ product }: Props) => {
   return (
     <div className="mt-8 flex flex-col gap-y-3">
       <h2 className="inter-base-semibold">Détails</h2>
-      <Detail title="Sous-titre" value={product.subtitle} />
-      <Detail title="Handle" value={product.handle} />
-      <Detail title="Type" value={product.type?.value} />
+      {/* <Detail title="Sous-titre" value={product.subtitle} /> */}
+      {/* <Detail title="Handle" value={product.handle} /> */}
+      {/* <Detail title="Type" value={product.type?.value} /> */}
       <Detail title="Collection" value={product.collection?.title} />
       <Detail title="Réductible" value={product.discountable ? "Oui" : "Non"} />
     </div>
