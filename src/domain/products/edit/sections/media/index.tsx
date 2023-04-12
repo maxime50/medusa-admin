@@ -20,7 +20,25 @@ const MediaSection = ({ product }: Props) => {
   ]
   const handleImageFullscreen: MouseEventHandler<HTMLImageElement> = (e) => {
     const element = e.target as HTMLImageElement
-    element?.requestFullscreen()
+    if (!element) return
+
+    const enterFullscreen = () => {
+      // Element to fullscreen
+
+      if (element.requestFullscreen) {
+        element.requestFullscreen()
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen()
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen()
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen()
+      } else if (element.webkitEnterFullscreen) {
+        element.webkitEnterFullscreen()
+      }
+    }
+
+    enterFullscreen()
   }
 
   return (
